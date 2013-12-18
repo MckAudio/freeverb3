@@ -1,0 +1,4437 @@
+2013-11-04  tkamogashira
+
+	* configure.ac (1.2), freeverb/Makefile.am (1.47),
+	  samples/Makefile.am (1.44): [no log message]
+
+2013-11-03  tkamogashira
+
+	* freeverb/: fv3_defs.h (1.35), mls.cpp (1.3), mls_t.hpp (1.3),
+	  strev_t.hpp (1.17), sweep.cpp (1.8), sweep_t.hpp (1.5): MLS
+	  updates sweep updates
+
+2013-09-24  tkamogashira
+
+	* INSTALL (1.4), configure.ac (1.1), configure.in (1.135[DEAD]),
+	  audacious/Makefile.am (1.29), audacious/plugins.make (1.5),
+	  double/Makefile.am (1.9), float/Makefile.am (1.9),
+	  freeverb/Makefile.am (1.46), freeverb/fv3_defs.h (1.34),
+	  freeverb/mls.cpp (1.2), freeverb/mls.hpp (1.2),
+	  freeverb/mls_t.hpp (1.2), jack/Makefile.am (1.8),
+	  ldouble/Makefile.am (1.9), libgdither/Makefile.am (1.5),
+	  libsamplerate2/Makefile.am (1.5), samples/Makefile.am (1.43): MLS
+	  class updates.
+
+2013-09-24  tkamogashira
+
+	* configure.in (1.134), freeverb/Makefile.am (1.45),
+	  freeverb/mls.cpp (1.1), freeverb/mls.hpp (1.1),
+	  freeverb/mls_t.hpp (1.1), freeverb/src.make (1.24): The MLS/LFSR
+	  class was added.
+
+2013-06-08  tkamogashira
+
+	* README (1.25), configure.in (1.133), audacious/impulser2.cpp
+	  (1.6), audacious/libxmmsplugin.hpp (1.6), audacious/so.c (1.2),
+	  jack/jack_main.cpp (1.5): Audacious plugins updates
+
+2013-06-01  tkamogashira
+
+	* audacious/plugins.make (1.4), audacious/so.c (1.1),
+	  audacious/so.h (1.1), jack/Makefile.am (1.7): Audacious 3.1 API
+	  support updates.
+
+2013-05-31  tkamogashira
+
+	* audacious/nrev.cpp (1.1), freeverb/biquad.cpp (1.18),
+	  freeverb/limitmodel.cpp (1.26) (utags: VERSION_3_0_0): [no log
+	  message]
+
+2013-05-31  tkamogashira
+
+	* audacious/impulser2.cpp (1.5, VERSION_3_0_0),
+	  audacious/libxmmsplugin.hpp (1.5, VERSION_3_0_0),
+	  audacious/progenitor.cpp (1.3, VERSION_3_0_0),
+	  audacious/strev.cpp (1.4, VERSION_3_0_0), freeverb/nrev.cpp
+	  (1.67, VERSION_3_0_0), freeverb/nrev_t.hpp (1.31, VERSION_3_0_0),
+	  freeverb/progenitor.cpp (1.42, VERSION_3_0_0),
+	  freeverb/progenitor_t.hpp (1.21, VERSION_3_0_0),
+	  freeverb/strev.cpp (1.40, VERSION_3_0_0), freeverb/strev_t.hpp
+	  (1.16, VERSION_3_0_0), jack/Makefile.am (1.6, VERSION_3_0_0),
+	  jack/configdb.h (1.2, VERSION_3_0_0), jack/configdb_rcfile.c
+	  (1.2, VERSION_3_0_0), jack/configfile.c (1.2[DEAD]),
+	  jack/configfile.h (1.2[DEAD]), jack/jack_main.cpp (1.4,
+	  VERSION_3_0_0), jack/util.c (1.2, VERSION_3_0_0), jack/util.h
+	  (1.2, VERSION_3_0_0): API updates.  jack updates for audacious
+	  API updates.
+
+2013-05-30  tkamogashira
+
+	* audacious/CFileLoader.hpp (1.2, VERSION_3_0_0),
+	  audacious/compressor.cpp (1.2, VERSION_3_0_0),
+	  audacious/earlyr.cpp (1.2, VERSION_3_0_0), audacious/earlyr2.cpp
+	  (1.3, VERSION_3_0_0), audacious/gd_largeroom.cpp (1.2,
+	  VERSION_3_0_0), audacious/impulser2.cpp (1.4),
+	  audacious/libxmmsplugin.hpp (1.4),
+	  audacious/libxmmsplugin_table.hpp (1.3, VERSION_3_0_0),
+	  audacious/noise.cpp (1.2, VERSION_3_0_0),
+	  audacious/progenitor.cpp (1.2), audacious/revmodel.cpp (1.2,
+	  VERSION_3_0_0), audacious/stenh.cpp (1.2, VERSION_3_0_0),
+	  audacious/strev.cpp (1.3), audacious/zrev1.cpp (1.3,
+	  VERSION_3_0_0), freeverb/allpass.cpp (1.44, VERSION_3_0_0),
+	  freeverb/allpass.hpp (1.20, VERSION_3_0_0), freeverb/biquad.cpp
+	  (1.17), freeverb/biquad.hpp (1.7, VERSION_3_0_0),
+	  freeverb/blockDelay.cpp (1.26, VERSION_3_0_0),
+	  freeverb/blockDelay.hpp (1.17, VERSION_3_0_0), freeverb/comb.cpp
+	  (1.37, VERSION_3_0_0), freeverb/comb.hpp (1.19, VERSION_3_0_0),
+	  freeverb/compmodel.cpp (1.20, VERSION_3_0_0),
+	  freeverb/compmodel.hpp (1.14, VERSION_3_0_0), freeverb/delay.cpp
+	  (1.36, VERSION_3_0_0), freeverb/delay.hpp (1.21, VERSION_3_0_0),
+	  freeverb/delayline.cpp (1.10, VERSION_3_0_0),
+	  freeverb/delayline.hpp (1.3, VERSION_3_0_0),
+	  freeverb/dl_gardner.cpp (1.8, VERSION_3_0_0),
+	  freeverb/dl_gardner.hpp (1.3, VERSION_3_0_0),
+	  freeverb/earlyref.cpp (1.16, VERSION_3_0_0),
+	  freeverb/earlyref.hpp (1.5, VERSION_3_0_0), freeverb/efilter.cpp
+	  (1.36, VERSION_3_0_0), freeverb/efilter.hpp (1.23,
+	  VERSION_3_0_0), freeverb/fir3bandsplit.cpp (1.29, VERSION_3_0_0),
+	  freeverb/fir3bandsplit.hpp (1.16, VERSION_3_0_0),
+	  freeverb/firfilter.cpp (1.10, VERSION_3_0_0),
+	  freeverb/firfilter.hpp (1.12, VERSION_3_0_0),
+	  freeverb/firwindow.cpp (1.15, VERSION_3_0_0),
+	  freeverb/firwindow.hpp (1.13, VERSION_3_0_0), freeverb/frag.cpp
+	  (1.66, VERSION_3_0_0), freeverb/frag.hpp (1.24, VERSION_3_0_0),
+	  freeverb/fv3_ch_tool.hpp (1.7, VERSION_3_0_0),
+	  freeverb/fv3_defs.h (1.33, VERSION_3_0_0),
+	  freeverb/fv3_pthread_tool.hpp (1.3, VERSION_3_0_0),
+	  freeverb/irbase.cpp (1.7, VERSION_3_0_0), freeverb/irbase.hpp
+	  (1.8, VERSION_3_0_0), freeverb/irmodel.cpp (1.27, VERSION_3_0_0),
+	  freeverb/irmodel.hpp (1.21, VERSION_3_0_0), freeverb/irmodel2.cpp
+	  (1.65, VERSION_3_0_0), freeverb/irmodel2.hpp (1.33,
+	  VERSION_3_0_0), freeverb/irmodel2zl.cpp (1.8, VERSION_3_0_0),
+	  freeverb/irmodel2zl.hpp (1.6, VERSION_3_0_0),
+	  freeverb/irmodel3.cpp (1.41, VERSION_3_0_0),
+	  freeverb/irmodel3.hpp (1.13, VERSION_3_0_0),
+	  freeverb/irmodel3p.hpp (1.3, VERSION_3_0_0),
+	  freeverb/irmodel3w.hpp (1.3, VERSION_3_0_0),
+	  freeverb/irmodels.cpp (1.15, VERSION_3_0_0),
+	  freeverb/irmodels.hpp (1.13, VERSION_3_0_0),
+	  freeverb/limitmodel.cpp (1.25), freeverb/limitmodel.hpp (1.11,
+	  VERSION_3_0_0), freeverb/nrev.cpp (1.66), freeverb/nrev.hpp
+	  (1.35, VERSION_3_0_0), freeverb/nrevb.cpp (1.26, VERSION_3_0_0),
+	  freeverb/nrevb.hpp (1.10, VERSION_3_0_0), freeverb/progenitor.cpp
+	  (1.41), freeverb/progenitor.hpp (1.10, VERSION_3_0_0),
+	  freeverb/progenitor2.cpp (1.36, VERSION_3_0_0),
+	  freeverb/progenitor2.hpp (1.10, VERSION_3_0_0),
+	  freeverb/revbase.cpp (1.22, VERSION_3_0_0), freeverb/revbase.hpp
+	  (1.5, VERSION_3_0_0), freeverb/revmodel.cpp (1.40,
+	  VERSION_3_0_0), freeverb/revmodel.hpp (1.26, VERSION_3_0_0),
+	  freeverb/rms.cpp (1.22, VERSION_3_0_0), freeverb/rms.hpp (1.16,
+	  VERSION_3_0_0), freeverb/scomp.cpp (1.29, VERSION_3_0_0),
+	  freeverb/scomp.hpp (1.15, VERSION_3_0_0), freeverb/slimit.cpp
+	  (1.23, VERSION_3_0_0), freeverb/slimit.hpp (1.15, VERSION_3_0_0),
+	  freeverb/slot.cpp (1.13, VERSION_3_0_0), freeverb/slot.hpp (1.7,
+	  VERSION_3_0_0), freeverb/src.cpp (1.36, VERSION_3_0_0),
+	  freeverb/src.hpp (1.24, VERSION_3_0_0), freeverb/stenh.cpp (1.20,
+	  VERSION_3_0_0), freeverb/stenh.hpp (1.13, VERSION_3_0_0),
+	  freeverb/strev.cpp (1.39), freeverb/strev.hpp (1.8,
+	  VERSION_3_0_0), freeverb/sweep.cpp (1.7, VERSION_3_0_0),
+	  freeverb/sweep.hpp (1.4, VERSION_3_0_0), freeverb/utils.cpp
+	  (1.20, VERSION_3_0_0), freeverb/utils.hpp (1.15, VERSION_3_0_0),
+	  freeverb/zrev.cpp (1.19, VERSION_3_0_0), freeverb/zrev.hpp (1.4,
+	  VERSION_3_0_0), freeverb/zrev2.cpp (1.12, VERSION_3_0_0),
+	  freeverb/zrev2.hpp (1.3, VERSION_3_0_0), samples/benchmark3.cpp
+	  (1.15, VERSION_3_0_0), samples/freq_response.cpp (1.7,
+	  VERSION_3_0_0): Copyright notice updates.
+
+2013-05-29  tkamogashira
+
+	* README (1.24, VERSION_3_0_0), configure.in (1.132,
+	  VERSION_3_0_0), audacious/earlyr2.cpp (1.2),
+	  audacious/freeverb3.cpp (1.2[DEAD]), audacious/impulser2.cpp
+	  (1.3), audacious/libxmmsplugin.hpp (1.3), audacious/plugins.make
+	  (1.3, VERSION_3_0_0), audacious/strev.cpp (1.2),
+	  audacious/wave.xpm (1.2, VERSION_3_0_0), audacious/zrev1.cpp
+	  (1.2), patch/Makefile.am (1.3, VERSION_3_0_0),
+	  patch/bmp-0.9.7.1-effect-lock.patch (1.2[DEAD]): audaicous-3 api
+	  updates
+
+2013-05-06  tkamogashira
+
+	* configure.in (1.131), audacious/Makefile.am (1.28,
+	  VERSION_3_0_0), audacious/impulser2.cpp (1.2),
+	  audacious/libxmmsplugin.hpp (1.2),
+	  audacious/libxmmsplugin_table.hpp (1.2), audacious/plugins.make
+	  (1.2), audacious/xmms_defs.h (1.2[DEAD]), freeverb/Makefile.am
+	  (1.44, VERSION_3_0_0), jack/Makefile.am (1.5): audacious-3.1 API
+	  bump
+
+2013-05-06  tkamogashira
+
+	* INSTALL (1.3, VERSION_3_0_0), Makefile.am (1.17, VERSION_3_0_0),
+	  configure.in (1.130), freeverb3-3.pc.in (1.1, VERSION_3_0_0),
+	  freeverb3.pc.in (1.5[DEAD]), audacious/CFileLoader.hpp (1.1),
+	  audacious/CFileLoader_t.hpp (1.1, VERSION_3_0_0),
+	  audacious/compressor.cpp (1.1), audacious/earlyr.cpp (1.1),
+	  audacious/earlyr2.cpp (1.1), audacious/freeverb3.cpp (1.1),
+	  audacious/gd_largeroom.cpp (1.1), audacious/impulser2.cpp (1.1),
+	  audacious/libxmmsplugin.hpp (1.1),
+	  audacious/libxmmsplugin_table.hpp (1.1), audacious/noise.cpp
+	  (1.1), audacious/plugins.make (1.1), audacious/progenitor.cpp
+	  (1.1), audacious/revmodel.cpp (1.1), audacious/stenh.cpp (1.1),
+	  audacious/strev.cpp (1.1), audacious/wave.xpm (1.1),
+	  audacious/xmms_defs.h (1.1), audacious/zrev1.cpp (1.1),
+	  freeverb/irmodel3p.cpp (1.3, VERSION_3_0_0): audacious-3.1.0 API
+	  bump
+
+2013-03-09  tkamogashira
+
+	* configure.in (1.129), freeverb/zrev.cpp (1.18),
+	  freeverb/zrev2.cpp (1.11), jack/Makefile.am (1.4): [no log
+	  message]
+
+2012-07-25  tkamogashira
+
+	* freeverb/earlyref.cpp (1.15): [no log message]
+
+2012-07-16  tkamogashira
+
+	* freeverb/: fv3_defs.h (1.32), progenitor2.cpp (1.35),
+	  progenitor2_t.hpp (1.12, VERSION_3_0_0), revbase.cpp (1.21),
+	  revbase_t.hpp (1.13, VERSION_3_0_0), zrev2.cpp (1.10) (utags:
+	  VERSION_2_6_6): [no log message]
+
+2012-07-15  tkamogashira
+
+	* freeverb/: allpass_t.hpp (1.38, VERSION_3_0_0, VERSION_2_6_6),
+	  delay.cpp (1.35, VERSION_2_6_6), delay_t.hpp (1.29,
+	  VERSION_3_0_0, VERSION_2_6_6), progenitor.cpp (1.40,
+	  VERSION_2_6_6), progenitor2.cpp (1.34), zrev.cpp (1.17,
+	  VERSION_2_6_6), zrev2.cpp (1.9): modulated delayline bugs were
+	  fixed.
+
+2012-07-07  tkamogashira
+
+	* freeverb/: nrev.cpp (1.65, VERSION_2_6_6), progenitor.cpp (1.39),
+	  revbase.cpp (1.20), revbase_t.hpp (1.12), strev.cpp (1.38,
+	  VERSION_2_6_6), zrev.cpp (1.16), zrev2.cpp (1.8), zrev2_t.hpp
+	  (1.5, VERSION_3_0_0, VERSION_2_6_6): [no log message]
+
+2012-07-07  tkamogashira
+
+	* freeverb/: zrev.cpp (1.15), zrev2.cpp (1.7): [no log message]
+
+2012-07-07  tkamogashira
+
+	* freeverb/: zrev.cpp (1.14), zrev2.cpp (1.6), zrev2_t.hpp (1.4):
+	  [no log message]
+
+2012-07-05  tkamogashira
+
+	* freeverb/: revbase.cpp (1.19), zrev.cpp (1.13): [no log message]
+
+2012-07-05  tkamogashira
+
+	* freeverb/: earlyref.cpp (1.14, VERSION_2_6_6), earlyref_t.hpp
+	  (1.5, VERSION_3_0_0, VERSION_2_6_6), zrev2.cpp (1.5): [no log
+	  message]
+
+2012-07-04  tkamogashira
+
+	* freeverb/: zrev.cpp (1.12), zrev2.cpp (1.4), zrev_t.hpp (1.7,
+	  VERSION_3_0_0, VERSION_2_6_6): [no log message]
+
+2012-07-04  tkamogashira
+
+	* freeverb/: zrev.cpp (1.11), zrev_t.hpp (1.6): [no log message]
+
+2012-07-02  tkamogashira
+
+	* freeverb/: nrev.hpp (1.34, VERSION_2_6_6), nrevb.hpp (1.9,
+	  VERSION_2_6_6), progenitor.hpp (1.9, VERSION_2_6_6),
+	  progenitor2.hpp (1.9, VERSION_2_6_6), revbase.hpp (1.4,
+	  VERSION_2_6_6), revmodel.hpp (1.25, VERSION_2_6_6), strev.hpp
+	  (1.7, VERSION_2_6_6), zrev.cpp (1.10), zrev.hpp (1.3,
+	  VERSION_2_6_6), zrev2.cpp (1.3), zrev2.hpp (1.2, VERSION_2_6_6),
+	  zrev2_t.hpp (1.3): [no log message]
+
+2012-07-01  tkamogashira
+
+	* freeverb/: delay_t.hpp (1.28), zrev.cpp (1.9), zrev2.cpp (1.2),
+	  zrev2_t.hpp (1.2), zrev_t.hpp (1.5): [no log message]
+
+2012-07-01  tkamogashira
+
+	* configure.in (1.128, VERSION_2_6_6), freeverb/Makefile.am (1.43,
+	  VERSION_2_6_6), freeverb/allpass.cpp (1.43, VERSION_2_6_6),
+	  freeverb/allpass.hpp (1.19, VERSION_2_6_6), freeverb/biquad.cpp
+	  (1.16, VERSION_2_6_6), freeverb/biquad.hpp (1.6, VERSION_2_6_6),
+	  freeverb/blockDelay.cpp (1.25, VERSION_2_6_6),
+	  freeverb/blockDelay.hpp (1.16, VERSION_2_6_6), freeverb/comb.cpp
+	  (1.36, VERSION_2_6_6), freeverb/comb.hpp (1.18, VERSION_2_6_6),
+	  freeverb/compmodel.cpp (1.19, VERSION_2_6_6),
+	  freeverb/compmodel.hpp (1.13, VERSION_2_6_6), freeverb/delay.cpp
+	  (1.34), freeverb/delay.hpp (1.20, VERSION_2_6_6),
+	  freeverb/delayline.cpp (1.9, VERSION_2_6_6),
+	  freeverb/delayline.hpp (1.2, VERSION_2_6_6),
+	  freeverb/dl_gardner.cpp (1.7, VERSION_2_6_6),
+	  freeverb/dl_gardner.hpp (1.2, VERSION_2_6_6),
+	  freeverb/earlyref.cpp (1.13), freeverb/earlyref.hpp (1.4,
+	  VERSION_2_6_6), freeverb/efilter.cpp (1.35, VERSION_2_6_6),
+	  freeverb/efilter.hpp (1.22, VERSION_2_6_6),
+	  freeverb/fir3bandsplit.cpp (1.28, VERSION_2_6_6),
+	  freeverb/fir3bandsplit.hpp (1.15, VERSION_2_6_6),
+	  freeverb/firfilter.cpp (1.9, VERSION_2_6_6),
+	  freeverb/firfilter.hpp (1.11, VERSION_2_6_6),
+	  freeverb/firwindow.cpp (1.14, VERSION_2_6_6),
+	  freeverb/firwindow.hpp (1.12, VERSION_2_6_6), freeverb/frag.cpp
+	  (1.65, VERSION_2_6_6), freeverb/frag.hpp (1.23, VERSION_2_6_6),
+	  freeverb/fv3_ch_tool.hpp (1.6, VERSION_2_6_6),
+	  freeverb/fv3_defs.h (1.31), freeverb/fv3_pthread_tool.hpp (1.2,
+	  VERSION_2_6_6), freeverb/irbase.cpp (1.6, VERSION_2_6_6),
+	  freeverb/irbase.hpp (1.7, VERSION_2_6_6), freeverb/irmodel.cpp
+	  (1.26, VERSION_2_6_6), freeverb/irmodel.hpp (1.20,
+	  VERSION_2_6_6), freeverb/irmodel2.cpp (1.64, VERSION_2_6_6),
+	  freeverb/irmodel2.hpp (1.32, VERSION_2_6_6),
+	  freeverb/irmodel2zl.cpp (1.7, VERSION_2_6_6),
+	  freeverb/irmodel2zl.hpp (1.5, VERSION_2_6_6),
+	  freeverb/irmodel3.cpp (1.40, VERSION_2_6_6),
+	  freeverb/irmodel3.hpp (1.12, VERSION_2_6_6),
+	  freeverb/irmodel3p.hpp (1.2, VERSION_2_6_6),
+	  freeverb/irmodel3w.hpp (1.2, VERSION_2_6_6),
+	  freeverb/irmodels.cpp (1.14, VERSION_2_6_6),
+	  freeverb/irmodels.hpp (1.12, VERSION_2_6_6),
+	  freeverb/limitmodel.cpp (1.24, VERSION_2_6_6),
+	  freeverb/limitmodel.hpp (1.10, VERSION_2_6_6), freeverb/nrev.cpp
+	  (1.64), freeverb/nrev.hpp (1.33), freeverb/nrevb.cpp (1.25,
+	  VERSION_2_6_6), freeverb/nrevb.hpp (1.8), freeverb/progenitor.cpp
+	  (1.38), freeverb/progenitor.hpp (1.8), freeverb/progenitor2.cpp
+	  (1.33), freeverb/progenitor2.hpp (1.8), freeverb/revbase.cpp
+	  (1.18), freeverb/revbase.hpp (1.3), freeverb/revmodel.cpp (1.39,
+	  VERSION_2_6_6), freeverb/revmodel.hpp (1.24), freeverb/rms.cpp
+	  (1.21, VERSION_2_6_6), freeverb/rms.hpp (1.15, VERSION_2_6_6),
+	  freeverb/scomp.cpp (1.28, VERSION_2_6_6), freeverb/scomp.hpp
+	  (1.14, VERSION_2_6_6), freeverb/slimit.cpp (1.22, VERSION_2_6_6),
+	  freeverb/slimit.hpp (1.14, VERSION_2_6_6), freeverb/slot.cpp
+	  (1.12, VERSION_2_6_6), freeverb/slot.hpp (1.6, VERSION_2_6_6),
+	  freeverb/src.cpp (1.35, VERSION_2_6_6), freeverb/src.hpp (1.23,
+	  VERSION_2_6_6), freeverb/src.make (1.23, VERSION_3_0_0,
+	  VERSION_2_6_6), freeverb/stenh.cpp (1.19, VERSION_2_6_6),
+	  freeverb/stenh.hpp (1.12, VERSION_2_6_6), freeverb/strev.cpp
+	  (1.37), freeverb/strev.hpp (1.6), freeverb/sweep.cpp (1.6,
+	  VERSION_2_6_6), freeverb/sweep.hpp (1.3, VERSION_2_6_6),
+	  freeverb/utils.cpp (1.19, VERSION_2_6_6), freeverb/utils.hpp
+	  (1.14, VERSION_2_6_6), freeverb/zrev.cpp (1.8), freeverb/zrev.hpp
+	  (1.2), freeverb/zrev2.cpp (1.1), freeverb/zrev2.hpp (1.1),
+	  freeverb/zrev2_t.hpp (1.1), freeverb/zrev_t.hpp (1.4),
+	  samples/benchmark3.cpp (1.14, VERSION_2_6_6),
+	  samples/freq_response.cpp (1.6, VERSION_2_6_6): New algorithm was
+	  added.  Copyright notice was changed.
+
+2012-05-24  tkamogashira
+
+	* freeverb/: dl_gardner.cpp (1.6), dl_gardner_t.hpp (1.7,
+	  VERSION_3_0_0, VERSION_2_6_6), earlyref.cpp (1.12), nrev.cpp
+	  (1.63), progenitor.cpp (1.37), progenitor2.cpp (1.32),
+	  progenitor_t.hpp (1.20, VERSION_2_6_6), revbase.cpp (1.17),
+	  zrev.cpp (1.7): Class resturesture
+
+2012-05-23  tkamogashira
+
+	* freeverb/: earlyref.cpp (1.11), earlyref_t.hpp (1.4), nrev.cpp
+	  (1.62), nrev_t.hpp (1.30, VERSION_2_6_6), nrevb.cpp (1.24),
+	  nrevb_t.hpp (1.13, VERSION_3_0_0, VERSION_2_6_6), progenitor.cpp
+	  (1.36), progenitor2.cpp (1.31), progenitor2_t.hpp (1.11),
+	  progenitor_t.hpp (1.19), revbase.cpp (1.16), revbase_t.hpp
+	  (1.11), revmodel.cpp (1.38), revmodel_t.hpp (1.14, VERSION_3_0_0,
+	  VERSION_2_6_6), strev.cpp (1.36), strev_t.hpp (1.15,
+	  VERSION_2_6_6), zrev.cpp (1.6), zrev_t.hpp (1.3): [no log
+	  message]
+
+2012-03-17  tkamogashira
+
+	* freeverb/progenitor_t.hpp (1.18): [no log message]
+
+2012-03-15  tkamogashira
+
+	* freeverb/: nrev.cpp (1.61), nrev_t.hpp (1.29), progenitor.cpp
+	  (1.35), progenitor2.cpp (1.30), zrev.cpp (1.5): [no log message]
+
+2012-03-15  tkamogashira
+
+	* freeverb/: nrev.cpp (1.60), progenitor.cpp (1.34),
+	  progenitor2.cpp (1.29), strev.cpp (1.35), zrev.cpp (1.4): [no log
+	  message]
+
+2012-03-15  tkamogashira
+
+	* freeverb/strev.cpp (1.34): [no log message]
+
+2012-03-15  tkamogashira
+
+	* freeverb/: revbase.cpp (1.15), revbase_t.hpp (1.10), strev.cpp
+	  (1.33): [no log message]
+
+2012-03-15  tkamogashira
+
+	* freeverb/: progenitor.cpp (1.33), progenitor2.cpp (1.28),
+	  strev.cpp (1.32): [no log message]
+
+2012-03-14  tkamogashira
+
+	* freeverb/: biquad_t.hpp (1.10, VERSION_3_0_0, VERSION_2_6_6),
+	  progenitor.cpp (1.32), progenitor2.cpp (1.27), progenitor_t.hpp
+	  (1.17), src.cpp (1.34), strev.cpp (1.31), zrev.cpp (1.3): [no log
+	  message]
+
+2012-03-09  tkamogashira
+
+	* freeverb/: biquad.cpp (1.15), biquad.hpp (1.5), biquad_t.hpp
+	  (1.9), earlyref.cpp (1.10), efilter_t.hpp (1.34, VERSION_3_0_0,
+	  VERSION_2_6_6), progenitor.cpp (1.31): [no log message]
+
+2012-03-07  tkamogashira
+
+	* freeverb/: earlyref.cpp (1.9), nrev.cpp (1.59), progenitor.cpp
+	  (1.30), revbase.cpp (1.14), revbase_t.hpp (1.9), strev.cpp
+	  (1.30), strev_t.hpp (1.14), zrev.cpp (1.2), zrev_t.hpp (1.2): [no
+	  log message]
+
+2012-03-06  tkamogashira
+
+	* freeverb/: Makefile.am (1.42), earlyref.cpp (1.8), earlyref_t.hpp
+	  (1.3), fv3_defs.h (1.30), limitmodel.cpp (1.23), limitmodel_t.hpp
+	  (1.12, VERSION_3_0_0, VERSION_2_6_6), nrev.cpp (1.58), nrevb.cpp
+	  (1.23), progenitor.cpp (1.29), revbase.cpp (1.13), revbase_t.hpp
+	  (1.8), src.make (1.22), strev.cpp (1.29), strev_t.hpp (1.13),
+	  zrev.cpp (1.1), zrev.hpp (1.1), zrev_t.hpp (1.1): Zita-Rev1 based
+	  reverb was added.
+
+2012-01-21  tkamogashira
+
+	* configure.in (1.127), freeverb/fir3bandsplit.cpp (1.27),
+	  freeverb/limitmodel.cpp (1.22), freeverb/limitmodel_t.hpp (1.11),
+	  freeverb/strev.cpp (1.28), freeverb/strev_t.hpp (1.12): Small
+	  optimizations
+
+2012-01-09  tkamogashira
+
+	* configure.in (1.126), freeverb/limitmodel.cpp (1.21),
+	  freeverb/limitmodel_t.hpp (1.10): [no log message]
+
+2011-12-29  tkamogashira
+
+	* freeverb/: allpass.cpp (1.42), allpass_t.hpp (1.37), comb.cpp
+	  (1.35), delay.cpp (1.33), delay_t.hpp (1.27), progenitor.cpp
+	  (1.28), progenitor.hpp (1.7), progenitor2.cpp (1.26),
+	  progenitor_t.hpp (1.16), revbase.cpp (1.12) (utags:
+	  VERSION_2_6_4): [no log message]
+
+2011-12-29  tkamogashira
+
+	* freeverb/: allpass_t.hpp (1.36), comb_t.hpp (1.22, VERSION_3_0_0,
+	  VERSION_2_6_6, VERSION_2_6_4), delay_t.hpp (1.26), nrev.cpp
+	  (1.57, VERSION_2_6_4), nrevb.cpp (1.22, VERSION_2_6_4),
+	  progenitor.cpp (1.27), progenitor2.cpp (1.25), revmodel.cpp
+	  (1.37, VERSION_2_6_4), strev.cpp (1.27, VERSION_2_6_4):
+	  Optimization for branch.
+
+2011-12-28  tkamogashira
+
+	* freeverb/: allpass.cpp (1.41), allpass_t.hpp (1.35), delay_t.hpp
+	  (1.25), progenitor.cpp (1.26), progenitor2.cpp (1.24),
+	  progenitor_t.hpp (1.15): [no log message]
+
+2011-12-25  tkamogashira
+
+	* configure.in (1.125, VERSION_2_6_4), freeverb/allpass.cpp (1.40),
+	  freeverb/allpass_t.hpp (1.34), freeverb/comb.cpp (1.34),
+	  freeverb/comb_t.hpp (1.21), freeverb/delay_t.hpp (1.24),
+	  freeverb/progenitor.cpp (1.25), freeverb/progenitor2.cpp (1.23),
+	  freeverb/progenitor2_t.hpp (1.10, VERSION_2_6_4): Linear
+	  interpolator was added.
+
+2011-12-06  tkamogashira
+
+	* freeverb/: compmodel.cpp (1.18), delayline.cpp (1.8),
+	  delayline_t.hpp (1.6, VERSION_3_0_0, VERSION_2_6_6),
+	  dl_gardner.cpp (1.5), dl_gardner_t.hpp (1.6), limitmodel.cpp
+	  (1.20), rms_t.hpp (1.13, VERSION_3_0_0, VERSION_2_6_6), scomp.cpp
+	  (1.27), scomp_t.hpp (1.20, VERSION_3_0_0, VERSION_2_6_6),
+	  slimit.cpp (1.21), slimit_t.hpp (1.15, VERSION_3_0_0,
+	  VERSION_2_6_6), stenh.cpp (1.18), stenh_t.hpp (1.14,
+	  VERSION_3_0_0, VERSION_2_6_6), sweep.cpp (1.5), sweep_t.hpp (1.4,
+	  VERSION_3_0_0, VERSION_2_6_6) (utags: VERSION_2_6_0,
+	  VERSION_2_6_4): [no log message]
+
+2011-12-04  tkamogashira
+
+	* freeverb/: nrev.cpp (1.56), nrev_t.hpp (1.28, VERSION_2_6_4),
+	  nrevb.cpp (1.21), nrevb_t.hpp (1.12, VERSION_2_6_4),
+	  progenitor.cpp (1.24), progenitor2.cpp (1.22), progenitor2_t.hpp
+	  (1.9), progenitor_t.hpp (1.14), revbase.cpp (1.11), revbase_t.hpp
+	  (1.7, VERSION_2_6_4), revmodel.cpp (1.36), revmodel_t.hpp (1.13,
+	  VERSION_2_6_4), src.cpp (1.33, VERSION_2_6_4), strev.cpp (1.26),
+	  strev_t.hpp (1.11, VERSION_2_6_4) (utags: VERSION_2_6_0): [no log
+	  message]
+
+2011-12-04  tkamogashira
+
+	* freeverb/: nrev.cpp (1.55), nrev_t.hpp (1.27), nrevb.cpp (1.20),
+	  nrevb_t.hpp (1.11), progenitor.cpp (1.23), progenitor2.cpp
+	  (1.21), progenitor2_t.hpp (1.8), progenitor_t.hpp (1.13),
+	  slimit.cpp (1.20), stenh.cpp (1.17): [no log message]
+
+2011-12-04  tkamogashira
+
+	* freeverb/: allpass.cpp (1.39, VERSION_2_6_0), biquad.cpp (1.14,
+	  VERSION_2_6_4, VERSION_2_6_0), biquad_t.hpp (1.8, VERSION_2_6_4,
+	  VERSION_2_6_0), comb.cpp (1.33, VERSION_2_6_0), delay.cpp (1.32,
+	  VERSION_2_6_0), delayline.cpp (1.7), dl_gardner.cpp (1.4),
+	  dl_gardner_t.hpp (1.5), nrev.cpp (1.54), nrev_t.hpp (1.26),
+	  nrevb.cpp (1.19), progenitor.cpp (1.22), progenitor2.cpp (1.20),
+	  revbase.cpp (1.10), revbase_t.hpp (1.6), revmodel.cpp (1.35),
+	  rms.cpp (1.20, VERSION_2_6_4, VERSION_2_6_0), scomp.cpp (1.26),
+	  scomp_t.hpp (1.19), slimit.cpp (1.19), stenh.cpp (1.16),
+	  stenh_t.hpp (1.13), strev.cpp (1.25), strev_t.hpp (1.10): [no log
+	  message]
+
+2011-12-03  tkamogashira
+
+	* freeverb/compmodel.cpp (1.17), freeverb/compmodel_t.hpp (1.13,
+	  VERSION_3_0_0, VERSION_2_6_6, VERSION_2_6_4, VERSION_2_6_0),
+	  freeverb/delayline.cpp (1.6), freeverb/delayline_t.hpp (1.5),
+	  freeverb/dl_gardner.cpp (1.3), freeverb/dl_gardner_t.hpp (1.4),
+	  freeverb/earlyref.cpp (1.7, VERSION_2_6_4, VERSION_2_6_0),
+	  freeverb/fir3bandsplit.cpp (1.26, VERSION_2_6_4, VERSION_2_6_0),
+	  freeverb/fir3bandsplit_t.hpp (1.13, VERSION_3_0_0, VERSION_2_6_6,
+	  VERSION_2_6_4, VERSION_2_6_0), freeverb/irbase.cpp (1.5,
+	  VERSION_2_6_4, VERSION_2_6_0), freeverb/limitmodel.cpp (1.19),
+	  freeverb/limitmodel_t.hpp (1.9, VERSION_2_6_4, VERSION_2_6_0),
+	  freeverb/nrev.cpp (1.53), freeverb/nrev_t.hpp (1.25),
+	  freeverb/nrevb.cpp (1.18), freeverb/nrevb_t.hpp (1.10),
+	  freeverb/progenitor.cpp (1.21), freeverb/progenitor2.cpp (1.19),
+	  freeverb/revbase.cpp (1.9), freeverb/revbase_t.hpp (1.5),
+	  freeverb/revmodel.cpp (1.34), freeverb/revmodel_t.hpp (1.12),
+	  freeverb/stenh.cpp (1.15), freeverb/stenh_t.hpp (1.12),
+	  freeverb/strev.cpp (1.24), freeverb/sweep.cpp (1.4),
+	  freeverb/sweep_t.hpp (1.3), freeverb/utils.cpp (1.18,
+	  VERSION_2_6_4, VERSION_2_6_0), freeverb/utils_t.hpp (1.11,
+	  VERSION_3_0_0, VERSION_2_6_6, VERSION_2_6_4, VERSION_2_6_0),
+	  samples/freq_response.cpp (1.5, VERSION_2_6_4, VERSION_2_6_0):
+	  Many classes were refined.
+
+2011-12-03  tkamogashira
+
+	* freeverb/: fv3_defs.h (1.29, VERSION_2_6_4, VERSION_2_6_0),
+	  nrev.cpp (1.52), nrevb.cpp (1.17), nrevb.hpp (1.7, VERSION_2_6_4,
+	  VERSION_2_6_0), nrevb_t.hpp (1.9), progenitor.cpp (1.20),
+	  revbase.cpp (1.8), revbase_t.hpp (1.4), revmodel.cpp (1.33),
+	  strev.cpp (1.23): [no log message]
+
+2011-12-01  tkamogashira
+
+	* freeverb/: allpass.cpp (1.38), allpass_t.hpp (1.33,
+	  VERSION_2_6_0), biquad_t.hpp (1.7), blockDelay.cpp (1.24,
+	  VERSION_2_6_4, VERSION_2_6_0), comb_t.hpp (1.20, VERSION_2_6_0),
+	  delay.cpp (1.31), delay_t.hpp (1.23, VERSION_2_6_0),
+	  delayline.cpp (1.5), earlyref.cpp (1.6), efilter.cpp (1.34,
+	  VERSION_2_6_4, VERSION_2_6_0), efilter_t.hpp (1.33,
+	  VERSION_2_6_4, VERSION_2_6_0), frag_t.hpp (1.19, VERSION_3_0_0,
+	  VERSION_2_6_6, VERSION_2_6_4, VERSION_2_6_0), fv3_defs.h (1.28),
+	  nrevb.cpp (1.16), nrevb_t.hpp (1.8), progenitor2.cpp (1.18),
+	  progenitor2_t.hpp (1.7), rms_t.hpp (1.12), scomp_t.hpp (1.18),
+	  slimit_t.hpp (1.14), strev.cpp (1.22), strev_t.hpp (1.9):
+	  Noisegen classes were refined.
+
+2011-11-22  tkamogashira
+
+	* configure.in (1.124, VERSION_2_6_0), freeverb/allpass.cpp (1.37),
+	  freeverb/allpass_t.hpp (1.32), freeverb/comb_t.hpp (1.19),
+	  freeverb/efilter_t.hpp (1.32), freeverb/irmodel3p.cpp (1.2,
+	  VERSION_2_6_6, VERSION_2_6_4, VERSION_2_6_0),
+	  freeverb/progenitor2.cpp (1.17), freeverb/src.cpp (1.32),
+	  freeverb/src_t.hpp (1.10, VERSION_3_0_0, VERSION_2_6_6,
+	  VERSION_2_6_4, VERSION_2_6_0): [no log message]
+
+2011-11-16  tkamogashira
+
+	* configure.in (1.123), freeverb/Makefile.am (1.41, VERSION_2_6_4,
+	  VERSION_2_6_0), freeverb/biquad.cpp (1.13), freeverb/efilter.cpp
+	  (1.33), freeverb/efilter_t.hpp (1.31), freeverb/fv3_ch_tool.hpp
+	  (1.5, VERSION_2_6_4, VERSION_2_6_0), freeverb/fv3_defs.h (1.27),
+	  freeverb/fv3_pthread_tool.hpp (1.1, VERSION_2_6_4,
+	  VERSION_2_6_0), freeverb/irbase_t.hpp (1.11, VERSION_3_0_0,
+	  VERSION_2_6_6, VERSION_2_6_4, VERSION_2_6_0),
+	  freeverb/irmodel3.cpp (1.39, VERSION_2_6_4, VERSION_2_6_0),
+	  freeverb/irmodel3_t.hpp (1.27, VERSION_3_0_0, VERSION_2_6_6,
+	  VERSION_2_6_4, VERSION_2_6_0), freeverb/irmodel3p.cpp (1.1),
+	  freeverb/irmodel3p.hpp (1.1, VERSION_2_6_4, VERSION_2_6_0),
+	  freeverb/irmodel3p_t.hpp (1.1, VERSION_3_0_0, VERSION_2_6_6,
+	  VERSION_2_6_4, VERSION_2_6_0), freeverb/nrev.cpp (1.51),
+	  freeverb/nrevb.cpp (1.15), freeverb/progenitor.cpp (1.19),
+	  freeverb/progenitor2.cpp (1.16), freeverb/progenitor_t.hpp
+	  (1.12), freeverb/revbase.cpp (1.7), freeverb/src.cpp (1.31),
+	  freeverb/src.make (1.21, VERSION_2_6_4, VERSION_2_6_0),
+	  freeverb/strev.cpp (1.21): Pthread version updates.
+
+2011-11-12  tkamogashira
+
+	* freeverb/: allpass_t.hpp (1.31), progenitor2.cpp (1.15),
+	  progenitor2.hpp (1.7, VERSION_2_6_4, VERSION_2_6_0): [no log
+	  message]
+
+2011-11-05  tkamogashira
+
+	* configure.in (1.122), freeverb/efilter.cpp (1.32): [no log
+	  message]
+
+2011-11-01  tkamogashira
+
+	* freeverb/efilter.cpp (1.31): [no log message]
+
+2011-10-30  tkamogashira
+
+	* freeverb/: progenitor.cpp (1.18), progenitor2.cpp (1.14): [no log
+	  message]
+
+2011-10-23  tkamogashira
+
+	* jack/Makefile.am (1.3, VERSION_2_6_6, VERSION_2_6_4,
+	  VERSION_2_6_0): Jack Plugins updates.
+
+2011-10-23  tkamogashira
+
+	* configure.in (1.121): [no log message]
+
+2011-10-23  tkamogashira
+
+	* jack/jack_main.cpp (1.3, VERSION_2_6_6, VERSION_2_6_4,
+	  VERSION_2_6_0, VERSION_2_5_22): [no log message]
+
+2011-10-23  tkamogashira
+
+	* jack/: Makefile.am (1.2, VERSION_2_5_22), jack_main.cpp (1.2):
+	  [no log message]
+
+2011-10-21  tkamogashira
+
+	* Makefile.am (1.16, VERSION_2_6_6, VERSION_2_6_4, VERSION_2_6_0,
+	  VERSION_2_5_22), configure.in (1.120, VERSION_2_5_22),
+	  audacious/Makefile.am (1.27, VERSION_2_6_6, VERSION_2_6_4,
+	  VERSION_2_6_0, VERSION_2_5_22), double/Makefile.am (1.8,
+	  VERSION_3_0_0, VERSION_2_6_6, VERSION_2_6_4, VERSION_2_6_0,
+	  VERSION_2_5_22), float/Makefile.am (1.8, VERSION_3_0_0,
+	  VERSION_2_6_6, VERSION_2_6_4, VERSION_2_6_0, VERSION_2_5_22),
+	  jack/Makefile.am (1.1), jack/configdb.h (1.1, VERSION_2_6_6,
+	  VERSION_2_6_4, VERSION_2_6_0, VERSION_2_5_22),
+	  jack/configdb_rcfile.c (1.1, VERSION_2_6_6, VERSION_2_6_4,
+	  VERSION_2_6_0, VERSION_2_5_22), jack/configfile.c (1.1,
+	  VERSION_2_6_6, VERSION_2_6_4, VERSION_2_6_0, VERSION_2_5_22),
+	  jack/configfile.h (1.1, VERSION_2_6_6, VERSION_2_6_4,
+	  VERSION_2_6_0, VERSION_2_5_22), jack/jack_main.cpp (1.1),
+	  jack/plugin.h (1.1, VERSION_3_0_0, VERSION_2_6_6, VERSION_2_6_4,
+	  VERSION_2_6_0, VERSION_2_5_22), jack/rcfile.c (1.1,
+	  VERSION_3_0_0, VERSION_2_6_6, VERSION_2_6_4, VERSION_2_6_0,
+	  VERSION_2_5_22), jack/rcfile.h (1.1, VERSION_3_0_0,
+	  VERSION_2_6_6, VERSION_2_6_4, VERSION_2_6_0, VERSION_2_5_22),
+	  jack/util.c (1.1, VERSION_2_6_6, VERSION_2_6_4, VERSION_2_6_0,
+	  VERSION_2_5_22), jack/util.h (1.1, VERSION_2_6_6, VERSION_2_6_4,
+	  VERSION_2_6_0, VERSION_2_5_22), ldouble/Makefile.am (1.8,
+	  VERSION_3_0_0, VERSION_2_6_6, VERSION_2_6_4, VERSION_2_6_0,
+	  VERSION_2_5_22): New Jack Plugins Framework plus internal libbeep
+	  were added.
+
+2011-10-20  tkamogashira
+
+	* freeverb/biquad.cpp (1.12), freeverb/progenitor.cpp (1.17),
+	  freeverb/progenitor2.cpp (1.13), freeverb/strev.cpp (1.20),
+	  samples/IR/minisp.wav (1.2, VERSION_3_0_0, VERSION_2_6_6,
+	  VERSION_2_6_4, VERSION_2_6_0) (utags: VERSION_2_5_22): [no log
+	  message]
+
+2011-10-16  tkamogashira
+
+	* configure.in (1.119), freeverb/allpass_t.hpp (1.30,
+	  VERSION_2_5_22), freeverb/biquad.cpp (1.11),
+	  freeverb/dl_gardner_t.hpp (1.3, VERSION_2_5_22),
+	  freeverb/efilter.cpp (1.30, VERSION_2_5_22), freeverb/efilter.hpp
+	  (1.21, VERSION_2_6_4, VERSION_2_6_0, VERSION_2_5_22),
+	  freeverb/efilter_t.hpp (1.30, VERSION_2_5_22),
+	  freeverb/progenitor.cpp (1.16), freeverb/src.cpp (1.30,
+	  VERSION_2_5_22), freeverb/strev.cpp (1.19): [no log message]
+
+2011-10-16  tkamogashira
+
+	* freeverb/: comb.cpp (1.32, VERSION_2_5_22), comb_t.hpp (1.18,
+	  VERSION_2_5_22), efilter_t.hpp (1.29), progenitor.cpp (1.15),
+	  progenitor2.cpp (1.12), progenitor2.hpp (1.6, VERSION_2_5_22),
+	  progenitor2_t.hpp (1.6, VERSION_2_5_22), progenitor_t.hpp (1.11,
+	  VERSION_2_5_22): [no log message]
+
+2011-10-14  tkamogashira
+
+	* freeverb/: earlyref.cpp (1.5, VERSION_2_5_22), progenitor.cpp
+	  (1.14), progenitor2.cpp (1.11) (utags: VERSION_2_5_21): [no log
+	  message]
+
+2011-10-12  tkamogashira
+
+	* freeverb/: progenitor.cpp (1.13), progenitor2.cpp (1.10),
+	  progenitor2_t.hpp (1.5, VERSION_2_5_21), progenitor_t.hpp (1.10,
+	  VERSION_2_5_21): [no log message]
+
+2011-10-12  tkamogashira
+
+	* freeverb/: dl_gardner.cpp (1.2, VERSION_2_5_22, VERSION_2_5_21),
+	  dl_gardner_t.hpp (1.2, VERSION_2_5_21), earlyref.cpp (1.4),
+	  earlyref.hpp (1.3, VERSION_2_6_4, VERSION_2_6_0, VERSION_2_5_22,
+	  VERSION_2_5_21), earlyref_t.hpp (1.2, VERSION_2_6_4,
+	  VERSION_2_6_0, VERSION_2_5_22, VERSION_2_5_21), fv3_defs.h (1.26,
+	  VERSION_2_5_22, VERSION_2_5_21), progenitor.cpp (1.12),
+	  progenitor.hpp (1.6, VERSION_2_6_0, VERSION_2_5_22,
+	  VERSION_2_5_21), progenitor2.cpp (1.9), progenitor2.hpp (1.5,
+	  VERSION_2_5_21), progenitor2_t.hpp (1.4), progenitor_t.hpp (1.9):
+	  [no log message]
+
+2011-10-10  tkamogashira
+
+	* freeverb/: compmodel.cpp (1.16, VERSION_2_5_22, VERSION_2_5_21),
+	  efilter.cpp (1.29, VERSION_2_5_21), fv3_defs.h (1.25),
+	  limitmodel.cpp (1.18, VERSION_2_5_22, VERSION_2_5_21),
+	  revbase.cpp (1.6, VERSION_2_5_22, VERSION_2_5_21): [no log
+	  message]
+
+2011-10-09  tkamogashira
+
+	* freeverb/: strev.cpp (1.18), strev_t.hpp (1.8, VERSION_2_5_22)
+	  (utags: VERSION_2_5_21): [no log message]
+
+2011-10-08  tkamogashira
+
+	* freeverb/progenitor2.cpp (1.8): [no log message]
+
+2011-10-08  tkamogashira
+
+	* freeverb/: efilter.cpp (1.28), efilter_t.hpp (1.28,
+	  VERSION_2_5_21), progenitor2.cpp (1.7), progenitor2_t.hpp (1.3):
+	  [no log message]
+
+2011-10-07  tkamogashira
+
+	* freeverb/: allpass.cpp (1.36, VERSION_2_5_22, VERSION_2_5_21),
+	  allpass_t.hpp (1.29, VERSION_2_5_21), earlyref.hpp (1.2),
+	  efilter.cpp (1.27), efilter.hpp (1.20, VERSION_2_5_21),
+	  efilter_t.hpp (1.27), fv3_defs.h (1.24): Noise Generator was
+	  updated.
+
+2011-10-01  tkamogashira
+
+	* freeverb/: efilter.cpp (1.26), efilter.hpp (1.19), efilter_t.hpp
+	  (1.26), fv3_defs.h (1.23): Noise Generator.
+
+2011-09-23  tkamogashira
+
+	* freeverb/: limitmodel.cpp (1.17), utils.cpp (1.17,
+	  VERSION_2_5_22, VERSION_2_5_21): [no log message]
+
+2011-09-23  tkamogashira
+
+	* freeverb/fv3_defs.h (1.22), freeverb/utils.cpp (1.16),
+	  freeverb/utils_t.hpp (1.10, VERSION_2_5_22, VERSION_2_5_21),
+	  samples/ir_test.cpp (1.5, VERSION_3_0_0, VERSION_2_6_6,
+	  VERSION_2_6_4, VERSION_2_6_0, VERSION_2_5_22, VERSION_2_5_21):
+	  [no log message]
+
+2011-09-23  tkamogashira
+
+	* configure.in (1.118, VERSION_2_5_21), freeverb/allpass_t.hpp
+	  (1.28), freeverb/comb_t.hpp (1.17, VERSION_2_5_21),
+	  freeverb/efilter_t.hpp (1.25), freeverb/fv3_defs.h (1.21),
+	  freeverb/limitmodel.cpp (1.16), freeverb/limitmodel_t.hpp (1.8,
+	  VERSION_2_5_22, VERSION_2_5_21), freeverb/slimit.cpp (1.18,
+	  VERSION_2_5_22, VERSION_2_5_21), freeverb/utils.cpp (1.15),
+	  freeverb/utils_t.hpp (1.9), samples/ir_test.cpp (1.4): [no log
+	  message]
+
+2011-09-23  tkamogashira
+
+	* freeverb/: fir3bandsplit.cpp (1.25, VERSION_2_5_22,
+	  VERSION_2_5_21), firwindow.cpp (1.13, VERSION_2_6_4,
+	  VERSION_2_6_0, VERSION_2_5_22, VERSION_2_5_21), fv3_defs.h
+	  (1.20): [no log message]
+
+2011-09-22  tkamogashira
+
+	* freeverb/: efilter_t.hpp (1.24), fir3bandsplit.cpp (1.24),
+	  fir3bandsplit_t.hpp (1.12, VERSION_2_5_22, VERSION_2_5_21),
+	  firfilter.cpp (1.8, VERSION_2_6_4, VERSION_2_6_0, VERSION_2_5_22,
+	  VERSION_2_5_21), firfilter_t.hpp (1.3, VERSION_3_0_0,
+	  VERSION_2_6_6, VERSION_2_6_4, VERSION_2_6_0, VERSION_2_5_22,
+	  VERSION_2_5_21), firwindow.cpp (1.12), firwindow_t.hpp (1.3,
+	  VERSION_3_0_0, VERSION_2_6_6, VERSION_2_6_4, VERSION_2_6_0,
+	  VERSION_2_5_22, VERSION_2_5_21): [no log message]
+
+2011-09-22  tkamogashira
+
+	* freeverb/: efilter.cpp (1.25), efilter_t.hpp (1.23): [no log
+	  message]
+
+2011-09-20  tkamogashira
+
+	* freeverb/src.cpp (1.29, VERSION_2_5_21): [no log message]
+
+2011-09-20  tkamogashira
+
+	* freeverb/: fv3_defs.h (1.19), revbase.cpp (1.5), src.cpp (1.28),
+	  src.hpp (1.22, VERSION_2_6_4, VERSION_2_6_0, VERSION_2_5_22,
+	  VERSION_2_5_21), src_t.hpp (1.9, VERSION_2_5_22, VERSION_2_5_21):
+	  [no log message]
+
+2011-09-20  tkamogashira
+
+	* configure.in (1.117), freeverb/Makefile.am (1.40, VERSION_2_5_22,
+	  VERSION_2_5_21), freeverb/fir3bandsplit.cpp (1.23),
+	  freeverb/fir3bandsplit_t.hpp (1.11), freeverb/irmodel3w.cpp
+	  (1.1), freeverb/irmodel3w.hpp (1.1, VERSION_2_6_4, VERSION_2_6_0,
+	  VERSION_2_5_22, VERSION_2_5_21), freeverb/irmodel3w_t.hpp (1.1,
+	  VERSION_3_0_0, VERSION_2_6_6, VERSION_2_6_4, VERSION_2_6_0,
+	  VERSION_2_5_22, VERSION_2_5_21), freeverb/scomp.cpp (1.25,
+	  VERSION_2_5_22, VERSION_2_5_21), freeverb/scomp.hpp (1.13,
+	  VERSION_2_6_4, VERSION_2_6_0, VERSION_2_5_22, VERSION_2_5_21),
+	  freeverb/slimit.cpp (1.17), freeverb/slimit.hpp (1.13,
+	  VERSION_2_6_4, VERSION_2_6_0, VERSION_2_5_22, VERSION_2_5_21),
+	  freeverb/slot.cpp (1.11, VERSION_2_6_4, VERSION_2_6_0,
+	  VERSION_2_5_22, VERSION_2_5_21), freeverb/slot.hpp (1.5,
+	  VERSION_2_6_4, VERSION_2_6_0, VERSION_2_5_22, VERSION_2_5_21),
+	  freeverb/src.cpp (1.27), freeverb/src.hpp (1.21),
+	  freeverb/stenh.cpp (1.14, VERSION_2_5_22, VERSION_2_5_21),
+	  freeverb/stenh.hpp (1.11, VERSION_2_6_4, VERSION_2_6_0,
+	  VERSION_2_5_22, VERSION_2_5_21), freeverb/sweep.cpp (1.3,
+	  VERSION_2_5_22, VERSION_2_5_21), freeverb/sweep.hpp (1.2,
+	  VERSION_2_6_4, VERSION_2_6_0, VERSION_2_5_22, VERSION_2_5_21),
+	  freeverb/utils.cpp (1.14), freeverb/utils.hpp (1.13,
+	  VERSION_2_6_4, VERSION_2_6_0, VERSION_2_5_22, VERSION_2_5_21),
+	  freeverb/irmodel3w.cpp (1.2, VERSION_3_0_0, VERSION_2_6_6,
+	  VERSION_2_6_4, VERSION_2_6_0, VERSION_2_5_22, VERSION_2_5_21):
+	  [no log message]
+
+2011-09-19  tkamogashira
+
+	* configure.in (1.116), freeverb/frag.cpp (1.64, VERSION_2_6_4,
+	  VERSION_2_6_0, VERSION_2_5_22, VERSION_2_5_21): FMA4 fix
+
+2011-09-19  tkamogashira
+
+	* configure.in (1.115), freeverb/frag.cpp (1.63),
+	  freeverb/fv3_defs.h (1.18), freeverb/utils.cpp (1.13): FMA4
+	  support was added.
+
+2011-09-17  tkamogashira
+
+	* configure.in (1.114): [no log message]
+
+2011-09-17  tkamogashira
+
+	* freeverb/frag.cpp (1.62): [no log message]
+
+2011-09-17  tkamogashira
+
+	* freeverb/frag.cpp (1.61), samples/ir_test.cpp (1.3): [no log
+	  message]
+
+2011-09-17  tkamogashira
+
+	* configure.in (1.113), freeverb/frag.cpp (1.60),
+	  freeverb/frag_t.hpp (1.18, VERSION_2_5_22, VERSION_2_5_21),
+	  freeverb/fv3_defs.h (1.17), freeverb/utils.cpp (1.12),
+	  freeverb/utils_t.hpp (1.8), samples/ir_test.cpp (1.2) (utags:
+	  VERSION_2_5_19): Support Intel FMA (FMA3).
+
+2011-09-15  tkamogashira
+
+	* configure.in (1.112), freeverb/frag.cpp (1.59),
+	  freeverb/frag_t.hpp (1.17): Autodetect SIMD codes were added.
+
+2011-09-15  tkamogashira
+
+	* freeverb/: frag.cpp (1.58), fv3_defs.h (1.16), utils.cpp (1.11),
+	  utils_t.hpp (1.7): CPUID.
+
+2011-09-13  tkamogashira
+
+	* configure.in (1.111), samples/Makefile.am (1.42, VERSION_3_0_0,
+	  VERSION_2_6_6, VERSION_2_6_4, VERSION_2_6_0, VERSION_2_5_22,
+	  VERSION_2_5_21, VERSION_2_5_19), samples/benchmark3.cpp (1.13,
+	  VERSION_2_6_4, VERSION_2_6_0, VERSION_2_5_22, VERSION_2_5_21,
+	  VERSION_2_5_19), samples/freq_response.cpp (1.4, VERSION_2_5_22,
+	  VERSION_2_5_21, VERSION_2_5_19), samples/impulser.cpp (1.15,
+	  VERSION_3_0_0, VERSION_2_6_6, VERSION_2_6_4, VERSION_2_6_0,
+	  VERSION_2_5_22, VERSION_2_5_21, VERSION_2_5_19),
+	  samples/impulser_jack.cpp (1.13, VERSION_3_0_0, VERSION_2_6_6,
+	  VERSION_2_6_4, VERSION_2_6_0, VERSION_2_5_22, VERSION_2_5_21,
+	  VERSION_2_5_19), samples/ir_test.cpp (1.1), samples/rateconv.cpp
+	  (1.23, VERSION_3_0_0, VERSION_2_6_6, VERSION_2_6_4,
+	  VERSION_2_6_0, VERSION_2_5_22, VERSION_2_5_21, VERSION_2_5_19):
+	  [no log message]
+
+2011-09-11  tkamogashira
+
+	* libgdither/libgdither-0.6-float.patch (1.2[DEAD]),
+	  patch/Makefile.am (1.2, VERSION_2_6_6, VERSION_2_6_4,
+	  VERSION_2_6_0, VERSION_2_5_22, VERSION_2_5_21, VERSION_2_5_19),
+	  patch/libgdither-0.6-float.patch (1.1, VERSION_3_0_0,
+	  VERSION_2_6_6, VERSION_2_6_4, VERSION_2_6_0, VERSION_2_5_22,
+	  VERSION_2_5_21, VERSION_2_5_19): [no log message]
+
+2011-09-11  tkamogashira
+
+	* libgdither/libgdither-0.6-float.patch (1.1): [no log message]
+
+2011-09-11  tkamogashira
+
+	* README (1.23, VERSION_2_6_6, VERSION_2_6_4, VERSION_2_6_0,
+	  VERSION_2_5_22, VERSION_2_5_21, VERSION_2_5_19), configure.in
+	  (1.110): [no log message]
+
+2011-09-11  tkamogashira
+
+	* freeverb/: frag.cpp (1.57), frag_t.hpp (1.16) (utags:
+	  VERSION_2_5_18): AVX updates.
+
+2011-09-11  tkamogashira
+
+	* configure.in (1.109, VERSION_2_5_18), freeverb/blockDelay.cpp
+	  (1.23, VERSION_2_5_22, VERSION_2_5_21, VERSION_2_5_19,
+	  VERSION_2_5_18), freeverb/frag.cpp (1.56), freeverb/fv3_defs.h
+	  (1.15, VERSION_2_5_18), freeverb/irmodel3_t.hpp (1.26,
+	  VERSION_2_5_22, VERSION_2_5_21, VERSION_2_5_19, VERSION_2_5_18):
+	  AVX asm support was added.
+
+2011-09-04  tkamogashira
+
+	* freeverb/progenitor2.cpp (1.6, VERSION_2_5_19, VERSION_2_5_18):
+	  [no log message]
+
+2011-09-04  tkamogashira
+
+	* freeverb/: progenitor2.cpp (1.5), progenitor2.hpp (1.4,
+	  VERSION_2_5_19, VERSION_2_5_18): [no log message]
+
+2011-09-04  tkamogashira
+
+	* freeverb/: allpass_t.hpp (1.27, VERSION_2_5_19, VERSION_2_5_18),
+	  efilter_t.hpp (1.22, VERSION_2_5_19, VERSION_2_5_18),
+	  progenitor.cpp (1.11, VERSION_2_5_19, VERSION_2_5_18),
+	  progenitor2.cpp (1.4), progenitor2.hpp (1.3), progenitor2_t.hpp
+	  (1.2, VERSION_2_5_19, VERSION_2_5_18), progenitor_t.hpp (1.8,
+	  VERSION_2_5_19, VERSION_2_5_18): Progenitor Reverb updates
+
+2011-08-28  tkamogashira
+
+	* configure.in (1.108): [no log message]
+
+2011-08-28  tkamogashira
+
+	* audacious/Makefile.am (1.26, VERSION_2_5_21, VERSION_2_5_19,
+	  VERSION_2_5_18): [no log message]
+
+2011-08-28  tkamogashira
+
+	* freeverb/progenitor2.cpp (1.3): Plugins updates.
+
+2011-08-27  tkamogashira
+
+	* freeverb/: nrev.cpp (1.50, VERSION_2_5_22, VERSION_2_5_21,
+	  VERSION_2_5_19, VERSION_2_5_18), nrevb.cpp (1.14, VERSION_2_5_22,
+	  VERSION_2_5_21, VERSION_2_5_19, VERSION_2_5_18), progenitor.cpp
+	  (1.10), progenitor2.cpp (1.2), progenitor2.hpp (1.2), strev.cpp
+	  (1.17, VERSION_2_5_19, VERSION_2_5_18): Plugins updates
+
+2011-08-27  tkamogashira
+
+	* freeverb/: Makefile.am (1.39, VERSION_2_5_19, VERSION_2_5_18),
+	  progenitor.cpp (1.9), progenitor2.cpp (1.1), progenitor2.hpp
+	  (1.1), progenitor2_t.hpp (1.1), src.make (1.20, VERSION_2_5_22,
+	  VERSION_2_5_21, VERSION_2_5_19, VERSION_2_5_18), strev.cpp
+	  (1.16): Progenitor v2 reverb was added.
+
+2011-08-25  tkamogashira
+
+	* doc/Audio-EQ-Cookbook.txt (1.1, VERSION_3_0_0, VERSION_2_6_6,
+	  VERSION_2_6_4, VERSION_2_6_0, VERSION_2_5_22, VERSION_2_5_21),
+	  doc/Makefile.am (1.2, VERSION_3_0_0, VERSION_2_6_6,
+	  VERSION_2_6_4, VERSION_2_6_0, VERSION_2_5_22, VERSION_2_5_21),
+	  freeverb/allpass.cpp (1.35), freeverb/biquad.cpp (1.10,
+	  VERSION_2_5_21), freeverb/biquad_t.hpp (1.6, VERSION_2_5_22,
+	  VERSION_2_5_21), freeverb/comb.cpp (1.31, VERSION_2_5_21),
+	  freeverb/delay.cpp (1.30, VERSION_2_5_22, VERSION_2_5_21),
+	  freeverb/earlyref.cpp (1.3), freeverb/rms.cpp (1.19,
+	  VERSION_2_5_22, VERSION_2_5_21) (utags: VERSION_2_5_18,
+	  VERSION_2_5_19): BiQuad filter updates.  EarlyReflection filter
+	  bugs were fixed.
+
+2011-08-21  tkamogashira
+
+	* freeverb/: allpass.cpp (1.34), comb.cpp (1.30), delay.cpp (1.29),
+	  delayline.cpp (1.4, VERSION_2_5_22, VERSION_2_5_21,
+	  VERSION_2_5_19, VERSION_2_5_18) (utags: VERSION_2_5_17): [no log
+	  message]
+
+2011-08-21  tkamogashira
+
+	* freeverb/: allpass.cpp (1.33), allpass_t.hpp (1.26,
+	  VERSION_2_5_17), comb.cpp (1.29), comb_t.hpp (1.16,
+	  VERSION_2_5_19, VERSION_2_5_18, VERSION_2_5_17), delay.cpp
+	  (1.28), delay_t.hpp (1.22, VERSION_2_5_22, VERSION_2_5_21,
+	  VERSION_2_5_19, VERSION_2_5_18, VERSION_2_5_17), delayline.cpp
+	  (1.3), delayline_t.hpp (1.4, VERSION_2_5_22, VERSION_2_5_21,
+	  VERSION_2_5_19, VERSION_2_5_18, VERSION_2_5_17), earlyref.cpp
+	  (1.2, VERSION_2_5_17), rms.cpp (1.18, VERSION_2_5_17): Memory
+	  initialization fixes.
+
+2011-08-21  tkamogashira
+
+	* audacious/Makefile.am (1.25, VERSION_2_5_17),
+	  freeverb/Makefile.am (1.38, VERSION_2_5_17),
+	  freeverb/delayline_t.hpp (1.3), freeverb/earlyref.cpp (1.1),
+	  freeverb/earlyref.hpp (1.1, VERSION_2_5_19, VERSION_2_5_18,
+	  VERSION_2_5_17), freeverb/earlyref_t.hpp (1.1, VERSION_2_5_19,
+	  VERSION_2_5_18, VERSION_2_5_17), freeverb/nrev.hpp (1.32,
+	  VERSION_2_6_4, VERSION_2_6_0, VERSION_2_5_22, VERSION_2_5_21,
+	  VERSION_2_5_19, VERSION_2_5_18, VERSION_2_5_17),
+	  freeverb/progenitor.hpp (1.5, VERSION_2_5_19, VERSION_2_5_18,
+	  VERSION_2_5_17), freeverb/src.make (1.19, VERSION_2_5_17),
+	  freeverb/strev.hpp (1.5, VERSION_2_6_4, VERSION_2_6_0,
+	  VERSION_2_5_22, VERSION_2_5_21, VERSION_2_5_19, VERSION_2_5_18,
+	  VERSION_2_5_17): Early Reflection Effect was added.
+
+2011-08-03  tkamogashira
+
+	* freeverb/progenitor.cpp (1.8, VERSION_2_5_17): [no log message]
+
+2011-08-02  tkamogashira
+
+	* freeverb/: progenitor.cpp (1.7), progenitor_t.hpp (1.7,
+	  VERSION_2_5_17): progenitor rt60 enhancements
+
+2011-07-18  tkamogashira
+
+	* configure.in (1.107), freeverb/biquad.cpp (1.9),
+	  freeverb/biquad_t.hpp (1.5) (utags: VERSION_2_5_17): [no log
+	  message]
+
+2011-07-18  tkamogashira
+
+	* audacious/Makefile.am (1.24): Early Reflection Tes Plugin
+
+2011-06-20  tkamogashira
+
+	* configure.in (1.106): [no log message]
+
+2011-06-17  tkamogashira
+
+	* audacious/Makefile.am (1.23): libxmmsplugin updates
+
+2011-06-06  tkamogashira
+
+	* define.sample (1.2[DEAD]): [no log message]
+
+2011-06-06  tkamogashira
+
+	* freeverb/: strev.cpp (1.15), strev_t.hpp (1.7, VERSION_2_5_19,
+	  VERSION_2_5_18) (utags: VERSION_2_5_17): [no log message]
+
+2011-06-05  tkamogashira
+
+	* freeverb/rms.cpp (1.17, VERSION_2_5_15): [no log message]
+
+2011-06-05  tkamogashira
+
+	* freeverb/: comb_t.hpp (1.15, VERSION_2_5_15), rms.cpp (1.16),
+	  rms.hpp (1.14, VERSION_2_6_4, VERSION_2_6_0, VERSION_2_5_22,
+	  VERSION_2_5_21, VERSION_2_5_19, VERSION_2_5_18, VERSION_2_5_17,
+	  VERSION_2_5_15), strev.cpp (1.14, VERSION_2_5_15): [no log
+	  message]
+
+2011-06-04  tkamogashira
+
+	* freeverb/: allpass.cpp (1.32, VERSION_2_5_15), allpass_t.hpp
+	  (1.25, VERSION_2_5_15), comb.cpp (1.28, VERSION_2_5_15),
+	  comb_t.hpp (1.14), delay.cpp (1.27, VERSION_2_5_15), delay_t.hpp
+	  (1.21, VERSION_2_5_15), delayline.cpp (1.2, VERSION_2_5_15),
+	  delayline_t.hpp (1.2, VERSION_2_5_15), efilter_t.hpp (1.21,
+	  VERSION_2_5_17, VERSION_2_5_15), nrev.cpp (1.49, VERSION_2_5_17,
+	  VERSION_2_5_15), nrevb.cpp (1.13, VERSION_2_5_17,
+	  VERSION_2_5_15), progenitor.cpp (1.6, VERSION_2_5_15),
+	  progenitor_t.hpp (1.6, VERSION_2_5_15), revmodel.cpp (1.32,
+	  VERSION_2_5_22, VERSION_2_5_21, VERSION_2_5_19, VERSION_2_5_18,
+	  VERSION_2_5_17, VERSION_2_5_15), rms.cpp (1.15), rms_t.hpp (1.11,
+	  VERSION_2_5_22, VERSION_2_5_21, VERSION_2_5_19, VERSION_2_5_18,
+	  VERSION_2_5_17, VERSION_2_5_15), scomp.cpp (1.24, VERSION_2_5_19,
+	  VERSION_2_5_18, VERSION_2_5_17, VERSION_2_5_15), slot.cpp (1.10,
+	  VERSION_2_5_19, VERSION_2_5_18, VERSION_2_5_17, VERSION_2_5_15),
+	  strev.cpp (1.13): Progenitor/Nverb fixes.
+
+2011-06-02  tkamogashira
+
+	* audacious/Makefile.am (1.22, VERSION_2_5_15),
+	  freeverb/Makefile.am (1.37, VERSION_2_5_15), freeverb/allpass.cpp
+	  (1.31), freeverb/allpass.hpp (1.18, VERSION_2_6_4, VERSION_2_6_0,
+	  VERSION_2_5_22, VERSION_2_5_21, VERSION_2_5_19, VERSION_2_5_18,
+	  VERSION_2_5_17, VERSION_2_5_15), freeverb/allpass_t.hpp (1.24),
+	  freeverb/biquad.cpp (1.8, VERSION_2_5_15), freeverb/biquad.hpp
+	  (1.4, VERSION_2_6_4, VERSION_2_6_0, VERSION_2_5_22,
+	  VERSION_2_5_21, VERSION_2_5_19, VERSION_2_5_18, VERSION_2_5_17,
+	  VERSION_2_5_15), freeverb/blockDelay.cpp (1.22, VERSION_2_5_17,
+	  VERSION_2_5_15), freeverb/blockDelay.hpp (1.15, VERSION_2_6_4,
+	  VERSION_2_6_0, VERSION_2_5_22, VERSION_2_5_21, VERSION_2_5_19,
+	  VERSION_2_5_18, VERSION_2_5_17, VERSION_2_5_15),
+	  freeverb/comb.cpp (1.27), freeverb/comb.hpp (1.17, VERSION_2_6_4,
+	  VERSION_2_6_0, VERSION_2_5_22, VERSION_2_5_21, VERSION_2_5_19,
+	  VERSION_2_5_18, VERSION_2_5_17, VERSION_2_5_15),
+	  freeverb/compmodel.cpp (1.15, VERSION_2_5_19, VERSION_2_5_18,
+	  VERSION_2_5_17, VERSION_2_5_15), freeverb/compmodel.hpp (1.12,
+	  VERSION_2_6_4, VERSION_2_6_0, VERSION_2_5_22, VERSION_2_5_21,
+	  VERSION_2_5_19, VERSION_2_5_18, VERSION_2_5_17, VERSION_2_5_15),
+	  freeverb/delay.cpp (1.26), freeverb/delay.hpp (1.19,
+	  VERSION_2_6_4, VERSION_2_6_0, VERSION_2_5_22, VERSION_2_5_21,
+	  VERSION_2_5_19, VERSION_2_5_18, VERSION_2_5_17, VERSION_2_5_15),
+	  freeverb/delay_t.hpp (1.20), freeverb/delayline.cpp (1.1),
+	  freeverb/delayline.hpp (1.1, VERSION_2_6_4, VERSION_2_6_0,
+	  VERSION_2_5_22, VERSION_2_5_21, VERSION_2_5_19, VERSION_2_5_18,
+	  VERSION_2_5_17, VERSION_2_5_15), freeverb/delayline_t.hpp (1.1),
+	  freeverb/dl_gardner.cpp (1.1, VERSION_2_5_19, VERSION_2_5_18,
+	  VERSION_2_5_17, VERSION_2_5_15), freeverb/dl_gardner.hpp (1.1,
+	  VERSION_2_6_4, VERSION_2_6_0, VERSION_2_5_22, VERSION_2_5_21,
+	  VERSION_2_5_19, VERSION_2_5_18, VERSION_2_5_17, VERSION_2_5_15),
+	  freeverb/dl_gardner_t.hpp (1.1, VERSION_2_5_19, VERSION_2_5_18,
+	  VERSION_2_5_17, VERSION_2_5_15), freeverb/efilter.cpp (1.24,
+	  VERSION_2_5_19, VERSION_2_5_18, VERSION_2_5_17, VERSION_2_5_15),
+	  freeverb/efilter.hpp (1.18, VERSION_2_5_19, VERSION_2_5_18,
+	  VERSION_2_5_17, VERSION_2_5_15), freeverb/efilter_t.hpp (1.20),
+	  freeverb/fir3bandsplit.cpp (1.22, VERSION_2_5_19, VERSION_2_5_18,
+	  VERSION_2_5_17, VERSION_2_5_15), freeverb/fir3bandsplit.hpp
+	  (1.14, VERSION_2_6_4, VERSION_2_6_0, VERSION_2_5_22,
+	  VERSION_2_5_21, VERSION_2_5_19, VERSION_2_5_18, VERSION_2_5_17,
+	  VERSION_2_5_15), freeverb/firfilter.cpp (1.7, VERSION_2_5_19,
+	  VERSION_2_5_18, VERSION_2_5_17, VERSION_2_5_15),
+	  freeverb/firfilter.hpp (1.10, VERSION_2_6_4, VERSION_2_6_0,
+	  VERSION_2_5_22, VERSION_2_5_21, VERSION_2_5_19, VERSION_2_5_18,
+	  VERSION_2_5_17, VERSION_2_5_15), freeverb/firwindow.cpp (1.11,
+	  VERSION_2_5_19, VERSION_2_5_18, VERSION_2_5_17, VERSION_2_5_15),
+	  freeverb/firwindow.hpp (1.11, VERSION_2_6_4, VERSION_2_6_0,
+	  VERSION_2_5_22, VERSION_2_5_21, VERSION_2_5_19, VERSION_2_5_18,
+	  VERSION_2_5_17, VERSION_2_5_15), freeverb/frag.cpp (1.55,
+	  VERSION_2_5_17, VERSION_2_5_15), freeverb/frag.hpp (1.22,
+	  VERSION_2_6_4, VERSION_2_6_0, VERSION_2_5_22, VERSION_2_5_21,
+	  VERSION_2_5_19, VERSION_2_5_18, VERSION_2_5_17, VERSION_2_5_15),
+	  freeverb/fv3_ch_tool.hpp (1.4, VERSION_2_5_22, VERSION_2_5_21,
+	  VERSION_2_5_19, VERSION_2_5_18, VERSION_2_5_17, VERSION_2_5_15),
+	  freeverb/fv3_defs.h (1.14, VERSION_2_5_17, VERSION_2_5_15),
+	  freeverb/irbase.cpp (1.4, VERSION_2_5_22, VERSION_2_5_21,
+	  VERSION_2_5_19, VERSION_2_5_18, VERSION_2_5_17, VERSION_2_5_15),
+	  freeverb/irbase.hpp (1.6, VERSION_2_6_4, VERSION_2_6_0,
+	  VERSION_2_5_22, VERSION_2_5_21, VERSION_2_5_19, VERSION_2_5_18,
+	  VERSION_2_5_17, VERSION_2_5_15), freeverb/irmodel.cpp (1.25,
+	  VERSION_2_6_4, VERSION_2_6_0, VERSION_2_5_22, VERSION_2_5_21,
+	  VERSION_2_5_19, VERSION_2_5_18, VERSION_2_5_17, VERSION_2_5_15),
+	  freeverb/irmodel.hpp (1.19, VERSION_2_6_4, VERSION_2_6_0,
+	  VERSION_2_5_22, VERSION_2_5_21, VERSION_2_5_19, VERSION_2_5_18,
+	  VERSION_2_5_17, VERSION_2_5_15), freeverb/irmodel2.cpp (1.63,
+	  VERSION_2_6_4, VERSION_2_6_0, VERSION_2_5_22, VERSION_2_5_21,
+	  VERSION_2_5_19, VERSION_2_5_18, VERSION_2_5_17, VERSION_2_5_15),
+	  freeverb/irmodel2.hpp (1.31, VERSION_2_6_4, VERSION_2_6_0,
+	  VERSION_2_5_22, VERSION_2_5_21, VERSION_2_5_19, VERSION_2_5_18,
+	  VERSION_2_5_17, VERSION_2_5_15), freeverb/irmodel2zl.cpp (1.6,
+	  VERSION_2_6_4, VERSION_2_6_0, VERSION_2_5_22, VERSION_2_5_21,
+	  VERSION_2_5_19, VERSION_2_5_18, VERSION_2_5_17, VERSION_2_5_15),
+	  freeverb/irmodel2zl.hpp (1.4, VERSION_2_6_4, VERSION_2_6_0,
+	  VERSION_2_5_22, VERSION_2_5_21, VERSION_2_5_19, VERSION_2_5_18,
+	  VERSION_2_5_17, VERSION_2_5_15), freeverb/irmodel3.cpp (1.38,
+	  VERSION_2_5_22, VERSION_2_5_21, VERSION_2_5_19, VERSION_2_5_18,
+	  VERSION_2_5_17, VERSION_2_5_15), freeverb/irmodel3.hpp (1.11,
+	  VERSION_2_6_4, VERSION_2_6_0, VERSION_2_5_22, VERSION_2_5_21,
+	  VERSION_2_5_19, VERSION_2_5_18, VERSION_2_5_17, VERSION_2_5_15),
+	  freeverb/irmodels.cpp (1.13, VERSION_2_6_4, VERSION_2_6_0,
+	  VERSION_2_5_22, VERSION_2_5_21, VERSION_2_5_19, VERSION_2_5_18,
+	  VERSION_2_5_17, VERSION_2_5_15), freeverb/irmodels.hpp (1.11,
+	  VERSION_2_6_4, VERSION_2_6_0, VERSION_2_5_22, VERSION_2_5_21,
+	  VERSION_2_5_19, VERSION_2_5_18, VERSION_2_5_17, VERSION_2_5_15),
+	  freeverb/limitmodel.cpp (1.15, VERSION_2_5_19, VERSION_2_5_18,
+	  VERSION_2_5_17, VERSION_2_5_15), freeverb/limitmodel.hpp (1.9,
+	  VERSION_2_6_4, VERSION_2_6_0, VERSION_2_5_22, VERSION_2_5_21,
+	  VERSION_2_5_19, VERSION_2_5_18, VERSION_2_5_17, VERSION_2_5_15),
+	  freeverb/nrev.cpp (1.48), freeverb/nrev.hpp (1.31,
+	  VERSION_2_5_15), freeverb/nrevb.cpp (1.12), freeverb/nrevb.hpp
+	  (1.6, VERSION_2_5_22, VERSION_2_5_21, VERSION_2_5_19,
+	  VERSION_2_5_18, VERSION_2_5_17, VERSION_2_5_15),
+	  freeverb/progenitor.cpp (1.5), freeverb/progenitor.hpp (1.4,
+	  VERSION_2_5_15), freeverb/progenitor_t.hpp (1.5),
+	  freeverb/revbase.cpp (1.4, VERSION_2_5_19, VERSION_2_5_18,
+	  VERSION_2_5_17, VERSION_2_5_15), freeverb/revbase.hpp (1.2,
+	  VERSION_2_6_4, VERSION_2_6_0, VERSION_2_5_22, VERSION_2_5_21,
+	  VERSION_2_5_19, VERSION_2_5_18, VERSION_2_5_17, VERSION_2_5_15),
+	  freeverb/revmodel.cpp (1.31), freeverb/revmodel.hpp (1.23,
+	  VERSION_2_6_4, VERSION_2_6_0, VERSION_2_5_22, VERSION_2_5_21,
+	  VERSION_2_5_19, VERSION_2_5_18, VERSION_2_5_17, VERSION_2_5_15),
+	  freeverb/rms.cpp (1.14), freeverb/rms.hpp (1.13),
+	  freeverb/scomp.cpp (1.23), freeverb/scomp.hpp (1.12,
+	  VERSION_2_5_19, VERSION_2_5_18, VERSION_2_5_17, VERSION_2_5_15),
+	  freeverb/slimit.cpp (1.16, VERSION_2_5_19, VERSION_2_5_18,
+	  VERSION_2_5_17, VERSION_2_5_15), freeverb/slimit.hpp (1.12,
+	  VERSION_2_5_19, VERSION_2_5_18, VERSION_2_5_17, VERSION_2_5_15),
+	  freeverb/slot.cpp (1.9), freeverb/slot.hpp (1.4, VERSION_2_5_19,
+	  VERSION_2_5_18, VERSION_2_5_17, VERSION_2_5_15), freeverb/src.cpp
+	  (1.26, VERSION_2_5_19, VERSION_2_5_18, VERSION_2_5_17,
+	  VERSION_2_5_15), freeverb/src.hpp (1.20, VERSION_2_5_19,
+	  VERSION_2_5_18, VERSION_2_5_17, VERSION_2_5_15),
+	  freeverb/src.make (1.18, VERSION_2_5_15), freeverb/stenh.cpp
+	  (1.13, VERSION_2_5_19, VERSION_2_5_18, VERSION_2_5_17,
+	  VERSION_2_5_15), freeverb/stenh.hpp (1.10, VERSION_2_5_19,
+	  VERSION_2_5_18, VERSION_2_5_17, VERSION_2_5_15),
+	  freeverb/strev.cpp (1.12), freeverb/strev.hpp (1.4,
+	  VERSION_2_5_15), freeverb/utils.cpp (1.10, VERSION_2_5_18,
+	  VERSION_2_5_17, VERSION_2_5_15), freeverb/utils.hpp (1.12,
+	  VERSION_2_5_19, VERSION_2_5_18, VERSION_2_5_17, VERSION_2_5_15):
+	  The Gardner Room Reverb was added.  Progenitor was fixed.  A new
+	  Plugin was added.
+
+2011-05-29  tkamogashira
+
+	* audacious/Makefile.am (1.21), freeverb/progenitor.cpp (1.4),
+	  freeverb/progenitor.hpp (1.3), freeverb/progenitor_t.hpp (1.4),
+	  freeverb/strev.cpp (1.11): Progenitor Reverb updates.
+
+2011-05-29  tkamogashira
+
+	* freeverb/: allpass.cpp (1.30), allpass.hpp (1.17), allpass_t.hpp
+	  (1.23), progenitor.cpp (1.3), progenitor_t.hpp (1.3): [no log
+	  message]
+
+2011-05-29  tkamogashira
+
+	* freeverb/: allpass.cpp (1.29), allpass_t.hpp (1.22), delay_t.hpp
+	  (1.19), nrev_t.hpp (1.24, VERSION_2_5_22, VERSION_2_5_21,
+	  VERSION_2_5_19, VERSION_2_5_18, VERSION_2_5_17, VERSION_2_5_15),
+	  nrevb.cpp (1.11), nrevb.hpp (1.5), nrevb_t.hpp (1.7,
+	  VERSION_2_5_22, VERSION_2_5_21, VERSION_2_5_19, VERSION_2_5_18,
+	  VERSION_2_5_17, VERSION_2_5_15), revbase.cpp (1.3), revbase_t.hpp
+	  (1.3, VERSION_2_5_22, VERSION_2_5_21, VERSION_2_5_19,
+	  VERSION_2_5_18, VERSION_2_5_17, VERSION_2_5_15): NRevB update.
+
+2011-05-25  tkamogashira
+
+	* samples/IR/: HallA.wav (1.1), HallB.wav (1.1) (utags:
+	  VERSION_2_5_15, VERSION_2_5_17, VERSION_2_5_18, VERSION_2_5_19,
+	  VERSION_2_5_21, VERSION_2_5_22, VERSION_2_6_0, VERSION_2_6_4,
+	  VERSION_2_6_6, VERSION_3_0_0): [no log message]
+
+2011-05-04  tkamogashira
+
+	* freeverb/: allpass_t.hpp (1.21), delay_t.hpp (1.18), nrev.cpp
+	  (1.47), nrev_t.hpp (1.23), nrevb.cpp (1.10), nrevb.hpp (1.4),
+	  nrevb_t.hpp (1.6):
+	  NReverb allpass fix and updates.
+
+2011-04-11  tkamogashira
+
+	* freeverb/: allpass.cpp (1.28), allpass_t.hpp (1.20),
+	  progenitor.cpp (1.2), progenitor.hpp (1.2), progenitor_t.hpp
+	  (1.2), strev.cpp (1.10): Progenitor reverb updates.
+
+2011-04-11  tkamogashira
+
+	* freeverb/: allpass.cpp (1.27), allpass_t.hpp (1.19),
+	  progenitor.cpp (1.1), progenitor.hpp (1.1), progenitor_t.hpp
+	  (1.1), src.make (1.17): New Progenitor Reverb was partially
+	  added.
+
+2011-03-20  tkamogashira
+
+	* samples/freq_response.cpp (1.3, VERSION_2_5_18, VERSION_2_5_17,
+	  VERSION_2_5_15): [no log message]
+
+2011-02-13  tkamogashira
+
+	* samples/freq_response.cpp (1.2): [no log message]
+
+2011-02-13  tkamogashira
+
+	* samples/: Makefile.am (1.41, VERSION_2_5_18, VERSION_2_5_17,
+	  VERSION_2_5_15), freq_response.cpp (1.1): [no log message]
+
+2011-02-13  tkamogashira
+
+	* freeverb/: sweep.cpp (1.2), sweep_t.hpp (1.2, VERSION_2_5_22,
+	  VERSION_2_5_21) (utags: VERSION_2_5_15, VERSION_2_5_17,
+	  VERSION_2_5_18, VERSION_2_5_19): [no log message]
+
+2011-02-12  tkamogashira
+
+	* freeverb/: Makefile.am (1.36), firwindow.cpp (1.10), src.make
+	  (1.16), sweep.cpp (1.1), sweep.hpp (1.1, VERSION_2_5_19,
+	  VERSION_2_5_18, VERSION_2_5_17, VERSION_2_5_15), sweep_t.hpp
+	  (1.1): Sweep class was added.
+
+2011-01-23  tkamogashira
+
+	* configure.in (1.105, VERSION_2_5_15), freeverb/efilter.cpp
+	  (1.23), freeverb/irmodel3.cpp (1.37): LFO mute clear bug was
+	  fixed.
+
+2011-01-09  tkamogashira
+
+	* freeverb/: irbase_t.hpp (1.10, VERSION_2_5_22, VERSION_2_5_21,
+	  VERSION_2_5_19, VERSION_2_5_18, VERSION_2_5_17, VERSION_2_5_15),
+	  revbase.cpp (1.2), revbase_t.hpp (1.2): [no log message]
+
+2011-01-06  tkamogashira
+
+	* freeverb/strev.cpp (1.9, VERSION_2_5_14_1, VERSION_2_5_14): [no
+	  log message]
+
+2011-01-06  tkamogashira
+
+	* freeverb/revmodel.cpp (1.30, VERSION_2_5_14_1, VERSION_2_5_14):
+	  [no log message]
+
+2011-01-06  tkamogashira
+
+	* freeverb/: Makefile.am (1.35, VERSION_2_5_14_1, VERSION_2_5_14),
+	  fv3_defs.h (1.13, VERSION_2_5_14_1, VERSION_2_5_14), irbase.cpp
+	  (1.3, VERSION_2_5_14_1, VERSION_2_5_14), irbase_t.hpp (1.9,
+	  VERSION_2_5_14_1, VERSION_2_5_14), nrev.cpp (1.46,
+	  VERSION_2_5_14_1, VERSION_2_5_14), nrev.hpp (1.30,
+	  VERSION_2_5_14_1, VERSION_2_5_14), nrev_t.hpp (1.22,
+	  VERSION_2_5_14_1, VERSION_2_5_14), nrevb.cpp (1.9,
+	  VERSION_2_5_14_1, VERSION_2_5_14), nrevb_t.hpp (1.5,
+	  VERSION_2_5_14_1, VERSION_2_5_14), revbase.cpp (1.1,
+	  VERSION_2_5_14_1, VERSION_2_5_14), revbase.hpp (1.1,
+	  VERSION_2_5_14_1, VERSION_2_5_14), revbase_t.hpp (1.1,
+	  VERSION_2_5_14_1, VERSION_2_5_14), revmodel.cpp (1.29),
+	  revmodel.hpp (1.22, VERSION_2_5_14_1, VERSION_2_5_14),
+	  revmodel_t.hpp (1.11, VERSION_2_5_22, VERSION_2_5_21,
+	  VERSION_2_5_19, VERSION_2_5_18, VERSION_2_5_17, VERSION_2_5_15,
+	  VERSION_2_5_14_1, VERSION_2_5_14), src.cpp (1.25,
+	  VERSION_2_5_14_1, VERSION_2_5_14), src.make (1.15,
+	  VERSION_2_5_14_1, VERSION_2_5_14), strev.cpp (1.8), strev.hpp
+	  (1.3, VERSION_2_5_14_1, VERSION_2_5_14), strev_t.hpp (1.6,
+	  VERSION_2_5_15, VERSION_2_5_14_1, VERSION_2_5_14): STRev +
+	  REVBase updates.
+
+2011-01-06  tkamogashira
+
+	* freeverb/: Makefile.am (1.34), fv3_defs.h (1.12), fv3_std_fix.h
+	  (1.3[DEAD]): Header updates.
+
+2011-01-06  tkamogashira
+
+	* freeverb/: strev.cpp (1.7), strev_t.hpp (1.5): STRev fixed.
+
+2011-01-03  tkamogashira
+
+	* freeverb/strev.cpp (1.6): Allpass filter feedback sign bugs were
+	  fixed.
+
+2010-12-31  tkamogashira
+
+	* freeverb/: efilter_t.hpp (1.19, VERSION_2_5_14_1,
+	  VERSION_2_5_14), strev.cpp (1.5): strev: mute bugs.  xmms: NRT
+	  parameters fix.
+
+2010-12-30  tkamogashira
+
+	* freeverb/: allpass_t.hpp (1.18, VERSION_2_5_14_1,
+	  VERSION_2_5_14), strev.cpp (1.4), strev.hpp (1.2), strev_t.hpp
+	  (1.4): [no log message]
+
+2010-12-29  tkamogashira
+
+	* freeverb/: allpass_t.hpp (1.17), efilter_t.hpp (1.18), nrev.cpp
+	  (1.45), nrev_t.hpp (1.21), nrevb.cpp (1.8), revmodel.cpp (1.28),
+	  strev.cpp (1.3), strev_t.hpp (1.3): STRev updates.
+
+2010-12-27  tkamogashira
+
+	* freeverb/: allpass_t.hpp (1.16), strev.cpp (1.2), strev_t.hpp
+	  (1.2): Allpass updates
+
+2010-12-26  tkamogashira
+
+	* audacious/Makefile.am (1.20, VERSION_2_5_14_1, VERSION_2_5_14),
+	  freeverb/Makefile.am (1.33), freeverb/allpass_t.hpp (1.15),
+	  freeverb/delay_t.hpp (1.17, VERSION_2_5_14_1, VERSION_2_5_14),
+	  freeverb/efilter.cpp (1.22, VERSION_2_5_14_1, VERSION_2_5_14),
+	  freeverb/efilter_t.hpp (1.17), freeverb/revmodel.cpp (1.27),
+	  freeverb/revmodel.hpp (1.21), freeverb/src.make (1.14),
+	  freeverb/strev.cpp (1.1), freeverb/strev.hpp (1.1),
+	  freeverb/strev_t.hpp (1.1): Simple Tank Reverb was added.
+
+2010-12-26  tkamogashira
+
+	* freeverb/: delay_t.hpp (1.16), efilter.cpp (1.21), efilter_t.hpp
+	  (1.16): [no log message]
+
+2010-12-25  tkamogashira
+
+	* freeverb/: blockDelay.cpp (1.21, VERSION_2_5_14_1,
+	  VERSION_2_5_14), compmodel.cpp (1.14, VERSION_2_5_14_1,
+	  VERSION_2_5_14), compmodel.hpp (1.11, VERSION_2_5_14_1,
+	  VERSION_2_5_14), delay.cpp (1.25, VERSION_2_5_14_1,
+	  VERSION_2_5_14), delay.hpp (1.18, VERSION_2_5_14_1,
+	  VERSION_2_5_14), efilter.cpp (1.20), efilter.hpp (1.17,
+	  VERSION_2_5_14_1, VERSION_2_5_14), efilter_t.hpp (1.15): LFO was
+	  added.
+
+2010-12-11  tkamogashira
+
+	* configure.in (1.103), freeverb/frag.cpp (1.54, VERSION_2_5_14_1,
+	  VERSION_2_5_14), configure.in (1.104, VERSION_2_5_14_1,
+	  VERSION_2_5_14): [no log message]
+
+2010-12-11  tkamogashira
+
+	* freeverb/frag.cpp (1.53): [no log message]
+
+2010-11-28  tkamogashira
+
+	* configure.in (1.102), freeverb/frag.cpp (1.52) (utags:
+	  VERSION_2_5_13): [no log message]
+
+2010-11-28  tkamogashira
+
+	* freeverb/: Makefile.am (1.32, VERSION_2_5_13), efilter_t.hpp
+	  (1.14, VERSION_2_5_13), frag.cpp (1.51), frag.hpp (1.21,
+	  VERSION_2_5_14_1, VERSION_2_5_14, VERSION_2_5_13), fv3_defs.h
+	  (1.11, VERSION_2_5_13), slot.cpp (1.8, VERSION_2_5_14_1,
+	  VERSION_2_5_14, VERSION_2_5_13), slot.hpp (1.3, VERSION_2_5_14_1,
+	  VERSION_2_5_14, VERSION_2_5_13), utils.cpp (1.9,
+	  VERSION_2_5_14_1, VERSION_2_5_14, VERSION_2_5_13), utils.hpp
+	  (1.11, VERSION_2_5_14_1, VERSION_2_5_14, VERSION_2_5_13),
+	  utils_t.hpp (1.6, VERSION_2_5_18, VERSION_2_5_17, VERSION_2_5_15,
+	  VERSION_2_5_14_1, VERSION_2_5_14, VERSION_2_5_13): SSE4 bug fixed
+
+2010-11-28  tkamogashira
+
+	* configure.in (1.101), freeverb/frag.cpp (1.50): SSE4 bitshift fix
+
+2010-11-23  tkamogashira
+
+	* configure.in (1.100), freeverb/frag.cpp (1.49): SSE4 fix
+
+2010-11-21  tkamogashira
+
+	* configure.in (1.99), freeverb/allpass.cpp (1.26,
+	  VERSION_2_5_14_1, VERSION_2_5_14, VERSION_2_5_13),
+	  freeverb/comb.cpp (1.26, VERSION_2_5_14_1, VERSION_2_5_14,
+	  VERSION_2_5_13), freeverb/delay.cpp (1.24, VERSION_2_5_13): [no
+	  log message]
+
+2010-11-19  tkamogashira
+
+	* configure.in (1.98), freeverb/allpass.cpp (1.25),
+	  freeverb/comb.cpp (1.25), freeverb/comb_t.hpp (1.13,
+	  VERSION_2_5_14_1, VERSION_2_5_14, VERSION_2_5_13),
+	  freeverb/delay.cpp (1.23), freeverb/delay_t.hpp (1.15,
+	  VERSION_2_5_13): delay/allpass/comb initialization bugs were
+	  fixed.
+
+2010-11-19  tkamogashira
+
+	* freeverb/: allpass.cpp (1.24), allpass_t.hpp (1.14,
+	  VERSION_2_5_13), comb.cpp (1.24), delay.cpp (1.22), delay_t.hpp
+	  (1.14) (utags: VERSION_2_5_12): modulation filter updates.
+
+2010-11-17  tkamogashira
+
+	* freeverb/: delay.cpp (1.21), delay_t.hpp (1.13), frag.cpp (1.48,
+	  VERSION_2_5_12): [no log message]
+
+2010-11-14  tkamogashira
+
+	* freeverb/frag.cpp (1.47):
+	  SSE3 MMX register emms fix.
+
+2010-11-11  tkamogashira
+
+	* configure.in (1.97, VERSION_2_5_12), freeverb/frag.cpp (1.46),
+	  samples/benchmark3.cpp (1.12, VERSION_2_5_18, VERSION_2_5_17,
+	  VERSION_2_5_15, VERSION_2_5_14_1, VERSION_2_5_14, VERSION_2_5_13,
+	  VERSION_2_5_12): SSE4/AVX/fix
+
+2010-11-11  tkamogashira
+
+	* configure.in (1.96), freeverb/delay_t.hpp (1.12),
+	  freeverb/frag.cpp (1.45), freeverb/utils.cpp (1.8,
+	  VERSION_2_5_12): SSE3/SSE4 updates.
+
+2010-11-07  tkamogashira
+
+	* freeverb/: comb.cpp (1.23), comb_t.hpp (1.12, VERSION_2_5_12),
+	  delay.cpp (1.20), delay_t.hpp (1.11): [no log message]
+
+2010-11-06  tkamogashira
+
+	* freeverb/: allpass.cpp (1.23), allpass_t.hpp (1.13), comb.cpp
+	  (1.22), comb_t.hpp (1.11): [no log message]
+
+2010-11-03  tkamogashira
+
+	* configure.in (1.95), freeverb/allpass.cpp (1.22),
+	  freeverb/allpass.hpp (1.16, VERSION_2_5_14_1, VERSION_2_5_14,
+	  VERSION_2_5_13, VERSION_2_5_12), freeverb/allpass_t.hpp (1.12),
+	  freeverb/biquad.cpp (1.7, VERSION_2_5_14_1, VERSION_2_5_14,
+	  VERSION_2_5_13, VERSION_2_5_12), freeverb/efilter.cpp (1.19,
+	  VERSION_2_5_13, VERSION_2_5_12), freeverb/efilter_t.hpp (1.13,
+	  VERSION_2_5_12): Allpass modulation updates.
+
+2010-10-26  tkamogashira
+
+	* freeverb/: biquad.cpp (1.6), efilter.cpp (1.18), efilter_t.hpp
+	  (1.12): IIR coefficients updates
+
+2010-10-22  tkamogashira
+
+	* freeverb/: allpass.cpp (1.21), allpass.hpp (1.15), biquad.cpp
+	  (1.5), biquad.hpp (1.3, VERSION_2_5_14_1, VERSION_2_5_14,
+	  VERSION_2_5_13, VERSION_2_5_12), biquad_t.hpp (1.4,
+	  VERSION_2_5_15, VERSION_2_5_14_1, VERSION_2_5_14, VERSION_2_5_13,
+	  VERSION_2_5_12), comb.cpp (1.21), comb.hpp (1.16,
+	  VERSION_2_5_14_1, VERSION_2_5_14, VERSION_2_5_13,
+	  VERSION_2_5_12), delay.hpp (1.17, VERSION_2_5_13,
+	  VERSION_2_5_12), efilter.cpp (1.17), efilter.hpp (1.16,
+	  VERSION_2_5_13, VERSION_2_5_12), efilter_t.hpp (1.11), nrev_t.hpp
+	  (1.20, VERSION_2_5_13, VERSION_2_5_12): 1st order IIR filter
+	  updates
+
+2010-10-16  tkamogashira
+
+	* freeverb/: biquad.cpp (1.4), efilter.cpp (1.16), efilter.hpp
+	  (1.15), efilter_t.hpp (1.10), nrev.cpp (1.44, VERSION_2_5_13,
+	  VERSION_2_5_12), nrev.hpp (1.29, VERSION_2_5_13, VERSION_2_5_12),
+	  nrev_t.hpp (1.19), nrevb.cpp (1.7, VERSION_2_5_13,
+	  VERSION_2_5_12), nrevb.hpp (1.3, VERSION_2_5_14_1,
+	  VERSION_2_5_14, VERSION_2_5_13, VERSION_2_5_12), nrevb_t.hpp
+	  (1.4, VERSION_2_5_13, VERSION_2_5_12): DC cut filter was added
+	  and >192kHz saturation errors was fixed using the DC cut filter.
+
+2010-10-12  tkamogashira
+
+	* configure.in (1.94), freeverb/nrevb.cpp (1.6) (utags:
+	  VERSION_2_5_10): NRev v2 fix.
+
+2010-10-11  tkamogashira
+
+	* freeverb/: allpass_t.hpp (1.11, VERSION_2_5_10), biquad.cpp (1.3,
+	  VERSION_2_5_10), biquad_t.hpp (1.3, VERSION_2_5_10), nrevb.cpp
+	  (1.5): [no log message]
+
+2010-10-11  tkamogashira
+
+	* freeverb/: Makefile.am (1.31, VERSION_2_5_12, VERSION_2_5_10),
+	  biquad.cpp (1.2), biquad.hpp (1.2, VERSION_2_5_10), biquad_t.hpp
+	  (1.2): BiQuad bug fix
+
+2010-10-11  tkamogashira
+
+	* freeverb/: biquad.cpp (1.1), biquad.hpp (1.1), biquad_t.hpp
+	  (1.1), fv3_defs.h (1.10, VERSION_2_5_12, VERSION_2_5_10),
+	  nrev_t.hpp (1.18, VERSION_2_5_10), nrevb.cpp (1.4), nrevb.hpp
+	  (1.2, VERSION_2_5_10), nrevb_t.hpp (1.3, VERSION_2_5_10),
+	  src.make (1.13, VERSION_2_5_13, VERSION_2_5_12, VERSION_2_5_10):
+	  BiQuad Filter was added.  NRevB was updated.
+
+2010-10-11  tkamogashira
+
+	* freeverb/nrev.cpp (1.43, VERSION_2_5_10): nrev processb bug fix
+
+2010-10-11  tkamogashira
+
+	* freeverb/: nrev.cpp (1.42), nrev_t.hpp (1.17): [no log message]
+
+2010-10-11  tkamogashira
+
+	* freeverb/nrevb.cpp (1.3): [no log message]
+
+2010-10-11  tkamogashira
+
+	* freeverb/: nrev.cpp (1.41), nrev_t.hpp (1.16), nrevb.cpp (1.2),
+	  nrevb_t.hpp (1.2): [no log message]
+
+2010-10-10  tkamogashira
+
+	* freeverb/: Makefile.am (1.30), allpass_t.hpp (1.10), nrev.cpp
+	  (1.40), nrev_t.hpp (1.15), nrevb.cpp (1.1), nrevb.hpp (1.1),
+	  nrevb_t.hpp (1.1), src.make (1.12): allpass fixed version of NRev
+	  was updated.
+
+2010-10-06  tkamogashira
+
+	* configure.in (1.93): [no log message]
+
+2010-10-03  tkamogashira
+
+	* freeverb/: nrev.cpp (1.39), revmodel.cpp (1.26, VERSION_2_5_13,
+	  VERSION_2_5_12, VERSION_2_5_10), src.cpp (1.24, VERSION_2_5_13,
+	  VERSION_2_5_12, VERSION_2_5_10): setCurrentFs bugs were fixed.
+
+2010-08-29  tkamogashira
+
+	* configure.in (1.92): [no log message]
+
+2010-08-23  tkamogashira
+
+	* freeverb/: comb_t.hpp (1.10, VERSION_2_5_10), nrev.cpp (1.38),
+	  src.cpp (1.23) (utags: VERSION_2_5_8): denormal bugs were fixed.
+
+2010-08-22  tkamogashira
+
+	* freeverb/: nrev.cpp (1.37), revmodel.cpp (1.25, VERSION_2_5_8):
+	  undenormal
+
+2010-08-21  tkamogashira
+
+	* freeverb/: nrev.cpp (1.36), revmodel.cpp (1.24), revmodel.hpp
+	  (1.20, VERSION_2_5_13, VERSION_2_5_12, VERSION_2_5_10,
+	  VERSION_2_5_8): [no log message]
+
+2010-08-21  tkamogashira
+
+	* freeverb/: Makefile.am (1.29, VERSION_2_5_8), nrev.cpp (1.35),
+	  nrev.hpp (1.28, VERSION_2_5_10, VERSION_2_5_8), nrev_t.hpp (1.14,
+	  VERSION_2_5_8), revmodel.cpp (1.23), revmodel.hpp (1.19),
+	  revmodel_t.hpp (1.10, VERSION_2_5_13, VERSION_2_5_12,
+	  VERSION_2_5_10, VERSION_2_5_8), src.make (1.11, VERSION_2_5_8),
+	  tuning.h (1.8[DEAD]): Freeverb code refactoring.
+
+2010-08-18  tkamogashira
+
+	* freeverb/: allpass.cpp (1.20, VERSION_2_5_10, VERSION_2_5_8),
+	  comb.cpp (1.20, VERSION_2_5_10, VERSION_2_5_8), delay.cpp (1.19,
+	  VERSION_2_5_10, VERSION_2_5_8), fv3_defs.h (1.9, VERSION_2_5_8),
+	  nrev.cpp (1.34), nrev.hpp (1.27), nrev_t.hpp (1.13), src.cpp
+	  (1.22): NRev code refacturing.
+
+2010-08-01  tkamogashira
+
+	* Makefile.am (1.15, VERSION_2_5_21, VERSION_2_5_19,
+	  VERSION_2_5_18, VERSION_2_5_17, VERSION_2_5_15, VERSION_2_5_14_1,
+	  VERSION_2_5_14, VERSION_2_5_13, VERSION_2_5_12, VERSION_2_5_10,
+	  VERSION_2_5_8, VERSION_2_5_6): [no log message]
+
+2010-08-01  tkamogashira
+
+	* AUTHORS (1.6, VERSION_3_0_0, VERSION_2_6_6, VERSION_2_6_4,
+	  VERSION_2_6_0, VERSION_2_5_22, VERSION_2_5_21, VERSION_2_5_19,
+	  VERSION_2_5_18, VERSION_2_5_17, VERSION_2_5_15, VERSION_2_5_14_1,
+	  VERSION_2_5_14, VERSION_2_5_13, VERSION_2_5_12, VERSION_2_5_10,
+	  VERSION_2_5_8, VERSION_2_5_6): [no log message]
+
+2010-08-01  tkamogashira
+
+	* AUTHORS (1.5): AUTHOR update.
+
+2010-07-26  tkamogashira
+
+	* freeverb/frag.cpp (1.44, VERSION_2_5_10, VERSION_2_5_8,
+	  VERSION_2_5_6): [no log message]
+
+2010-07-25  tkamogashira
+
+	* freeverb/irbase.cpp (1.2, VERSION_2_5_13, VERSION_2_5_12,
+	  VERSION_2_5_10, VERSION_2_5_8, VERSION_2_5_6): [no log message]
+
+2010-07-25  tkamogashira
+
+	* configure.in (1.91), libgdither/gdither.c (1.4, VERSION_3_0_0,
+	  VERSION_2_6_6, VERSION_2_6_4, VERSION_2_6_0, VERSION_2_5_22,
+	  VERSION_2_5_21, VERSION_2_5_19, VERSION_2_5_18, VERSION_2_5_17,
+	  VERSION_2_5_15, VERSION_2_5_14_1, VERSION_2_5_14, VERSION_2_5_13,
+	  VERSION_2_5_12, VERSION_2_5_10) (utags: VERSION_2_5_6,
+	  VERSION_2_5_8): C99 u_int8 fix.
+
+2010-07-24  tkamogashira
+
+	* freeverb/frag.cpp (1.43, VERSION_2_5_5): Katmai optimization code
+	  bug (movq not supported instruction) was fixed.
+
+2010-07-24  tkamogashira
+
+	* configure.in (1.90, VERSION_2_5_5): [no log message]
+
+2010-07-24  tkamogashira
+
+	* libgdither/: gdither.c (1.3), gdither.h (1.2, VERSION_3_0_0,
+	  VERSION_2_6_6, VERSION_2_6_4, VERSION_2_6_0, VERSION_2_5_22,
+	  VERSION_2_5_21, VERSION_2_5_19, VERSION_2_5_18, VERSION_2_5_17,
+	  VERSION_2_5_15, VERSION_2_5_14_1, VERSION_2_5_14, VERSION_2_5_13,
+	  VERSION_2_5_12, VERSION_2_5_10, VERSION_2_5_8, VERSION_2_5_6),
+	  gdither_types.h (1.2, VERSION_3_0_0, VERSION_2_6_6,
+	  VERSION_2_6_4, VERSION_2_6_0, VERSION_2_5_22, VERSION_2_5_21,
+	  VERSION_2_5_19, VERSION_2_5_18, VERSION_2_5_17, VERSION_2_5_15,
+	  VERSION_2_5_14_1, VERSION_2_5_14, VERSION_2_5_13, VERSION_2_5_12,
+	  VERSION_2_5_10, VERSION_2_5_8, VERSION_2_5_6),
+	  gdither_types_internal.h (1.2, VERSION_3_0_0, VERSION_2_6_6,
+	  VERSION_2_6_4, VERSION_2_6_0, VERSION_2_5_22, VERSION_2_5_21,
+	  VERSION_2_5_19, VERSION_2_5_18, VERSION_2_5_17, VERSION_2_5_15,
+	  VERSION_2_5_14_1, VERSION_2_5_14, VERSION_2_5_13, VERSION_2_5_12,
+	  VERSION_2_5_10, VERSION_2_5_8, VERSION_2_5_6) (utags:
+	  VERSION_2_5_5): libgdither 0.6 bug fixes were added.	New plugin
+	  structure updaes were added.
+
+2010-07-24  tkamogashira
+
+	* audacious/Makefile.am (1.19, VERSION_2_5_13, VERSION_2_5_12,
+	  VERSION_2_5_10, VERSION_2_5_8, VERSION_2_5_6, VERSION_2_5_5): New
+	  plugin sturectures updates.
+
+2010-07-21  tkamogashira
+
+	* configure.in (1.89), config/config.rpath (1.3, VERSION_3_0_0,
+	  VERSION_2_6_6, VERSION_2_6_4, VERSION_2_6_0, VERSION_2_5_22,
+	  VERSION_2_5_21, VERSION_2_5_19, VERSION_2_5_18, VERSION_2_5_17,
+	  VERSION_2_5_15, VERSION_2_5_14_1, VERSION_2_5_14, VERSION_2_5_13,
+	  VERSION_2_5_12, VERSION_2_5_10, VERSION_2_5_8, VERSION_2_5_6,
+	  VERSION_2_5_5): [no log message]
+
+2010-07-20  tkamogashira
+
+	* config/: config.guess (1.8[DEAD]), config.rpath (1.2[DEAD]),
+	  config.sub (1.8[DEAD]), depcomp (1.3[DEAD]), install-sh
+	  (1.3[DEAD]), ltmain.sh (1.9[DEAD]), missing (1.3[DEAD]),
+	  mkinstalldirs (1.3[DEAD]): [no log message]
+
+2010-07-20  tkamogashira
+
+	* freeverb/frag.cpp (1.42): SSE not supported instruction(movq) was
+	  replaced.
+
+2010-07-04  tkamogashira
+
+	* samples/IR/LargeCave.wav (1.3, VERSION_3_0_0, VERSION_2_6_6,
+	  VERSION_2_6_4, VERSION_2_6_0, VERSION_2_5_22, VERSION_2_5_21,
+	  VERSION_2_5_19, VERSION_2_5_18, VERSION_2_5_17, VERSION_2_5_15,
+	  VERSION_2_5_14_1, VERSION_2_5_14, VERSION_2_5_13, VERSION_2_5_12,
+	  VERSION_2_5_10, VERSION_2_5_8, VERSION_2_5_6, VERSION_2_5_5),
+	  samples/IR/iR_cathedral.wav (1.3, VERSION_3_0_0, VERSION_2_6_6,
+	  VERSION_2_6_4, VERSION_2_6_0, VERSION_2_5_22, VERSION_2_5_21,
+	  VERSION_2_5_19, VERSION_2_5_18, VERSION_2_5_17, VERSION_2_5_15,
+	  VERSION_2_5_14_1, VERSION_2_5_14, VERSION_2_5_13, VERSION_2_5_12,
+	  VERSION_2_5_10, VERSION_2_5_8, VERSION_2_5_6, VERSION_2_5_5),
+	  configure.in (1.88) (utags: VERSION_2_5_4): [no log message]
+
+2010-07-03  tkamogashira
+
+	* Makefile.am (1.14, VERSION_2_5_5), cvs2cl.pl (1.1, VERSION_3_0_0,
+	  VERSION_2_6_6, VERSION_2_6_4, VERSION_2_6_0, VERSION_2_5_22,
+	  VERSION_2_5_21, VERSION_2_5_19, VERSION_2_5_18, VERSION_2_5_17,
+	  VERSION_2_5_15, VERSION_2_5_14_1, VERSION_2_5_14, VERSION_2_5_13,
+	  VERSION_2_5_12, VERSION_2_5_10, VERSION_2_5_8, VERSION_2_5_6,
+	  VERSION_2_5_5), config/config.rpath (1.1), freeverb/irbase.cpp
+	  (1.1, VERSION_2_5_5), m4/Makefile.am (1.1, VERSION_3_0_0,
+	  VERSION_2_6_6, VERSION_2_6_4, VERSION_2_6_0, VERSION_2_5_22,
+	  VERSION_2_5_21, VERSION_2_5_19, VERSION_2_5_18, VERSION_2_5_17,
+	  VERSION_2_5_15, VERSION_2_5_14_1, VERSION_2_5_14, VERSION_2_5_13,
+	  VERSION_2_5_12, VERSION_2_5_10, VERSION_2_5_8, VERSION_2_5_6,
+	  VERSION_2_5_5), m4/glib.m4 (1.1, VERSION_3_0_0, VERSION_2_6_6,
+	  VERSION_2_6_4, VERSION_2_6_0, VERSION_2_5_22, VERSION_2_5_21,
+	  VERSION_2_5_19, VERSION_2_5_18, VERSION_2_5_17, VERSION_2_5_15,
+	  VERSION_2_5_14_1, VERSION_2_5_14, VERSION_2_5_13, VERSION_2_5_12,
+	  VERSION_2_5_10, VERSION_2_5_8, VERSION_2_5_6, VERSION_2_5_5),
+	  m4/gtk.m4 (1.1, VERSION_3_0_0, VERSION_2_6_6, VERSION_2_6_4,
+	  VERSION_2_6_0, VERSION_2_5_22, VERSION_2_5_21, VERSION_2_5_19,
+	  VERSION_2_5_18, VERSION_2_5_17, VERSION_2_5_15, VERSION_2_5_14_1,
+	  VERSION_2_5_14, VERSION_2_5_13, VERSION_2_5_12, VERSION_2_5_10,
+	  VERSION_2_5_8, VERSION_2_5_6, VERSION_2_5_5), m4/lrint.m4 (1.1,
+	  VERSION_3_0_0, VERSION_2_6_6, VERSION_2_6_4, VERSION_2_6_0,
+	  VERSION_2_5_22, VERSION_2_5_21, VERSION_2_5_19, VERSION_2_5_18,
+	  VERSION_2_5_17, VERSION_2_5_15, VERSION_2_5_14_1, VERSION_2_5_14,
+	  VERSION_2_5_13, VERSION_2_5_12, VERSION_2_5_10, VERSION_2_5_8,
+	  VERSION_2_5_6, VERSION_2_5_5), m4/lrintf.m4 (1.1, VERSION_3_0_0,
+	  VERSION_2_6_6, VERSION_2_6_4, VERSION_2_6_0, VERSION_2_5_22,
+	  VERSION_2_5_21, VERSION_2_5_19, VERSION_2_5_18, VERSION_2_5_17,
+	  VERSION_2_5_15, VERSION_2_5_14_1, VERSION_2_5_14, VERSION_2_5_13,
+	  VERSION_2_5_12, VERSION_2_5_10, VERSION_2_5_8, VERSION_2_5_6,
+	  VERSION_2_5_5), m4/xmms.m4 (1.1, VERSION_3_0_0, VERSION_2_6_6,
+	  VERSION_2_6_4, VERSION_2_6_0, VERSION_2_5_22, VERSION_2_5_21,
+	  VERSION_2_5_19, VERSION_2_5_18, VERSION_2_5_17, VERSION_2_5_15,
+	  VERSION_2_5_14_1, VERSION_2_5_14, VERSION_2_5_13, VERSION_2_5_12,
+	  VERSION_2_5_10, VERSION_2_5_8, VERSION_2_5_6, VERSION_2_5_5),
+	  patch/Makefile.am (1.1, VERSION_2_5_18, VERSION_2_5_17,
+	  VERSION_2_5_15, VERSION_2_5_14_1, VERSION_2_5_14, VERSION_2_5_13,
+	  VERSION_2_5_12, VERSION_2_5_10, VERSION_2_5_8, VERSION_2_5_6,
+	  VERSION_2_5_5), samples/Makefile.am (1.40, VERSION_2_5_14_1,
+	  VERSION_2_5_14, VERSION_2_5_13, VERSION_2_5_12, VERSION_2_5_10,
+	  VERSION_2_5_8, VERSION_2_5_6, VERSION_2_5_5) (utags:
+	  VERSION_2_5_4): New tree was imported.
+
+2010-07-03  tkamogashira
+
+	* configure.in (1.87), freeverb/frag.cpp (1.41, VERSION_2_5_4):
+	  SSE3 instruction bug was fixed.
+
+2010-06-27  tkamogashira
+
+	* freeverb/: efilter_t.hpp (1.9, VERSION_2_5_10, VERSION_2_5_8,
+	  VERSION_2_5_6, VERSION_2_5_5, VERSION_2_5_4), frag.cpp (1.40),
+	  frag_t.hpp (1.15, VERSION_2_5_17, VERSION_2_5_15,
+	  VERSION_2_5_14_1, VERSION_2_5_14, VERSION_2_5_13, VERSION_2_5_12,
+	  VERSION_2_5_10, VERSION_2_5_8, VERSION_2_5_6, VERSION_2_5_5,
+	  VERSION_2_5_4), irmodel3.cpp (1.36, VERSION_2_5_14_1,
+	  VERSION_2_5_14, VERSION_2_5_13, VERSION_2_5_12, VERSION_2_5_10,
+	  VERSION_2_5_8, VERSION_2_5_6, VERSION_2_5_5, VERSION_2_5_4),
+	  irmodel3_t.hpp (1.25, VERSION_2_5_17, VERSION_2_5_15,
+	  VERSION_2_5_14_1, VERSION_2_5_14, VERSION_2_5_13, VERSION_2_5_12,
+	  VERSION_2_5_10, VERSION_2_5_8, VERSION_2_5_6, VERSION_2_5_5,
+	  VERSION_2_5_4): New structure updates.  Committed on the Free
+	  edition of March Hare Software CVSNT Server.	Upgrade to CVS
+	  Suite for more features and support: http://march-hare.com/cvsnt/
+
+2010-06-13  tkamogashira
+
+	* configure.in (1.86), freeverb/frag.cpp (1.39),
+	  freeverb/irmodel3.cpp (1.35): new SSE codes Committed on the Free
+	  edition of March Hare Software CVSNT Server.	Upgrade to CVS
+	  Suite for more features and support: http://march-hare.com/cvsnt/
+
+2010-03-29  tkamogashira
+
+	* Makefile.am (1.13), autogen.sh (1.8, VERSION_3_0_0,
+	  VERSION_2_6_6, VERSION_2_6_4, VERSION_2_6_0, VERSION_2_5_22,
+	  VERSION_2_5_21, VERSION_2_5_19, VERSION_2_5_18, VERSION_2_5_17,
+	  VERSION_2_5_15, VERSION_2_5_14_1, VERSION_2_5_14, VERSION_2_5_13,
+	  VERSION_2_5_12, VERSION_2_5_10, VERSION_2_5_8, VERSION_2_5_6,
+	  VERSION_2_5_5, VERSION_2_5_4), configure.in (1.85),
+	  config/ltmain.sh (1.8, VERSION_2_5_4) (utags: VERSION_2_5_1):
+	  xmms compile fix.  audacious _API_ 12,13 fix.  configure
+	  --disable-rpath option was added.
+
+	  Committed on the Free edition of March Hare Software CVSNT
+	  Server.  Upgrade to CVS Suite for more features and support:
+	  http://march-hare.com/cvsnt/
+
+2010-03-28  tkamogashira
+
+	* autogen.sh (1.7): no message Committed on the Free edition of
+	  March Hare Software CVSNT Server.  Upgrade to CVS Suite for more
+	  features and support: http://march-hare.com/cvsnt/
+
+2010-03-28  tkamogashira
+
+	* Makefile.am (1.12), configure.in (1.84), config/ltmain.sh (1.7),
+	  freeverb/Makefile.am (1.28, VERSION_2_5_6, VERSION_2_5_5,
+	  VERSION_2_5_4, VERSION_2_5_1), freeverb/fv3_type_float.h (1.8,
+	  VERSION_3_0_0, VERSION_2_6_6, VERSION_2_6_4, VERSION_2_6_0,
+	  VERSION_2_5_22, VERSION_2_5_21, VERSION_2_5_19, VERSION_2_5_18,
+	  VERSION_2_5_17, VERSION_2_5_15, VERSION_2_5_14_1, VERSION_2_5_14,
+	  VERSION_2_5_13, VERSION_2_5_12, VERSION_2_5_10, VERSION_2_5_8,
+	  VERSION_2_5_6, VERSION_2_5_5, VERSION_2_5_4, VERSION_2_5_1),
+	  libsamplerate2/float_cast.h (1.2, VERSION_3_0_0, VERSION_2_6_6,
+	  VERSION_2_6_4, VERSION_2_6_0, VERSION_2_5_22, VERSION_2_5_21,
+	  VERSION_2_5_19, VERSION_2_5_18, VERSION_2_5_17, VERSION_2_5_15,
+	  VERSION_2_5_14_1, VERSION_2_5_14, VERSION_2_5_13, VERSION_2_5_12,
+	  VERSION_2_5_10, VERSION_2_5_8, VERSION_2_5_6, VERSION_2_5_5,
+	  VERSION_2_5_4, VERSION_2_5_1), samples/benchmark3.cpp (1.11,
+	  VERSION_2_5_10, VERSION_2_5_8, VERSION_2_5_6, VERSION_2_5_5,
+	  VERSION_2_5_4, VERSION_2_5_1), samples/impulser.cpp (1.14,
+	  VERSION_2_5_18, VERSION_2_5_17, VERSION_2_5_15, VERSION_2_5_14_1,
+	  VERSION_2_5_14, VERSION_2_5_13, VERSION_2_5_12, VERSION_2_5_10,
+	  VERSION_2_5_8, VERSION_2_5_6, VERSION_2_5_5, VERSION_2_5_4,
+	  VERSION_2_5_1), samples/impulser_jack.cpp (1.12, VERSION_2_5_18,
+	  VERSION_2_5_17, VERSION_2_5_15, VERSION_2_5_14_1, VERSION_2_5_14,
+	  VERSION_2_5_13, VERSION_2_5_12, VERSION_2_5_10, VERSION_2_5_8,
+	  VERSION_2_5_6, VERSION_2_5_5, VERSION_2_5_4, VERSION_2_5_1),
+	  samples/rateconv.cpp (1.22, VERSION_2_5_18, VERSION_2_5_17,
+	  VERSION_2_5_15, VERSION_2_5_14_1, VERSION_2_5_14, VERSION_2_5_13,
+	  VERSION_2_5_12, VERSION_2_5_10, VERSION_2_5_8, VERSION_2_5_6,
+	  VERSION_2_5_5, VERSION_2_5_4, VERSION_2_5_1): xmms plugin updates
+	  Committed on the Free edition of March Hare Software CVSNT
+	  Server.  Upgrade to CVS Suite for more features and support:
+	  http://march-hare.com/cvsnt/
+
+2010-03-28  tkamogashira
+
+	* configure.in (1.83), audacious/Makefile.am (1.18, VERSION_2_5_4,
+	  VERSION_2_5_1), freeverb/fv3_std_fix.h (1.2, VERSION_2_5_13,
+	  VERSION_2_5_12, VERSION_2_5_10, VERSION_2_5_8, VERSION_2_5_6,
+	  VERSION_2_5_5, VERSION_2_5_4, VERSION_2_5_1),
+	  freeverb/irmodel3.cpp (1.34, VERSION_2_5_1),
+	  freeverb/irmodel3_t.hpp (1.24, VERSION_2_5_1): xmms plugin
+	  updates Committed on the Free edition of March Hare Software
+	  CVSNT Server.  Upgrade to CVS Suite for more features and
+	  support: http://march-hare.com/cvsnt/
+
+2010-03-23  tkamogashira
+
+	* freeverb/: irmodel.cpp (1.24, VERSION_2_5_14_1, VERSION_2_5_14,
+	  VERSION_2_5_13, VERSION_2_5_12, VERSION_2_5_10, VERSION_2_5_8,
+	  VERSION_2_5_6, VERSION_2_5_5, VERSION_2_5_4, VERSION_2_5_1),
+	  irmodel2.cpp (1.62, VERSION_2_5_14_1, VERSION_2_5_14,
+	  VERSION_2_5_13, VERSION_2_5_12, VERSION_2_5_10, VERSION_2_5_8,
+	  VERSION_2_5_6, VERSION_2_5_5, VERSION_2_5_4, VERSION_2_5_1),
+	  irmodel3.cpp (1.33): no message Committed on the Free edition of
+	  March Hare Software CVSNT Server.  Upgrade to CVS Suite for more
+	  features and support: http://march-hare.com/cvsnt/
+
+2010-03-22  tkamogashira
+
+	* INSTALL (1.2, VERSION_2_6_6, VERSION_2_6_4, VERSION_2_6_0,
+	  VERSION_2_5_22, VERSION_2_5_21, VERSION_2_5_19, VERSION_2_5_18,
+	  VERSION_2_5_17, VERSION_2_5_15, VERSION_2_5_14_1, VERSION_2_5_14,
+	  VERSION_2_5_13, VERSION_2_5_12, VERSION_2_5_10, VERSION_2_5_8,
+	  VERSION_2_5_6, VERSION_2_5_5, VERSION_2_5_4, VERSION_2_5_1),
+	  Makefile.am (1.11), autogen.sh (1.6), configure.in (1.82),
+	  config/config.guess (1.7, VERSION_2_5_4, VERSION_2_5_1),
+	  config/config.sub (1.7, VERSION_2_5_4, VERSION_2_5_1),
+	  config/depcomp (1.2, VERSION_2_5_4, VERSION_2_5_1),
+	  config/install-sh (1.2, VERSION_2_5_4, VERSION_2_5_1),
+	  config/missing (1.2, VERSION_2_5_4, VERSION_2_5_1),
+	  config/mkinstalldirs (1.2, VERSION_2_5_4, VERSION_2_5_1),
+	  freeverb/irbase_t.hpp (1.8, VERSION_2_5_13, VERSION_2_5_12,
+	  VERSION_2_5_10, VERSION_2_5_8, VERSION_2_5_6, VERSION_2_5_5,
+	  VERSION_2_5_4, VERSION_2_5_1), freeverb/irmodel.cpp (1.23),
+	  freeverb/irmodel2.cpp (1.61), freeverb/irmodel2_t.hpp (1.22,
+	  VERSION_3_0_0, VERSION_2_6_6, VERSION_2_6_4, VERSION_2_6_0,
+	  VERSION_2_5_22, VERSION_2_5_21, VERSION_2_5_19, VERSION_2_5_18,
+	  VERSION_2_5_17, VERSION_2_5_15, VERSION_2_5_14_1, VERSION_2_5_14,
+	  VERSION_2_5_13, VERSION_2_5_12, VERSION_2_5_10, VERSION_2_5_8,
+	  VERSION_2_5_6, VERSION_2_5_5, VERSION_2_5_4, VERSION_2_5_1),
+	  freeverb/irmodel3.cpp (1.32), freeverb/irmodel3_t.hpp (1.23),
+	  freeverb/irmodel_t.hpp (1.15, VERSION_3_0_0, VERSION_2_6_6,
+	  VERSION_2_6_4, VERSION_2_6_0, VERSION_2_5_22, VERSION_2_5_21,
+	  VERSION_2_5_19, VERSION_2_5_18, VERSION_2_5_17, VERSION_2_5_15,
+	  VERSION_2_5_14_1, VERSION_2_5_14, VERSION_2_5_13, VERSION_2_5_12,
+	  VERSION_2_5_10, VERSION_2_5_8, VERSION_2_5_6, VERSION_2_5_5,
+	  VERSION_2_5_4, VERSION_2_5_1), freeverb/irmodels.cpp (1.12,
+	  VERSION_2_5_14_1, VERSION_2_5_14, VERSION_2_5_13, VERSION_2_5_12,
+	  VERSION_2_5_10, VERSION_2_5_8, VERSION_2_5_6, VERSION_2_5_5,
+	  VERSION_2_5_4, VERSION_2_5_1), freeverb/irmodels_t.hpp (1.8,
+	  VERSION_3_0_0, VERSION_2_6_6, VERSION_2_6_4, VERSION_2_6_0,
+	  VERSION_2_5_22, VERSION_2_5_21, VERSION_2_5_19, VERSION_2_5_18,
+	  VERSION_2_5_17, VERSION_2_5_15, VERSION_2_5_14_1, VERSION_2_5_14,
+	  VERSION_2_5_13, VERSION_2_5_12, VERSION_2_5_10, VERSION_2_5_8,
+	  VERSION_2_5_6, VERSION_2_5_5, VERSION_2_5_4, VERSION_2_5_1):
+
+	  Committed on the Free edition of March Hare Software CVSNT
+	  Server.  Upgrade to CVS Suite for more features and support:
+	  http://march-hare.com/cvsnt/
+
+2010-03-19  tkamogashira
+
+	* Makefile.am (1.10), config/ltmain.sh (1.6),
+	  freeverb/compmodel.cpp (1.13, VERSION_2_5_13, VERSION_2_5_12,
+	  VERSION_2_5_10, VERSION_2_5_8, VERSION_2_5_6, VERSION_2_5_5,
+	  VERSION_2_5_4, VERSION_2_5_1), freeverb/limitmodel.cpp (1.14,
+	  VERSION_2_5_14_1, VERSION_2_5_14, VERSION_2_5_13, VERSION_2_5_12,
+	  VERSION_2_5_10, VERSION_2_5_8, VERSION_2_5_6, VERSION_2_5_5,
+	  VERSION_2_5_4, VERSION_2_5_1), freeverb/slot.cpp (1.7,
+	  VERSION_2_5_12, VERSION_2_5_10, VERSION_2_5_8, VERSION_2_5_6,
+	  VERSION_2_5_5, VERSION_2_5_4, VERSION_2_5_1) (utags:
+	  VERSION_2_5_0): New structure updates.  Committed on the Free
+	  edition of March Hare Software CVSNT Server.	Upgrade to CVS
+	  Suite for more features and support: http://march-hare.com/cvsnt/
+
+2010-03-19  tkamogashira
+
+	* freeverb/frag.cpp (1.38, VERSION_2_5_1, VERSION_2_5_0): openmp
+	  fix Committed on the Free edition of March Hare Software CVSNT
+	  Server.  Upgrade to CVS Suite for more features and support:
+	  http://march-hare.com/cvsnt/
+
+2010-03-19  tkamogashira
+
+	* freeverb/fir3bandsplit.cpp (1.21, VERSION_2_5_14_1,
+	  VERSION_2_5_14, VERSION_2_5_13, VERSION_2_5_12, VERSION_2_5_10,
+	  VERSION_2_5_8, VERSION_2_5_6, VERSION_2_5_5, VERSION_2_5_4,
+	  VERSION_2_5_1, VERSION_2_5_0): libxmmsplugin new structure
+	  update.  Committed on the Free edition of March Hare Software
+	  CVSNT Server.  Upgrade to CVS Suite for more features and
+	  support: http://march-hare.com/cvsnt/
+
+2010-03-18  tkamogashira
+
+	* freeverb/: allpass.cpp (1.19, VERSION_2_5_6, VERSION_2_5_5,
+	  VERSION_2_5_4, VERSION_2_5_1, VERSION_2_5_0), allpass.hpp (1.14,
+	  VERSION_2_5_10, VERSION_2_5_8, VERSION_2_5_6, VERSION_2_5_5,
+	  VERSION_2_5_4, VERSION_2_5_1, VERSION_2_5_0), blockDelay.cpp
+	  (1.20, VERSION_2_5_13, VERSION_2_5_12, VERSION_2_5_10,
+	  VERSION_2_5_8, VERSION_2_5_6, VERSION_2_5_5, VERSION_2_5_4,
+	  VERSION_2_5_1, VERSION_2_5_0), blockDelay.hpp (1.14,
+	  VERSION_2_5_14_1, VERSION_2_5_14, VERSION_2_5_13, VERSION_2_5_12,
+	  VERSION_2_5_10, VERSION_2_5_8, VERSION_2_5_6, VERSION_2_5_5,
+	  VERSION_2_5_4, VERSION_2_5_1, VERSION_2_5_0), comb.cpp (1.19,
+	  VERSION_2_5_6, VERSION_2_5_5, VERSION_2_5_4, VERSION_2_5_1,
+	  VERSION_2_5_0), comb.hpp (1.15, VERSION_2_5_10, VERSION_2_5_8,
+	  VERSION_2_5_6, VERSION_2_5_5, VERSION_2_5_4, VERSION_2_5_1,
+	  VERSION_2_5_0), compmodel.cpp (1.12), compmodel.hpp (1.10,
+	  VERSION_2_5_13, VERSION_2_5_12, VERSION_2_5_10, VERSION_2_5_8,
+	  VERSION_2_5_6, VERSION_2_5_5, VERSION_2_5_4, VERSION_2_5_1,
+	  VERSION_2_5_0), delay.cpp (1.18, VERSION_2_5_6, VERSION_2_5_5,
+	  VERSION_2_5_4, VERSION_2_5_1, VERSION_2_5_0), delay.hpp (1.16,
+	  VERSION_2_5_10, VERSION_2_5_8, VERSION_2_5_6, VERSION_2_5_5,
+	  VERSION_2_5_4, VERSION_2_5_1, VERSION_2_5_0), efilter.cpp (1.15,
+	  VERSION_2_5_10, VERSION_2_5_8, VERSION_2_5_6, VERSION_2_5_5,
+	  VERSION_2_5_4, VERSION_2_5_1, VERSION_2_5_0), fir3bandsplit.cpp
+	  (1.20), fir3bandsplit.hpp (1.13, VERSION_2_5_14_1,
+	  VERSION_2_5_14, VERSION_2_5_13, VERSION_2_5_12, VERSION_2_5_10,
+	  VERSION_2_5_8, VERSION_2_5_6, VERSION_2_5_5, VERSION_2_5_4,
+	  VERSION_2_5_1, VERSION_2_5_0), firfilter.cpp (1.6,
+	  VERSION_2_5_14_1, VERSION_2_5_14, VERSION_2_5_13, VERSION_2_5_12,
+	  VERSION_2_5_10, VERSION_2_5_8, VERSION_2_5_6, VERSION_2_5_5,
+	  VERSION_2_5_4, VERSION_2_5_1, VERSION_2_5_0), firfilter.hpp (1.9,
+	  VERSION_2_5_14_1, VERSION_2_5_14, VERSION_2_5_13, VERSION_2_5_12,
+	  VERSION_2_5_10, VERSION_2_5_8, VERSION_2_5_6, VERSION_2_5_5,
+	  VERSION_2_5_4, VERSION_2_5_1, VERSION_2_5_0), firwindow.cpp (1.9,
+	  VERSION_2_5_14_1, VERSION_2_5_14, VERSION_2_5_13, VERSION_2_5_12,
+	  VERSION_2_5_10, VERSION_2_5_8, VERSION_2_5_6, VERSION_2_5_5,
+	  VERSION_2_5_4, VERSION_2_5_1, VERSION_2_5_0), firwindow.hpp
+	  (1.10, VERSION_2_5_14_1, VERSION_2_5_14, VERSION_2_5_13,
+	  VERSION_2_5_12, VERSION_2_5_10, VERSION_2_5_8, VERSION_2_5_6,
+	  VERSION_2_5_5, VERSION_2_5_4, VERSION_2_5_1, VERSION_2_5_0),
+	  frag.cpp (1.37), frag.hpp (1.20, VERSION_2_5_12, VERSION_2_5_10,
+	  VERSION_2_5_8, VERSION_2_5_6, VERSION_2_5_5, VERSION_2_5_4,
+	  VERSION_2_5_1, VERSION_2_5_0), fv3_defs.h (1.8, VERSION_2_5_6,
+	  VERSION_2_5_5, VERSION_2_5_4, VERSION_2_5_1, VERSION_2_5_0),
+	  irbase.hpp (1.5, VERSION_2_5_14_1, VERSION_2_5_14,
+	  VERSION_2_5_13, VERSION_2_5_12, VERSION_2_5_10, VERSION_2_5_8,
+	  VERSION_2_5_6, VERSION_2_5_5, VERSION_2_5_4, VERSION_2_5_1,
+	  VERSION_2_5_0), irbase_t.hpp (1.7, VERSION_2_5_0), irmodel.cpp
+	  (1.22, VERSION_2_5_0), irmodel.hpp (1.18, VERSION_2_5_14_1,
+	  VERSION_2_5_14, VERSION_2_5_13, VERSION_2_5_12, VERSION_2_5_10,
+	  VERSION_2_5_8, VERSION_2_5_6, VERSION_2_5_5, VERSION_2_5_4,
+	  VERSION_2_5_1, VERSION_2_5_0), irmodel2.cpp (1.60,
+	  VERSION_2_5_0), irmodel2.hpp (1.30, VERSION_2_5_14_1,
+	  VERSION_2_5_14, VERSION_2_5_13, VERSION_2_5_12, VERSION_2_5_10,
+	  VERSION_2_5_8, VERSION_2_5_6, VERSION_2_5_5, VERSION_2_5_4,
+	  VERSION_2_5_1, VERSION_2_5_0), irmodel2_t.hpp (1.21,
+	  VERSION_2_5_0), irmodel2zl.cpp (1.5, VERSION_2_5_14_1,
+	  VERSION_2_5_14, VERSION_2_5_13, VERSION_2_5_12, VERSION_2_5_10,
+	  VERSION_2_5_8, VERSION_2_5_6, VERSION_2_5_5, VERSION_2_5_4,
+	  VERSION_2_5_1, VERSION_2_5_0), irmodel2zl.hpp (1.3,
+	  VERSION_2_5_14_1, VERSION_2_5_14, VERSION_2_5_13, VERSION_2_5_12,
+	  VERSION_2_5_10, VERSION_2_5_8, VERSION_2_5_6, VERSION_2_5_5,
+	  VERSION_2_5_4, VERSION_2_5_1, VERSION_2_5_0), irmodel2zl_t.hpp
+	  (1.6, VERSION_3_0_0, VERSION_2_6_6, VERSION_2_6_4, VERSION_2_6_0,
+	  VERSION_2_5_22, VERSION_2_5_21, VERSION_2_5_19, VERSION_2_5_18,
+	  VERSION_2_5_17, VERSION_2_5_15, VERSION_2_5_14_1, VERSION_2_5_14,
+	  VERSION_2_5_13, VERSION_2_5_12, VERSION_2_5_10, VERSION_2_5_8,
+	  VERSION_2_5_6, VERSION_2_5_5, VERSION_2_5_4, VERSION_2_5_1,
+	  VERSION_2_5_0), irmodel3.cpp (1.31, VERSION_2_5_0), irmodel3.hpp
+	  (1.10, VERSION_2_5_14_1, VERSION_2_5_14, VERSION_2_5_13,
+	  VERSION_2_5_12, VERSION_2_5_10, VERSION_2_5_8, VERSION_2_5_6,
+	  VERSION_2_5_5, VERSION_2_5_4, VERSION_2_5_1, VERSION_2_5_0),
+	  irmodel3_t.hpp (1.22, VERSION_2_5_0), irmodels.cpp (1.11,
+	  VERSION_2_5_0), irmodels.hpp (1.10, VERSION_2_5_14_1,
+	  VERSION_2_5_14, VERSION_2_5_13, VERSION_2_5_12, VERSION_2_5_10,
+	  VERSION_2_5_8, VERSION_2_5_6, VERSION_2_5_5, VERSION_2_5_4,
+	  VERSION_2_5_1, VERSION_2_5_0), limitmodel.cpp (1.13),
+	  limitmodel.hpp (1.8, VERSION_2_5_14_1, VERSION_2_5_14,
+	  VERSION_2_5_13, VERSION_2_5_12, VERSION_2_5_10, VERSION_2_5_8,
+	  VERSION_2_5_6, VERSION_2_5_5, VERSION_2_5_4, VERSION_2_5_1,
+	  VERSION_2_5_0), nrev.cpp (1.33, VERSION_2_5_6, VERSION_2_5_5,
+	  VERSION_2_5_4, VERSION_2_5_1, VERSION_2_5_0), nrev.hpp (1.26,
+	  VERSION_2_5_6, VERSION_2_5_5, VERSION_2_5_4, VERSION_2_5_1,
+	  VERSION_2_5_0), revmodel.cpp (1.22, VERSION_2_5_6, VERSION_2_5_5,
+	  VERSION_2_5_4, VERSION_2_5_1, VERSION_2_5_0), revmodel.hpp (1.18,
+	  VERSION_2_5_6, VERSION_2_5_5, VERSION_2_5_4, VERSION_2_5_1,
+	  VERSION_2_5_0), rms.cpp (1.13, VERSION_2_5_14_1, VERSION_2_5_14,
+	  VERSION_2_5_13, VERSION_2_5_12, VERSION_2_5_10, VERSION_2_5_8,
+	  VERSION_2_5_6, VERSION_2_5_5, VERSION_2_5_4, VERSION_2_5_1,
+	  VERSION_2_5_0), rms.hpp (1.12, VERSION_2_5_14_1, VERSION_2_5_14,
+	  VERSION_2_5_13, VERSION_2_5_12, VERSION_2_5_10, VERSION_2_5_8,
+	  VERSION_2_5_6, VERSION_2_5_5, VERSION_2_5_4, VERSION_2_5_1,
+	  VERSION_2_5_0), scomp.cpp (1.22, VERSION_2_5_14_1,
+	  VERSION_2_5_14, VERSION_2_5_13, VERSION_2_5_12, VERSION_2_5_10,
+	  VERSION_2_5_8, VERSION_2_5_6, VERSION_2_5_5, VERSION_2_5_4,
+	  VERSION_2_5_1, VERSION_2_5_0), slimit.cpp (1.15,
+	  VERSION_2_5_14_1, VERSION_2_5_14, VERSION_2_5_13, VERSION_2_5_12,
+	  VERSION_2_5_10, VERSION_2_5_8, VERSION_2_5_6, VERSION_2_5_5,
+	  VERSION_2_5_4, VERSION_2_5_1, VERSION_2_5_0), src.cpp (1.21,
+	  VERSION_2_5_6, VERSION_2_5_5, VERSION_2_5_4, VERSION_2_5_1,
+	  VERSION_2_5_0), src.hpp (1.19, VERSION_2_5_14_1, VERSION_2_5_14,
+	  VERSION_2_5_13, VERSION_2_5_12, VERSION_2_5_10, VERSION_2_5_8,
+	  VERSION_2_5_6, VERSION_2_5_5, VERSION_2_5_4, VERSION_2_5_1,
+	  VERSION_2_5_0), stenh.cpp (1.12, VERSION_2_5_14_1,
+	  VERSION_2_5_14, VERSION_2_5_13, VERSION_2_5_12, VERSION_2_5_10,
+	  VERSION_2_5_8, VERSION_2_5_6, VERSION_2_5_5, VERSION_2_5_4,
+	  VERSION_2_5_1, VERSION_2_5_0), stenh.hpp (1.9, VERSION_2_5_14_1,
+	  VERSION_2_5_14, VERSION_2_5_13, VERSION_2_5_12, VERSION_2_5_10,
+	  VERSION_2_5_8, VERSION_2_5_6, VERSION_2_5_5, VERSION_2_5_4,
+	  VERSION_2_5_1, VERSION_2_5_0), tuning.h (1.7, VERSION_2_5_6,
+	  VERSION_2_5_5, VERSION_2_5_4, VERSION_2_5_1, VERSION_2_5_0),
+	  utils.cpp (1.7, VERSION_2_5_10, VERSION_2_5_8, VERSION_2_5_6,
+	  VERSION_2_5_5, VERSION_2_5_4, VERSION_2_5_1, VERSION_2_5_0),
+	  utils.hpp (1.10, VERSION_2_5_12, VERSION_2_5_10, VERSION_2_5_8,
+	  VERSION_2_5_6, VERSION_2_5_5, VERSION_2_5_4, VERSION_2_5_1,
+	  VERSION_2_5_0), slimit.hpp (1.11, VERSION_2_5_14_1,
+	  VERSION_2_5_14, VERSION_2_5_13, VERSION_2_5_12, VERSION_2_5_10,
+	  VERSION_2_5_8, VERSION_2_5_6, VERSION_2_5_5, VERSION_2_5_4,
+	  VERSION_2_5_1, VERSION_2_5_0): Copyright updates.  IRBase
+	  setInitialDelay(0) bug update.
+
+	  Committed on the Free edition of March Hare Software CVSNT
+	  Server.  Upgrade to CVS Suite for more features and support:
+	  http://march-hare.com/cvsnt/
+
+2010-03-18  tkamogashira
+
+	* configure.in (1.81, VERSION_2_5_0):
+
+	  Committed on the Free edition of March Hare Software CVSNT
+	  Server.  Upgrade to CVS Suite for more features and support:
+	  http://march-hare.com/cvsnt/
+
+2010-03-14  tkamogashira
+
+	* autogen.sh (1.5, VERSION_2_5_0), configure.in (1.80),
+	  config/ltmain.sh (1.5), freeverb/irmodel2zl_t.hpp (1.5): no
+	  message Committed on the Free edition of March Hare Software
+	  CVSNT Server.  Upgrade to CVS Suite for more features and
+	  support: http://march-hare.com/cvsnt/
+
+2010-03-08  tkamogashira
+
+	* freeverb/: Makefile.am (1.27, VERSION_2_5_0), fv3_ch_tool.hpp
+	  (1.3, VERSION_2_5_14_1, VERSION_2_5_14, VERSION_2_5_13,
+	  VERSION_2_5_12, VERSION_2_5_10, VERSION_2_5_8, VERSION_2_5_6,
+	  VERSION_2_5_5, VERSION_2_5_4, VERSION_2_5_1, VERSION_2_5_0),
+	  irmodel.cpp (1.21), irmodels.cpp (1.10), irmodels.hpp (1.9): no
+	  message Committed on the Free edition of March Hare Software
+	  CVSNT Server.  Upgrade to CVS Suite for more features and
+	  support: http://march-hare.com/cvsnt/
+
+2010-03-07  tkamogashira
+
+	* freeverb/: fv3_ch_tool.hpp (1.1), fv3_ch_tool.hpp (1.2): no
+	  message Committed on the Free edition of March Hare Software
+	  CVSNT Server.  Upgrade to CVS Suite for more features and
+	  support: http://march-hare.com/cvsnt/
+
+2010-03-05  tkamogashira
+
+	* freeverb/: slot.cpp (1.6), slot_t.hpp (1.6, VERSION_3_0_0,
+	  VERSION_2_6_6, VERSION_2_6_4, VERSION_2_6_0, VERSION_2_5_22,
+	  VERSION_2_5_21, VERSION_2_5_19, VERSION_2_5_18, VERSION_2_5_17,
+	  VERSION_2_5_15, VERSION_2_5_14_1, VERSION_2_5_14, VERSION_2_5_13,
+	  VERSION_2_5_12, VERSION_2_5_10, VERSION_2_5_8, VERSION_2_5_6,
+	  VERSION_2_5_5, VERSION_2_5_4, VERSION_2_5_1, VERSION_2_5_0): no
+	  message Committed on the Free edition of March Hare Software
+	  CVSNT Server.  Upgrade to CVS Suite for more features and
+	  support: http://march-hare.com/cvsnt/
+
+2010-03-05  tkamogashira
+
+	* freeverb/: fir3bandsplit.cpp (1.19), frag.cpp (1.36), frag_t.hpp
+	  (1.14, VERSION_2_5_1, VERSION_2_5_0), irbase_t.hpp (1.6),
+	  irmodel.cpp (1.20), irmodel2.cpp (1.59), irmodel2_t.hpp (1.20),
+	  irmodel2zl.cpp (1.4), irmodel2zl_t.hpp (1.4), irmodel3.cpp
+	  (1.30), irmodel3_t.hpp (1.21), irmodel_t.hpp (1.14,
+	  VERSION_2_5_0), irmodels.cpp (1.9), irmodels_t.hpp (1.7,
+	  VERSION_2_5_0): no message Committed on the Free edition of March
+	  Hare Software CVSNT Server.  Upgrade to CVS Suite for more
+	  features and support: http://march-hare.com/cvsnt/
+
+2010-03-03  tkamogashira
+
+	* freeverb/: compmodel.cpp (1.11), irmodel2_t.hpp (1.19),
+	  irmodel2zl.cpp (1.3), irmodel2zl.hpp (1.2), irmodel2zl_t.hpp
+	  (1.3), irmodel3_t.hpp (1.20), limitmodel.cpp (1.12), slot.cpp
+	  (1.5), slot_t.hpp (1.5): slot updates Committed on the Free
+	  edition of March Hare Software CVSNT Server.	Upgrade to CVS
+	  Suite for more features and support: http://march-hare.com/cvsnt/
+
+2010-03-02  tkamogashira
+
+	* freeverb/fv3_type_float.h (1.7, VERSION_2_5_0): slot updates
+	  Committed on the Free edition of March Hare Software CVSNT
+	  Server.  Upgrade to CVS Suite for more features and support:
+	  http://march-hare.com/cvsnt/
+
+2010-03-02  tkamogashira
+
+	* freeverb/: scomp.hpp (1.11, VERSION_2_5_14_1, VERSION_2_5_14,
+	  VERSION_2_5_13, VERSION_2_5_12, VERSION_2_5_10, VERSION_2_5_8,
+	  VERSION_2_5_6, VERSION_2_5_5, VERSION_2_5_4, VERSION_2_5_1,
+	  VERSION_2_5_0), slimit.hpp (1.10): slot updates Committed on the
+	  Free edition of March Hare Software CVSNT Server.  Upgrade to CVS
+	  Suite for more features and support: http://march-hare.com/cvsnt/
+
+2010-03-02  tkamogashira
+
+	* freeverb/: efilter.cpp (1.14), efilter.hpp (1.14, VERSION_2_5_10,
+	  VERSION_2_5_8, VERSION_2_5_6, VERSION_2_5_5, VERSION_2_5_4,
+	  VERSION_2_5_1, VERSION_2_5_0): slot updates Committed on the Free
+	  edition of March Hare Software CVSNT Server.	Upgrade to CVS
+	  Suite for more features and support: http://march-hare.com/cvsnt/
+
+2010-03-02  tkamogashira
+
+	* freeverb/: fv3_std_fix.h (1.1, VERSION_2_5_0), rms.hpp (1.11),
+	  rms_t.hpp (1.10, VERSION_2_5_14_1, VERSION_2_5_14,
+	  VERSION_2_5_13, VERSION_2_5_12, VERSION_2_5_10, VERSION_2_5_8,
+	  VERSION_2_5_6, VERSION_2_5_5, VERSION_2_5_4, VERSION_2_5_1,
+	  VERSION_2_5_0), scomp_t.hpp (1.17, VERSION_2_5_22,
+	  VERSION_2_5_21, VERSION_2_5_19, VERSION_2_5_18, VERSION_2_5_17,
+	  VERSION_2_5_15, VERSION_2_5_14_1, VERSION_2_5_14, VERSION_2_5_13,
+	  VERSION_2_5_12, VERSION_2_5_10, VERSION_2_5_8, VERSION_2_5_6,
+	  VERSION_2_5_5, VERSION_2_5_4, VERSION_2_5_1, VERSION_2_5_0),
+	  slimit_t.hpp (1.13, VERSION_2_5_22, VERSION_2_5_21,
+	  VERSION_2_5_19, VERSION_2_5_18, VERSION_2_5_17, VERSION_2_5_15,
+	  VERSION_2_5_14_1, VERSION_2_5_14, VERSION_2_5_13, VERSION_2_5_12,
+	  VERSION_2_5_10, VERSION_2_5_8, VERSION_2_5_6, VERSION_2_5_5,
+	  VERSION_2_5_4, VERSION_2_5_1, VERSION_2_5_0), utils_t.hpp (1.5,
+	  VERSION_2_5_12, VERSION_2_5_10, VERSION_2_5_8, VERSION_2_5_6,
+	  VERSION_2_5_5, VERSION_2_5_4, VERSION_2_5_1, VERSION_2_5_0): slot
+	  updates Committed on the Free edition of March Hare Software
+	  CVSNT Server.  Upgrade to CVS Suite for more features and
+	  support: http://march-hare.com/cvsnt/
+
+2010-03-02  tkamogashira
+
+	* freeverb/: Makefile.am (1.26), efilter_t.hpp (1.8, VERSION_2_5_1,
+	  VERSION_2_5_0), frag.cpp (1.35), fv3_defs.h (1.7),
+	  fv3_type_float.h (1.6), irmodel2.cpp (1.58), rms.hpp (1.10),
+	  rms_t.hpp (1.9), scomp_t.hpp (1.16), slot_t.hpp (1.4): slot
+	  updates Committed on the Free edition of March Hare Software
+	  CVSNT Server.  Upgrade to CVS Suite for more features and
+	  support: http://march-hare.com/cvsnt/
+
+2010-03-01  tkamogashira
+
+	* freeverb/: irmodel2.cpp (1.56), irmodel2.cpp (1.57): slot class
+	  updates
+
+	  Committed on the Free edition of March Hare Software CVSNT
+	  Server.  Upgrade to CVS Suite for more features and support:
+	  http://march-hare.com/cvsnt/
+
+2010-03-01  tkamogashira
+
+	* freeverb/: irmodel2.cpp (1.55), irmodel2_t.hpp (1.18),
+	  irmodel2zl.cpp (1.2), irmodel2zl_t.hpp (1.2), irmodel3.cpp
+	  (1.29), irmodel3_t.hpp (1.19): slot class updates
+
+	  Committed on the Free edition of March Hare Software CVSNT
+	  Server.  Upgrade to CVS Suite for more features and support:
+	  http://march-hare.com/cvsnt/
+
+2010-03-01  tkamogashira
+
+	* freeverb/irmodels.cpp (1.8): slot class updates
+
+	  Committed on the Free edition of March Hare Software CVSNT
+	  Server.  Upgrade to CVS Suite for more features and support:
+	  http://march-hare.com/cvsnt/
+
+2010-03-01  tkamogashira
+
+	* freeverb/: fv3_defs.h (1.6), irbase_t.hpp (1.5), irmodel2.cpp
+	  (1.54), irmodel2_t.hpp (1.17), irmodel2zl.cpp (1.1),
+	  irmodel2zl.hpp (1.1), irmodel2zl_t.hpp (1.1), irmodel3.cpp
+	  (1.28), irmodel3_t.hpp (1.18), src.make (1.10, VERSION_2_5_6,
+	  VERSION_2_5_5, VERSION_2_5_4, VERSION_2_5_1, VERSION_2_5_0): slot
+	  class updates irmodel2zl separate class updates Committed on the
+	  Free edition of March Hare Software CVSNT Server.  Upgrade to CVS
+	  Suite for more features and support: http://march-hare.com/cvsnt/
+
+2010-02-28  tkamogashira
+
+	* freeverb/: irmodel2.cpp (1.53), irmodel2_t.hpp (1.16): slot class
+	  update Committed on the Free edition of March Hare Software CVSNT
+	  Server.  Upgrade to CVS Suite for more features and support:
+	  http://march-hare.com/cvsnt/
+
+2010-02-28  tkamogashira
+
+	* freeverb/: irmodel.cpp (1.19), irmodel.hpp (1.17), irmodel_t.hpp
+	  (1.13), slot.cpp (1.4), slot_t.hpp (1.3): slot class update
+	  Committed on the Free edition of March Hare Software CVSNT
+	  Server.  Upgrade to CVS Suite for more features and support:
+	  http://march-hare.com/cvsnt/
+
+2010-02-26  tkamogashira
+
+	* freeverb/: allpass.cpp (1.18), allpass_t.hpp (1.9, VERSION_2_5_8,
+	  VERSION_2_5_6, VERSION_2_5_5, VERSION_2_5_4, VERSION_2_5_1,
+	  VERSION_2_5_0), comb.cpp (1.18), comb_t.hpp (1.9, VERSION_2_5_6,
+	  VERSION_2_5_5, VERSION_2_5_4, VERSION_2_5_1, VERSION_2_5_0),
+	  delay.cpp (1.17), delay_t.hpp (1.10, VERSION_2_5_10,
+	  VERSION_2_5_8, VERSION_2_5_6, VERSION_2_5_5, VERSION_2_5_4,
+	  VERSION_2_5_1, VERSION_2_5_0), efilter.cpp (1.13), efilter_t.hpp
+	  (1.7), scomp_t.hpp (1.15): no message Committed on the Free
+	  edition of March Hare Software CVSNT Server.	Upgrade to CVS
+	  Suite for more features and support: http://march-hare.com/cvsnt/
+
+2010-02-26  tkamogashira
+
+	* freeverb/slot.cpp (1.3): no message Committed on the Free edition
+	  of March Hare Software CVSNT Server.	Upgrade to CVS Suite for
+	  more features and support: http://march-hare.com/cvsnt/
+
+2010-02-26  tkamogashira
+
+	* freeverb/frag.cpp (1.34): no message Committed on the Free
+	  edition of March Hare Software CVSNT Server.	Upgrade to CVS
+	  Suite for more features and support: http://march-hare.com/cvsnt/
+
+2010-02-25  tkamogashira
+
+	* freeverb/: frag.cpp (1.33), frag.hpp (1.19), frag_t.hpp (1.13),
+	  slot.cpp (1.2), slot.hpp (1.2, VERSION_2_5_12, VERSION_2_5_10,
+	  VERSION_2_5_8, VERSION_2_5_6, VERSION_2_5_5, VERSION_2_5_4,
+	  VERSION_2_5_1, VERSION_2_5_0), slot_t.hpp (1.2), utils.hpp (1.9):
+
+
+	  Committed on the Free edition of March Hare Software CVSNT
+	  Server.  Upgrade to CVS Suite for more features and support:
+	  http://march-hare.com/cvsnt/
+
+2010-02-25  tkamogashira
+
+	* freeverb/: Makefile.am (1.25), frag.hpp (1.18), slot.cpp (1.1),
+	  slot.hpp (1.1), slot_t.hpp (1.1), src.hpp (1.18), src.make (1.9),
+	  utils.hpp (1.8): no message Committed on the Free edition of
+	  March Hare Software CVSNT Server.  Upgrade to CVS Suite for more
+	  features and support: http://march-hare.com/cvsnt/
+
+2010-02-25  tkamogashira
+
+	* freeverb/: rms.cpp (1.12), rms_t.hpp (1.8), scomp.cpp (1.21),
+	  scomp_t.hpp (1.14), slimit.cpp (1.14), slimit_t.hpp (1.12),
+	  utils_t.hpp (1.4): inline updates
+
+	  Committed on the Free edition of March Hare Software CVSNT
+	  Server.  Upgrade to CVS Suite for more features and support:
+	  http://march-hare.com/cvsnt/
+
+2010-02-25  tkamogashira
+
+	* AUTHORS (1.4, VERSION_2_5_5, VERSION_2_5_4, VERSION_2_5_1,
+	  VERSION_2_5_0), configure.in (1.79), config/config.guess (1.6,
+	  VERSION_2_5_0), config/config.sub (1.6, VERSION_2_5_0),
+	  freeverb/allpass.cpp (1.17), freeverb/allpass.hpp (1.13),
+	  freeverb/allpass_t.hpp (1.8), freeverb/blockDelay.cpp (1.19),
+	  freeverb/blockDelay.hpp (1.13), freeverb/blockDelay_t.hpp (1.10,
+	  VERSION_3_0_0, VERSION_2_6_6, VERSION_2_6_4, VERSION_2_6_0,
+	  VERSION_2_5_22, VERSION_2_5_21, VERSION_2_5_19, VERSION_2_5_18,
+	  VERSION_2_5_17, VERSION_2_5_15, VERSION_2_5_14_1, VERSION_2_5_14,
+	  VERSION_2_5_13, VERSION_2_5_12, VERSION_2_5_10, VERSION_2_5_8,
+	  VERSION_2_5_6, VERSION_2_5_5, VERSION_2_5_4, VERSION_2_5_1,
+	  VERSION_2_5_0), freeverb/comb.cpp (1.17), freeverb/comb.hpp
+	  (1.14), freeverb/comb_t.hpp (1.8), freeverb/compmodel.cpp (1.10),
+	  freeverb/compmodel.hpp (1.9), freeverb/compmodel_t.hpp (1.12,
+	  VERSION_2_5_22, VERSION_2_5_21, VERSION_2_5_19, VERSION_2_5_18,
+	  VERSION_2_5_17, VERSION_2_5_15, VERSION_2_5_14_1, VERSION_2_5_14,
+	  VERSION_2_5_13, VERSION_2_5_12, VERSION_2_5_10, VERSION_2_5_8,
+	  VERSION_2_5_6, VERSION_2_5_5, VERSION_2_5_4, VERSION_2_5_1,
+	  VERSION_2_5_0), freeverb/delay.cpp (1.16), freeverb/delay.hpp
+	  (1.15), freeverb/delay_t.hpp (1.9), freeverb/efilter.cpp (1.12),
+	  freeverb/efilter.hpp (1.13), freeverb/efilter_t.hpp (1.6),
+	  freeverb/fir3bandsplit.cpp (1.18), freeverb/fir3bandsplit.hpp
+	  (1.12), freeverb/fir3bandsplit_t.hpp (1.10, VERSION_2_5_19,
+	  VERSION_2_5_18, VERSION_2_5_17, VERSION_2_5_15, VERSION_2_5_14_1,
+	  VERSION_2_5_14, VERSION_2_5_13, VERSION_2_5_12, VERSION_2_5_10,
+	  VERSION_2_5_8, VERSION_2_5_6, VERSION_2_5_5, VERSION_2_5_4,
+	  VERSION_2_5_1, VERSION_2_5_0), freeverb/firfilter.cpp (1.5),
+	  freeverb/firfilter.hpp (1.8), freeverb/firfilter_t.hpp (1.2,
+	  VERSION_2_5_19, VERSION_2_5_18, VERSION_2_5_17, VERSION_2_5_15,
+	  VERSION_2_5_14_1, VERSION_2_5_14, VERSION_2_5_13, VERSION_2_5_12,
+	  VERSION_2_5_10, VERSION_2_5_8, VERSION_2_5_6, VERSION_2_5_5,
+	  VERSION_2_5_4, VERSION_2_5_1, VERSION_2_5_0),
+	  freeverb/firwindow.cpp (1.8), freeverb/firwindow.hpp (1.9),
+	  freeverb/firwindow_t.hpp (1.2, VERSION_2_5_19, VERSION_2_5_18,
+	  VERSION_2_5_17, VERSION_2_5_15, VERSION_2_5_14_1, VERSION_2_5_14,
+	  VERSION_2_5_13, VERSION_2_5_12, VERSION_2_5_10, VERSION_2_5_8,
+	  VERSION_2_5_6, VERSION_2_5_5, VERSION_2_5_4, VERSION_2_5_1,
+	  VERSION_2_5_0), freeverb/frag.cpp (1.32), freeverb/frag.hpp
+	  (1.17), freeverb/frag_t.hpp (1.12), freeverb/fv3_defs.h (1.5),
+	  freeverb/irbase.hpp (1.4), freeverb/irbase_t.hpp (1.4),
+	  freeverb/irmodel.cpp (1.18), freeverb/irmodel.hpp (1.16),
+	  freeverb/irmodel2.cpp (1.52), freeverb/irmodel2.hpp (1.29),
+	  freeverb/irmodel2_t.hpp (1.15), freeverb/irmodel3.cpp (1.27),
+	  freeverb/irmodel3.hpp (1.9), freeverb/irmodel3_t.hpp (1.17),
+	  freeverb/irmodel_t.hpp (1.12), freeverb/irmodels.cpp (1.7),
+	  freeverb/irmodels.hpp (1.8), freeverb/irmodels_t.hpp (1.6),
+	  freeverb/limitmodel.cpp (1.11), freeverb/limitmodel.hpp (1.7),
+	  freeverb/limitmodel_t.hpp (1.7, VERSION_2_5_19, VERSION_2_5_18,
+	  VERSION_2_5_17, VERSION_2_5_15, VERSION_2_5_14_1, VERSION_2_5_14,
+	  VERSION_2_5_13, VERSION_2_5_12, VERSION_2_5_10, VERSION_2_5_8,
+	  VERSION_2_5_6, VERSION_2_5_5, VERSION_2_5_4, VERSION_2_5_1,
+	  VERSION_2_5_0), freeverb/nrev.cpp (1.32), freeverb/nrev.hpp
+	  (1.25), freeverb/nrev_t.hpp (1.12, VERSION_2_5_6, VERSION_2_5_5,
+	  VERSION_2_5_4, VERSION_2_5_1, VERSION_2_5_0),
+	  freeverb/revmodel.cpp (1.21), freeverb/revmodel.hpp (1.17),
+	  freeverb/revmodel_t.hpp (1.9, VERSION_2_5_6, VERSION_2_5_5,
+	  VERSION_2_5_4, VERSION_2_5_1, VERSION_2_5_0), freeverb/rms.cpp
+	  (1.11), freeverb/rms.hpp (1.9), freeverb/rms_t.hpp (1.7),
+	  freeverb/scomp.cpp (1.20), freeverb/scomp.hpp (1.10),
+	  freeverb/scomp_t.hpp (1.13), freeverb/slimit.cpp (1.13),
+	  freeverb/slimit.hpp (1.9), freeverb/slimit_t.hpp (1.11),
+	  freeverb/src.cpp (1.20), freeverb/src.hpp (1.17),
+	  freeverb/src.make (1.8), freeverb/src_t.hpp (1.8, VERSION_2_5_19,
+	  VERSION_2_5_18, VERSION_2_5_17, VERSION_2_5_15, VERSION_2_5_14_1,
+	  VERSION_2_5_14, VERSION_2_5_13, VERSION_2_5_12, VERSION_2_5_10,
+	  VERSION_2_5_8, VERSION_2_5_6, VERSION_2_5_5, VERSION_2_5_4,
+	  VERSION_2_5_1, VERSION_2_5_0), freeverb/stenh.cpp (1.11),
+	  freeverb/stenh.hpp (1.8), freeverb/stenh_t.hpp (1.11,
+	  VERSION_2_5_22, VERSION_2_5_21, VERSION_2_5_19, VERSION_2_5_18,
+	  VERSION_2_5_17, VERSION_2_5_15, VERSION_2_5_14_1, VERSION_2_5_14,
+	  VERSION_2_5_13, VERSION_2_5_12, VERSION_2_5_10, VERSION_2_5_8,
+	  VERSION_2_5_6, VERSION_2_5_5, VERSION_2_5_4, VERSION_2_5_1,
+	  VERSION_2_5_0), freeverb/tuning.h (1.6), freeverb/utils.cpp
+	  (1.6), freeverb/utils.hpp (1.7), freeverb/utils_t.hpp (1.3),
+	  samples/CArg.cpp (1.4, VERSION_3_0_0, VERSION_2_6_6,
+	  VERSION_2_6_4, VERSION_2_6_0, VERSION_2_5_22, VERSION_2_5_21,
+	  VERSION_2_5_19, VERSION_2_5_18, VERSION_2_5_17, VERSION_2_5_15,
+	  VERSION_2_5_14_1, VERSION_2_5_14, VERSION_2_5_13, VERSION_2_5_12,
+	  VERSION_2_5_10, VERSION_2_5_8, VERSION_2_5_6, VERSION_2_5_5,
+	  VERSION_2_5_4, VERSION_2_5_1, VERSION_2_5_0),
+	  samples/benchmark3.cpp (1.10, VERSION_2_5_0),
+	  samples/impulser.cpp (1.13, VERSION_2_5_0),
+	  samples/impulser_jack.cpp (1.11, VERSION_2_5_0),
+	  samples/rateconv.cpp (1.21, VERSION_2_5_0),
+	  samples/IR/LargeCave.wav (1.2, VERSION_2_5_1, VERSION_2_5_0),
+	  samples/IR/iR_cathedral.wav (1.2, VERSION_2_5_1, VERSION_2_5_0):
+	  2.4.0rc2 updates Committed on the Free edition of March Hare
+	  Software CVSNT Server.  Upgrade to CVS Suite for more features
+	  and support: http://march-hare.com/cvsnt/
+
+2009-03-24  tkamogashira
+
+	* freeverb/efilter.cpp (1.11): [no log message]
+
+2009-03-24  tkamogashira
+
+	* freeverb/: allpass.cpp (1.16), allpass_t.hpp (1.7),
+	  blockDelay.cpp (1.18), blockDelay_t.hpp (1.9), comb.cpp (1.16),
+	  comb_t.hpp (1.7), compmodel_t.hpp (1.11), delay.cpp (1.15),
+	  delay_t.hpp (1.8), efilter.cpp (1.10), efilter.hpp (1.12),
+	  efilter_t.hpp (1.5), fir3bandsplit_t.hpp (1.9), frag_t.hpp
+	  (1.11), irbase_t.hpp (1.3), irmodel2_t.hpp (1.14), irmodel3_t.hpp
+	  (1.16), irmodel_t.hpp (1.11), irmodels_t.hpp (1.5),
+	  limitmodel_t.hpp (1.6), nrev.cpp (1.31), nrev_t.hpp (1.11),
+	  revmodel.cpp (1.20), revmodel_t.hpp (1.8), rms_t.hpp (1.6),
+	  scomp_t.hpp (1.12), slimit_t.hpp (1.10), src_t.hpp (1.7),
+	  stenh.cpp (1.10), stenh_t.hpp (1.10): OnePole/OneZero Critical
+	  Bugs were fixed.
+
+2009-03-23  tkamogashira
+
+	* freeverb/: stenh.cpp (1.9), stenh_t.hpp (1.9): Stereo Enhancer
+	  fix.
+
+2009-03-22  tkamogashira
+
+	* freeverb/: efilter.cpp (1.9), fv3_defs.h (1.4), nrev.cpp (1.30),
+	  nrev.hpp (1.24), nrev_t.hpp (1.10), revmodel.cpp (1.19),
+	  revmodel_t.hpp (1.7), stenh.cpp (1.8), stenh_t.hpp (1.8): [no log
+	  message]
+
+2009-03-22  tkamogashira
+
+	* freeverb/: stenh.cpp (1.7), stenh_t.hpp (1.7): [no log message]
+
+2009-03-21  tkamogashira
+
+	* freeverb/: stenh.cpp (1.6), stenh_t.hpp (1.6): StereoEnhancer
+	  Parameters update.
+
+2009-03-12  tkamogashira
+
+	* freeverb/: compmodel.cpp (1.9), irmodel2.cpp (1.51), irmodel3.cpp
+	  (1.26), limitmodel.cpp (1.10) (utags: VERSION_2_3_1): [no log
+	  message]
+
+2009-03-07  tkamogashira
+
+	* libsamplerate2/: common_c.h (1.5), samplerate.c (1.6),
+	  samplerate_common.c (1.7), src_linear.c (1.5), src_sinc.c (1.6),
+	  src_zoh.c (1.6) (utags: VERSION_2_3_1, VERSION_2_5_0,
+	  VERSION_2_5_1, VERSION_2_5_10, VERSION_2_5_12, VERSION_2_5_13,
+	  VERSION_2_5_14, VERSION_2_5_14_1, VERSION_2_5_15, VERSION_2_5_17,
+	  VERSION_2_5_18, VERSION_2_5_19, VERSION_2_5_21, VERSION_2_5_22,
+	  VERSION_2_5_4, VERSION_2_5_5, VERSION_2_5_6, VERSION_2_5_8,
+	  VERSION_2_6_0, VERSION_2_6_4, VERSION_2_6_6, VERSION_3_0_0):
+	  libsamplerate-0.1.7 was merged.
+
+2009-03-03  tkamogashira
+
+	* configure.in (1.78, VERSION_2_3_1), libsamplerate2/samplerate.c
+	  (1.5), libsamplerate2/samplerate_common.c (1.6),
+	  libsamplerate2/src_linear.c (1.4), libsamplerate2/src_sinc.c
+	  (1.5), libsamplerate2/src_zoh.c (1.5): LRINT warning fix.
+
+2008-10-29  tkamogashira
+
+	* configure.in (1.77), audacious/Makefile.am (1.17, VERSION_2_5_0,
+	  VERSION_2_3_1), freeverb/nrev.cpp (1.29, VERSION_2_3_1),
+	  freeverb/nrev_t.hpp (1.9, VERSION_2_3_1), freeverb/src.cpp (1.19,
+	  VERSION_2_3_1): 4ch Rear codes were added.
+
+2008-09-24  tkamogashira
+
+	* configure.in (1.76), freeverb/frag.cpp (1.31, VERSION_2_3_1)
+	  (utags: VERSION_2_3_0): [no log message]
+
+2008-09-19  tkamogashira
+
+	* freeverb/: src.cpp (1.18), src_t.hpp (1.6, VERSION_2_3_1) (utags:
+	  VERSION_2_3_0): ZOH updates.
+
+2008-09-18  tkamogashira
+
+	* configure.in (1.75), freeverb/allpass.hpp (1.12, VERSION_2_3_1,
+	  VERSION_2_3_0), freeverb/comb.hpp (1.13, VERSION_2_3_1,
+	  VERSION_2_3_0), freeverb/compmodel.hpp (1.8, VERSION_2_3_1,
+	  VERSION_2_3_0), freeverb/delay.hpp (1.14, VERSION_2_3_1,
+	  VERSION_2_3_0), freeverb/efilter.cpp (1.8, VERSION_2_3_1,
+	  VERSION_2_3_0), freeverb/efilter.hpp (1.11, VERSION_2_3_1,
+	  VERSION_2_3_0), freeverb/fir3bandsplit.hpp (1.11, VERSION_2_3_1,
+	  VERSION_2_3_0), freeverb/firfilter.hpp (1.7, VERSION_2_3_1,
+	  VERSION_2_3_0), freeverb/firwindow.hpp (1.8, VERSION_2_3_1,
+	  VERSION_2_3_0), freeverb/frag.hpp (1.16, VERSION_2_3_1,
+	  VERSION_2_3_0), freeverb/irmodel.hpp (1.15, VERSION_2_3_1,
+	  VERSION_2_3_0), freeverb/irmodels.hpp (1.7, VERSION_2_3_1,
+	  VERSION_2_3_0), freeverb/limitmodel.hpp (1.6, VERSION_2_3_1,
+	  VERSION_2_3_0), freeverb/nrev.hpp (1.23, VERSION_2_3_1,
+	  VERSION_2_3_0), freeverb/revmodel.hpp (1.16, VERSION_2_3_1,
+	  VERSION_2_3_0), freeverb/rms.hpp (1.8, VERSION_2_3_1,
+	  VERSION_2_3_0), freeverb/scomp.hpp (1.9, VERSION_2_3_1,
+	  VERSION_2_3_0), freeverb/slimit.hpp (1.8, VERSION_2_3_1,
+	  VERSION_2_3_0), freeverb/src.hpp (1.16, VERSION_2_3_1,
+	  VERSION_2_3_0), freeverb/stenh.hpp (1.7, VERSION_2_3_1,
+	  VERSION_2_3_0), libsamplerate2/Makefile.am (1.4, VERSION_3_0_0,
+	  VERSION_2_6_6, VERSION_2_6_4, VERSION_2_6_0, VERSION_2_5_22,
+	  VERSION_2_5_21, VERSION_2_5_19, VERSION_2_5_18, VERSION_2_5_17,
+	  VERSION_2_5_15, VERSION_2_5_14_1, VERSION_2_5_14, VERSION_2_5_13,
+	  VERSION_2_5_12, VERSION_2_5_10, VERSION_2_5_8, VERSION_2_5_6,
+	  VERSION_2_5_5, VERSION_2_5_4, VERSION_2_5_1, VERSION_2_5_0,
+	  VERSION_2_3_1, VERSION_2_3_0), libsamplerate2/common.h (1.4,
+	  VERSION_3_0_0, VERSION_2_6_6, VERSION_2_6_4, VERSION_2_6_0,
+	  VERSION_2_5_22, VERSION_2_5_21, VERSION_2_5_19, VERSION_2_5_18,
+	  VERSION_2_5_17, VERSION_2_5_15, VERSION_2_5_14_1, VERSION_2_5_14,
+	  VERSION_2_5_13, VERSION_2_5_12, VERSION_2_5_10, VERSION_2_5_8,
+	  VERSION_2_5_6, VERSION_2_5_5, VERSION_2_5_4, VERSION_2_5_1,
+	  VERSION_2_5_0, VERSION_2_3_1, VERSION_2_3_0),
+	  libsamplerate2/common_c.h (1.4, VERSION_2_3_0),
+	  libsamplerate2/fastest_coeffs.h (1.3, VERSION_3_0_0,
+	  VERSION_2_6_6, VERSION_2_6_4, VERSION_2_6_0, VERSION_2_5_22,
+	  VERSION_2_5_21, VERSION_2_5_19, VERSION_2_5_18, VERSION_2_5_17,
+	  VERSION_2_5_15, VERSION_2_5_14_1, VERSION_2_5_14, VERSION_2_5_13,
+	  VERSION_2_5_12, VERSION_2_5_10, VERSION_2_5_8, VERSION_2_5_6,
+	  VERSION_2_5_5, VERSION_2_5_4, VERSION_2_5_1, VERSION_2_5_0,
+	  VERSION_2_3_1, VERSION_2_3_0), libsamplerate2/high_qual_coeffs.h
+	  (1.3, VERSION_3_0_0, VERSION_2_6_6, VERSION_2_6_4, VERSION_2_6_0,
+	  VERSION_2_5_22, VERSION_2_5_21, VERSION_2_5_19, VERSION_2_5_18,
+	  VERSION_2_5_17, VERSION_2_5_15, VERSION_2_5_14_1, VERSION_2_5_14,
+	  VERSION_2_5_13, VERSION_2_5_12, VERSION_2_5_10, VERSION_2_5_8,
+	  VERSION_2_5_6, VERSION_2_5_5, VERSION_2_5_4, VERSION_2_5_1,
+	  VERSION_2_5_0, VERSION_2_3_1, VERSION_2_3_0),
+	  libsamplerate2/mid_qual_coeffs.h (1.3, VERSION_3_0_0,
+	  VERSION_2_6_6, VERSION_2_6_4, VERSION_2_6_0, VERSION_2_5_22,
+	  VERSION_2_5_21, VERSION_2_5_19, VERSION_2_5_18, VERSION_2_5_17,
+	  VERSION_2_5_15, VERSION_2_5_14_1, VERSION_2_5_14, VERSION_2_5_13,
+	  VERSION_2_5_12, VERSION_2_5_10, VERSION_2_5_8, VERSION_2_5_6,
+	  VERSION_2_5_5, VERSION_2_5_4, VERSION_2_5_1, VERSION_2_5_0,
+	  VERSION_2_3_1, VERSION_2_3_0), libsamplerate2/samplerate.c (1.4,
+	  VERSION_2_3_0), libsamplerate2/samplerate2.h (1.2, VERSION_3_0_0,
+	  VERSION_2_6_6, VERSION_2_6_4, VERSION_2_6_0, VERSION_2_5_22,
+	  VERSION_2_5_21, VERSION_2_5_19, VERSION_2_5_18, VERSION_2_5_17,
+	  VERSION_2_5_15, VERSION_2_5_14_1, VERSION_2_5_14, VERSION_2_5_13,
+	  VERSION_2_5_12, VERSION_2_5_10, VERSION_2_5_8, VERSION_2_5_6,
+	  VERSION_2_5_5, VERSION_2_5_4, VERSION_2_5_1, VERSION_2_5_0,
+	  VERSION_2_3_1, VERSION_2_3_0),
+	  libsamplerate2/samplerate2_common.h (1.4, VERSION_3_0_0,
+	  VERSION_2_6_6, VERSION_2_6_4, VERSION_2_6_0, VERSION_2_5_22,
+	  VERSION_2_5_21, VERSION_2_5_19, VERSION_2_5_18, VERSION_2_5_17,
+	  VERSION_2_5_15, VERSION_2_5_14_1, VERSION_2_5_14, VERSION_2_5_13,
+	  VERSION_2_5_12, VERSION_2_5_10, VERSION_2_5_8, VERSION_2_5_6,
+	  VERSION_2_5_5, VERSION_2_5_4, VERSION_2_5_1, VERSION_2_5_0,
+	  VERSION_2_3_1, VERSION_2_3_0), libsamplerate2/samplerate_common.c
+	  (1.5, VERSION_2_3_0), libsamplerate2/slow_high_qual_coeffs.h
+	  (1.1, VERSION_3_0_0, VERSION_2_6_6, VERSION_2_6_4, VERSION_2_6_0,
+	  VERSION_2_5_22, VERSION_2_5_21, VERSION_2_5_19, VERSION_2_5_18,
+	  VERSION_2_5_17, VERSION_2_5_15, VERSION_2_5_14_1, VERSION_2_5_14,
+	  VERSION_2_5_13, VERSION_2_5_12, VERSION_2_5_10, VERSION_2_5_8,
+	  VERSION_2_5_6, VERSION_2_5_5, VERSION_2_5_4, VERSION_2_5_1,
+	  VERSION_2_5_0, VERSION_2_3_1, VERSION_2_3_0),
+	  libsamplerate2/slow_mid_qual_coeffs.h (1.1, VERSION_3_0_0,
+	  VERSION_2_6_6, VERSION_2_6_4, VERSION_2_6_0, VERSION_2_5_22,
+	  VERSION_2_5_21, VERSION_2_5_19, VERSION_2_5_18, VERSION_2_5_17,
+	  VERSION_2_5_15, VERSION_2_5_14_1, VERSION_2_5_14, VERSION_2_5_13,
+	  VERSION_2_5_12, VERSION_2_5_10, VERSION_2_5_8, VERSION_2_5_6,
+	  VERSION_2_5_5, VERSION_2_5_4, VERSION_2_5_1, VERSION_2_5_0,
+	  VERSION_2_3_1, VERSION_2_3_0), libsamplerate2/src_common.c (1.4,
+	  VERSION_3_0_0, VERSION_2_6_6, VERSION_2_6_4, VERSION_2_6_0,
+	  VERSION_2_5_22, VERSION_2_5_21, VERSION_2_5_19, VERSION_2_5_18,
+	  VERSION_2_5_17, VERSION_2_5_15, VERSION_2_5_14_1, VERSION_2_5_14,
+	  VERSION_2_5_13, VERSION_2_5_12, VERSION_2_5_10, VERSION_2_5_8,
+	  VERSION_2_5_6, VERSION_2_5_5, VERSION_2_5_4, VERSION_2_5_1,
+	  VERSION_2_5_0, VERSION_2_3_1, VERSION_2_3_0),
+	  libsamplerate2/src_sinc.c (1.4, VERSION_2_3_0),
+	  libsamplerate2/src_zoh.c (1.4, VERSION_2_3_0): UNDENORMAL fix
+
+2008-09-18  tkamogashira
+
+	* freeverb/nrev.cpp (1.28, VERSION_2_3_0), freeverb/nrev.hpp
+	  (1.22), freeverb/src.cpp (1.17), libsamplerate2/common.h (1.3),
+	  libsamplerate2/common_c.h (1.3), libsamplerate2/fastest_coeffs.h
+	  (1.2), libsamplerate2/high_qual_coeffs.h (1.2),
+	  libsamplerate2/mid_qual_coeffs.h (1.2),
+	  libsamplerate2/samplerate.c (1.3),
+	  libsamplerate2/samplerate2_common.h (1.3),
+	  libsamplerate2/samplerate2_t.h (1.3, VERSION_3_0_0,
+	  VERSION_2_6_6, VERSION_2_6_4, VERSION_2_6_0, VERSION_2_5_22,
+	  VERSION_2_5_21, VERSION_2_5_19, VERSION_2_5_18, VERSION_2_5_17,
+	  VERSION_2_5_15, VERSION_2_5_14_1, VERSION_2_5_14, VERSION_2_5_13,
+	  VERSION_2_5_12, VERSION_2_5_10, VERSION_2_5_8, VERSION_2_5_6,
+	  VERSION_2_5_5, VERSION_2_5_4, VERSION_2_5_1, VERSION_2_5_0,
+	  VERSION_2_3_1, VERSION_2_3_0), libsamplerate2/samplerate_common.c
+	  (1.4), libsamplerate2/src_common.c (1.3),
+	  libsamplerate2/src_linear.c (1.3, VERSION_2_3_0),
+	  libsamplerate2/src_sinc.c (1.3), libsamplerate2/src_zoh.c (1.3):
+	  libsamplerate-0.1.4 merge
+
+2008-09-16  tkamogashira
+
+	* README (1.22, VERSION_2_5_18, VERSION_2_5_17, VERSION_2_5_15,
+	  VERSION_2_5_14_1, VERSION_2_5_14, VERSION_2_5_13, VERSION_2_5_12,
+	  VERSION_2_5_10, VERSION_2_5_8, VERSION_2_5_6, VERSION_2_5_5,
+	  VERSION_2_5_4, VERSION_2_5_1, VERSION_2_5_0, VERSION_2_3_1,
+	  VERSION_2_3_0), configure.in (1.74), freeverb/efilter.cpp (1.7),
+	  freeverb/efilter_t.hpp (1.4, VERSION_2_3_1, VERSION_2_3_0),
+	  freeverb/fv3_type_float.h (1.5, VERSION_2_3_1, VERSION_2_3_0),
+	  freeverb/irmodel.cpp (1.17, VERSION_2_3_1, VERSION_2_3_0),
+	  freeverb/irmodel2.cpp (1.50, VERSION_2_3_0),
+	  freeverb/irmodel3.cpp (1.25, VERSION_2_3_0): UNDENORMAL fix.
+
+2008-09-14  tkamogashira
+
+	* freeverb/: fv3_type_float.h (1.4), nrev.cpp (1.27), nrev_t.hpp
+	  (1.8, VERSION_2_3_0), src.cpp (1.16): Impulser2 plugin uninit
+	  fix.
+
+2008-09-14  tkamogashira
+
+	* configure.in (1.73), freeverb/allpass.cpp (1.15, VERSION_2_3_1,
+	  VERSION_2_3_0), freeverb/comb.cpp (1.15, VERSION_2_3_1,
+	  VERSION_2_3_0), freeverb/frag.cpp (1.30),
+	  freeverb/fv3_type_float.h (1.3), freeverb/irmodel2.cpp (1.49),
+	  freeverb/irmodel3.cpp (1.24), freeverb/nrev.cpp (1.26),
+	  freeverb/revmodel.cpp (1.18, VERSION_2_3_1, VERSION_2_3_0),
+	  freeverb/rms.cpp (1.10, VERSION_2_3_1, VERSION_2_3_0),
+	  freeverb/scomp.cpp (1.19, VERSION_2_3_1, VERSION_2_3_0),
+	  freeverb/slimit.cpp (1.12, VERSION_2_3_1, VERSION_2_3_0),
+	  freeverb/src.cpp (1.15), freeverb/src.hpp (1.15),
+	  freeverb/stenh.cpp (1.5, VERSION_2_3_1, VERSION_2_3_0),
+	  libsamplerate2/samplerate_common.c (1.3): Denormal fix.
+
+2008-08-09  tkamogashira
+
+	* README (1.21), freeverb/blockDelay.cpp (1.17, VERSION_2_3_1,
+	  VERSION_2_3_0), freeverb/fir3bandsplit.cpp (1.17, VERSION_2_3_1,
+	  VERSION_2_3_0), freeverb/firfilter.cpp (1.4, VERSION_2_3_1,
+	  VERSION_2_3_0), freeverb/firwindow.cpp (1.7, VERSION_2_3_1,
+	  VERSION_2_3_0), freeverb/irmodel.cpp (1.16),
+	  freeverb/irmodel3.cpp (1.23), freeverb/rms.cpp (1.9),
+	  freeverb/rms.hpp (1.7), freeverb/scomp.cpp (1.18),
+	  freeverb/scomp.hpp (1.8): std:: fix.
+
+2008-08-06  tkamogashira
+
+	* freeverb/blockDelay.cpp (1.16): SegFault on cleanup if not
+	  init().
+
+2008-08-04  tkamogashira
+
+	* freeverb/frag.cpp (1.29): [no log message]
+
+2008-08-03  tkamogashira
+
+	* configure.in (1.72): Segmentation Fault on cleanup (BMP) fix.
+	  (static)
+
+2008-08-02  tkamogashira
+
+	* configure.in (1.71), audacious/Makefile.am (1.16, VERSION_2_3_0):
+	  self init/cleanup for plugins.
+
+2008-08-01  tkamogashira
+
+	* README (1.20), configure.in (1.70), freeverb/allpass.cpp (1.14),
+	  freeverb/comb.cpp (1.14), freeverb/firwindow.cpp (1.6),
+	  freeverb/fv3_type_float.h (1.2), freeverb/rms.cpp (1.8),
+	  freeverb/scomp.cpp (1.17), freeverb/slimit.cpp (1.11): denormal
+	  bugs fix.
+
+2008-07-29  tkamogashira
+
+	* Makefile.am (1.9, VERSION_2_3_1, VERSION_2_3_0), README (1.19):
+	  [no log message]
+
+2008-07-29  tkamogashira
+
+	* patch/bmp-0.9.7.1-effect-lock.patch (1.1, VERSION_2_6_6,
+	  VERSION_2_6_4, VERSION_2_6_0, VERSION_2_5_22, VERSION_2_5_21,
+	  VERSION_2_5_19, VERSION_2_5_18, VERSION_2_5_17, VERSION_2_5_15,
+	  VERSION_2_5_14_1, VERSION_2_5_14, VERSION_2_5_13, VERSION_2_5_12,
+	  VERSION_2_5_10, VERSION_2_5_8, VERSION_2_5_6, VERSION_2_5_5,
+	  VERSION_2_5_4, VERSION_2_5_1, VERSION_2_5_0, VERSION_2_3_1,
+	  VERSION_2_3_0): BMP effect lock patch.
+
+2008-07-20  tkamogashira
+
+	* configure.in (1.69), freeverb/irmodel3.cpp (1.22): [no log
+	  message]
+
+2008-07-17  tkamogashira
+
+	* freeverb/: allpass.cpp (1.13), allpass_t.hpp (1.6, VERSION_2_3_1,
+	  VERSION_2_3_0), blockDelay.cpp (1.15), blockDelay_t.hpp (1.8,
+	  VERSION_2_3_1, VERSION_2_3_0), comb.cpp (1.13), comb_t.hpp (1.6,
+	  VERSION_2_3_1, VERSION_2_3_0), delay.cpp (1.14, VERSION_2_3_1,
+	  VERSION_2_3_0), delay_t.hpp (1.7, VERSION_2_3_1, VERSION_2_3_0),
+	  fir3bandsplit.cpp (1.16), fir3bandsplit_t.hpp (1.8,
+	  VERSION_2_3_1, VERSION_2_3_0), frag.cpp (1.28), frag_t.hpp (1.10,
+	  VERSION_2_3_1, VERSION_2_3_0), irbase_t.hpp (1.2, VERSION_2_3_1,
+	  VERSION_2_3_0), irmodel.cpp (1.15), irmodel2.cpp (1.48),
+	  irmodel2_t.hpp (1.13, VERSION_2_3_1, VERSION_2_3_0), irmodel3.cpp
+	  (1.21), irmodel3_t.hpp (1.15, VERSION_2_3_1, VERSION_2_3_0),
+	  irmodel_t.hpp (1.10, VERSION_2_3_1, VERSION_2_3_0), irmodels.cpp
+	  (1.6, VERSION_2_3_1, VERSION_2_3_0), irmodels_t.hpp (1.4,
+	  VERSION_2_3_1, VERSION_2_3_0), nrev.cpp (1.25), nrev_t.hpp (1.7),
+	  revmodel.cpp (1.17), revmodel_t.hpp (1.6, VERSION_2_3_1,
+	  VERSION_2_3_0), rms.cpp (1.7), rms_t.hpp (1.5, VERSION_2_3_1,
+	  VERSION_2_3_0), slimit.cpp (1.10), slimit_t.hpp (1.9,
+	  VERSION_2_3_1, VERSION_2_3_0): Exceptions (std::bad_alloc) and
+	  minor bugs' fixes.
+
+2008-07-16  tkamogashira
+
+	* freeverb/: fir3bandsplit.cpp (1.15), irmodel2.cpp (1.47),
+	  irmodel3.cpp (1.20), nrev.cpp (1.24): [no log message]
+
+2008-07-08  tkamogashira
+
+	* configure.in (1.68), config/config.guess (1.5, VERSION_2_3_1,
+	  VERSION_2_3_0), config/config.sub (1.5, VERSION_2_3_1,
+	  VERSION_2_3_0), freeverb/allpass.cpp (1.12),
+	  freeverb/blockDelay.cpp (1.14), freeverb/comb.cpp (1.12),
+	  freeverb/compmodel.cpp (1.8, VERSION_2_3_0), freeverb/delay.cpp
+	  (1.13), freeverb/fir3bandsplit.cpp (1.14), freeverb/firwindow.cpp
+	  (1.5), freeverb/firwindow.hpp (1.7), freeverb/frag.cpp (1.27),
+	  freeverb/irmodel.cpp (1.14), freeverb/irmodel2.cpp (1.46),
+	  freeverb/irmodel3.cpp (1.19), freeverb/irmodels.cpp (1.5),
+	  freeverb/limitmodel.cpp (1.9, VERSION_2_3_0), freeverb/nrev.cpp
+	  (1.23), freeverb/revmodel.cpp (1.16), freeverb/rms.cpp (1.6),
+	  freeverb/scomp.cpp (1.16), freeverb/slimit.cpp (1.9),
+	  freeverb/src.cpp (1.14), freeverb/utils.cpp (1.5, VERSION_2_3_1,
+	  VERSION_2_3_0), samples/CArg.cpp (1.3, VERSION_2_3_1,
+	  VERSION_2_3_0), samples/benchmark3.cpp (1.9, VERSION_2_3_1,
+	  VERSION_2_3_0), samples/impulser.cpp (1.12, VERSION_2_3_1,
+	  VERSION_2_3_0), samples/impulser_jack.cpp (1.10, VERSION_2_3_1,
+	  VERSION_2_3_0), samples/rateconv.cpp (1.20, VERSION_2_3_1,
+	  VERSION_2_3_0): namespace std:: bugs were fixed.  rateconv
+	  44.1k->48k samples missing bugs were fixed.
+
+2008-06-29  tkamogashira
+
+	* freeverb/firwindow.cpp (1.4), samples/rateconv.cpp (1.19): finite
+	  -> isfinite
+
+2008-05-30  tkamogashira
+
+	* configure.in (1.67), samples/benchmark3.cpp (1.8) (utags:
+	  VERSION_2_2_1): audacious-1.5.1 bmp_* deletion updates
+
+2008-05-27  tkamogashira
+
+	* freeverb/allpass.cpp (1.11, VERSION_2_2_1), freeverb/allpass.hpp
+	  (1.11, VERSION_2_2_1), freeverb/blockDelay.cpp (1.13,
+	  VERSION_2_2_1), freeverb/blockDelay.hpp (1.12, VERSION_2_3_1,
+	  VERSION_2_3_0, VERSION_2_2_1), freeverb/comb.cpp (1.11,
+	  VERSION_2_2_1), freeverb/comb.hpp (1.12, VERSION_2_2_1),
+	  freeverb/compmodel.cpp (1.7, VERSION_2_2_1),
+	  freeverb/compmodel.hpp (1.7, VERSION_2_2_1), freeverb/delay.cpp
+	  (1.12, VERSION_2_2_1), freeverb/delay.hpp (1.13, VERSION_2_2_1),
+	  freeverb/efilter.cpp (1.6, VERSION_2_2_1), freeverb/efilter.hpp
+	  (1.10, VERSION_2_2_1), freeverb/fir3bandsplit.cpp (1.13,
+	  VERSION_2_2_1), freeverb/fir3bandsplit.hpp (1.10, VERSION_2_2_1),
+	  freeverb/firfilter.cpp (1.3, VERSION_2_2_1),
+	  freeverb/firfilter.hpp (1.6, VERSION_2_2_1),
+	  freeverb/firwindow.cpp (1.3, VERSION_2_2_1),
+	  freeverb/firwindow.hpp (1.6, VERSION_2_2_1), freeverb/frag.cpp
+	  (1.26, VERSION_2_2_1), freeverb/frag.hpp (1.15, VERSION_2_2_1),
+	  freeverb/fv3_defs.h (1.3, VERSION_2_3_1, VERSION_2_3_0,
+	  VERSION_2_2_1), freeverb/irmodel.hpp (1.14, VERSION_2_2_1),
+	  freeverb/irmodel2.cpp (1.45, VERSION_2_2_1),
+	  freeverb/irmodel2.hpp (1.28, VERSION_2_3_1, VERSION_2_3_0,
+	  VERSION_2_2_1), freeverb/irmodel3.cpp (1.18, VERSION_2_2_1),
+	  freeverb/irmodel3.hpp (1.8, VERSION_2_3_1, VERSION_2_3_0,
+	  VERSION_2_2_1), freeverb/irmodels.hpp (1.6, VERSION_2_2_1),
+	  freeverb/limitmodel.cpp (1.8, VERSION_2_2_1),
+	  freeverb/limitmodel.hpp (1.5, VERSION_2_2_1), freeverb/nrev.cpp
+	  (1.22, VERSION_2_2_1), freeverb/nrev.hpp (1.21, VERSION_2_2_1),
+	  freeverb/revmodel.cpp (1.15, VERSION_2_2_1),
+	  freeverb/revmodel.hpp (1.15, VERSION_2_2_1), freeverb/rms.cpp
+	  (1.5, VERSION_2_2_1), freeverb/rms.hpp (1.6, VERSION_2_2_1),
+	  freeverb/scomp.cpp (1.15, VERSION_2_2_1), freeverb/scomp.hpp
+	  (1.7, VERSION_2_2_1), freeverb/slimit.cpp (1.8, VERSION_2_2_1),
+	  freeverb/slimit.hpp (1.7, VERSION_2_2_1), freeverb/src.cpp (1.13,
+	  VERSION_2_2_1), freeverb/src.hpp (1.14, VERSION_2_2_1),
+	  freeverb/stenh.cpp (1.4, VERSION_2_2_1), freeverb/stenh.hpp (1.6,
+	  VERSION_2_2_1), freeverb/tuning.h (1.5, VERSION_2_3_1,
+	  VERSION_2_3_0, VERSION_2_2_1), freeverb/utils.cpp (1.4,
+	  VERSION_2_2_1), freeverb/utils.hpp (1.6, VERSION_2_3_1,
+	  VERSION_2_3_0, VERSION_2_2_1), samples/benchmark3.cpp (1.7),
+	  samples/impulser.cpp (1.11, VERSION_2_2_1),
+	  samples/impulser_jack.cpp (1.9, VERSION_2_2_1),
+	  samples/rateconv.cpp (1.18, VERSION_2_2_1): Copyright updates.
+
+2008-05-26  tkamogashira
+
+	* configure.in (1.66), audacious/Makefile.am (1.15, VERSION_2_2_1),
+	  samples/Makefile.am (1.39, VERSION_2_5_1, VERSION_2_5_0,
+	  VERSION_2_3_1, VERSION_2_3_0, VERSION_2_2_1),
+	  samples/impulser.cpp (1.10), samples/impulser_jack.cpp (1.8):
+	  float/double updates for --enable-plugdouble.
+
+2008-05-25  tkamogashira
+
+	* freeverb/compmodel.cpp (1.6), freeverb/frag.cpp (1.25),
+	  freeverb/limitmodel.cpp (1.7), freeverb/nrev.cpp (1.21),
+	  freeverb/revmodel.cpp (1.14), freeverb/src.cpp (1.12),
+	  samples/benchmark3.cpp (1.6), samples/impulser.cpp (1.9),
+	  samples/impulser_jack.cpp (1.7), samples/rateconv.cpp (1.17):
+	  warnings are removed.
+
+2008-05-24  tkamogashira
+
+	* audacious/Makefile.am (1.14), samples/Makefile.am (1.38): [no log
+	  message]
+
+2008-05-22  tkamogashira
+
+	* configure.in (1.65), freeverb/Makefile.am (1.24, VERSION_2_3_1,
+	  VERSION_2_3_0, VERSION_2_2_1): [no log message]
+
+2008-05-22  tkamogashira
+
+	* README (1.18, VERSION_2_2_1), configure.in (1.64): SSE/3DNow!
+	  configurations updates.
+
+2008-05-22  tkamogashira
+
+	* configure.in (1.63), freeverb3.pc.in (1.4, VERSION_2_6_6,
+	  VERSION_2_6_4, VERSION_2_6_0, VERSION_2_5_22, VERSION_2_5_21,
+	  VERSION_2_5_19, VERSION_2_5_18, VERSION_2_5_17, VERSION_2_5_15,
+	  VERSION_2_5_14_1, VERSION_2_5_14, VERSION_2_5_13, VERSION_2_5_12,
+	  VERSION_2_5_10, VERSION_2_5_8, VERSION_2_5_6, VERSION_2_5_5,
+	  VERSION_2_5_4, VERSION_2_5_1, VERSION_2_5_0, VERSION_2_3_1,
+	  VERSION_2_3_0, VERSION_2_2_1), double/Makefile.am (1.7,
+	  VERSION_2_5_21, VERSION_2_5_19, VERSION_2_5_18, VERSION_2_5_17,
+	  VERSION_2_5_15, VERSION_2_5_14_1, VERSION_2_5_14, VERSION_2_5_13,
+	  VERSION_2_5_12, VERSION_2_5_10, VERSION_2_5_8, VERSION_2_5_6,
+	  VERSION_2_5_5, VERSION_2_5_4, VERSION_2_5_1, VERSION_2_5_0,
+	  VERSION_2_3_1, VERSION_2_3_0, VERSION_2_2_1), float/Makefile.am
+	  (1.7, VERSION_2_5_21, VERSION_2_5_19, VERSION_2_5_18,
+	  VERSION_2_5_17, VERSION_2_5_15, VERSION_2_5_14_1, VERSION_2_5_14,
+	  VERSION_2_5_13, VERSION_2_5_12, VERSION_2_5_10, VERSION_2_5_8,
+	  VERSION_2_5_6, VERSION_2_5_5, VERSION_2_5_4, VERSION_2_5_1,
+	  VERSION_2_5_0, VERSION_2_3_1, VERSION_2_3_0, VERSION_2_2_1),
+	  freeverb/Makefile.am (1.23), freeverb/allpass.hpp (1.10),
+	  freeverb/blockDelay.hpp (1.11), freeverb/comb.hpp (1.11),
+	  freeverb/compmodel.hpp (1.6), freeverb/delay.hpp (1.12),
+	  freeverb/efilter.hpp (1.9), freeverb/fir3bandsplit.hpp (1.9),
+	  freeverb/firfilter.hpp (1.5), freeverb/firwindow.hpp (1.5),
+	  freeverb/frag.hpp (1.14), freeverb/irbase.hpp (1.3,
+	  VERSION_2_3_1, VERSION_2_3_0, VERSION_2_2_1),
+	  freeverb/irmodel.hpp (1.13), freeverb/irmodel2.hpp (1.27),
+	  freeverb/irmodel3.hpp (1.7), freeverb/irmodels.hpp (1.5),
+	  freeverb/limitmodel.hpp (1.4), freeverb/nrev.hpp (1.20),
+	  freeverb/revmodel.hpp (1.14), freeverb/rms.hpp (1.5),
+	  freeverb/scomp.hpp (1.6), freeverb/slimit.hpp (1.6),
+	  freeverb/src.hpp (1.13), freeverb/stenh.hpp (1.5),
+	  freeverb/utils.hpp (1.5), ldouble/Makefile.am (1.7,
+	  VERSION_2_5_21, VERSION_2_5_19, VERSION_2_5_18, VERSION_2_5_17,
+	  VERSION_2_5_15, VERSION_2_5_14_1, VERSION_2_5_14, VERSION_2_5_13,
+	  VERSION_2_5_12, VERSION_2_5_10, VERSION_2_5_8, VERSION_2_5_6,
+	  VERSION_2_5_5, VERSION_2_5_4, VERSION_2_5_1, VERSION_2_5_0,
+	  VERSION_2_3_1, VERSION_2_3_0, VERSION_2_2_1),
+	  samples/impulser.cpp (1.8), samples/impulser_jack.cpp (1.6): All
+	  precision version for fftw3 were not required any more.
+
+2008-05-07  tkamogashira
+
+	* freeverb/allpass.hpp (1.9), freeverb/blockDelay.hpp (1.10),
+	  freeverb/comb.hpp (1.10), freeverb/compmodel.hpp (1.5),
+	  freeverb/delay.hpp (1.11), freeverb/efilter.hpp (1.8),
+	  freeverb/fir3bandsplit.hpp (1.8), freeverb/firfilter.hpp (1.4),
+	  freeverb/firwindow.hpp (1.4), freeverb/frag.hpp (1.13),
+	  freeverb/irbase.hpp (1.2), freeverb/irmodel.hpp (1.12),
+	  freeverb/irmodel2.hpp (1.26), freeverb/irmodel3.hpp (1.6),
+	  freeverb/irmodels.hpp (1.4), freeverb/limitmodel.hpp (1.3),
+	  freeverb/nrev.hpp (1.19), freeverb/revmodel.hpp (1.13),
+	  freeverb/rms.hpp (1.4), freeverb/scomp.hpp (1.5),
+	  freeverb/slimit.hpp (1.5), freeverb/src.hpp (1.12),
+	  freeverb/stenh.hpp (1.4), freeverb/utils.hpp (1.4),
+	  samples/CArg.cpp (1.2, VERSION_2_2_1), samples/CArg.hpp (1.3,
+	  VERSION_3_0_0, VERSION_2_6_6, VERSION_2_6_4, VERSION_2_6_0,
+	  VERSION_2_5_22, VERSION_2_5_21, VERSION_2_5_19, VERSION_2_5_18,
+	  VERSION_2_5_17, VERSION_2_5_15, VERSION_2_5_14_1, VERSION_2_5_14,
+	  VERSION_2_5_13, VERSION_2_5_12, VERSION_2_5_10, VERSION_2_5_8,
+	  VERSION_2_5_6, VERSION_2_5_5, VERSION_2_5_4, VERSION_2_5_1,
+	  VERSION_2_5_0, VERSION_2_3_1, VERSION_2_3_0, VERSION_2_2_1),
+	  samples/benchmark3.cpp (1.5), samples/impulser.cpp (1.7),
+	  samples/impulser_jack.cpp (1.5), samples/rateconv.cpp (1.16): C++
+	  headers updates.
+
+2008-05-06  tkamogashira
+
+	* configure.in (1.62), config/config.guess (1.4, VERSION_2_2_1),
+	  config/config.sub (1.4, VERSION_2_2_1), config/glib.m4 (1.1,
+	  VERSION_3_0_0, VERSION_2_6_6, VERSION_2_6_4, VERSION_2_6_0,
+	  VERSION_2_5_22, VERSION_2_5_21, VERSION_2_5_19, VERSION_2_5_18,
+	  VERSION_2_5_17, VERSION_2_5_15, VERSION_2_5_14_1, VERSION_2_5_14,
+	  VERSION_2_5_13, VERSION_2_5_12, VERSION_2_5_10, VERSION_2_5_8,
+	  VERSION_2_5_6, VERSION_2_5_5, VERSION_2_5_4, VERSION_2_5_1,
+	  VERSION_2_5_0, VERSION_2_3_1, VERSION_2_3_0, VERSION_2_2_1),
+	  config/gtk.m4 (1.1, VERSION_3_0_0, VERSION_2_6_6, VERSION_2_6_4,
+	  VERSION_2_6_0, VERSION_2_5_22, VERSION_2_5_21, VERSION_2_5_19,
+	  VERSION_2_5_18, VERSION_2_5_17, VERSION_2_5_15, VERSION_2_5_14_1,
+	  VERSION_2_5_14, VERSION_2_5_13, VERSION_2_5_12, VERSION_2_5_10,
+	  VERSION_2_5_8, VERSION_2_5_6, VERSION_2_5_5, VERSION_2_5_4,
+	  VERSION_2_5_1, VERSION_2_5_0, VERSION_2_3_1, VERSION_2_3_0,
+	  VERSION_2_2_1), config/ltmain.sh (1.4, VERSION_2_3_1,
+	  VERSION_2_3_0, VERSION_2_2_1), config/xmms.m4 (1.1,
+	  VERSION_3_0_0, VERSION_2_6_6, VERSION_2_6_4, VERSION_2_6_0,
+	  VERSION_2_5_22, VERSION_2_5_21, VERSION_2_5_19, VERSION_2_5_18,
+	  VERSION_2_5_17, VERSION_2_5_15, VERSION_2_5_14_1, VERSION_2_5_14,
+	  VERSION_2_5_13, VERSION_2_5_12, VERSION_2_5_10, VERSION_2_5_8,
+	  VERSION_2_5_6, VERSION_2_5_5, VERSION_2_5_4, VERSION_2_5_1,
+	  VERSION_2_5_0, VERSION_2_3_1, VERSION_2_3_0, VERSION_2_2_1),
+	  freeverb/utils.cpp (1.3), freeverb/utils.hpp (1.3),
+	  freeverb/utils_t.hpp (1.2, VERSION_2_3_1, VERSION_2_3_0,
+	  VERSION_2_2_1): MXCSR for SSE updates.
+
+2008-04-29  tkamogashira
+
+	* samples/: rateconv.cpp (1.15), CArg.hpp (1.2): [no log message]
+
+2008-03-20  tkamogashira
+
+	* configure.in (1.61), freeverb/allpass.cpp (1.10),
+	  freeverb/blockDelay.cpp (1.12), freeverb/comb.cpp (1.10),
+	  freeverb/delay.cpp (1.11), freeverb/limitmodel.cpp (1.6),
+	  freeverb/limitmodel_t.hpp (1.5, VERSION_2_3_1, VERSION_2_3_0,
+	  VERSION_2_2_1), freeverb/slimit.cpp (1.7), freeverb/slimit_t.hpp
+	  (1.8, VERSION_2_2_1), samples/Makefile.am (1.37): [no log
+	  message]
+
+2008-03-03  tkamogashira
+
+	* samples/: Makefile.am (1.36, VERSION_2_2_0), benchmark3.cpp (1.4,
+	  VERSION_2_2_0), impulser.cpp (1.6, VERSION_2_2_0), speedtest.cpp
+	  (1.4[DEAD]): [no log message]
+
+2008-03-02  tkamogashira
+
+	* README (1.16), README (1.17, VERSION_2_2_0): [no log message]
+
+2008-03-02  tkamogashira
+
+	* configure.in (1.60, VERSION_2_2_0), doc/Makefile.in (1.15[DEAD]):
+	  [no log message]
+
+2008-03-01  tkamogashira
+
+	* freeverb/slimit.cpp (1.6), samples/impulser_jack.cpp (1.4)
+	  (utags: VERSION_2_2_0): [no log message]
+
+2008-03-01  tkamogashira
+
+	* freeverb/: limitmodel.cpp (1.5, VERSION_2_2_0), scomp.cpp (1.14,
+	  VERSION_2_2_0), slimit.cpp (1.5), slimit_t.hpp (1.7,
+	  VERSION_2_2_0): Lookahead update ?
+
+2008-02-28  tkamogashira
+
+	* freeverb/: compmodel.cpp (1.5, VERSION_2_2_0), limitmodel.cpp
+	  (1.4), slimit.cpp (1.4), slimit.hpp (1.4, VERSION_2_2_0),
+	  slimit_t.hpp (1.6): limiter lookahead update
+
+2008-02-27  tkamogashira
+
+	* samples/: Makefile.am (1.35), benchmark.cpp (1.9[DEAD]): [no log
+	  message]
+
+2008-02-27  tkamogashira
+
+	* samples/: Makefile.am (1.34), comp.cpp (1.5[DEAD]), fverb.cpp
+	  (1.8[DEAD]), nverb.cpp (1.15[DEAD]), src.cpp (1.5[DEAD]),
+	  testlimit.cpp (1.3[DEAD]): [no log message]
+
+2008-02-27  tkamogashira
+
+	* samples/impulser.cpp (1.5): [no log message]
+
+2008-02-27  tkamogashira
+
+	* samples/impulser_jack.cpp (1.3): [no log message]
+
+2008-02-27  tkamogashira
+
+	* samples/impulser_jack.cpp (1.2): [no log message]
+
+2008-02-27  tkamogashira
+
+	* samples/: Makefile.am (1.33), impulser.cpp (1.4),
+	  impulser_jack.cpp (1.1): Jack support
+
+2008-02-27  tkamogashira
+
+	* configure.in (1.59), doc/Makefile.in (1.14), samples/Makefile.am
+	  (1.32): [no log message]
+
+2008-02-26  tkamogashira
+
+	* samples/: Makefile.am (1.31), impulser.cpp (1.3), rateconv.cpp
+	  (1.14, VERSION_2_2_0): [no log message]
+
+2008-02-26  tkamogashira
+
+	* samples/: Makefile.am (1.29), irref.cpp (1.2[DEAD]), Makefile.am
+	  (1.30), impulser.cpp (1.2), ims.cpp (1.4[DEAD]): [no log message]
+
+2008-02-26  tkamogashira
+
+	* samples/: Makefile.am (1.28), impulse.cpp (1.5[DEAD]),
+	  impulse2.cpp (1.14[DEAD]), impulser.cpp (1.1): Impulse Response
+	  sample update
+
+2008-02-22  tkamogashira
+
+	* freeverb/: fir3bandsplit.cpp (1.12), fir3bandsplit_t.hpp (1.7,
+	  VERSION_2_2_1) (utags: VERSION_2_2_0): [no log message]
+
+2008-02-21  tkamogashira
+
+	* freeverb/: fir3bandsplit.cpp (1.11), fir3bandsplit.hpp (1.7,
+	  VERSION_2_2_0), fir3bandsplit_t.hpp (1.6), fv3_defs.h (1.2,
+	  VERSION_2_2_0), irmodel2.cpp (1.44, VERSION_2_2_0),
+	  irmodel2_t.hpp (1.12, VERSION_2_2_1, VERSION_2_2_0),
+	  irmodel3_t.hpp (1.14, VERSION_2_2_1, VERSION_2_2_0): [no log
+	  message]
+
+2008-02-21  tkamogashira
+
+	* freeverb/Makefile.am (1.22, VERSION_2_2_0),
+	  freeverb/fir3bandsplit.hpp (1.6), freeverb/irbase.hpp (1.1,
+	  VERSION_2_2_0), freeverb/irbase_t.hpp (1.1, VERSION_2_2_1,
+	  VERSION_2_2_0), freeverb/irmodel.cpp (1.13, VERSION_2_2_1,
+	  VERSION_2_2_0), freeverb/irmodel.hpp (1.11, VERSION_2_2_0),
+	  freeverb/irmodel2.cpp (1.43), freeverb/irmodel2.hpp (1.25,
+	  VERSION_2_2_0), freeverb/irmodel2_t.hpp (1.11),
+	  freeverb/irmodel3.cpp (1.17, VERSION_2_2_0),
+	  freeverb/irmodel3.hpp (1.5, VERSION_2_2_0),
+	  freeverb/irmodel3_t.hpp (1.13), freeverb/irmodel_t.hpp (1.9,
+	  VERSION_2_2_1, VERSION_2_2_0), freeverb/irmodels.hpp (1.3,
+	  VERSION_2_2_0), freeverb/irmodels_t.hpp (1.3, VERSION_2_2_1,
+	  VERSION_2_2_0), freeverb/src.make (1.7, VERSION_2_3_1,
+	  VERSION_2_3_0, VERSION_2_2_1, VERSION_2_2_0),
+	  samples/rateconv.cpp (1.13): impulse abstract class
+
+2008-02-20  tkamogashira
+
+	* freeverb/: fir3bandsplit.cpp (1.10), fir3bandsplit.hpp (1.5),
+	  irmodel.cpp (1.12), irmodel2.cpp (1.42), irmodel2_t.hpp (1.10),
+	  irmodel3.cpp (1.16), irmodel3_t.hpp (1.12), irmodel_t.hpp (1.8),
+	  irmodels.cpp (1.4, VERSION_2_2_1, VERSION_2_2_0), irmodels_t.hpp
+	  (1.2): scale factor / dB width were merged.
+
+2008-02-20  tkamogashira
+
+	* freeverb/: irmodel.cpp (1.11), irmodel_t.hpp (1.7): [no log
+	  message]
+
+2008-02-20  tkamogashira
+
+	* audacious/Makefile.am (1.13, VERSION_2_2_0), freeverb/Makefile.am
+	  (1.21), freeverb/allpass.cpp (1.9, VERSION_2_2_0),
+	  freeverb/allpass.hpp (1.8, VERSION_2_2_0),
+	  freeverb/blockDelay.cpp (1.11, VERSION_2_2_0),
+	  freeverb/blockDelay.hpp (1.9, VERSION_2_2_0), freeverb/comb.cpp
+	  (1.9, VERSION_2_2_0), freeverb/comb.hpp (1.9, VERSION_2_2_0),
+	  freeverb/compmodel.cpp (1.4), freeverb/compmodel.hpp (1.4,
+	  VERSION_2_2_0), freeverb/delay.cpp (1.10, VERSION_2_2_0),
+	  freeverb/delay.hpp (1.10, VERSION_2_2_0), freeverb/efilter.cpp
+	  (1.5, VERSION_2_2_0), freeverb/efilter.hpp (1.7, VERSION_2_2_0),
+	  freeverb/fir3bandsplit.cpp (1.9), freeverb/fir3bandsplit.hpp
+	  (1.4), freeverb/firfilter.cpp (1.2, VERSION_2_2_0),
+	  freeverb/firfilter.hpp (1.3, VERSION_2_2_0),
+	  freeverb/firwindow.cpp (1.2, VERSION_2_2_0),
+	  freeverb/firwindow.hpp (1.3, VERSION_2_2_0), freeverb/frag.cpp
+	  (1.24, VERSION_2_2_0), freeverb/frag.hpp (1.12, VERSION_2_2_0),
+	  freeverb/irmodel.cpp (1.10), freeverb/irmodel.hpp (1.10),
+	  freeverb/irmodel2.cpp (1.41), freeverb/irmodel2.hpp (1.24),
+	  freeverb/irmodel3.cpp (1.15), freeverb/irmodel3.hpp (1.4),
+	  freeverb/irmodels.cpp (1.3), freeverb/irmodels.hpp (1.2),
+	  freeverb/limitmodel.cpp (1.3), freeverb/limitmodel.hpp (1.2,
+	  VERSION_2_2_0), freeverb/nrev.cpp (1.20, VERSION_2_2_0),
+	  freeverb/nrev.hpp (1.18, VERSION_2_2_0), freeverb/revmodel.cpp
+	  (1.13, VERSION_2_2_0), freeverb/revmodel.hpp (1.12,
+	  VERSION_2_2_0), freeverb/rms.cpp (1.4, VERSION_2_2_0),
+	  freeverb/rms.hpp (1.3, VERSION_2_2_0), freeverb/scomp.cpp (1.13),
+	  freeverb/scomp.hpp (1.4, VERSION_2_2_0), freeverb/slimit.cpp
+	  (1.3), freeverb/slimit.hpp (1.3), freeverb/src.cpp (1.11,
+	  VERSION_2_2_0), freeverb/src.hpp (1.11, VERSION_2_2_0),
+	  freeverb/stenh.cpp (1.3, VERSION_2_2_0), freeverb/stenh.hpp (1.3,
+	  VERSION_2_2_0), freeverb/utils.cpp (1.2, VERSION_2_2_0),
+	  freeverb/utils.hpp (1.2, VERSION_2_2_0), samples/Makefile.am
+	  (1.27), samples/benchmark.cpp (1.8), samples/benchmark3.cpp
+	  (1.3), samples/comp.cpp (1.4), samples/fverb.cpp (1.7),
+	  samples/impulse.cpp (1.4), samples/impulse2.cpp (1.13),
+	  samples/ims.cpp (1.3), samples/nverb.cpp (1.14),
+	  samples/rateconv.cpp (1.12), samples/speedtest.cpp (1.3),
+	  samples/src.cpp (1.4), samples/testlimit.cpp (1.2): header file
+	  path updates.
+
+2008-02-20  tkamogashira
+
+	* freeverb/irmodels.cpp (1.2), samples/ims.cpp (1.2): [no log
+	  message]
+
+2008-02-19  tkamogashira
+
+	* configure.in (1.58), freeverb/Makefile.am (1.20),
+	  freeverb/allpass_t.hpp (1.5, VERSION_2_2_1, VERSION_2_2_0),
+	  freeverb/blockDelay_t.hpp (1.7, VERSION_2_2_1, VERSION_2_2_0),
+	  freeverb/comb_t.hpp (1.5, VERSION_2_2_1, VERSION_2_2_0),
+	  freeverb/compmodel_t.hpp (1.10, VERSION_2_3_1, VERSION_2_3_0,
+	  VERSION_2_2_1, VERSION_2_2_0), freeverb/delay_t.hpp (1.6,
+	  VERSION_2_2_1, VERSION_2_2_0), freeverb/efilter_t.hpp (1.3,
+	  VERSION_2_2_1, VERSION_2_2_0), freeverb/fir3bandsplit_t.hpp
+	  (1.5), freeverb/frag_t.hpp (1.9, VERSION_2_2_1, VERSION_2_2_0),
+	  freeverb/irmodel.cpp (1.9), freeverb/irmodel.hpp (1.9),
+	  freeverb/irmodel2_t.hpp (1.9), freeverb/irmodel3_t.hpp (1.11),
+	  freeverb/irmodel_t.hpp (1.6), freeverb/irmodels.cpp (1.1),
+	  freeverb/irmodels.hpp (1.1), freeverb/irmodels_t.hpp (1.1),
+	  freeverb/limitmodel_t.hpp (1.4, VERSION_2_2_0),
+	  freeverb/nrev_t.hpp (1.6, VERSION_2_2_1, VERSION_2_2_0),
+	  freeverb/revmodel_t.hpp (1.5, VERSION_2_2_1, VERSION_2_2_0),
+	  freeverb/rms_t.hpp (1.4, VERSION_2_2_1, VERSION_2_2_0),
+	  freeverb/scomp_t.hpp (1.11, VERSION_2_3_1, VERSION_2_3_0,
+	  VERSION_2_2_1, VERSION_2_2_0), freeverb/slimit_t.hpp (1.5),
+	  freeverb/src.make (1.6), freeverb/src_t.hpp (1.5, VERSION_2_2_1,
+	  VERSION_2_2_0), freeverb/stenh_t.hpp (1.5, VERSION_2_3_1,
+	  VERSION_2_3_0, VERSION_2_2_1, VERSION_2_2_0), samples/Makefile.am
+	  (1.26), samples/impulse.cpp (1.3), samples/ims.cpp (1.1): Time
+	  scale impulser
+
+2008-02-08  tkamogashira
+
+	* freeverb/scomp.cpp (1.12), freeverb/slimit_t.hpp (1.4),
+	  samples/Makefile.am (1.25), samples/benchmark3.cpp (1.2): [no log
+	  message]
+
+2007-12-31  tkamogashira
+
+	* README (1.15, VERSION_2_1_4): [no log message]
+
+2007-12-31  tkamogashira
+
+	* configure.in (1.57, VERSION_2_1_4): [no log message]
+
+2007-12-26  tkamogashira
+
+	* freeverb/: allpass.cpp (1.8), allpass.hpp (1.7), blockDelay.cpp
+	  (1.10), blockDelay.hpp (1.8), blockDelay_t.hpp (1.6), comb.cpp
+	  (1.8), comb.hpp (1.8), delay.cpp (1.9), delay.hpp (1.9),
+	  irmodel3.cpp (1.14), irmodel3_t.hpp (1.10) (utags:
+	  VERSION_2_1_4): support VST's virtual functions
+
+2007-12-25  tkamogashira
+
+	* freeverb/: irmodel3.cpp (1.13), irmodel3_t.hpp (1.9):
+	  freeFragments/unloadImpulse bugs
+
+2007-12-22  tkamogashira
+
+	* configure.in (1.56), freeverb/fir3bandsplit.cpp (1.8,
+	  VERSION_2_1_4), freeverb/slimit.cpp (1.2, VERSION_2_1_4),
+	  freeverb/slimit.hpp (1.2, VERSION_2_1_4): firsplitter init bugs
+
+2007-12-22  tkamogashira
+
+	* freeverb/irmodel2.cpp (1.40, VERSION_2_1_4),
+	  freeverb/irmodel3.cpp (1.12), samples/CArg.cpp (1.1,
+	  VERSION_2_2_0, VERSION_2_1_4), samples/CArg.hpp (1.1,
+	  VERSION_2_2_0, VERSION_2_1_4): partial GCC 2.95 support
+
+2007-12-22  tkamogashira
+
+	* configure.in (1.55), freeverb/frag_t.hpp (1.8, VERSION_2_1_4):
+	  attribute noinline
+
+2007-12-18  tkamogashira
+
+	* freeverb/: fir3bandsplit.cpp (1.7), fir3bandsplit.hpp (1.3,
+	  VERSION_2_1_4), fir3bandsplit_t.hpp (1.4, VERSION_2_1_4),
+	  irmodel3.cpp (1.11): bpf -> all - lpf - hpf optimization
+
+2007-12-09  tkamogashira
+
+	* configure.in (1.54), freeverb/fir3bandsplit.cpp (1.6),
+	  freeverb/frag.cpp (1.23, VERSION_2_1_4), freeverb/limitmodel.cpp
+	  (1.2, VERSION_2_1_4): frag's critical FPU bug
+
+2007-12-09  tkamogashira
+
+	* freeverb/: allpass_t.hpp (1.4, VERSION_2_1_4), blockDelay_t.hpp
+	  (1.5), comb_t.hpp (1.4, VERSION_2_1_4), compmodel_t.hpp (1.9,
+	  VERSION_2_1_4), delay_t.hpp (1.5, VERSION_2_1_4),
+	  fir3bandsplit_t.hpp (1.3), frag_t.hpp (1.7), irmodel2_t.hpp (1.8,
+	  VERSION_2_1_4), irmodel3_t.hpp (1.8), irmodel_t.hpp (1.5,
+	  VERSION_2_1_4), limitmodel_t.hpp (1.3, VERSION_2_1_4), nrev_t.hpp
+	  (1.5, VERSION_2_1_4), revmodel_t.hpp (1.4, VERSION_2_1_4),
+	  rms_t.hpp (1.3, VERSION_2_1_4), scomp_t.hpp (1.10,
+	  VERSION_2_1_4), slimit_t.hpp (1.3, VERSION_2_1_4), src_t.hpp
+	  (1.4, VERSION_2_1_4), stenh_t.hpp (1.4, VERSION_2_1_4): operator=
+	  -> private
+
+2007-12-09  tkamogashira
+
+	* freeverb/: allpass_t.hpp (1.3), blockDelay_t.hpp (1.4),
+	  comb_t.hpp (1.3), compmodel_t.hpp (1.8), delay_t.hpp (1.4),
+	  efilter_t.hpp (1.2, VERSION_2_1_4), fir3bandsplit.cpp (1.5),
+	  fir3bandsplit_t.hpp (1.2), frag_t.hpp (1.6), irmodel2_t.hpp
+	  (1.7), irmodel3_t.hpp (1.7), irmodel_t.hpp (1.4),
+	  limitmodel_t.hpp (1.2), nrev_t.hpp (1.4), revmodel_t.hpp (1.3),
+	  rms_t.hpp (1.2), scomp_t.hpp (1.9), slimit_t.hpp (1.2), src_t.hpp
+	  (1.3), stenh_t.hpp (1.3): Copy Constructor -> private
+
+2007-12-09  tkamogashira
+
+	* configure.in (1.53), samples/rateconv.cpp (1.11, VERSION_2_1_4):
+	  [no log message]
+
+2007-11-15  tkamogashira
+
+	* freeverb/Makefile.am (1.19, VERSION_2_1_4),
+	  freeverb/limitmodel.cpp (1.1), freeverb/limitmodel.hpp (1.1,
+	  VERSION_2_1_4), freeverb/limitmodel_t.hpp (1.1),
+	  freeverb/slimit.cpp (1.1), freeverb/slimit.hpp (1.1),
+	  freeverb/slimit_t.hpp (1.1), freeverb/src.make (1.5,
+	  VERSION_2_1_4), samples/Makefile.am (1.24, VERSION_2_1_4),
+	  samples/testlimit.cpp (1.1, VERSION_2_1_4) (utags:
+	  VERSION_2_1_2): Soft Limiter model + plugin update
+
+2007-11-02  tkamogashira
+
+	* configure.in (1.52, VERSION_2_1_2): audacious 1.4.0 detection
+
+2007-11-02  tkamogashira
+
+	* configure.in (1.51): audacious-1.4.0 support
+
+2007-11-01  tkamogashira
+
+	* configure.in (1.50):
+	  xmms_show_message/bmp_info_dialog/util_info_dialog
+
+2007-11-01  tkamogashira
+
+	* freeverb/: Makefile.am (1.18), allpass.hpp (1.6, VERSION_2_1_2),
+	  blockDelay.hpp (1.7, VERSION_2_1_2), comb.hpp (1.7,
+	  VERSION_2_1_2), compmodel.cpp (1.3, VERSION_2_1_4,
+	  VERSION_2_1_2), compmodel.hpp (1.3, VERSION_2_1_4,
+	  VERSION_2_1_2), compmodel_t.hpp (1.7, VERSION_2_1_2), delay.hpp
+	  (1.8, VERSION_2_1_2), efilter.hpp (1.6, VERSION_2_1_4,
+	  VERSION_2_1_2), fir3bandsplit.hpp (1.2, VERSION_2_1_2),
+	  firfilter.hpp (1.2, VERSION_2_1_4, VERSION_2_1_2), firwindow.hpp
+	  (1.2, VERSION_2_1_4, VERSION_2_1_2), frag.cpp (1.22,
+	  VERSION_2_1_2), frag.hpp (1.11, VERSION_2_1_4, VERSION_2_1_2),
+	  frag_t.hpp (1.5, VERSION_2_1_2), irmodel.cpp (1.8, VERSION_2_1_4,
+	  VERSION_2_1_2), irmodel.hpp (1.8, VERSION_2_1_4, VERSION_2_1_2),
+	  irmodel2.cpp (1.39, VERSION_2_1_2), irmodel2.hpp (1.23,
+	  VERSION_2_1_4, VERSION_2_1_2), irmodel2_t.hpp (1.6,
+	  VERSION_2_1_2), irmodel3.cpp (1.10, VERSION_2_1_2), irmodel3.hpp
+	  (1.3, VERSION_2_1_4, VERSION_2_1_2), irmodel3_t.hpp (1.6,
+	  VERSION_2_1_2), irmodel_t.hpp (1.3, VERSION_2_1_2), nrev.cpp
+	  (1.19, VERSION_2_1_4, VERSION_2_1_2), nrev.hpp (1.17,
+	  VERSION_2_1_4, VERSION_2_1_2), nrev_t.hpp (1.3, VERSION_2_1_2),
+	  revmodel.hpp (1.11, VERSION_2_1_4, VERSION_2_1_2), rms.hpp (1.2,
+	  VERSION_2_1_4, VERSION_2_1_2), scomp.cpp (1.11, VERSION_2_1_4,
+	  VERSION_2_1_2), scomp.hpp (1.3, VERSION_2_1_4, VERSION_2_1_2),
+	  scomp_t.hpp (1.8, VERSION_2_1_2), src.hpp (1.10, VERSION_2_1_4,
+	  VERSION_2_1_2), src.make (1.4), stenh.cpp (1.2, VERSION_2_1_4,
+	  VERSION_2_1_2), stenh.hpp (1.2, VERSION_2_1_4, VERSION_2_1_2),
+	  stenh_t.hpp (1.2, VERSION_2_1_2), utils.cpp (1.1, VERSION_2_1_4,
+	  VERSION_2_1_2), utils.hpp (1.1, VERSION_2_1_4, VERSION_2_1_2),
+	  utils_t.hpp (1.1, VERSION_2_2_0, VERSION_2_1_4, VERSION_2_1_2):
+	  Stereo Enhancer bug fix.  utility class was added.
+
+2007-10-27  tkamogashira
+
+	* audacious/Makefile.am (1.12, VERSION_2_1_4, VERSION_2_1_2),
+	  freeverb/Makefile.am (1.17), freeverb/scomp.cpp (1.10),
+	  freeverb/scomp_t.hpp (1.7), freeverb/src.make (1.3),
+	  freeverb/stenh.cpp (1.1), freeverb/stenh.hpp (1.1),
+	  freeverb/stenh_t.hpp (1.1): Stereo Enhancer (beta)
+
+2007-10-16  tkamogashira
+
+	* configure.in (1.49), config/config.guess (1.3, VERSION_2_2_0,
+	  VERSION_2_1_4, VERSION_2_1_2), config/config.sub (1.3,
+	  VERSION_2_2_0, VERSION_2_1_4, VERSION_2_1_2), config/ltmain.sh
+	  (1.3, VERSION_2_2_0, VERSION_2_1_4, VERSION_2_1_2),
+	  doc/Makefile.in (1.13, VERSION_2_1_4, VERSION_2_1_2),
+	  freeverb/scomp.cpp (1.9), freeverb/scomp_t.hpp (1.6),
+	  samples/comp.cpp (1.3, VERSION_2_1_4, VERSION_2_1_2):
+	  optimization
+
+2007-10-11  tkamogashira
+
+	* README (1.14, VERSION_2_1_2), samples/comp.cpp (1.2) (utags:
+	  VERSION_2_1_0): [no log message]
+
+2007-10-11  tkamogashira
+
+	* freeverb/scomp.cpp (1.8, VERSION_2_1_0): SoftKnee fix
+
+2007-10-11  tkamogashira
+
+	* freeverb/compmodel.cpp (1.2, VERSION_2_1_0), freeverb/scomp.cpp
+	  (1.7), freeverb/scomp_t.hpp (1.5, VERSION_2_1_0),
+	  samples/Makefile.am (1.23, VERSION_2_1_0), samples/comp.cpp
+	  (1.1): SoftKnee fix
+
+2007-10-10  tkamogashira
+
+	* freeverb/: fv3_defs.h (1.1), fv3_ns_end.h (1.1, VERSION_3_0_0,
+	  VERSION_2_6_6, VERSION_2_6_4, VERSION_2_6_0, VERSION_2_5_22,
+	  VERSION_2_5_21, VERSION_2_5_19, VERSION_2_5_18, VERSION_2_5_17,
+	  VERSION_2_5_15, VERSION_2_5_14_1, VERSION_2_5_14, VERSION_2_5_13,
+	  VERSION_2_5_12, VERSION_2_5_10, VERSION_2_5_8, VERSION_2_5_6,
+	  VERSION_2_5_5, VERSION_2_5_4, VERSION_2_5_1, VERSION_2_5_0,
+	  VERSION_2_3_1, VERSION_2_3_0, VERSION_2_2_1, VERSION_2_2_0),
+	  fv3_ns_start.h (1.1, VERSION_3_0_0, VERSION_2_6_6, VERSION_2_6_4,
+	  VERSION_2_6_0, VERSION_2_5_22, VERSION_2_5_21, VERSION_2_5_19,
+	  VERSION_2_5_18, VERSION_2_5_17, VERSION_2_5_15, VERSION_2_5_14_1,
+	  VERSION_2_5_14, VERSION_2_5_13, VERSION_2_5_12, VERSION_2_5_10,
+	  VERSION_2_5_8, VERSION_2_5_6, VERSION_2_5_5, VERSION_2_5_4,
+	  VERSION_2_5_1, VERSION_2_5_0, VERSION_2_3_1, VERSION_2_3_0,
+	  VERSION_2_2_1, VERSION_2_2_0), fv3_type_float.h (1.1,
+	  VERSION_2_2_1, VERSION_2_2_0) (utags: VERSION_2_1_0,
+	  VERSION_2_1_2, VERSION_2_1_4): [no log message]
+
+2007-10-10  tkamogashira
+
+	* freeverb/: compmodel.cpp (1.1), compmodel.hpp (1.2,
+	  VERSION_2_1_0), compmodel_t.hpp (1.6, VERSION_2_1_0), rms.cpp
+	  (1.3, VERSION_2_1_4, VERSION_2_1_2, VERSION_2_1_0), scomp.cpp
+	  (1.6), scomp_t.hpp (1.4): bug fix for plugins
+
+2007-10-08  tkamogashira
+
+	* freeverb/scomp.cpp (1.5): scomp mute() bugs
+
+2007-10-08  tkamogashira
+
+	* audacious/Makefile.am (1.11, VERSION_2_1_0),
+	  freeverb/compmodel_t.hpp (1.5), freeverb/fir3bandsplit.cpp (1.4,
+	  VERSION_2_1_2, VERSION_2_1_0), freeverb/scomp.cpp (1.4): plugin
+	  revision
+
+2007-10-08  tkamogashira
+
+	* freeverb/fir3bandsplit.cpp (1.3), libgdither/Makefile.am (1.4,
+	  VERSION_3_0_0, VERSION_2_6_6, VERSION_2_6_4, VERSION_2_6_0,
+	  VERSION_2_5_22, VERSION_2_5_21, VERSION_2_5_19, VERSION_2_5_18,
+	  VERSION_2_5_17, VERSION_2_5_15, VERSION_2_5_14_1, VERSION_2_5_14,
+	  VERSION_2_5_13, VERSION_2_5_12, VERSION_2_5_10, VERSION_2_5_8,
+	  VERSION_2_5_6, VERSION_2_5_5, VERSION_2_5_4, VERSION_2_5_1,
+	  VERSION_2_5_0, VERSION_2_3_1, VERSION_2_3_0, VERSION_2_2_1,
+	  VERSION_2_2_0, VERSION_2_1_4, VERSION_2_1_2, VERSION_2_1_0),
+	  samples/nverb.cpp (1.13, VERSION_2_1_4, VERSION_2_1_2,
+	  VERSION_2_1_0): Compressor plugin
+
+2007-10-07  tkamogashira
+
+	* samples/nverb.cpp (1.12): nverb sample + compressor sample
+
+2007-10-07  tkamogashira
+
+	* configure.in (1.48, VERSION_2_1_0), freeverb/compmodel_t.hpp
+	  (1.4), freeverb/fir3bandsplit.cpp (1.2), freeverb/rms.cpp (1.2),
+	  freeverb/scomp.cpp (1.3), freeverb/scomp_t.hpp (1.3),
+	  samples/nverb.cpp (1.11): compressor rms bugs
+
+2007-10-07  tkamogashira
+
+	* freeverb/Makefile.am (1.16, VERSION_2_1_0),
+	  freeverb/compmodel_t.hpp (1.3), freeverb/fir3bandsplit.cpp (1.1),
+	  freeverb/fir3bandsplit.hpp (1.1, VERSION_2_1_0),
+	  freeverb/fir3bandsplit_t.hpp (1.1, VERSION_2_1_2, VERSION_2_1_0),
+	  freeverb/firfilter.cpp (1.1, VERSION_2_1_4, VERSION_2_1_2,
+	  VERSION_2_1_0), freeverb/firfilter.hpp (1.1, VERSION_2_1_0),
+	  freeverb/firfilter_t.hpp (1.1, VERSION_2_3_1, VERSION_2_3_0,
+	  VERSION_2_2_1, VERSION_2_2_0, VERSION_2_1_4, VERSION_2_1_2,
+	  VERSION_2_1_0), freeverb/firwindow.cpp (1.1, VERSION_2_1_4,
+	  VERSION_2_1_2, VERSION_2_1_0), freeverb/firwindow.hpp (1.1,
+	  VERSION_2_1_0), freeverb/firwindow_t.hpp (1.1, VERSION_2_3_1,
+	  VERSION_2_3_0, VERSION_2_2_1, VERSION_2_2_0, VERSION_2_1_4,
+	  VERSION_2_1_2, VERSION_2_1_0), freeverb/scomp.cpp (1.2),
+	  freeverb/scomp.hpp (1.2, VERSION_2_1_0), freeverb/scomp_t.hpp
+	  (1.2), freeverb/src.make (1.2, VERSION_2_1_0),
+	  freeverb/window.cpp (1.2[DEAD]), freeverb/window.hpp (1.2[DEAD]),
+	  freeverb/window_t.hpp (1.2[DEAD]), samples/nverb.cpp (1.10): FIR
+	  filter/band splitter
+
+2007-10-07  tkamogashira
+
+	* Makefile.am (1.8, VERSION_2_2_1, VERSION_2_2_0, VERSION_2_1_4,
+	  VERSION_2_1_2, VERSION_2_1_0), autogen.sh (1.4, VERSION_2_3_1,
+	  VERSION_2_3_0, VERSION_2_2_1, VERSION_2_2_0, VERSION_2_1_4,
+	  VERSION_2_1_2, VERSION_2_1_0), configure.in (1.47),
+	  freeverb3.pc.in (1.3, VERSION_2_2_0, VERSION_2_1_4,
+	  VERSION_2_1_2, VERSION_2_1_0), double/Makefile.am (1.6,
+	  VERSION_2_2_0, VERSION_2_1_4, VERSION_2_1_2, VERSION_2_1_0),
+	  float/Makefile.am (1.6, VERSION_2_2_0, VERSION_2_1_4,
+	  VERSION_2_1_2, VERSION_2_1_0), freeverb/Makefile.am (1.15),
+	  freeverb/compmodel_t.hpp (1.2), freeverb/src.make (1.1),
+	  freeverb/window.cpp (1.1), freeverb/window.hpp (1.1),
+	  freeverb/window_t.hpp (1.1), ldouble/Makefile.am (1.6,
+	  VERSION_2_2_0, VERSION_2_1_4, VERSION_2_1_2, VERSION_2_1_0),
+	  libgdither/Makefile.am (1.3), libsamplerate2/Makefile.am (1.3,
+	  VERSION_2_2_1, VERSION_2_2_0, VERSION_2_1_4, VERSION_2_1_2,
+	  VERSION_2_1_0), libsamplerate2/src.make (1.1, VERSION_3_0_0,
+	  VERSION_2_6_6, VERSION_2_6_4, VERSION_2_6_0, VERSION_2_5_22,
+	  VERSION_2_5_21, VERSION_2_5_19, VERSION_2_5_18, VERSION_2_5_17,
+	  VERSION_2_5_15, VERSION_2_5_14_1, VERSION_2_5_14, VERSION_2_5_13,
+	  VERSION_2_5_12, VERSION_2_5_10, VERSION_2_5_8, VERSION_2_5_6,
+	  VERSION_2_5_5, VERSION_2_5_4, VERSION_2_5_1, VERSION_2_5_0,
+	  VERSION_2_3_1, VERSION_2_3_0, VERSION_2_2_1, VERSION_2_2_0,
+	  VERSION_2_1_4, VERSION_2_1_2, VERSION_2_1_0), samples/Makefile.am
+	  (1.22), samples/nverb.cpp (1.9), samples/rateconv.cpp (1.10,
+	  VERSION_2_1_2, VERSION_2_1_0): Window functions were added.
+	  Makefile.am were splitted into src.make
+
+2007-10-03  tkamogashira
+
+	* freeverb/src.cpp (1.10, VERSION_2_1_4, VERSION_2_1_2,
+	  VERSION_2_1_0): [no log message]
+
+2007-10-03  tkamogashira
+
+	* double/Makefile.am (1.5), float/Makefile.am (1.5),
+	  freeverb/Makefile.am (1.14), freeverb/compmodel.hpp (1.1),
+	  freeverb/compmodel_t.hpp (1.1), freeverb/delay_t.hpp (1.3,
+	  VERSION_2_1_2, VERSION_2_1_0), freeverb/nrev.cpp (1.18,
+	  VERSION_2_1_0), freeverb/rms.cpp (1.1), freeverb/rms.hpp (1.1,
+	  VERSION_2_1_0), freeverb/rms_t.hpp (1.1, VERSION_2_1_2,
+	  VERSION_2_1_0), freeverb/scomp.cpp (1.1), freeverb/scomp.hpp
+	  (1.1), freeverb/scomp_t.hpp (1.1), freeverb/src.cpp (1.9),
+	  ldouble/Makefile.am (1.5), samples/nverb.cpp (1.8):
+	  Compressor/src init bug
+
+2007-09-30  tkamogashira
+
+	* freeverb/frag.cpp (1.21, VERSION_2_1_0), freeverb/irmodel2.cpp
+	  (1.38, VERSION_2_1_0), freeverb/irmodel3.cpp (1.9,
+	  VERSION_2_1_0), samples/Makefile.am (1.21),
+	  samples/benchmark3.cpp (1.1, VERSION_2_1_4, VERSION_2_1_2,
+	  VERSION_2_1_0), samples/rateconv.cpp (1.9): frag:: loop
+	  optimization/processreplace loop unroll
+
+2007-09-28  tkamogashira
+
+	* samples/rateconv.cpp (1.8): [no log message]
+
+2007-09-28  tkamogashira
+
+	* libgdither/gdither.c (1.2, VERSION_2_5_4, VERSION_2_5_1,
+	  VERSION_2_5_0, VERSION_2_3_1, VERSION_2_3_0, VERSION_2_2_1,
+	  VERSION_2_2_0, VERSION_2_1_4, VERSION_2_1_2, VERSION_2_1_0): [no
+	  log message]
+
+2007-09-28  tkamogashira
+
+	* samples/: Makefile.am (1.20), rateconv.cpp (1.7): gdither patch
+
+2007-09-25  tkamogashira
+
+	* samples/: Makefile.am (1.19), rateconv.cpp (1.6): [no log
+	  message]
+
+2007-09-24  tkamogashira
+
+	* freeverb/Makefile.am (1.13), freeverb/allpass.cpp (1.7,
+	  VERSION_2_1_2, VERSION_2_1_0), freeverb/allpass.hpp (1.5,
+	  VERSION_2_1_0), freeverb/blockDelay.cpp (1.9, VERSION_2_1_2,
+	  VERSION_2_1_0), freeverb/blockDelay.hpp (1.6, VERSION_2_1_0),
+	  freeverb/comb.cpp (1.7, VERSION_2_1_2, VERSION_2_1_0),
+	  freeverb/comb.hpp (1.6, VERSION_2_1_0), freeverb/delay.cpp (1.8,
+	  VERSION_2_1_2, VERSION_2_1_0), freeverb/delay.hpp (1.7,
+	  VERSION_2_1_0), freeverb/efilter.cpp (1.4, VERSION_2_1_4,
+	  VERSION_2_1_2, VERSION_2_1_0), freeverb/efilter.hpp (1.5,
+	  VERSION_2_1_0), freeverb/frag.cpp (1.20), freeverb/frag.hpp
+	  (1.10, VERSION_2_1_0), freeverb/irmodel.cpp (1.7, VERSION_2_1_0),
+	  freeverb/irmodel.hpp (1.7, VERSION_2_1_0), freeverb/irmodel2.cpp
+	  (1.37), freeverb/irmodel2.hpp (1.22, VERSION_2_1_0),
+	  freeverb/irmodel3.cpp (1.8), freeverb/irmodel3.hpp (1.2,
+	  VERSION_2_1_0), freeverb/nrev.cpp (1.17), freeverb/nrev.hpp
+	  (1.16, VERSION_2_1_0), freeverb/revmodel.cpp (1.12,
+	  VERSION_2_1_4, VERSION_2_1_2, VERSION_2_1_0),
+	  freeverb/revmodel.hpp (1.10, VERSION_2_1_0), freeverb/src.cpp
+	  (1.8), freeverb/src.hpp (1.9, VERSION_2_1_0),
+	  samples/benchmark.cpp (1.7, VERSION_2_1_4, VERSION_2_1_2,
+	  VERSION_2_1_0), samples/fverb.cpp (1.6, VERSION_2_1_4,
+	  VERSION_2_1_2, VERSION_2_1_0), samples/impulse.cpp (1.2,
+	  VERSION_2_1_4, VERSION_2_1_2, VERSION_2_1_0),
+	  samples/impulse2.cpp (1.12, VERSION_2_1_4, VERSION_2_1_2,
+	  VERSION_2_1_0), samples/nverb.cpp (1.7), samples/rateconv.cpp
+	  (1.5), samples/speedtest.cpp (1.2, VERSION_2_1_4, VERSION_2_1_2,
+	  VERSION_2_1_0), samples/src.cpp (1.3, VERSION_2_1_4,
+	  VERSION_2_1_2, VERSION_2_1_0): namespace fv3
+
+2007-09-23  tkamogashira
+
+	* samples/rateconv.cpp (1.4): CosRO bug
+
+2007-09-23  tkamogashira
+
+	* freeverb/irmodel3.cpp (1.7): [no log message]
+
+2007-09-23  tkamogashira
+
+	* freeverb/allpass.cpp (1.6), freeverb/allpass_t.hpp (1.2,
+	  VERSION_2_1_2, VERSION_2_1_0), freeverb/blockDelay.cpp (1.8),
+	  freeverb/blockDelay_t.hpp (1.3, VERSION_2_1_2, VERSION_2_1_0),
+	  freeverb/comb.cpp (1.6), freeverb/comb_t.hpp (1.2, VERSION_2_1_2,
+	  VERSION_2_1_0), freeverb/delay.cpp (1.7), freeverb/delay_t.hpp
+	  (1.2), freeverb/frag.cpp (1.19), freeverb/frag_t.hpp (1.4,
+	  VERSION_2_1_0), freeverb/irmodel.cpp (1.6), freeverb/irmodel2.cpp
+	  (1.36), freeverb/irmodel2_t.hpp (1.5, VERSION_2_1_0),
+	  freeverb/irmodel3.cpp (1.6), freeverb/irmodel3_t.hpp (1.5,
+	  VERSION_2_1_0), freeverb/irmodel_t.hpp (1.2, VERSION_2_1_0),
+	  freeverb/nrev.cpp (1.16), freeverb/nrev_t.hpp (1.2,
+	  VERSION_2_1_0), freeverb/revmodel.cpp (1.11),
+	  freeverb/revmodel_t.hpp (1.2, VERSION_2_1_2, VERSION_2_1_0),
+	  freeverb/src.cpp (1.7), freeverb/src_t.hpp (1.2, VERSION_2_1_2,
+	  VERSION_2_1_0), libsamplerate2/common.h (1.2, VERSION_2_2_1,
+	  VERSION_2_2_0, VERSION_2_1_4, VERSION_2_1_2, VERSION_2_1_0),
+	  libsamplerate2/common_c.h (1.2, VERSION_2_2_1, VERSION_2_2_0,
+	  VERSION_2_1_4, VERSION_2_1_2, VERSION_2_1_0),
+	  libsamplerate2/samplerate.c (1.2, VERSION_2_2_1, VERSION_2_2_0,
+	  VERSION_2_1_4, VERSION_2_1_2, VERSION_2_1_0),
+	  libsamplerate2/samplerate2_common.h (1.2, VERSION_2_2_1,
+	  VERSION_2_2_0, VERSION_2_1_4, VERSION_2_1_2, VERSION_2_1_0),
+	  libsamplerate2/samplerate2_t.h (1.2, VERSION_2_2_1,
+	  VERSION_2_2_0, VERSION_2_1_4, VERSION_2_1_2, VERSION_2_1_0),
+	  libsamplerate2/samplerate_common.c (1.2, VERSION_2_2_1,
+	  VERSION_2_2_0, VERSION_2_1_4, VERSION_2_1_2, VERSION_2_1_0),
+	  libsamplerate2/src_common.c (1.2, VERSION_2_2_1, VERSION_2_2_0,
+	  VERSION_2_1_4, VERSION_2_1_2, VERSION_2_1_0),
+	  libsamplerate2/src_linear.c (1.2, VERSION_2_2_1, VERSION_2_2_0,
+	  VERSION_2_1_4, VERSION_2_1_2, VERSION_2_1_0),
+	  libsamplerate2/src_sinc.c (1.2, VERSION_2_2_1, VERSION_2_2_0,
+	  VERSION_2_1_4, VERSION_2_1_2, VERSION_2_1_0),
+	  libsamplerate2/src_zoh.c (1.2, VERSION_2_2_1, VERSION_2_2_0,
+	  VERSION_2_1_4, VERSION_2_1_2, VERSION_2_1_0), samples/Makefile.am
+	  (1.18), samples/rateconv.cpp (1.3): int -> long fix
+
+2007-09-22  tkamogashira
+
+	* samples/rateconv.cpp (1.2): [no log message]
+
+2007-09-20  tkamogashira
+
+	* freeverb/frag.cpp (1.18): frag::processMULT SSE bug
+
+2007-09-20  tkamogashira
+
+	* samples/: Makefile.am (1.17), rateconv.cpp (1.1): SRC test
+	  program
+
+2007-09-08  tkamogashira
+
+	* configure.in (1.46), freeverb/irmodel3.cpp (1.5): [no log
+	  message]
+
+2007-09-01  tkamogashira
+
+	* freeverb/frag.cpp (1.17): [no log message]
+
+2007-08-29  tkamogashira
+
+	* README (1.13), configure.in (1.45), freeverb/irmodel3.cpp (1.4),
+	  freeverb/irmodel3_t.hpp (1.4) (utags: VERSION_2_0_0): AMD64 SSE
+	  fix
+
+2007-08-28  tkamogashira
+
+	* README (1.12): [no log message]
+
+2007-08-28  tkamogashira
+
+	* README (1.11): [no log message]
+
+2007-08-27  tkamogashira
+
+	* freeverb/frag.cpp (1.16, VERSION_2_0_0): SSE2 SIMD frags
+
+2007-08-27  tkamogashira
+
+	* README (1.10), configure.in (1.44), doc/Makefile.in (1.12,
+	  VERSION_2_1_0, VERSION_2_0_0), freeverb/Makefile.am (1.12,
+	  VERSION_2_0_0), libsamplerate2/Makefile.am (1.2, VERSION_2_0_0):
+	  SIMD fix
+
+2007-08-27  tkamogashira
+
+	* configure.in (1.43), freeverb/frag.cpp (1.15): SIMD fix
+
+2007-08-27  tkamogashira
+
+	* configure.in (1.42), freeverb/blockDelay.cpp (1.7,
+	  VERSION_2_0_0), freeverb/blockDelay.hpp (1.5, VERSION_2_0_0),
+	  freeverb/frag.cpp (1.14), freeverb/frag_t.hpp (1.3,
+	  VERSION_2_0_0): 3DNOW/SSE SIMD optimization
+
+2007-08-24  tkamogashira
+
+	* TODO (1.4, VERSION_3_0_0, VERSION_2_6_6, VERSION_2_6_4,
+	  VERSION_2_6_0, VERSION_2_5_22, VERSION_2_5_21, VERSION_2_5_19,
+	  VERSION_2_5_18, VERSION_2_5_17, VERSION_2_5_15, VERSION_2_5_14_1,
+	  VERSION_2_5_14, VERSION_2_5_13, VERSION_2_5_12, VERSION_2_5_10,
+	  VERSION_2_5_8, VERSION_2_5_6, VERSION_2_5_5, VERSION_2_5_4,
+	  VERSION_2_5_1, VERSION_2_5_0, VERSION_2_3_1, VERSION_2_3_0,
+	  VERSION_2_2_1, VERSION_2_2_0, VERSION_2_1_4, VERSION_2_1_2,
+	  VERSION_2_1_0, VERSION_2_0_0): [no log message]
+
+2007-08-24  tkamogashira
+
+	* freeverb/frag.cpp (1.13), freeverb/frag_t.hpp (1.2),
+	  samples/Makefile.am (1.16, VERSION_2_0_0), samples/impulse2.cpp
+	  (1.11, VERSION_2_0_0): [no log message]
+
+2007-08-23  tkamogashira
+
+	* double/Makefile.am (1.4, VERSION_2_0_0), float/Makefile.am (1.4,
+	  VERSION_2_0_0), freeverb/Makefile.am (1.11),
+	  freeverb/blockDelay.cpp (1.6), freeverb/blockDelay_t.hpp (1.2,
+	  VERSION_2_0_0), freeverb/irmodel2.cpp (1.35, VERSION_2_0_0),
+	  freeverb/irmodel3.cpp (1.3), freeverb/irmodel3_t.hpp (1.3),
+	  ldouble/Makefile.am (1.4, VERSION_2_0_0), samples/impulse2.cpp
+	  (1.10): Optimization
+
+2007-08-23  tkamogashira
+
+	* freeverb/: irmodel2.cpp (1.34), irmodel2_t.hpp (1.4,
+	  VERSION_2_0_0): [no log message]
+
+2007-08-23  tkamogashira
+
+	* freeverb/irmodel2.cpp (1.33), freeverb/irmodel2_t.hpp (1.3),
+	  freeverb/irmodel3.cpp (1.2), freeverb/irmodel3_t.hpp (1.2),
+	  samples/impulse2.cpp (1.9): Fence post bug at large Fragment (0)
+
+2007-08-22  tkamogashira
+
+	* configure.in (1.41), double/Makefile.am (1.3), float/Makefile.am
+	  (1.3), freeverb/Makefile.am (1.10), freeverb/allpass.hpp (1.4,
+	  VERSION_2_0_0), freeverb/blockDelay.hpp (1.4), freeverb/comb.hpp
+	  (1.5, VERSION_2_0_0), freeverb/delay.hpp (1.6, VERSION_2_0_0),
+	  freeverb/efilter.hpp (1.4, VERSION_2_0_0), freeverb/frag.hpp
+	  (1.9, VERSION_2_0_0), freeverb/irmodel.hpp (1.6, VERSION_2_0_0),
+	  freeverb/irmodel2.cpp (1.32), freeverb/irmodel2.hpp (1.21,
+	  VERSION_2_0_0), freeverb/irmodel2_t.hpp (1.2),
+	  freeverb/irmodel3.cpp (1.1), freeverb/irmodel3.hpp (1.1,
+	  VERSION_2_0_0), freeverb/irmodel3_t.hpp (1.1), freeverb/nrev.hpp
+	  (1.15, VERSION_2_0_0), freeverb/revmodel.hpp (1.9,
+	  VERSION_2_0_0), freeverb/src.hpp (1.8, VERSION_2_0_0),
+	  freeverb/tuning.h (1.4, VERSION_2_2_0, VERSION_2_1_4,
+	  VERSION_2_1_2, VERSION_2_1_0, VERSION_2_0_0), ldouble/Makefile.am
+	  (1.3), samples/Makefile.am (1.15), samples/impulse2.cpp (1.8):
+	  New Algorithm of IR process.	Critical bug fix of the Zero
+	  Latency mode process buffer overrun.
+
+2007-08-18  tkamogashira
+
+	* freeverb/irmodel2.cpp (1.31), samples/Makefile.am (1.14),
+	  samples/benchmark.cpp (1.6, VERSION_2_0_0), samples/speedtest.cpp
+	  (1.1, VERSION_2_0_0): speed checker
+
+2007-08-18  tkamogashira
+
+	* configure.in (1.40), freeverb/Makefile.am (1.9),
+	  samples/Makefile.am (1.13): double/float static profile build
+	  options
+
+2007-08-18  tkamogashira
+
+	* README (1.9), configure.in (1.39), freeverb3.pc.in (1.2,
+	  VERSION_2_0_0), doc/Makefile.in (1.11): [no log message]
+
+2007-08-17  tkamogashira
+
+	* configure.in (1.38), audacious/Makefile.am (1.10, VERSION_2_0_0),
+	  doc/Makefile.in (1.10): Double/Single precision plugin mode fix
+
+2007-08-15  tkamogashira
+
+	* configure.in (1.37): [no log message]
+
+2007-08-05  tkamogashira
+
+	* configure.in (1.36), audacious/Makefile.am (1.9), doc/Makefile.in
+	  (1.9), double/Makefile.am (1.2), float/Makefile.am (1.2),
+	  freeverb/Makefile.am (1.8), freeverb/nrev.hpp (1.14),
+	  freeverb/src.hpp (1.7), ldouble/Makefile.am (1.2),
+	  samples/Makefile.am (1.12): Plugin float -> double
+
+2007-08-04  tkamogashira
+
+	* Makefile.am (1.7, VERSION_2_0_0), autogen.sh (1.3,
+	  VERSION_2_0_0), configure.in (1.35), audacious/Makefile.am (1.8),
+	  config/config.guess (1.2, VERSION_2_1_0, VERSION_2_0_0),
+	  config/config.sub (1.2, VERSION_2_1_0, VERSION_2_0_0),
+	  config/ltmain.sh (1.2, VERSION_2_1_0, VERSION_2_0_0),
+	  doc/Makefile.in (1.8), double/Makefile.am (1.1),
+	  float/Makefile.am (1.1), ldouble/Makefile.am (1.1),
+	  libsamplerate2/Makefile.am (1.1), libsamplerate2/common.h (1.1,
+	  VERSION_2_0_0), libsamplerate2/common_c.h (1.1, VERSION_2_0_0),
+	  libsamplerate2/fastest_coeffs.h (1.1, VERSION_2_2_1,
+	  VERSION_2_2_0, VERSION_2_1_4, VERSION_2_1_2, VERSION_2_1_0,
+	  VERSION_2_0_0), libsamplerate2/float_cast.h (1.1, VERSION_2_5_0,
+	  VERSION_2_3_1, VERSION_2_3_0, VERSION_2_2_1, VERSION_2_2_0,
+	  VERSION_2_1_4, VERSION_2_1_2, VERSION_2_1_0, VERSION_2_0_0),
+	  libsamplerate2/high_qual_coeffs.h (1.1, VERSION_2_2_1,
+	  VERSION_2_2_0, VERSION_2_1_4, VERSION_2_1_2, VERSION_2_1_0,
+	  VERSION_2_0_0), libsamplerate2/mid_qual_coeffs.h (1.1,
+	  VERSION_2_2_1, VERSION_2_2_0, VERSION_2_1_4, VERSION_2_1_2,
+	  VERSION_2_1_0, VERSION_2_0_0), libsamplerate2/samplerate.c (1.1,
+	  VERSION_2_0_0), libsamplerate2/samplerate2.h (1.1, VERSION_2_2_1,
+	  VERSION_2_2_0, VERSION_2_1_4, VERSION_2_1_2, VERSION_2_1_0,
+	  VERSION_2_0_0), libsamplerate2/samplerate2_common.h (1.1,
+	  VERSION_2_0_0), libsamplerate2/samplerate2_t.h (1.1,
+	  VERSION_2_0_0), libsamplerate2/samplerate_common.c (1.1,
+	  VERSION_2_0_0), libsamplerate2/src_common.c (1.1, VERSION_2_0_0),
+	  libsamplerate2/src_linear.c (1.1, VERSION_2_0_0),
+	  libsamplerate2/src_sinc.c (1.1, VERSION_2_0_0),
+	  libsamplerate2/src_zoh.c (1.1, VERSION_2_0_0),
+	  libsamplerate2/type_float.h (1.1, VERSION_3_0_0, VERSION_2_6_6,
+	  VERSION_2_6_4, VERSION_2_6_0, VERSION_2_5_22, VERSION_2_5_21,
+	  VERSION_2_5_19, VERSION_2_5_18, VERSION_2_5_17, VERSION_2_5_15,
+	  VERSION_2_5_14_1, VERSION_2_5_14, VERSION_2_5_13, VERSION_2_5_12,
+	  VERSION_2_5_10, VERSION_2_5_8, VERSION_2_5_6, VERSION_2_5_5,
+	  VERSION_2_5_4, VERSION_2_5_1, VERSION_2_5_0, VERSION_2_3_1,
+	  VERSION_2_3_0, VERSION_2_2_1, VERSION_2_2_0, VERSION_2_1_4,
+	  VERSION_2_1_2, VERSION_2_1_0, VERSION_2_0_0), samples/Makefile.am
+	  (1.11): float double ldouble frags
+
+2007-08-04  tkamogashira
+
+	* freeverb/: Makefile.am (1.7), allpass.cpp (1.5, VERSION_2_0_0),
+	  allpass.hpp (1.3), allpass_t.hpp (1.1, VERSION_2_0_0),
+	  blockDelay.cpp (1.5), blockDelay.hpp (1.3), blockDelay_t.hpp
+	  (1.1), comb.cpp (1.5, VERSION_2_0_0), comb.hpp (1.4), comb_t.hpp
+	  (1.1, VERSION_2_0_0), delay.cpp (1.6, VERSION_2_0_0), delay.hpp
+	  (1.5), delay_t.hpp (1.1, VERSION_2_0_0), efilter.cpp (1.3,
+	  VERSION_2_0_0), efilter.hpp (1.3), efilter_t.hpp (1.1,
+	  VERSION_2_1_2, VERSION_2_1_0, VERSION_2_0_0), frag.cpp (1.12),
+	  frag.hpp (1.8), frag_t.hpp (1.1), irmodel.cpp (1.5,
+	  VERSION_2_0_0), irmodel.hpp (1.5), irmodel2.cpp (1.30),
+	  irmodel2.hpp (1.20), irmodel2_t.hpp (1.1), irmodel_t.hpp (1.1,
+	  VERSION_2_0_0), nrev.cpp (1.15, VERSION_2_0_0), nrev.hpp (1.13),
+	  nrev_t.hpp (1.1, VERSION_2_0_0), revmodel.cpp (1.10,
+	  VERSION_2_0_0), revmodel.hpp (1.8), revmodel_t.hpp (1.1,
+	  VERSION_2_0_0), src.cpp (1.6, VERSION_2_0_0), src.hpp (1.6),
+	  src_t.hpp (1.1, VERSION_2_0_0): double/float/ldouble sources.
+
+2007-07-29  tkamogashira
+
+	* freeverb/: nrev.cpp (1.14), nrev.hpp (1.12), revmodel.cpp (1.9),
+	  revmodel.hpp (1.7) (utags: VERSION_1_8_0): resetfs bugs
+
+2007-07-26  tkamogashira
+
+	* freeverb/nrev.cpp (1.13): stack over flow
+
+2007-07-26  tkamogashira
+
+	* freeverb/: nrev.cpp (1.12), nrev.hpp (1.11): reverbm.resetfs()
+	  critical bugs in Effect Plugins unused variables.
+
+2007-07-23  tkamogashira
+
+	* AUTHORS (1.3, VERSION_2_3_1, VERSION_2_3_0, VERSION_2_2_1,
+	  VERSION_2_2_0, VERSION_2_1_4, VERSION_2_1_2, VERSION_2_1_0,
+	  VERSION_2_0_0, VERSION_1_8_0): [no log message]
+
+2007-07-22  tkamogashira
+
+	* configure.in (1.34, VERSION_1_8_0): Dithering init bug fix.
+
+2007-07-18  tkamogashira
+
+	* freeverb/: irmodel2.cpp (1.29), irmodel2.hpp (1.19) (utags:
+	  VERSION_1_8_0): Swap LR function.  freeImpulse/unload Impulse
+	  bugs.
+
+2007-07-17  tkamogashira
+
+	* freeverb/: irmodel2.cpp (1.28), irmodel2.hpp (1.18): unload
+	  Impulse function added.  muteAll when no impulse is loaded.
+
+2007-06-19  tkamogashira
+
+	* libgdither/Makefile.am (1.2, VERSION_2_0_0, VERSION_1_8_0): [no
+	  log message]
+
+2007-06-19  tkamogashira
+
+	* Makefile.am (1.6, VERSION_1_8_0), configure.in (1.33),
+	  audacious/Makefile.am (1.7, VERSION_1_8_0): Utilizes libgdither
+
+2007-06-19  tkamogashira
+
+	* libgdither/: Makefile.am (1.1), gdither.c (1.1, VERSION_2_0_0,
+	  VERSION_1_8_0), gdither.h (1.1, VERSION_2_5_4, VERSION_2_5_1,
+	  VERSION_2_5_0, VERSION_2_3_1, VERSION_2_3_0, VERSION_2_2_1,
+	  VERSION_2_2_0, VERSION_2_1_4, VERSION_2_1_2, VERSION_2_1_0,
+	  VERSION_2_0_0, VERSION_1_8_0), gdither_types.h (1.1,
+	  VERSION_2_5_4, VERSION_2_5_1, VERSION_2_5_0, VERSION_2_3_1,
+	  VERSION_2_3_0, VERSION_2_2_1, VERSION_2_2_0, VERSION_2_1_4,
+	  VERSION_2_1_2, VERSION_2_1_0, VERSION_2_0_0, VERSION_1_8_0),
+	  gdither_types_internal.h (1.1, VERSION_2_5_4, VERSION_2_5_1,
+	  VERSION_2_5_0, VERSION_2_3_1, VERSION_2_3_0, VERSION_2_2_1,
+	  VERSION_2_2_0, VERSION_2_1_4, VERSION_2_1_2, VERSION_2_1_0,
+	  VERSION_2_0_0, VERSION_1_8_0), noise.h (1.1, VERSION_3_0_0,
+	  VERSION_2_6_6, VERSION_2_6_4, VERSION_2_6_0, VERSION_2_5_22,
+	  VERSION_2_5_21, VERSION_2_5_19, VERSION_2_5_18, VERSION_2_5_17,
+	  VERSION_2_5_15, VERSION_2_5_14_1, VERSION_2_5_14, VERSION_2_5_13,
+	  VERSION_2_5_12, VERSION_2_5_10, VERSION_2_5_8, VERSION_2_5_6,
+	  VERSION_2_5_5, VERSION_2_5_4, VERSION_2_5_1, VERSION_2_5_0,
+	  VERSION_2_3_1, VERSION_2_3_0, VERSION_2_2_1, VERSION_2_2_0,
+	  VERSION_2_1_4, VERSION_2_1_2, VERSION_2_1_0, VERSION_2_0_0,
+	  VERSION_1_8_0): Initial import of libgdither.
+
+2007-06-16  tkamogashira
+
+	* configure.in (1.32): FV3_IR2_SKIPINIT speedup.
+
+2007-05-28  tkamogashira
+
+	* freeverb/irmodel2.cpp (1.27): std::vector's copy constructor
+	  logical bug fix.
+
+2007-05-27  tkamogashira
+
+	* configure.in (1.31): Multi slot bug fix + realtime change
+	  (vector)
+
+2007-04-29  tkamogashira
+
+	* configure.in (1.30), doc/Makefile.in (1.7, VERSION_1_8_0): [no
+	  log message]
+
+2007-03-12  tkamogashira
+
+	* configure.in (1.29), freeverb/irmodel2.cpp (1.26): Fixed
+	  configure.in for audacious-1.3 > (xmms_show_message vanished from
+	  libaudacious.so)
+
+2007-03-10  tkamogashira
+
+	* configure.in (1.28): [no log message]
+
+2007-03-07  tkamogashira
+
+	* samples/impulse2.cpp (1.7, VERSION_1_8_0): ZL mode padding fix
+
+2007-03-07  tkamogashira
+
+	* freeverb/irmodel2.cpp (1.25), freeverb/irmodel2.hpp (1.17),
+	  samples/impulse2.cpp (1.6): ZL impulse support
+
+2007-03-06  tkamogashira
+
+	* freeverb/: blockDelay.cpp (1.4, VERSION_1_8_0), irmodel2.cpp
+	  (1.24), irmodel2.hpp (1.16): Zero lancy mode was added.
+
+2007-03-06  tkamogashira
+
+	* freeverb/irmodel2.cpp (1.23): ZL bug fix
+
+2007-03-06  tkamogashira
+
+	* freeverb/irmodel2.cpp (1.22): Zero Latency bug fix
+
+2007-03-06  tkamogashira
+
+	* freeverb/irmodel2.cpp (1.21), freeverb/irmodel2.hpp (1.15),
+	  samples/benchmark.cpp (1.5, VERSION_1_8_0): Zero Latency mode
+	  added.
+
+2007-03-04  tkamogashira
+
+	* TODO (1.3, VERSION_1_8_0), configure.in (1.27),
+	  audacious/Makefile.am (1.6), freeverb/irmodel2.cpp (1.20),
+	  freeverb/irmodel2.hpp (1.14): Supported new FV3_IR2 options in
+	  xmms/bmp/audacious plugins.  Added new FV3_IR2 options.
+
+2007-03-02  tkamogashira
+
+	* configure.in (1.26), freeverb/irmodel2.cpp (1.19),
+	  freeverb/nrev.cpp (1.11), freeverb/nrev.hpp (1.10),
+	  freeverb/revmodel.cpp (1.8), freeverb/revmodel.hpp (1.6),
+	  freeverb/tuning.h (1.3, VERSION_1_8_0), samples/fverb.cpp (1.5,
+	  VERSION_2_0_0, VERSION_1_8_0), samples/nverb.cpp (1.6,
+	  VERSION_2_0_0, VERSION_1_8_0): revmodel, nrev: Deleted extra skip
+	  frame options.
+
+2007-02-23  tkamogashira
+
+	* configure.in (1.25), doc/Makefile.in (1.6), samples/impulse2.cpp
+	  (1.5): VST plug-in preparation.
+
+2007-02-09  tkamogashira
+
+	* freeverb/frag.cpp (1.11, VERSION_1_8_0), freeverb/frag.hpp (1.7,
+	  VERSION_1_8_0), freeverb/irmodel2.cpp (1.18),
+	  freeverb/irmodel2.hpp (1.13), samples/Makefile.am (1.10,
+	  VERSION_1_8_0), samples/benchmark.cpp (1.4), samples/impulse2.cpp
+	  (1.4), samples/irref.cpp (1.1, VERSION_2_1_4, VERSION_2_1_2,
+	  VERSION_2_1_0, VERSION_2_0_0, VERSION_1_8_0): changed passing
+	  options frag.cpp's not adding critical Bug added reference
+	  Impulse Response generator (time domain)
+
+2007-01-29  tkamogashira
+
+	* freeverb/irmodel2.cpp (1.17), samples/impulse2.cpp (1.3): BMP's
+	  internal bug tracer
+
+2007-01-28  tkamogashira
+
+	* aclocal.m4 (1.2[DEAD]): [no log message]
+
+2007-01-28  tkamogashira
+
+	* Makefile.am (1.5): Preset Number bugs
+
+2007-01-27  tkamogashira
+
+	* configure (1.22[DEAD]): [no log message]
+
+2007-01-27  tkamogashira
+
+	* AUTHORS (1.2), Makefile.am (1.4), README (1.8, VERSION_1_8_0),
+	  configure (1.21), configure.in (1.24), audacious/Makefile.am
+	  (1.5), doc/Makefile.in (1.5), freeverb/allpass.cpp (1.4,
+	  VERSION_1_8_0), freeverb/comb.cpp (1.4, VERSION_1_8_0),
+	  freeverb/comb.hpp (1.3, VERSION_1_8_0), freeverb/delay.cpp (1.5,
+	  VERSION_1_8_0), freeverb/delay.hpp (1.4, VERSION_1_8_0),
+	  freeverb/irmodel2.cpp (1.16), freeverb/irmodel2.hpp (1.12),
+	  freeverb/nrev.cpp (1.10), freeverb/nrev.hpp (1.9),
+	  freeverb/revmodel.cpp (1.7), freeverb/revmodel.hpp (1.5),
+	  freeverb/src.hpp (1.5, VERSION_1_8_0), samples/Makefile.am (1.9),
+	  samples/nverb.cpp (1.5): Fixed configure.in SUBDIRS to
+	  AM_CONDITIONAL.  Deleted NVerb's FreeMode.  Changed NVerb's
+	  Wet/Dry mode to dB.
+
+2007-01-20  tkamogashira
+
+	* configure (1.20), configure.in (1.23), freeverb/frag.cpp (1.10),
+	  freeverb/frag.hpp (1.6), freeverb/irmodel2.cpp (1.15),
+	  freeverb/irmodel2.hpp (1.11), samples/Makefile.am (1.8): Fast
+	  algorithm (x3)
+
+2007-01-20  tkamogashira
+
+	* samples/test.cpp (1.3[DEAD]): New version of frag.cpp
+
+2007-01-13  tkamogashira
+
+	* configure (1.19), configure.in (1.22): SSE configure
+
+2007-01-12  tkamogashira
+
+	* configure (1.18), configure.in (1.21): Error: cast from 'void*'
+	  to 'int' loses precision.  GLib's GPOINTER_TO_INT() was used
+	  instead of C99 stdint.h's (intptr_t).
+
+2007-01-09  tkamogashira
+
+	* samples/IR/iR_cathedral.wav (1.1, VERSION_2_3_1, VERSION_2_3_0,
+	  VERSION_2_2_1, VERSION_2_2_0, VERSION_2_1_4, VERSION_2_1_2,
+	  VERSION_2_1_0, VERSION_2_0_0, VERSION_1_8_0): R_cathedral.wav
+
+2007-01-07  tkamogashira
+
+	* samples/IR/Makefile.am (1.3, VERSION_3_0_0, VERSION_2_6_6,
+	  VERSION_2_6_4, VERSION_2_6_0, VERSION_2_5_22, VERSION_2_5_21,
+	  VERSION_2_5_19, VERSION_2_5_18, VERSION_2_5_17, VERSION_2_5_15,
+	  VERSION_2_5_14_1, VERSION_2_5_14, VERSION_2_5_13, VERSION_2_5_12,
+	  VERSION_2_5_10, VERSION_2_5_8, VERSION_2_5_6, VERSION_2_5_5,
+	  VERSION_2_5_4, VERSION_2_5_1, VERSION_2_5_0, VERSION_2_3_1,
+	  VERSION_2_3_0, VERSION_2_2_1, VERSION_2_2_0, VERSION_2_1_4,
+	  VERSION_2_1_2, VERSION_2_1_0, VERSION_2_0_0, VERSION_1_8_0):
+	  error dialog bug fix
+
+2007-01-07  tkamogashira
+
+	* README (1.7): latency update
+
+2007-01-07  tkamogashira
+
+	* configure (1.17), configure.in (1.20), audacious/Makefile.am
+	  (1.4), doc/Makefile.in (1.4): dynamic library function export bug
+	  (for BMP, static)
+
+2007-01-07  tkamogashira
+
+	* freeverb/irmodel2.cpp (1.14), freeverb/irmodel2.hpp (1.10),
+	  samples/benchmark.cpp (1.3): fragmentSize fix, plugin logo, Fs
+	  count, PCM information, Apply Button Bug.
+
+2007-01-07  tkamogashira
+
+	* freeverb/frag.cpp (1.9), freeverb/irmodel2.hpp (1.9),
+	  samples/benchmark.cpp (1.2), samples/test.cpp (1.2): fragment
+	  Size fix
+
+2007-01-05  tkamogashira
+
+	* configure (1.16), configure.in (1.19), freeverb/frag.cpp (1.8),
+	  freeverb/irmodel2.cpp (1.13), freeverb/irmodel2.hpp (1.8),
+	  samples/Makefile.am (1.7): Profiling support + benchmark support
+
+2007-01-05  tkamogashira
+
+	* samples/: Makefile.am (1.6), benchmark.cpp (1.1): IR2 Speed
+	  benchmark
+
+2006-12-25  tkamogashira
+
+	* configure (1.15), configure.in (1.18): 3Dnow! option
+
+2006-12-24  tkamogashira
+
+	* samples/nverb.cpp (1.4): Preset
+
+2006-12-20  tkamogashira
+
+	* configure (1.14), configure.in (1.17): configure AC_ARG_ENABLE
+	  usage error fix
+
+2006-12-20  tkamogashira
+
+	* configure (1.13), configure.in (1.16), freeverb/frag.cpp (1.7):
+	  AC_CONFIG fix
+
+2006-12-19  tkamogashira
+
+	* freeverb/irmodel2.cpp (1.12): Preset + default fix
+
+2006-12-19  tkamogashira
+
+	* freeverb/: blockDelay.cpp (1.3), frag.cpp (1.6), frag.hpp (1.5),
+	  irmodel2.cpp (1.11): mono2stereo bug + faster
+
+2006-12-17  tkamogashira
+
+	* freeverb/Makefile.am (1.6, VERSION_1_8_0): library LIBADD fix
+
+2006-12-17  tkamogashira
+
+	* README (1.6), configure (1.12), configure.in (1.15),
+	  audacious/Makefile.am (1.3), doc/Makefile.in (1.3),
+	  freeverb/Makefile.am (1.5), samples/Makefile.am (1.5): libtool
+	  version bug fix + static library remove
+
+2006-11-26  tkamogashira
+
+	* ChangeLog (1.3[DEAD]), Makefile.am (1.3), configure (1.11),
+	  configure.in (1.14): [no log message]
+
+2006-11-26  tkamogashira
+
+	* ChangeLog (1.2), Makefile.am (1.2): ChangeLog update
+
+2006-11-26  tkamogashira
+
+	* configure (1.10), configure.in (1.13), freeverb/frag.cpp (1.5),
+	  freeverb/frag.hpp (1.4), freeverb/irmodel2.cpp (1.10),
+	  freeverb/irmodel2.hpp (1.7): OpenMP support test
+
+2006-11-25  tkamogashira
+
+	* audacious/Makefile.am (1.2): deleted xmms i18n.h dependencies
+
+2006-11-25  tkamogashira
+
+	* README (1.5), TODO (1.2), configure (1.9): Audacious notice
+
+2006-11-25  tkamogashira
+
+	* configure.in (1.12): prepare release
+
+2006-11-25  tkamogashira
+
+	* audacious/Makefile.am (1.1): Audacious plugins
+
+2006-11-25  tkamogashira
+
+	* configure (1.8), configure.in (1.11), doc/Makefile.in (1.2):
+	  Audacious plugin support
+
+2006-11-23  tkamogashira
+
+	* configure (1.7): const string changed
+
+2006-11-23  tkamogashira
+
+	* freeverb/: nrev.cpp (1.9), nrev.hpp (1.8), revmodel.cpp (1.6),
+	  revmodel.hpp (1.4): Initial Delay
+
+2006-11-23  tkamogashira
+
+	* freeverb/irmodel2.cpp (1.9): Initial Delay mute bug
+
+2006-11-23  tkamogashira
+
+	* freeverb/: allpass.cpp (1.3), comb.cpp (1.3), delay.cpp (1.4),
+	  irmodel2.cpp (1.8), irmodel2.hpp (1.6): Initial Delay support
+
+2006-11-21  tkamogashira
+
+	* freeverb/: irmodel.cpp (1.4, VERSION_1_8_0), irmodel.hpp (1.4,
+	  VERSION_1_8_0), irmodel2.cpp (1.7), irmodel2.hpp (1.5): bound
+	  check error
+
+2006-11-21  tkamogashira
+
+	* freeverb/: allpass.cpp (1.2), allpass.hpp (1.2, VERSION_1_8_0),
+	  blockDelay.cpp (1.2), blockDelay.hpp (1.2, VERSION_1_8_0),
+	  comb.cpp (1.2), comb.hpp (1.2), delay.cpp (1.3), delay.hpp (1.3),
+	  efilter.cpp (1.2, VERSION_1_8_0), efilter.hpp (1.2,
+	  VERSION_1_8_0), frag.cpp (1.4), frag.hpp (1.3), irmodel.cpp
+	  (1.3), irmodel.hpp (1.3), irmodel2.cpp (1.6), irmodel2.hpp (1.4),
+	  nrev.cpp (1.8), nrev.hpp (1.7), revmodel.cpp (1.5), revmodel.hpp
+	  (1.3), src.cpp (1.5, VERSION_1_8_0), src.hpp (1.4), tuning.h
+	  (1.2): std::bad_alloc try catch / GPL notice
+
+2006-11-19  tkamogashira
+
+	* configure.in (1.10), samples/fverb.cpp (1.4), samples/nverb.cpp
+	  (1.3): SRC not filling error
+
+2006-11-19  tkamogashira
+
+	* freeverb/src.cpp (1.4): SRC fill not 0.0f inf error
+
+2006-11-19  tkamogashira
+
+	* samples/: fverb.cpp (1.3), nverb.cpp (1.2), src.cpp (1.2,
+	  VERSION_2_0_0, VERSION_1_8_0): deleted compress
+
+2006-11-19  tkamogashira
+
+	* samples/: Makefile.am (1.4), src.cpp (1.1): SRC test program
+
+2006-11-17  tkamogashira
+
+	* README (1.4), configure (1.6), configure.in (1.9): release 1.3
+	  fix
+
+2006-11-17  tkamogashira
+
+	* samples/IR/: LargeCave.wav (1.1, VERSION_2_3_1, VERSION_2_3_0,
+	  VERSION_2_2_1, VERSION_2_2_0, VERSION_2_1_4, VERSION_2_1_2,
+	  VERSION_2_1_0, VERSION_2_0_0, VERSION_1_8_0), Makefile.am (1.2):
+	  new impulse
+
+2006-11-17  tkamogashira
+
+	* configure (1.5), configure.in (1.8), samples/IR/Makefile.am
+	  (1.1): [no log message]
+
+2006-11-17  tkamogashira
+
+	* freeverb/: Makefile.am (1.4), efilter.cpp (1.1), efilter.hpp
+	  (1.1), irmodel2.cpp (1.5), irmodel2.hpp (1.3), nrev.cpp (1.7):
+	  LPF+HPF support
+
+2006-11-17  tkamogashira
+
+	* configure.in (1.7): XMMS/ sample configure bug
+
+2006-11-16  tkamogashira
+
+	* freeverb/irmodel2.cpp (1.4), freeverb/irmodel2.hpp (1.2),
+	  samples/impulse2.cpp (1.2): changed wet/dry to dB.
+
+2006-11-16  tkamogashira
+
+	* configure (1.4), configure.in (1.6): XMMS configure fix
+
+2006-11-16  tkamogashira
+
+	* freeverb/irmodel2.cpp (1.3): memory bug fix
+
+2006-11-15  tkamogashira
+
+	* README (1.3), configure (1.3), configure.in (1.5): ICC support
+
+2006-11-15  tkamogashira
+
+	* freeverb/: frag.cpp (1.3), irmodel2.cpp (1.2): low memory usage
+
+2006-11-15  tkamogashira
+
+	* freeverb/: frag.cpp (1.2), frag.hpp (1.2): lower memory usage
+
+2006-11-14  tkamogashira
+
+	* samples/test.cpp (1.1): [no log message]
+
+2006-11-14  tkamogashira
+
+	* samples/: Makefile.am (1.3), impulse2.cpp (1.1): low latency IR's
+	  sample
+
+2006-11-14  tkamogashira
+
+	* freeverb/: frag.cpp (1.1), frag.hpp (1.1): FFT multiply
+
+2006-11-14  tkamogashira
+
+	* freeverb/: Makefile.am (1.3), blockDelay.cpp (1.1),
+	  blockDelay.hpp (1.1), delay.cpp (1.2), delay.hpp (1.2),
+	  irmodel.cpp (1.2), irmodel.hpp (1.2), irmodel2.cpp (1.1),
+	  irmodel2.hpp (1.1), src.hpp (1.3): low latency IR + load fix
+
+2006-11-11  tkamogashira
+
+	* configure.in (1.4): delay fix
+
+2006-11-08  tkamogashira
+
+	* configure (1.2), configure.in (1.3), samples/Makefile.am (1.2):
+	  XMMS IR plugin
+
+2006-11-06  tkamogashira
+
+	* configure.in (1.2), freeverb/nrev.cpp (1.6), freeverb/nrev.hpp
+	  (1.6), freeverb/revmodel.cpp (1.4), freeverb/src.cpp (1.3):
+	  freeverb + src xmms plugins support
+
+2006-11-06  tkamogashira
+
+	* freeverb/: nrev.cpp (1.5), nrev.hpp (1.5), revmodel.cpp (1.3):
+	  SRC configure fix
+
+2006-11-06  tkamogashira
+
+	* freeverb/nrev.cpp (1.4), freeverb/nrev.hpp (1.4),
+	  freeverb/revmodel.cpp (1.2), freeverb/revmodel.hpp (1.2),
+	  freeverb/src.cpp (1.2), freeverb/src.hpp (1.2), samples/fverb.cpp
+	  (1.2): Sampling Rate Conversion fix
+
+2006-11-06  tkamogashira
+
+	* freeverb/: Makefile.am (1.2), src.cpp (1.1), src.hpp (1.1):
+	  Sampling Converter
+
+2006-11-06  tkamogashira
+
+	* samples/Makefile.in (1.2[DEAD]), Makefile.in (1.2[DEAD]): [no log
+	  message]
+
+2006-11-06  tkamogashira
+
+	* freeverb/: Makefile.in (1.2[DEAD]), nrev.cpp (1.3), nrev.hpp
+	  (1.3): src converter type selection added
+
+2006-11-06  tkamogashira
+
+	* freeverb/: nrev.cpp (1.2), nrev.hpp (1.2): src_delete fix
+
+2006-11-06  tkamogashira
+
+	* autogen.sh (1.2, VERSION_1_8_0): config m4 fix
+
+2006-11-06  tkamogashira
+
+	* README (1.2): [no log message]
+
+2006-11-06  tkamogashira
+
+	* NEWS (1.1), TODO (1.1), depcomp (1.1), freeverb3.pc.in (1.1),
+	  README (1.1), aclocal.m4 (1.1), AUTHORS (1.1), COPYING (1.1),
+	  ChangeLog (1.1), INSTALL (1.1), Makefile.am (1.1), Makefile.in
+	  (1.1), autogen.sh (1.1), configure (1.1), configure.in (1.1),
+	  define.sample (1.1), stamp-h.in (1.1), doc/Makefile.am (1.1),
+	  doc/Makefile.in (1.1), doc/freeverb.orig.readme (1.1),
+	  samples/Makefile.am (1.1), samples/Makefile.in (1.1),
+	  samples/fverb.cpp (1.1), samples/impulse.cpp (1.1),
+	  samples/nverb.cpp (1.1), samples/IR/IR_theater.wav (1.1),
+	  samples/IR/101-cup.wav (1.1), samples/IR/minisp.wav (1.1),
+	  samples/IR/oooh.wav (1.1), samples/IR/tv.wav (1.1),
+	  samples/IR/101-st.wav (1.1), samples/IR/loudsp.wav (1.1),
+	  config/depcomp (1.1), config/ltmain.sh (1.1), config/config.guess
+	  (1.1), config/config.sub (1.1), config/install-sh (1.1),
+	  config/missing (1.1), config/mkinstalldirs (1.1),
+	  freeverb/Makefile.am (1.1), freeverb/Makefile.in (1.1),
+	  freeverb/allpass.cpp (1.1), freeverb/allpass.hpp (1.1),
+	  freeverb/comb.cpp (1.1), freeverb/comb.hpp (1.1),
+	  freeverb/delay.cpp (1.1), freeverb/delay.hpp (1.1),
+	  freeverb/irmodel.cpp (1.1), freeverb/irmodel.hpp (1.1),
+	  freeverb/nrev.cpp (1.1), freeverb/nrev.hpp (1.1),
+	  freeverb/revmodel.cpp (1.1), freeverb/revmodel.hpp (1.1),
+	  freeverb/tuning.h (1.1): Initial revision
+
+2006-11-06  tkamogashira
+
+	* NEWS (1.1.1.1, VERSION_3_0_0, VERSION_2_6_6, VERSION_2_6_4,
+	  VERSION_2_6_0, VERSION_2_5_22, VERSION_2_5_21, VERSION_2_5_19,
+	  VERSION_2_5_18, VERSION_2_5_17, VERSION_2_5_15, VERSION_2_5_14_1,
+	  VERSION_2_5_14, VERSION_2_5_13, VERSION_2_5_12, VERSION_2_5_10,
+	  VERSION_2_5_8, VERSION_2_5_6, VERSION_2_5_5, VERSION_2_5_4,
+	  VERSION_2_5_1, VERSION_2_5_0, VERSION_2_3_1, VERSION_2_3_0,
+	  VERSION_2_2_1, VERSION_2_2_0, VERSION_2_1_4, VERSION_2_1_2,
+	  VERSION_2_1_0, VERSION_2_0_0, VERSION_1_8_0), TODO (1.1.1.1),
+	  depcomp (1.1.1.1, VERSION_3_0_0, VERSION_2_6_6, VERSION_2_6_4,
+	  VERSION_2_6_0, VERSION_2_5_22, VERSION_2_5_21, VERSION_2_5_19,
+	  VERSION_2_5_18, VERSION_2_5_17, VERSION_2_5_15, VERSION_2_5_14_1,
+	  VERSION_2_5_14, VERSION_2_5_13, VERSION_2_5_12, VERSION_2_5_10,
+	  VERSION_2_5_8, VERSION_2_5_6, VERSION_2_5_5, VERSION_2_5_4,
+	  VERSION_2_5_1, VERSION_2_5_0, VERSION_2_3_1, VERSION_2_3_0,
+	  VERSION_2_2_1, VERSION_2_2_0, VERSION_2_1_4, VERSION_2_1_2,
+	  VERSION_2_1_0, VERSION_2_0_0, VERSION_1_8_0), freeverb3.pc.in
+	  (1.1.1.1, VERSION_1_8_0), README (1.1.1.1), aclocal.m4 (1.1.1.1),
+	  AUTHORS (1.1.1.1), COPYING (1.1.1.1, VERSION_3_0_0,
+	  VERSION_2_6_6, VERSION_2_6_4, VERSION_2_6_0, VERSION_2_5_22,
+	  VERSION_2_5_21, VERSION_2_5_19, VERSION_2_5_18, VERSION_2_5_17,
+	  VERSION_2_5_15, VERSION_2_5_14_1, VERSION_2_5_14, VERSION_2_5_13,
+	  VERSION_2_5_12, VERSION_2_5_10, VERSION_2_5_8, VERSION_2_5_6,
+	  VERSION_2_5_5, VERSION_2_5_4, VERSION_2_5_1, VERSION_2_5_0,
+	  VERSION_2_3_1, VERSION_2_3_0, VERSION_2_2_1, VERSION_2_2_0,
+	  VERSION_2_1_4, VERSION_2_1_2, VERSION_2_1_0, VERSION_2_0_0,
+	  VERSION_1_8_0), ChangeLog (1.1.1.1), INSTALL (1.1.1.1,
+	  VERSION_2_5_0, VERSION_2_3_1, VERSION_2_3_0, VERSION_2_2_1,
+	  VERSION_2_2_0, VERSION_2_1_4, VERSION_2_1_2, VERSION_2_1_0,
+	  VERSION_2_0_0, VERSION_1_8_0), Makefile.am (1.1.1.1), Makefile.in
+	  (1.1.1.1), autogen.sh (1.1.1.1), configure (1.1.1.1),
+	  configure.in (1.1.1.1), define.sample (1.1.1.1, VERSION_2_5_15,
+	  VERSION_2_5_14_1, VERSION_2_5_14, VERSION_2_5_13, VERSION_2_5_12,
+	  VERSION_2_5_10, VERSION_2_5_8, VERSION_2_5_6, VERSION_2_5_5,
+	  VERSION_2_5_4, VERSION_2_5_1, VERSION_2_5_0, VERSION_2_3_1,
+	  VERSION_2_3_0, VERSION_2_2_1, VERSION_2_2_0, VERSION_2_1_4,
+	  VERSION_2_1_2, VERSION_2_1_0, VERSION_2_0_0, VERSION_1_8_0),
+	  stamp-h.in (1.1.1.1, VERSION_3_0_0, VERSION_2_6_6, VERSION_2_6_4,
+	  VERSION_2_6_0, VERSION_2_5_22, VERSION_2_5_21, VERSION_2_5_19,
+	  VERSION_2_5_18, VERSION_2_5_17, VERSION_2_5_15, VERSION_2_5_14_1,
+	  VERSION_2_5_14, VERSION_2_5_13, VERSION_2_5_12, VERSION_2_5_10,
+	  VERSION_2_5_8, VERSION_2_5_6, VERSION_2_5_5, VERSION_2_5_4,
+	  VERSION_2_5_1, VERSION_2_5_0, VERSION_2_3_1, VERSION_2_3_0,
+	  VERSION_2_2_1, VERSION_2_2_0, VERSION_2_1_4, VERSION_2_1_2,
+	  VERSION_2_1_0, VERSION_2_0_0, VERSION_1_8_0), doc/Makefile.am
+	  (1.1.1.1, VERSION_2_5_17, VERSION_2_5_15, VERSION_2_5_14_1,
+	  VERSION_2_5_14, VERSION_2_5_13, VERSION_2_5_12, VERSION_2_5_10,
+	  VERSION_2_5_8, VERSION_2_5_6, VERSION_2_5_5, VERSION_2_5_4,
+	  VERSION_2_5_1, VERSION_2_5_0, VERSION_2_3_1, VERSION_2_3_0,
+	  VERSION_2_2_1, VERSION_2_2_0, VERSION_2_1_4, VERSION_2_1_2,
+	  VERSION_2_1_0, VERSION_2_0_0, VERSION_1_8_0), doc/Makefile.in
+	  (1.1.1.1), doc/freeverb.orig.readme (1.1.1.1, VERSION_3_0_0,
+	  VERSION_2_6_6, VERSION_2_6_4, VERSION_2_6_0, VERSION_2_5_22,
+	  VERSION_2_5_21, VERSION_2_5_19, VERSION_2_5_18, VERSION_2_5_17,
+	  VERSION_2_5_15, VERSION_2_5_14_1, VERSION_2_5_14, VERSION_2_5_13,
+	  VERSION_2_5_12, VERSION_2_5_10, VERSION_2_5_8, VERSION_2_5_6,
+	  VERSION_2_5_5, VERSION_2_5_4, VERSION_2_5_1, VERSION_2_5_0,
+	  VERSION_2_3_1, VERSION_2_3_0, VERSION_2_2_1, VERSION_2_2_0,
+	  VERSION_2_1_4, VERSION_2_1_2, VERSION_2_1_0, VERSION_2_0_0,
+	  VERSION_1_8_0), samples/Makefile.am (1.1.1.1),
+	  samples/Makefile.in (1.1.1.1), samples/fverb.cpp (1.1.1.1),
+	  samples/impulse.cpp (1.1.1.1, VERSION_2_0_0, VERSION_1_8_0),
+	  samples/nverb.cpp (1.1.1.1), samples/IR/IR_theater.wav (1.1.1.1,
+	  VERSION_3_0_0, VERSION_2_6_6, VERSION_2_6_4, VERSION_2_6_0,
+	  VERSION_2_5_22, VERSION_2_5_21, VERSION_2_5_19, VERSION_2_5_18,
+	  VERSION_2_5_17, VERSION_2_5_15, VERSION_2_5_14_1, VERSION_2_5_14,
+	  VERSION_2_5_13, VERSION_2_5_12, VERSION_2_5_10, VERSION_2_5_8,
+	  VERSION_2_5_6, VERSION_2_5_5, VERSION_2_5_4, VERSION_2_5_1,
+	  VERSION_2_5_0, VERSION_2_3_1, VERSION_2_3_0, VERSION_2_2_1,
+	  VERSION_2_2_0, VERSION_2_1_4, VERSION_2_1_2, VERSION_2_1_0,
+	  VERSION_2_0_0, VERSION_1_8_0), samples/IR/101-cup.wav (1.1.1.1,
+	  VERSION_3_0_0, VERSION_2_6_6, VERSION_2_6_4, VERSION_2_6_0,
+	  VERSION_2_5_22, VERSION_2_5_21, VERSION_2_5_19, VERSION_2_5_18,
+	  VERSION_2_5_17, VERSION_2_5_15, VERSION_2_5_14_1, VERSION_2_5_14,
+	  VERSION_2_5_13, VERSION_2_5_12, VERSION_2_5_10, VERSION_2_5_8,
+	  VERSION_2_5_6, VERSION_2_5_5, VERSION_2_5_4, VERSION_2_5_1,
+	  VERSION_2_5_0, VERSION_2_3_1, VERSION_2_3_0, VERSION_2_2_1,
+	  VERSION_2_2_0, VERSION_2_1_4, VERSION_2_1_2, VERSION_2_1_0,
+	  VERSION_2_0_0, VERSION_1_8_0), samples/IR/minisp.wav (1.1.1.1,
+	  VERSION_2_5_21, VERSION_2_5_19, VERSION_2_5_18, VERSION_2_5_17,
+	  VERSION_2_5_15, VERSION_2_5_14_1, VERSION_2_5_14, VERSION_2_5_13,
+	  VERSION_2_5_12, VERSION_2_5_10, VERSION_2_5_8, VERSION_2_5_6,
+	  VERSION_2_5_5, VERSION_2_5_4, VERSION_2_5_1, VERSION_2_5_0,
+	  VERSION_2_3_1, VERSION_2_3_0, VERSION_2_2_1, VERSION_2_2_0,
+	  VERSION_2_1_4, VERSION_2_1_2, VERSION_2_1_0, VERSION_2_0_0,
+	  VERSION_1_8_0), samples/IR/oooh.wav (1.1.1.1, VERSION_3_0_0,
+	  VERSION_2_6_6, VERSION_2_6_4, VERSION_2_6_0, VERSION_2_5_22,
+	  VERSION_2_5_21, VERSION_2_5_19, VERSION_2_5_18, VERSION_2_5_17,
+	  VERSION_2_5_15, VERSION_2_5_14_1, VERSION_2_5_14, VERSION_2_5_13,
+	  VERSION_2_5_12, VERSION_2_5_10, VERSION_2_5_8, VERSION_2_5_6,
+	  VERSION_2_5_5, VERSION_2_5_4, VERSION_2_5_1, VERSION_2_5_0,
+	  VERSION_2_3_1, VERSION_2_3_0, VERSION_2_2_1, VERSION_2_2_0,
+	  VERSION_2_1_4, VERSION_2_1_2, VERSION_2_1_0, VERSION_2_0_0,
+	  VERSION_1_8_0), samples/IR/tv.wav (1.1.1.1, VERSION_3_0_0,
+	  VERSION_2_6_6, VERSION_2_6_4, VERSION_2_6_0, VERSION_2_5_22,
+	  VERSION_2_5_21, VERSION_2_5_19, VERSION_2_5_18, VERSION_2_5_17,
+	  VERSION_2_5_15, VERSION_2_5_14_1, VERSION_2_5_14, VERSION_2_5_13,
+	  VERSION_2_5_12, VERSION_2_5_10, VERSION_2_5_8, VERSION_2_5_6,
+	  VERSION_2_5_5, VERSION_2_5_4, VERSION_2_5_1, VERSION_2_5_0,
+	  VERSION_2_3_1, VERSION_2_3_0, VERSION_2_2_1, VERSION_2_2_0,
+	  VERSION_2_1_4, VERSION_2_1_2, VERSION_2_1_0, VERSION_2_0_0,
+	  VERSION_1_8_0), samples/IR/101-st.wav (1.1.1.1, VERSION_3_0_0,
+	  VERSION_2_6_6, VERSION_2_6_4, VERSION_2_6_0, VERSION_2_5_22,
+	  VERSION_2_5_21, VERSION_2_5_19, VERSION_2_5_18, VERSION_2_5_17,
+	  VERSION_2_5_15, VERSION_2_5_14_1, VERSION_2_5_14, VERSION_2_5_13,
+	  VERSION_2_5_12, VERSION_2_5_10, VERSION_2_5_8, VERSION_2_5_6,
+	  VERSION_2_5_5, VERSION_2_5_4, VERSION_2_5_1, VERSION_2_5_0,
+	  VERSION_2_3_1, VERSION_2_3_0, VERSION_2_2_1, VERSION_2_2_0,
+	  VERSION_2_1_4, VERSION_2_1_2, VERSION_2_1_0, VERSION_2_0_0,
+	  VERSION_1_8_0), samples/IR/loudsp.wav (1.1.1.1, VERSION_3_0_0,
+	  VERSION_2_6_6, VERSION_2_6_4, VERSION_2_6_0, VERSION_2_5_22,
+	  VERSION_2_5_21, VERSION_2_5_19, VERSION_2_5_18, VERSION_2_5_17,
+	  VERSION_2_5_15, VERSION_2_5_14_1, VERSION_2_5_14, VERSION_2_5_13,
+	  VERSION_2_5_12, VERSION_2_5_10, VERSION_2_5_8, VERSION_2_5_6,
+	  VERSION_2_5_5, VERSION_2_5_4, VERSION_2_5_1, VERSION_2_5_0,
+	  VERSION_2_3_1, VERSION_2_3_0, VERSION_2_2_1, VERSION_2_2_0,
+	  VERSION_2_1_4, VERSION_2_1_2, VERSION_2_1_0, VERSION_2_0_0,
+	  VERSION_1_8_0), config/depcomp (1.1.1.1, VERSION_2_5_0,
+	  VERSION_2_3_1, VERSION_2_3_0, VERSION_2_2_1, VERSION_2_2_0,
+	  VERSION_2_1_4, VERSION_2_1_2, VERSION_2_1_0, VERSION_2_0_0,
+	  VERSION_1_8_0), config/ltmain.sh (1.1.1.1, VERSION_1_8_0),
+	  config/config.guess (1.1.1.1, VERSION_1_8_0), config/config.sub
+	  (1.1.1.1, VERSION_1_8_0), config/install-sh (1.1.1.1,
+	  VERSION_2_5_0, VERSION_2_3_1, VERSION_2_3_0, VERSION_2_2_1,
+	  VERSION_2_2_0, VERSION_2_1_4, VERSION_2_1_2, VERSION_2_1_0,
+	  VERSION_2_0_0, VERSION_1_8_0), config/missing (1.1.1.1,
+	  VERSION_2_5_0, VERSION_2_3_1, VERSION_2_3_0, VERSION_2_2_1,
+	  VERSION_2_2_0, VERSION_2_1_4, VERSION_2_1_2, VERSION_2_1_0,
+	  VERSION_2_0_0, VERSION_1_8_0), config/mkinstalldirs (1.1.1.1,
+	  VERSION_2_5_0, VERSION_2_3_1, VERSION_2_3_0, VERSION_2_2_1,
+	  VERSION_2_2_0, VERSION_2_1_4, VERSION_2_1_2, VERSION_2_1_0,
+	  VERSION_2_0_0, VERSION_1_8_0), freeverb/Makefile.am (1.1.1.1),
+	  freeverb/Makefile.in (1.1.1.1), freeverb/allpass.cpp (1.1.1.1),
+	  freeverb/allpass.hpp (1.1.1.1), freeverb/comb.cpp (1.1.1.1),
+	  freeverb/comb.hpp (1.1.1.1), freeverb/delay.cpp (1.1.1.1),
+	  freeverb/delay.hpp (1.1.1.1), freeverb/irmodel.cpp (1.1.1.1),
+	  freeverb/irmodel.hpp (1.1.1.1), freeverb/nrev.cpp (1.1.1.1),
+	  freeverb/nrev.hpp (1.1.1.1), freeverb/revmodel.cpp (1.1.1.1),
+	  freeverb/revmodel.hpp (1.1.1.1), freeverb/tuning.h (1.1.1.1)
+	  (utags: beta): [no log message]
+

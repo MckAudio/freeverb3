@@ -1,0 +1,71 @@
+diff -cr libgdither-0.6/gdither.c libgdither-0.6.new/gdither.c
+*** libgdither-0.6/gdither.c	2005-07-25 05:19:30.000000000 +0900
+--- libgdither-0.6.new/gdither.c	2011-09-11 22:06:17.564384421 +0900
+***************
+*** 175,181 ****
+      const int clamp_l)
+  {
+      unsigned int pos, i;
+!     u_int8_t *o8 = (u_int8_t*) y;
+      int16_t *o16 = (int16_t*) y;
+      int32_t *o32 = (int32_t*) y;
+      float tmp, r, ideal;
+--- 175,181 ----
+      const int clamp_l)
+  {
+      unsigned int pos, i;
+!     uint8_t *o8 = (uint8_t*) y;
+      int16_t *o16 = (int16_t*) y;
+      int32_t *o32 = (int32_t*) y;
+      float tmp, r, ideal;
+***************
+*** 227,233 ****
+  
+  	switch (bit_depth) {
+  	case GDither8bit:
+! 	    o8[i] = (u_int8_t) (clamped * post_scale);
+  	    break;
+  	case GDither16bit:
+  	    o16[i] = (int16_t) (clamped * post_scale);
+--- 227,233 ----
+  
+  	switch (bit_depth) {
+  	case GDither8bit:
+! 	    o8[i] = (uint8_t) (clamped * post_scale);
+  	    break;
+  	case GDither16bit:
+  	    o16[i] = (int16_t) (clamped * post_scale);
+***************
+*** 255,261 ****
+  
+      i = channel;
+      for (pos = 0; pos < length; pos++, i += stride) {
+! 	tmp = x[i] * scale + bias;
+  
+  	switch (dt) {
+  	case GDitherNone:
+--- 255,261 ----
+  
+      i = channel;
+      for (pos = 0; pos < length; pos++, i += stride) {
+! 	tmp = x[pos] * scale + bias;
+  
+  	switch (dt) {
+  	case GDitherNone:
+***************
+*** 342,348 ****
+  	for (i=0; (i + pos) < length && i < GDITHER_CONV_BLOCK; i++) {
+  	    conv[i] = x[pos + i];
+  	}
+! 	gdither_runf(s, channel, i, conv, ycast + s->channels * step);
+  	pos += i;
+      }
+  }
+--- 342,348 ----
+  	for (i=0; (i + pos) < length && i < GDITHER_CONV_BLOCK; i++) {
+  	    conv[i] = x[pos + i];
+  	}
+! 	gdither_runf(s, channel, i, conv, ycast + s->channels * step * pos);
+  	pos += i;
+      }
+  }

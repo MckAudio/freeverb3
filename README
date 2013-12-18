@@ -1,0 +1,117 @@
+This is Freeverb3, 3.x.x
+
+Freeverb3 is a sound processing library with enhanced
+version of freeverb, renewed N Reverb by CCRMA, many types of good
+quality algorithmic reverbs including lexicon type reverbs,
+implementation of impulse response convolution reverb, FIR filter
+constructor, band splitter and compressor.
+
+This library includes audacious effect plugins and sample programs,
+which can be used to test the sound effect easily.
+Please report any bugs or advices.
+
+The hand-optimized SIMD codes for some CPUs are included in this library,
+which will provide fast convolution processing.
+
+Dependencies of libfreeverb3
+============================
+
+* FFTW3 [http://www.fftw.org/]
+  This library needs at least one precision version
+  (single or double or long double) of fftw3 libraries,
+  which are called fftw3f or fftw3 or fftw3l.
+  fftw-3.1.2 was tested.
+
+Dependencies of programs
+========================
+
+Sample programs      : libsndfile
+Jack sample programs : libsndfile jack
+audacious            : libsndfile audacious-3.1 glib2 GTK+3 gthread pango
+
+* libsndfile [http://www.mega-nerd.com/libsndfile/]
+  libsndfile-1.0.17 was tested.
+
+* jack [http://jackaudio.org/]
+  jackd version 0.101.1 was tested.
+
+* audacious [http://audacious.nenolod.net/Main_Page/]
+  audacious >= 3.2.4 is required.
+
+* GTK+ [http://www.gtk.org/]
+  gtk-3.x >= 3.0.0 is required.
+
+* glib2 [http://www.gtk.org/]
+  glib-2.x >= 2.6.0 is required.
+
+* gthread, pango
+
+If you are building this from the source repository sources,
+you will need the following tools:
+
+* autotools (autoconf, automake and libtool)
+* autogen
+
+configure OPTIONS
+=================
+
+See configure --help.
+
+SIMD optimization codes for the impulse convolution
+===================================================
+
+3DNow! uses primitive 3DNow! codes.
+This can be used on AMD CPUs which have 3DNow! instructions.
+(K6-2, Athlon, ...)
+
+SSE can be used on Intel or AMD CPUs which have SSE instrunctions.
+(PentiumIII, ..., AthlonXP, Athlon64, ...)
+SSE is used on x86_64/amd64.
+
+SSE2 can be used on Intel or AMD CPUs which have SSE2 instrunctions.
+(Pentium4, ..., Opteron, ...)
+SSE2 is enabled on x86_64/amd64.
+
+--enable-forcefpu can be used to disable the use of
+hand optimized SSE/SSE2 codes on x86_64/amd64.
+
+Supported instructions:
+single floating point | 3DNow!, SSE, SSE3, AVX
+double floating ponit | SSE2, SSE4, AVX
+
+CONTACTS
+========
+
+freeverb3 is written by Teru Kamogashira.
+The freeverb3 home page is at:
+
+	http://freeverb3.sourceforge.net/
+
+
+COPYING
+=======
+
+Copyright:  Copyright (C) 2006-2013 Teru Kamogashira
+Licence:    GPL v2
+
+ChangeLog
+samples/IR/*.wav
+
+Copyright:  Copyright (C) 2006-2013 Teru Kamogashira
+Licence:    GPL v2
+
+This file is part of Freeverb3.
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
