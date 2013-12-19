@@ -22,7 +22,7 @@ SUBDIRS = m4 doc patch libgdither float double ldouble libsamplerate2 freeverb a
 pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = freeverb3-3.pc
 
-EXTRA_DIST = cvs2cl.pl
+EXTRA_DIST = cvs2cl.pl ChangeLog.v2
 
 m4datadir = $(datadir)/aclocal
 
