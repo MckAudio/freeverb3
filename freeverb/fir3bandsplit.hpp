@@ -1,4 +1,5 @@
-/*  Compressor model implementation
+/**
+ *  FIR 3 band splitter
  *
  *  Copyright (C) 2006-2013 Teru Kamogashira
  *

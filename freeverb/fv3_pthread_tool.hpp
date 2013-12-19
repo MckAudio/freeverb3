@@ -1,5 +1,5 @@
 /**
- *  Slot Locker
+ *  Pthread Locker Class
  *
  *  Copyright (C) 2006-2013 Teru Kamogashira
  *

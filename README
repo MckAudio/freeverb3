@@ -1,10 +1,20 @@
 This is Freeverb3, 3.x.x
 
-Freeverb3 is a sound processing library with enhanced
-version of freeverb, renewed N Reverb by CCRMA, many types of good
-quality algorithmic reverbs including lexicon type reverbs,
-implementation of impulse response convolution reverb, FIR filter
-constructor, band splitter and compressor.
+Freeverb3 is a signal processing library.
+
+This library includes many types of audio processing effects and signal
+generators. The linear feedback shift register (LFSR) maximum length
+sequence (MLS) generator, multiple types of high quality mono and stereo reverb
+effects, an multi slot impulse response processor, multiband hardknee and softknee
+compressor and limiter, a stereo enhancer, a limiter and a lot of
+types of infinite impulse respose (IIR) and finite impulse response (FIR)
+filters are available.
+
+The convolution reverb algorithm is highly optimized
+for x86 processors by using hand optimized codes of 3DNow!/SSE/SSE3/AVX/FMA/FMA4
+(single precision), SSE2/SSE4/AVX/FMA/FMA4 (double precision), which can be
+used for zero latency realtime sound effect processing. This library supports
+any environment which GCC supports including x86/ppc/sparc. 
 
 This library includes audacious effect plugins and sample programs,
 which can be used to test the sound effect easily.
@@ -82,11 +92,10 @@ double floating ponit | SSE2, SSE4, AVX
 CONTACTS
 ========
 
-freeverb3 is written by Teru Kamogashira.
-The freeverb3 home page is at:
+Freeverb3 is written by Teru Kamogashira.
+The Freeverb3 home page is at:
 
-	http://freeverb3.sourceforge.net/
-
+	http://www.nongnu.org/freeverb3/
 
 COPYING
 =======
@@ -94,7 +103,8 @@ COPYING
 Copyright:  Copyright (C) 2006-2013 Teru Kamogashira
 Licence:    GPL v2
 
-ChangeLog
+ChangeLog	This is a current ChangeLog file.
+ChangeLog.v2	This is a ChangeLog of obsolete versions.
 samples/IR/*.wav
 
 Copyright:  Copyright (C) 2006-2013 Teru Kamogashira
@@ -115,3 +125,5 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+
+

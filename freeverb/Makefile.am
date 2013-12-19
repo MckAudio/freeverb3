@@ -27,7 +27,7 @@ EXTRA_DIST = \
 	irmodel3w_t.hpp \
 	irmodel3w.hpp
 
-AM_CPPFLAGS = -DLIBFV3_DEFAULT -I$(top_srcdir)
+AM_CPPFLAGS = -DLIBFV3_DEFAULT -I$(top_srcdir) -I$(top_builddir)
 libfreeverbincludedir = ${includedir}/libfreeverb3-3/freeverb
 libfreeverbinclude_HEADERS = \
 	allpass.hpp \
@@ -116,7 +116,7 @@ libfreeverbinclude_HEADERS = \
 	zrev.hpp \
 	zrev2_t.hpp \
 	zrev2.hpp \
-	$(top_srcdir)/fv3_config.h
+	$(top_builddir)/fv3_config.h
 
 lib_LTLIBRARIES = libfreeverb3.la
 

@@ -1,4 +1,5 @@
-/*  Impulse Response Processor model implementation
+/**
+ *  Impulse Response Processor model implementation
  *
  *  Copyright (C) 2006-2013 Teru Kamogashira
  *

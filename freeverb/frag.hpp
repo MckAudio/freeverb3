@@ -1,4 +1,5 @@
-/*  FFT impulse fragment square multiplier
+/**
+ *  FFT impulse fragment square multiplier
  *
  *  Copyright (C) 2006-2013 Teru Kamogashira
  *

@@ -1,4 +1,5 @@
-/*  Limiter model implementation
+/**
+ *  Limiter model implementation
  *
  *  Copyright (C) 2006-2013 Teru Kamogashira
  *

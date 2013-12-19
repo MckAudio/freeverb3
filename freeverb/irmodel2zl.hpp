@@ -1,4 +1,5 @@
-/*  Impulse Response Processor model implementation
+/**
+ *  Impulse Response Processor model implementation
  *  Low Latency Version
  *
  *  Copyright (C) 2006-2013 Teru Kamogashira

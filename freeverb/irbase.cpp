@@ -1,4 +1,5 @@
-/*  Impulse Response Processor model abstract class
+/**
+ *  Impulse Response Processor model abstract class
  *
  *  Copyright (C) 2006-2013 Teru Kamogashira
  *

@@ -1,4 +1,5 @@
-/*  Freeverb3
+/**
+ *  Freeverb3 definition
  *
  *  Copyright (C) 2006-2013 Teru Kamogashira
  *
