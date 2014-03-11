@@ -1,7 +1,6 @@
 /**
  *  Enhanced Freeverb
  *
- *  Copyright (C) 2000 Jezar at Dreampoint
  *  Copyright (C) 2006-2013 Teru Kamogashira
  *
  *  This program is free software; you can redistribute it and/or modify

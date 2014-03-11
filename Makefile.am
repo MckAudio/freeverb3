@@ -22,13 +22,13 @@ SUBDIRS = m4 doc patch libgdither float double ldouble libsamplerate2 freeverb a
 pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = freeverb3-3.pc
 
-EXTRA_DIST = cvs2cl.pl ChangeLog.v2
+EXTRA_DIST = cvs2cl.pl ChangeLog.v2 autogen.sh
 
 m4datadir = $(datadir)/aclocal
 
-dist-hook: CL
+dist-hook: git-log
 
-CL:
-	(cd $(top_srcdir); cvs2cl.pl  --show-dead --no-times --tags --branches --revisions)
-	cp $(srcdir)/ChangeLog $(distdir)/
+git-log:
+	(cd $(top_srcdir); git log --pretty="%ad %an <%ae> [%h] %s" > $(top_srcdir)/ChangeLog)
+	cp $(top_srcdir)/ChangeLog $(distdir)/
 

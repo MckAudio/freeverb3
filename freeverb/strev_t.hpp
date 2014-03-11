@@ -1,8 +1,6 @@
 /**
  *  Enhanced Simple Tank Reverb
  *
- *  Copyright (C) 1977 David Griesinger
- *  Copyright (C) 1997 Jon Dattorro
  *  Copyright (C) 2006-2013 Teru Kamogashira
  *
  *  This program is free software; you can redistribute it and/or modify
