@@ -18,6 +18,7 @@
 
 SUBDIRS =
 
+# The following dir is defined in configure.ac
 libdir = $(audacious_effect_plugin_dir)
 
 I_LIBS =  $(gtk3_LIBS) $(audacious_LIBS)

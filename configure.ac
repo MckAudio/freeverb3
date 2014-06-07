@@ -376,7 +376,8 @@ if test "x$cv_need_audacious" = "xyes"; then
   PKG_CHECK_MODULES(audacious, [audacious >= 3.2.4],,  [AC_MSG_ERROR([Cannot find audacious >= 3.2.4])])
   AC_SUBST(audacious_CFLAGS)
   AC_SUBST(audacious_LIBS)
-  audacious_effect_plugin_dir=`pkg-config audacious --variable=effect_plugin_dir`
+  EFFECT_PLUGIN_DIR=Effect
+  audacious_effect_plugin_dir="`pkg-config audacious --variable=plugin_dir`/${EFFECT_PLUGIN_DIR}"
   AC_SUBST(audacious_effect_plugin_dir)
 fi
 

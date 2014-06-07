@@ -2,7 +2,7 @@
  *  Impulse Response Processor model implementation
  *  Low Latency Version / Pthread Multithread Version
  *
- *  Copyright (C) 2009 Teru Kamogashira
+ *  Copyright (C) 2014 Teru Kamogashira
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by

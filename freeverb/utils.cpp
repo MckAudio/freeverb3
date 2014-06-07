@@ -1,7 +1,7 @@
 /**
  *  Utility
  *
- *  Copyright (C) 2006-2013 Teru Kamogashira
+ *  Copyright (C) 2006-2014 Teru Kamogashira
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -167,18 +167,21 @@ void FV3_(utils)::XGETBV(uint32_t op, uint32_t * _eax, uint32_t *_edx)
 #endif
 }
 
-void FV3_(utils)::cpuid(uint32_t op, uint32_t *_eax, uint32_t *_ebx, uint32_t *_ecx, uint32_t *_edx)
+void FV3_(utils)::cpuid(uint32_t op, uint32_t *out_eax, uint32_t *out_ebx, uint32_t *out_ecx, uint32_t *out_edx)
 {
 #if defined(ENABLE_SSE)||defined(ENABLE_SSE_V2)||defined(ENABLE_SSE2)||defined(ENABLE_SSE3)||defined(ENABLE_SSE4) \
   ||defined(ENABLE_AVX)||defined(ENABLE_XOP)||defined(ENABLE_FMA3)||defined(ENABLE_FMA4)
-  __asm__ __volatile__
-    ("mov   %%ebx, %%edi ;"
-     "cpuid              ;"
-     "mov   %%ebx, %%esi ;"
-     "mov   %%edi, %%ebx ;"
-     : "=a" (*_eax), "=S" (*_ebx), "=c" (*_ecx), "=d" (*_edx)
-     : "a" (op)
-     : "%edi");
+  uint32_t c_eax, c_ebx, c_ecx, c_edx;
+#if defined(__amd64__)||defined(__x86_64__)
+  __asm__ __volatile__("cpuid\n\t"
+		       :[eax]"=a"(c_eax),[ebx]"=b"(c_ebx),[ecx]"=c"(c_ecx),[edx]"=d"(c_edx) :"a"(op) : "cc" );
+#else
+  __asm__ __volatile__("xchgl %%ebx,%[ebx]\n\t"
+		       "cpuid\n\t"
+		       "xchgl %%ebx,%[ebx]\n\t"
+		       :[eax]"=a"(c_eax),[ebx]"=r"(c_ebx),[ecx]"=c"(c_ecx),[edx]"=d"(c_edx) :"a"(op) : "cc" );
+#endif
+  *out_eax = c_eax, *out_ebx = c_ebx, *out_ecx = c_ecx, *out_edx = c_edx;
 #endif
 }
 
