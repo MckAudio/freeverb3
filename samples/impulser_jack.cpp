@@ -1,7 +1,7 @@
 /**
  *  Freeverb3 Impulse Response Processor jack plugin
  *
- *  Copyright (C) 2007-2011 Teru Kamogashira
+ *  Copyright (C) 2007-2014 Teru Kamogashira
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -145,7 +145,7 @@ int main(int argc, char **argv)
 {
   std::fprintf(stderr, "Impulse Response Processor for JACK\n");
   std::fprintf(stderr, "<"PACKAGE"-"VERSION">\n");
-  std::fprintf(stderr, "Copyright (C) 2007-2009 Teru Kamogashira\n");
+  std::fprintf(stderr, "Copyright (C) 2007-2014 Teru Kamogashira\n");
   std::fprintf(stderr, "sizeof(pfloat_t) = %d\n", (int)sizeof(pfloat_t));
   
   if(argc <= 1) help(argv[0]), exit(-1);

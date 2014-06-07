@@ -1,7 +1,7 @@
 /**
  *  Gardner Largeroom Reverb XMMS plugin
  *
- *  Copyright (C) 2006-2013 Teru Kamogashira
+ *  Copyright (C) 2006-2014 Teru Kamogashira
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -34,7 +34,7 @@ static const char *about_text =
 #else
   "Single Precision Version\n"
 #endif
-  "Copyright (C) 2006-2013 Teru Kamogashira\n"
+  "Copyright (C) 2006-2014 Teru Kamogashira\n"
   "http://freeverb3.sourceforge.net/";
 static const char * productString = "Freeverb3 "VERSION" [Gardner Largeroom Reverb]";
 static const char * configSectionString = "freeverb3_plugin_gd_largeroom";

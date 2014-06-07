@@ -1,7 +1,7 @@
 /**
  *  Freeverb3 Log Sweep Frequency Response Calculation Example
  *
- *  Copyright (C) 2006-2013 Teru Kamogashira
+ *  Copyright (C) 2006-2014 Teru Kamogashira
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -52,7 +52,7 @@ int main(int argc, char* argv[])
 {
   std::fprintf(stderr, "Freeverb3 Log Sweep Frequency Response Calculation Example\n");
   std::fprintf(stderr, "<"PACKAGE"-"VERSION">\n");
-  std::fprintf(stderr, "Copyright (C) 2006-2013 Teru Kamogashira\n");
+  std::fprintf(stderr, "Copyright (C) 2006-2014 Teru Kamogashira\n");
   std::fprintf(stderr, "sizeof(pfloat_t) = %d\n", (int)sizeof(pfloat_t));
 
   SWEEP S;
