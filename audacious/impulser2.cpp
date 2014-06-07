@@ -275,7 +275,7 @@ static void slot_save(SlotConfiguration * slot, int i)
   aud_set_double(configSectionString, key_i("limit",i), slot->limit);
   aud_set_double(configSectionString, key_i("idelay",i), slot->idelay);
   aud_set_int   (configSectionString, key_i("i1o2_index",i), slot->i1o2_index);
-  aud_set_string(configSectionString, key_i("file",i), (gchar*)slot->filename.c_str());
+  aud_set_str   (configSectionString, key_i("file",i), (gchar*)slot->filename.c_str());
 }
 
 static void slot_load(SlotConfiguration * slot, int i)
@@ -290,7 +290,7 @@ static void slot_load(SlotConfiguration * slot, int i)
   slot->limit =   aud_get_double (configSectionString, key_i("limit",i));
   slot->idelay =  aud_get_double (configSectionString, key_i("idelay",i));
   slot->i1o2_index = aud_get_int (configSectionString, key_i("i1o2_index",i));
-  filename = aud_get_string(configSectionString, key_i("file",i));
+  filename = aud_get_str(configSectionString, key_i("file",i));
   slot->filename = filename;
   if(std::string("") == slot->filename) slot_init(slot);
 }

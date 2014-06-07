@@ -373,7 +373,7 @@ if test "x$cv_need_gtk3" = "xyes"; then
 fi
 
 if test "x$cv_need_audacious" = "xyes"; then
-  PKG_CHECK_MODULES(audacious, [audacious >= 3.2.4],,  [AC_MSG_ERROR([Cannot find audacious >= 3.2.4])])
+  PKG_CHECK_MODULES(audacious, [audacious >= 3.5],,  [AC_MSG_ERROR([Cannot find audacious >= 3.5])])
   AC_SUBST(audacious_CFLAGS)
   AC_SUBST(audacious_LIBS)
   EFFECT_PLUGIN_DIR=Effect
