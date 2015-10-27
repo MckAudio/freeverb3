@@ -34,7 +34,7 @@ static const char *about_text =
   "Single Precision Version\n"
 #endif
   "Copyright (C) 2006-2014 Teru Kamogashira\n"
-  "http://www.nongnu.org/freeverb3/"
+  "http://www.nongnu.org/freeverb3/";
 static const char * productString = "Freeverb3 "VERSION" [Rev1]";
 static const char * configSectionString = "freeverb3_plugin_zrev1";
 

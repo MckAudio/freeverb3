@@ -616,17 +616,14 @@ static void conf_rev_slot_select_changed_sig(GtkSpinButton * button, gpointer da
 #define MIN_DB (-100.0)
 #define MAX_DB (20.0)
 
-static void configure(void)
+static void * make_config_widget ()
 {
   GtkWidget *button, *table, *label, *hscale, *bbox;
-  if(conf_rev_dialog != NULL) return;
+#ifdef AUDACIOUS36
+  GtkWidget * vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 6);
+  gtk_widget_set_size_request (vbox, 900, 700);
+#endif
   
-  if(validModel != true) return;
-  
-  conf_rev_dialog = gtk_dialog_new();
-  g_signal_connect(conf_rev_dialog, "destroy", G_CALLBACK(gtk_widget_destroyed), &conf_rev_dialog);
-  gtk_window_set_title(GTK_WINDOW(conf_rev_dialog), productString);
-
   conf_rev_wet_adj = gtk_adjustment_new((*slotVector)[currentSlot-1].wet,      MIN_DB, MAX_DB+1.0, 0.01, 0.1, 1.0);
   conf_rev_dry_adj = gtk_adjustment_new((*slotVector)[0].dry,                  MIN_DB, MAX_DB+1.0, 0.01, 0.1, 1.0);
   conf_rev_lpf_adj = gtk_adjustment_new((*slotVector)[currentSlot-1].lpf,         0.0, 1.0+1.0, 0.01, 0.1, 1.0);
@@ -646,7 +643,14 @@ static void configure(void)
   table = gtk_table_new(LABELS, 5, FALSE);
   gtk_table_set_col_spacings(GTK_TABLE(table), 1);
   gtk_container_set_border_width(GTK_CONTAINER(table), 1);
+
+#ifndef AUDACIOUS36
   gtk_box_pack_start(GTK_BOX(gtk_dialog_get_content_area(GTK_DIALOG(conf_rev_dialog))), table, TRUE, TRUE, 1);
+#else
+  gtk_widget_set_size_request (table, 900, 650);
+  gtk_box_pack_start ((GtkBox *) vbox, table, 0, 0, 0);
+#endif
+  
   // label
   for(int i = 0;i < LABELS;i ++)
     {
@@ -775,48 +779,58 @@ static void configure(void)
   bbox = gtk_button_box_new(GTK_ORIENTATION_HORIZONTAL);
   gtk_button_box_set_layout(GTK_BUTTON_BOX(bbox), GTK_BUTTONBOX_END);
   gtk_box_set_spacing(GTK_BOX(bbox), 1);
+#ifndef AUDACIOUS36
   gtk_box_pack_start(GTK_BOX(gtk_dialog_get_action_area(GTK_DIALOG(conf_rev_dialog))), bbox, FALSE, FALSE, 0);
+#else
+  gtk_box_pack_start ((GtkBox *) vbox, bbox, 0, 0, 0); 
+#endif
 
   button = gtk_button_new_with_label("Save");
-  //GTK_WIDGET_SET_FLAGS(button, GTK_CAN_DEFAULT);
   gtk_box_pack_start(GTK_BOX(bbox), button, FALSE, FALSE, 0);
   g_signal_connect(button, "clicked", G_CALLBACK(conf_rev_ok_cb), NULL);
-  gtk_widget_show(button);
 
+#ifndef AUDACIOUS36
   button = gtk_button_new_with_label("Close");
-  //GTK_WIDGET_SET_FLAGS(button, GTK_CAN_DEFAULT);
   gtk_box_pack_start(GTK_BOX(bbox), button, FALSE, FALSE, 0);
   g_signal_connect(button, "clicked", G_CALLBACK(conf_rev_cancel_cb), NULL);
-  gtk_widget_show(button);
+#endif
   
   applyButton = button = gtk_button_new_with_label("Apply");
   gtk_widget_set_sensitive(applyButton, FALSE);
-  //GTK_WIDGET_SET_FLAGS(button, GTK_CAN_DEFAULT);
   gtk_box_pack_start(GTK_BOX(bbox), button, FALSE, FALSE, 0);
   g_signal_connect(button, "clicked", G_CALLBACK(conf_rev_apply_cb), NULL);
-  gtk_widget_show(button);
   
   button = gtk_button_new_with_label("Default");
-  //GTK_WIDGET_SET_FLAGS(button, GTK_CAN_DEFAULT);
   gtk_box_pack_start(GTK_BOX(bbox), button, FALSE, FALSE, 0);
   g_signal_connect(button, "clicked", G_CALLBACK(conf_rev_default_cb), NULL);
-  gtk_widget_show(button);
   
   button = gtk_button_new_with_label("Load");
-  //GTK_WIDGET_SET_FLAGS(button, GTK_CAN_DEFAULT);
   gtk_box_pack_start(GTK_BOX(bbox), button, FALSE, FALSE, 0);
   g_signal_connect(button, "clicked", G_CALLBACK(conf_rev_select_cb), gtk_widget_get_window(conf_rev_dialog));
-  gtk_widget_show(button);
   
   button = gtk_button_new_with_label("About");
-  //GTK_WIDGET_SET_FLAGS(button, GTK_CAN_DEFAULT);
   gtk_box_pack_start(GTK_BOX(bbox), button, FALSE, FALSE, 0);
   g_signal_connect(button, "clicked", G_CALLBACK(about), NULL);
-  gtk_widget_show(button);
+
+#ifndef AUDACIOUS36
+  return NULL;
+#else
+  return vbox;
+#endif
+}
+ 
+static void configure(void)
+{
+  if(validModel != true) return;
+  if(conf_rev_dialog != NULL) return;
+  conf_rev_dialog = gtk_dialog_new();
+  g_signal_connect(conf_rev_dialog, "destroy", G_CALLBACK(gtk_widget_destroyed), &conf_rev_dialog);
+  gtk_window_set_title(GTK_WINDOW(conf_rev_dialog), productString);
+
+  make_config_widget();
   
-  gtk_widget_show(bbox);
   gtk_window_set_position(GTK_WINDOW(conf_rev_dialog), GTK_WIN_POS_CENTER);
-  gtk_widget_show(conf_rev_dialog);
+  gtk_widget_show_all(conf_rev_dialog);
 }
 
 // plugin functions
@@ -1141,5 +1155,8 @@ static void impulser2_finish(gfloat ** data, gint * samples)
 extern "C" {
   LibXmmsPluginTable libXmmsPluginTable = {
     productString, init, cleanup, about, configure, impulser2_start, impulser2_process, impulser2_flush, impulser2_finish,
+#ifdef AUDACIOUS36
+    make_config_widget, about_text,
+#endif
   };
 }
