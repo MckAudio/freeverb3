@@ -78,9 +78,15 @@ static void dsp_start(gint * channels, gint * rate){ if(XMMSPlugin != NULL) XMMS
 static void dsp_process(gfloat ** data, gint * samples){ if(XMMSPlugin != NULL) XMMSPlugin->process(data,samples); }
 static void dsp_flush(){ if(XMMSPlugin != NULL) XMMSPlugin->flush(); }
 static void dsp_finish(gfloat ** data, gint * samples){ if(XMMSPlugin != NULL) XMMSPlugin->finish(data,samples); }
+#ifdef AUDACIOUS36
+static void * make_config_widget(){ if(XMMSPlugin != NULL) return XMMSPlugin->make_config_widget(); }
+#endif
 
 extern "C" {
   LibXmmsPluginTable libXmmsPluginTable = {
     productString, init, cleanup, about, configure, dsp_start, dsp_process, dsp_flush, dsp_finish,
+#ifdef AUDACIOUS36
+    make_config_widget, about_text,
+#endif
   };
 }

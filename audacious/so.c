@@ -20,12 +20,12 @@
 
 #include <string.h>
 #include <gtk/gtk.h>
+#include "so.h"
+
 #include <audacious/plugin.h>
 #include <audacious/misc.h>
 #include <audacious/preferences.h>
 #include <libaudgui/libaudgui-gtk.h>
-
-#include "so.h"
 
 extern LibXmmsPluginTable libXmmsPluginTable;
 static LibXmmsPluginTable * ptable = NULL;

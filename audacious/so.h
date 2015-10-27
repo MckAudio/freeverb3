@@ -33,6 +33,10 @@ typedef struct
   void (*process)(float **data, int *samples);
   void (*flush)(void);
   void (*finish)(float **data, int *samples);
+#ifdef AUDACIOUS36
+  void *(*make_config_widget)(void);
+  const char * about_string;
+#endif
 } LibXmmsPluginTable;
 
 #ifdef  __cplusplus

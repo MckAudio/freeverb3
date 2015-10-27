@@ -21,11 +21,15 @@ SUBDIRS =
 # The following dir is defined in configure.ac
 libdir = $(audacious_effect_plugin_dir)
 
-I_LIBS =  $(gtk3_LIBS) $(audacious_LIBS)
+I_LIBS =  $(gtk3_LIBS) $(audacious_LIBS) -laudgui
 
-include ../audacious/plugins.make
+include plugins.make
 
-AM_CPPFLAGS += $(gtk3_CFLAGS) $(audacious_CFLAGS) -DAUDACIOUS
+AM_CPPFLAGS += $(gtk3_CFLAGS) $(audacious_CFLAGS) -DAUDACIOUS -fvisibility=hidden
+
+if BUILD_AUDACIOUS36
+AM_CPPFLAGS += -DAUDACIOUS36
+endif
 
 DSP_PLUGINS = librevmodel.la libmbcomp.la libstenh.la libstrev.la libprogenitor.la libgd_lroom.la libearlyr.la libearlyr2.la \
 	libnoise1.la libzrev1.la libzrev2.la libnrev.la libimpulser2.la
@@ -37,70 +41,79 @@ else
 lib_LTLIBRARIES =
 endif
 
+if BUILD_AUDACIOUS36
 libcommon_la_CPPFLAGS = -DAUDACIOUS $(AM_CPPFLAGS)
-libcommon_la_SOURCES = ../audacious/so.c ../audacious/so.h ../audacious/libxmmsplugin.hpp ../audacious/libxmmsplugin_table.hpp
+libcommon_la_SOURCES = so36.cpp so.h libxmmsplugin.hpp libxmmsplugin_table.hpp
+else
+libcommon_la_CPPFLAGS = -DAUDACIOUS $(AM_CPPFLAGS)
+libcommon_la_SOURCES = so.c so.h libxmmsplugin.hpp libxmmsplugin_table.hpp
+endif
 
 librevmodel_la_LDFLAGS = -module -avoid-version -Wl,-Bsymbolic
 librevmodel_la_LIBADD = $(I_LIBS) libcommon.la
 librevmodel_la_CPPFLAGS = -DAUDACIOUS $(AM_CPPFLAGS)
-librevmodel_la_SOURCES = ../audacious/revmodel.cpp
+librevmodel_la_SOURCES = revmodel.cpp
 
 libmbcomp_la_LDFLAGS = -module -avoid-version
 libmbcomp_la_LIBADD = $(I_LIBS) libcommon.la
 libmbcomp_la_CPPFLAGS = -DAUDACIOUS $(AM_CPPFLAGS)
-libmbcomp_la_SOURCES = ../audacious/compressor.cpp
+libmbcomp_la_SOURCES = compressor.cpp
 
 libstenh_la_LDFLAGS = -module -avoid-version
 libstenh_la_LIBADD = $(I_LIBS) libcommon.la
 libstenh_la_CPPFLAGS = -DAUDACIOUS $(AM_CPPFLAGS)
-libstenh_la_SOURCES = ../audacious/stenh.cpp
+libstenh_la_SOURCES = stenh.cpp
 
 libstrev_la_LDFLAGS = -module -avoid-version
 libstrev_la_LIBADD = $(I_LIBS) libcommon.la
 libstrev_la_CPPFLAGS = -DAUDACIOUS $(AM_CPPFLAGS)
-libstrev_la_SOURCES = ../audacious/strev.cpp
+libstrev_la_SOURCES = strev.cpp
 
 libprogenitor_la_LDFLAGS = -module -avoid-version
 libprogenitor_la_LIBADD = $(I_LIBS) libcommon.la
 libprogenitor_la_CPPFLAGS = -DAUDACIOUS $(AM_CPPFLAGS)
-libprogenitor_la_SOURCES = ../audacious/progenitor.cpp
+libprogenitor_la_SOURCES = progenitor.cpp
 
 libgd_lroom_la_LDFLAGS = -module -avoid-version
 libgd_lroom_la_LIBADD = $(I_LIBS) libcommon.la
 libgd_lroom_la_CPPFLAGS = -DAUDACIOUS $(AM_CPPFLAGS)
-libgd_lroom_la_SOURCES = ../audacious/gd_largeroom.cpp
+libgd_lroom_la_SOURCES = gd_largeroom.cpp
 
 libearlyr_la_LDFLAGS = -module -avoid-version
 libearlyr_la_LIBADD = $(I_LIBS) libcommon.la
 libearlyr_la_CPPFLAGS = -DAUDACIOUS $(AM_CPPFLAGS)
-libearlyr_la_SOURCES = ../audacious/earlyr.cpp
+libearlyr_la_SOURCES = earlyr.cpp
 
 libearlyr2_la_LDFLAGS = -module -avoid-version
 libearlyr2_la_LIBADD = $(I_LIBS) libcommon.la
 libearlyr2_la_CPPFLAGS = -DAUDACIOUS $(AM_CPPFLAGS)
-libearlyr2_la_SOURCES = ../audacious/earlyr2.cpp
+libearlyr2_la_SOURCES = earlyr2.cpp
 
 libnoise1_la_LDFLAGS = -module -avoid-version
 libnoise1_la_LIBADD = $(I_LIBS) libcommon.la
 libnoise1_la_CPPFLAGS = -DAUDACIOUS $(AM_CPPFLAGS)
-libnoise1_la_SOURCES = ../audacious/noise.cpp
+libnoise1_la_SOURCES = noise.cpp
 
 libzrev1_la_LDFLAGS = -module -avoid-version
 libzrev1_la_LIBADD = $(I_LIBS) libcommon.la
 libzrev1_la_CPPFLAGS = -DAUDACIOUS $(AM_CPPFLAGS)
-libzrev1_la_SOURCES = ../audacious/zrev1.cpp
+libzrev1_la_SOURCES = zrev1.cpp
 
 libzrev2_la_LDFLAGS = -module -avoid-version
 libzrev2_la_LIBADD = $(I_LIBS) libcommon.la
 libzrev2_la_CPPFLAGS = -DAUDACIOUS $(AM_CPPFLAGS)
-libzrev2_la_SOURCES = ../audacious/zrev2.cpp
+libzrev2_la_SOURCES = zrev2.cpp
 
 libnrev_la_LDFLAGS = -module -avoid-version
 libnrev_la_LIBADD = $(I_LIBS) libcommon.la
 libnrev_la_CPPFLAGS = -DAUDACIOUS $(AM_CPPFLAGS)
-libnrev_la_SOURCES = ../audacious/nrev.cpp
+libnrev_la_SOURCES = nrev.cpp
 
 libimpulser2_la_LDFLAGS = -module -avoid-version
 libimpulser2_la_LIBADD = $(I_LIBS) ../libgdither/libgdither.la $(sndfile_LIBS)
 libimpulser2_la_CPPFLAGS = -DAUDACIOUS $(AM_CPPFLAGS)
-libimpulser2_la_SOURCES = ../audacious/CFileLoader.hpp  ../audacious/CFileLoader_t.hpp ../audacious/impulser2.cpp ../audacious/wave.xpm ../audacious/so.c
+if BUILD_AUDACIOUS36
+libimpulser2_la_SOURCES = CFileLoader.hpp  CFileLoader_t.hpp impulser2.cpp wave.xpm so36.cpp
+else
+libimpulser2_la_SOURCES = CFileLoader.hpp  CFileLoader_t.hpp impulser2.cpp wave.xpm so.c
+endif

@@ -27,7 +27,7 @@
 static const char *about_text =
   "Freeverb3 "VERSION"\n"
   "NReverb V2\n"
-  "XMMS/BMP/Audacious/JACK Plugin\n"
+  "XMMS / BMP / Audacious / JACK Plugin\n"
 #ifdef PLUGDOUBLE
   "Double Precision Version\n"
 #else
@@ -37,7 +37,7 @@ static const char *about_text =
   "Self Plugin Init/Cleanup\n"
 #endif
   "Copyright (C) 2006-2014 Teru Kamogashira\n"
-  "http://freeverb3.sourceforge.net/";
+  "http://www.nongnu.org/freeverb3/";
 static const char * productString = "Freeverb3 "VERSION" [NReverb V3]";
 static const char * configSectionString = "freeverb3_plugin_nrev";
 

@@ -30,7 +30,7 @@
 static const char *about_text =
   "Freeverb3 "VERSION"\n"
   "Early Reflection V1\n"
-  "XMMS/BMP/Audacious/JACK Plugin\n"
+  "XMMS / BMP / Audacious / JACK Plugin\n"
 #ifdef PLUGDOUBLE
   "Double Precision Version\n"
 #else
@@ -38,7 +38,7 @@ static const char *about_text =
 #endif
   "This plugin should be used with other reverb plugins.\n"
   "Copyright (C) 2006-2014 Teru Kamogashira\n"
-  "http://freeverb3.sourceforge.net/";
+  "http://www.nongnu.org/freeverb3/";
 static const char * productString = "Freeverb3 "VERSION" [Early Reflection V1]";
 static const char * configSectionString = "freeverb3_plugin_earlyr";
 

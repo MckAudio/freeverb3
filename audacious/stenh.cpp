@@ -29,14 +29,14 @@
 static const char *about_text =
   "Freeverb3 "VERSION"\n"
   "Stereo Enhancer\n"
-  "XMMS/BMP/Audacious/JACK Plugin\n"
+  "XMMS / BMP / Audacious / JACK Plugin\n"
 #ifdef PLUGDOUBLE
   "Double Precision Version\n"
 #else
   "Single Precision Version\n"
 #endif
   "Copyright (C) 2006-2014 Teru Kamogashira\n"
-  "http://freeverb3.sourceforge.net/";
+  "http://www.nongnu.org/freeverb3/";
 static const char * productString = "Freeverb3 "VERSION" [Stereo Enhancer]";
 static const char * configSectionString = "freeverb3_plugin_stenh";
 

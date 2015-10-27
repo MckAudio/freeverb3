@@ -52,12 +52,22 @@
 #include "so.h"
 
 #ifdef AUDACIOUS
+#ifdef AUDACIOUS36
+#include <libaudcore/i18n.h>
+#include <libaudcore/interface.h>
+#include <libaudcore/plugin.h>
+#include <libaudcore/preferences.h>
+#include <libaudcore/runtime.h>
+#include <libaudgui/libaudgui.h>
+#include <libaudgui/libaudgui-gtk.h>
+#else
 extern "C" {
 #include <audacious/plugin.h>
 #include <audacious/misc.h>
 #include <audacious/preferences.h>
 #include <libaudgui/libaudgui-gtk.h>
 }
+#endif
 #endif
 
 #ifdef JACK
@@ -148,7 +158,7 @@ private:
 static const char *about_text = 
   "Freeverb3 "VERSION"\n"
   "Impulse Response Processor V2\n"
-  "Audacious/JACK Plugin\n"
+  "XMMS / BMP / Audacious / JACK Plugin\n"
 #ifdef PLUGDOUBLE
   "Double Precision Version\n"
 #else
@@ -184,7 +194,7 @@ static const char *about_text =
 #endif
   "\n"
   "Copyright (C) 2006-2014 Teru Kamogashira\n"
-  "http://freeverb3.sourceforge.net/";
+  "http://www.nongnu.org/freeverb3/";
 
 static const char *productString = "Freeverb3 "VERSION" [Impulser V2]";
 static const char *configSectionString = "freeverb3_plugin_irmodel2";
@@ -290,7 +300,11 @@ static void slot_load(SlotConfiguration * slot, int i)
   slot->limit =   aud_get_double (configSectionString, key_i("limit",i));
   slot->idelay =  aud_get_double (configSectionString, key_i("idelay",i));
   slot->i1o2_index = aud_get_int (configSectionString, key_i("i1o2_index",i));
+  #ifdef AUDACIOUS36
+  filename = aud_get_str(configSectionString, key_i("file",i)).to_raw();
+  #else
   filename = aud_get_str(configSectionString, key_i("file",i));
+  #endif
   slot->filename = filename;
   if(std::string("") == slot->filename) slot_init(slot);
 }

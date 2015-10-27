@@ -1,3 +1,7 @@
+Sat Jun 7 22:53:00 2014 +0900 Teru Kamogashira <teru@sodan.ecc.u-tokyo.ac.jp> [609e959] audacious-3.5 updates.
+Sat Jun 7 22:37:09 2014 +0900 Teru Kamogashira <teru@sodan.ecc.u-tokyo.ac.jp> [09cd2c4] audacious-3.5 updates
+Sat Jun 7 22:21:41 2014 +0900 Teru Kamogashira <teru@sodan.ecc.u-tokyo.ac.jp> [9f60ae8] fixed cpuid segfault on x64.
+Tue Mar 11 20:05:27 2014 +0900 Teru Kamogashira <teru@sodan.ecc.u-tokyo.ac.jp> [bc9e858] Copyright notices were changed.
 Thu Dec 19 19:34:42 2013 +0900 Teru Kamogashira <teru@sodan.ecc.u-tokyo.ac.jp> [80dd318] Copyright notices were fixed.
 Thu Dec 19 19:02:08 2013 +0900 Teru Kamogashira <teru@debian> [c80cacf] Cleaning up unused files.
 Thu Dec 19 18:53:03 2013 +0900 Teru Kamogashira <teru@debian> [b72e8ea] Deleting unused entries.

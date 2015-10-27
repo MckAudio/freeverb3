@@ -30,12 +30,22 @@
 #include <gtk/gtk.h>
 
 #ifdef AUDACIOUS
+#ifdef AUDACIOUS36
+#include <libaudcore/i18n.h>
+#include <libaudcore/interface.h>
+#include <libaudcore/plugin.h>
+#include <libaudcore/preferences.h>
+#include <libaudcore/runtime.h>
+#include <libaudgui/libaudgui.h>
+#include <libaudgui/libaudgui-gtk.h>
+#else
 extern "C" {
 #include <audacious/plugin.h>
 #include <audacious/misc.h>
 #include <audacious/preferences.h>
 #include <libaudgui/libaudgui-gtk.h>
 }
+#endif
 #endif
 
 #ifdef JACK
@@ -205,28 +215,28 @@ namespace fv3
       audgui_simple_message(&about_dialog, GTK_MESSAGE_INFO, (gchar*)"About Plugin", (gchar*)aboutString);
     }
     
-    void configure(void)
+    void * make_config_widget ()
     {
-      if (conf_dialog != NULL) return;
+      if (conf_dialog != NULL) return NULL;
       
       conf_dialog = gtk_dialog_new();
       g_signal_connect(conf_dialog, "destroy", G_CALLBACK(gtk_widget_destroyed), &conf_dialog);
       gtk_window_set_title(GTK_WINDOW(conf_dialog), productString);
       gtk_window_set_default_size(GTK_WINDOW(conf_dialog), 900, 700);
       gtk_widget_set_size_request(conf_dialog, 900, 700);
+
+
       
       GtkWidget * scrolledWindow = gtk_scrolled_window_new (NULL, NULL);
       gtk_container_set_border_width(GTK_CONTAINER (scrolledWindow), 10);
       gtk_scrolled_window_set_policy(GTK_SCROLLED_WINDOW(scrolledWindow), GTK_POLICY_AUTOMATIC, GTK_POLICY_ALWAYS);
-      gtk_widget_show(scrolledWindow);
-      
-      gtk_box_pack_start(GTK_BOX(gtk_dialog_get_content_area(GTK_DIALOG(conf_dialog))), scrolledWindow, TRUE, TRUE, 0);
-      
+      //gtk_widget_show(scrolledWindow);
+            
       GtkWidget * table = gtk_table_new(ParamsV.size()+1, 5, FALSE);
       gtk_table_set_col_spacings(GTK_TABLE(table), 1);
       gtk_container_set_border_width(GTK_CONTAINER(table), 11);
       gtk_scrolled_window_add_with_viewport(GTK_SCROLLED_WINDOW(scrolledWindow), table);
-      gtk_widget_show(table);
+      //gtk_widget_show(table);
       
       // create left labels
       for(unsigned i = 0;i < ParamsV.size();i ++)
@@ -234,7 +244,7 @@ namespace fv3
 	  GtkWidget * label = createGUILabel(&ParamsV[i]);
 	  gtk_misc_set_alignment(GTK_MISC(label), 1, 0.5);
 	  gtk_table_attach(GTK_TABLE(table),label,0,1,i,i+1,GTK_FILL,GTK_FILL,0,0);
-	  gtk_widget_show(label);
+	  //gtk_widget_show(label);
 	}
       
       // create adjustment/checkbox/menu
@@ -242,7 +252,7 @@ namespace fv3
 	{
 	  GtkWidget * object = createGUIObject(&ParamsV[i]);
 	  gtk_table_attach_defaults(GTK_TABLE(table),object,1,2,i,i+1);
-	  gtk_widget_show(object);
+	  //gtk_widget_show(object);
 	  setGUIObjectValue(&ParamsV[i]);
 	}
       
@@ -252,30 +262,66 @@ namespace fv3
       GtkWidget * bbox = gtk_button_box_new(GTK_ORIENTATION_HORIZONTAL);
       gtk_button_box_set_layout(GTK_BUTTON_BOX(bbox), GTK_BUTTONBOX_END);
       gtk_box_set_spacing(GTK_BOX(bbox), 2);
-      gtk_box_pack_start(GTK_BOX(gtk_dialog_get_action_area(GTK_DIALOG(conf_dialog))), bbox, TRUE, TRUE, 0);
+      //gtk_box_pack_start(GTK_BOX(gtk_dialog_get_action_area(GTK_DIALOG(conf_dialog))), bbox, TRUE, TRUE, 0);
       
       GtkWidget * button = gtk_button_new_with_label("Save");
       gtk_widget_grab_focus(button);
       gtk_box_pack_start(GTK_BOX(bbox), button, TRUE, TRUE, 0);
       g_signal_connect(button, "clicked", G_CALLBACK(conf_save_cb), this);
-      gtk_widget_show(button);
+      //gtk_widget_show(button);
       
       button = gtk_button_new_with_label("Close");
       gtk_box_pack_start(GTK_BOX(bbox), button, TRUE, TRUE, 0);
       g_signal_connect(button, "clicked", G_CALLBACK(conf_close_cb), this);
-      gtk_widget_show(button);
+      //gtk_widget_show(button);
       
       button = gtk_button_new_with_label("Reload");
       gtk_box_pack_start(GTK_BOX(bbox), button, TRUE, TRUE, 0);
       g_signal_connect(button, "clicked", G_CALLBACK(conf_reload_cb), this);
-      gtk_widget_show(button);
+      //gtk_widget_show(button);
       
       button = gtk_button_new_with_label("Default");
       gtk_box_pack_start(GTK_BOX(bbox), button, TRUE, TRUE, 0);
       g_signal_connect(button, "clicked", G_CALLBACK(conf_default_cb), this);
-      gtk_widget_show(button);
-      gtk_widget_show(bbox);
+      ///gtk_widget_show(button);
       
+      //gtk_widget_show(bbox);
+      
+      ////return scrolledWindow;
+
+
+      
+      gtk_box_pack_start(GTK_BOX(gtk_dialog_get_content_area(GTK_DIALOG(conf_dialog))), scrolledWindow, TRUE, TRUE, 0);
+
+      gtk_widget_show(conf_dialog);
+      
+      gtk_window_set_position(GTK_WINDOW(conf_dialog), GTK_WIN_POS_CENTER); 
+      gtk_widget_show_all(conf_dialog);
+#ifdef AUDACIOUS
+      gtk_window_present(GTK_WINDOW(conf_dialog));
+#endif
+      
+      return conf_dialog;
+      
+    }
+    
+    void configure(void)
+    {
+      if (conf_dialog != NULL) return;
+      
+      conf_dialog = gtk_dialog_new();
+      g_signal_connect(conf_dialog, "destroy", G_CALLBACK(gtk_widget_destroyed), &conf_dialog);
+      gtk_window_set_title(GTK_WINDOW(conf_dialog), productString);
+      gtk_window_set_default_size(GTK_WINDOW(conf_dialog), 900, 700);
+      gtk_widget_set_size_request(conf_dialog, 900, 700);
+
+
+      GtkWidget * scrolledWindow = (GtkWidget *)make_config_widget();
+
+
+      
+      gtk_box_pack_start(GTK_BOX(gtk_dialog_get_content_area(GTK_DIALOG(conf_dialog))), scrolledWindow, TRUE, TRUE, 0);
+
       gtk_widget_show(conf_dialog);
       
       gtk_window_set_position(GTK_WINDOW(conf_dialog), GTK_WIN_POS_CENTER); 

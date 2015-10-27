@@ -1,7 +1,7 @@
 dnl
 dnl  freeverb3 configure.ac
 dnl
-dnl  Copyright (C) 2006-2013 Teru Kamogashira
+dnl  Copyright (C) 2006-2014 Teru Kamogashira
 dnl
 dnl  This program is free software; you can redistribute it and/or modify
 dnl  it under the terms of the GNU General Public License as published by
@@ -21,7 +21,7 @@ dnl
 m4_define([_pkg_name],freeverb3)
 m4_define([_RELEASE], 3)
 m4_define([_MAJOR],   1)
-m4_define([_MINOR],   1)
+m4_define([_MINOR],   2)
 m4_define([_VERSION],m4_defn([_RELEASE]).m4_defn([_MAJOR]).m4_defn([_MINOR])) 
 
 AC_COPYRIGHT([Copyright (C) 2005-2013 Teru Kamogashira])
@@ -373,13 +373,18 @@ if test "x$cv_need_gtk3" = "xyes"; then
 fi
 
 if test "x$cv_need_audacious" = "xyes"; then
-  PKG_CHECK_MODULES(audacious, [audacious >= 3.5],,  [AC_MSG_ERROR([Cannot find audacious >= 3.5])])
+  PKG_CHECK_MODULES(audacious, [audacious >= 3.5],, [AC_MSG_ERROR([Cannot find audacious >= 3.5])])
+  PKG_CHECK_MODULES(audacious, [audacious >= 3.6], [cv_audacious36="yes"], [cv_audacious36="no"])
+  if test "x$cv_audacious36" = "xyes"; then
+    AC_MSG_RESULT([Audacious API >= 3.6])
+  fi
   AC_SUBST(audacious_CFLAGS)
   AC_SUBST(audacious_LIBS)
   EFFECT_PLUGIN_DIR=Effect
   audacious_effect_plugin_dir="`pkg-config audacious --variable=plugin_dir`/${EFFECT_PLUGIN_DIR}"
   AC_SUBST(audacious_effect_plugin_dir)
 fi
+AM_CONDITIONAL(BUILD_AUDACIOUS36, test "x$cv_audacious36" = "xyes")
 
 dnl check standard headers and functions
 AC_HEADER_STDC
@@ -406,7 +411,7 @@ AC_C99_FUNC_LRINT
 AC_C99_FUNC_LRINTF
 
 CFLAGS="$CFLAGS"
-CXXFLAGS="$CXXFLAGS $CFLAGS"
+CXXFLAGS="-std=c++11 $CXXFLAGS $CFLAGS"
 LTCC="$CXX"
 
 AC_OUTPUT([
@@ -455,7 +460,7 @@ AC_MSG_RESULT([    SSE3 : ...................... ${cv_sse3}])
 AC_MSG_RESULT([    SSE4 (SSE4.1) : ............. ${cv_sse4}])
 AC_MSG_RESULT([    AVX : ....................... ${cv_avx}])
 AC_MSG_RESULT([    Intel FMA (FMA3) : .......... ${cv_fma}])
-AC_MSG_RESULT([    AMD FMA4 : .................. ${cv_fma4}])
+AC_MSG_RESULT([    AMD   FMA4 : ................ ${cv_fma4}])
 AC_MSG_RESULT([    CC : ........................ ${CC}])
 AC_MSG_RESULT([    CXX : ....................... ${CXX}])
 AC_MSG_RESULT([    CFLAGS : ....................
