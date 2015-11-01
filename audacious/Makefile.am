@@ -25,10 +25,10 @@ I_LIBS =  $(gtk3_LIBS) $(audacious_LIBS) -laudgui
 
 include plugins.make
 
-AM_CPPFLAGS += $(gtk3_CFLAGS) $(audacious_CFLAGS) -DAUDACIOUS -fvisibility=hidden
+AM_CPPFLAGS += $(gtk3_CFLAGS) $(audacious_CFLAGS) -DAUDACIOUS
 
 if BUILD_AUDACIOUS36
-AM_CPPFLAGS += -DAUDACIOUS36
+AM_CPPFLAGS += -DAUDACIOUS36 -fvisibility=hidden
 endif
 
 DSP_PLUGINS = librevmodel.la libmbcomp.la libstenh.la libstrev.la libprogenitor.la libgd_lroom.la libearlyr.la libearlyr2.la \
