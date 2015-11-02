@@ -48,33 +48,29 @@ endif
 
 if BUILD_JACK
 bin_PROGRAMS += fv3_impulser_jack
+AM_CPPFLAGS += $(jack_CFLAGS)
+I_LIBS += $(jack_LIBS)
 endif
 
 fv3_mlsgen_SOURCES = mlsgen.cpp CArg.cpp CArg.hpp
-
 fv3_mlsgen_LDADD = $(I_LIBS)
 
 fv3_benchmark3_SOURCES = benchmark3.cpp CArg.cpp CArg.hpp
-
 fv3_benchmark3_LDADD = $(I_LIBS)
 
 fv3_rateconv_SOURCES = rateconv.cpp CArg.cpp CArg.hpp
-
 fv3_rateconv_LDADD = $(I_LIBS)
 
 fv3_impulser_SOURCES = impulser.cpp CArg.cpp CArg.hpp
-
 fv3_impulser_LDADD = $(I_LIBS)
 
+fv3_impulser_jack_CPPFLAGS = $(AM_CPPFLAGS)
 fv3_impulser_jack_SOURCES = impulser_jack.cpp CArg.cpp CArg.hpp
-
 fv3_impulser_jack_LDADD = $(I_LIBS)
 
 fv3_fq_response_SOURCES = freq_response.cpp
-
 fv3_fq_response_LDADD = $(I_LIBS)
 
 fv3_ir_test_SOURCES = ir_test.cpp
-
 fv3_ir_test_LDADD = $(I_LIBS)
 

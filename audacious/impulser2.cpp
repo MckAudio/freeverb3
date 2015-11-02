@@ -291,6 +291,7 @@ static void slot_save(SlotConfiguration * slot, int i)
 static void slot_load(SlotConfiguration * slot, int i)
 {
   gchar * filename;
+  gchar blank[] = "";
   slot->wet =   aud_get_double (configSectionString, key_i("wet",i));
   slot->dry =   aud_get_double (configSectionString, key_i("dry",i));
   slot->width = aud_get_double (configSectionString, key_i("width",i));
@@ -305,7 +306,14 @@ static void slot_load(SlotConfiguration * slot, int i)
   #else
   filename = aud_get_str(configSectionString, key_i("file",i));
   #endif
-  slot->filename = filename;
+  if(filename == NULL)
+    {
+      filename = blank;
+    }
+  else
+    {
+      slot->filename = filename;
+    }
   if(std::string("") == slot->filename) slot_init(slot);
 }
 
