@@ -109,7 +109,7 @@ void bmp_cfg_db_unset_key(ConfigDb * db, const gchar * section, const gchar * ke
 }
 
 gchar * cfg_string;
-gchar * aud_get_string(const gchar *section, const gchar *key)
+gchar * aud_get_str(const gchar *section, const gchar *key)
 {
   ConfigDb * cfg = bmp_cfg_db_open();
   bmp_cfg_db_get_string(cfg,section,key,&cfg_string);
@@ -153,7 +153,7 @@ gdouble aud_get_double(const gchar *section, const gchar *key)
   return cfg_double;
 }
 
-void aud_set_string(const gchar *section, const gchar *key, gchar *value)
+void aud_set_str(const gchar *section, const gchar *key, gchar *value)
 {
   ConfigDb * cfg = bmp_cfg_db_open();
   bmp_cfg_db_set_string(cfg,section,key,value);
