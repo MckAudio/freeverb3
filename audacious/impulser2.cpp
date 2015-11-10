@@ -310,10 +310,7 @@ static void slot_load(SlotConfiguration * slot, int i)
     {
       filename = blank;
     }
-  else
-    {
-      slot->filename = filename;
-    }
+  slot->filename = filename;
   if(std::string("") == slot->filename) slot_init(slot);
 }
 
