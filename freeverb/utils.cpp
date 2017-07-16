@@ -157,10 +157,11 @@ void FV3_(utils)::setMXCSR(uint32_t mxcsr)
 
 void FV3_(utils)::XGETBV(uint32_t op, uint32_t * _eax, uint32_t *_edx)
 {
-#if defined(ENABLE_AVX)||defined(ENABLE_XOP)||defined(ENABLE_FMA3)||defined(ENABLE_FMA4)
+#if defined(ENABLE_SSE)||defined(ENABLE_SSE_V2)||defined(ENABLE_SSE2)||defined(ENABLE_SSE3)||defined(ENABLE_SSE4) \
+  ||defined(ENABLE_AVX)||defined(ENABLE_XOP)||defined(ENABLE_FMA3)||defined(ENABLE_FMA4)
   uint32_t j[5] = {0,0,0,0,0,};
   cpuid(0x1,&j[1],&j[2],&j[3],&j[4]);
-  if((j[3] & (FV3_FLAG_OSXSAVE|FV3_FLAG_AVX)) == (FV3_FLAG_OSXSAVE|FV3_FLAG_AVX))
+  if((j[3] & (FV3_FLAG_OSXSAVE)) == (FV3_FLAG_OSXSAVE))
     {
       __asm__ __volatile__ ("xgetbv" : "=a" (*_eax), "=d" (*_edx) : "c" (op) :);
     }
