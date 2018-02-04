@@ -39,6 +39,8 @@ Dependencies of programs
 
 Sample programs      : libsndfile
 Jack sample programs : libsndfile jack
+                       (The configdb subset library is included in jack dir,
+		       so jack programs do not depend on audacious.)
 audacious            : libsndfile audacious glib2 GTK+3 gthread pango
 
 * libsndfile [http://www.mega-nerd.com/libsndfile/]
