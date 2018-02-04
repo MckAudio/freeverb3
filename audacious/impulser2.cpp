@@ -301,11 +301,13 @@ static void slot_load(SlotConfiguration * slot, int i)
   slot->limit =   aud_get_double (configSectionString, key_i("limit",i));
   slot->idelay =  aud_get_double (configSectionString, key_i("idelay",i));
   slot->i1o2_index = aud_get_int (configSectionString, key_i("i1o2_index",i));
-  #ifdef AUDACIOUS36
+#ifdef AUDACIOUS39
+  filename = (gchar*)((const char*)aud_get_str(configSectionString, key_i("file",i)));
+#elif defined(AUDACIOUS36)
   filename = aud_get_str(configSectionString, key_i("file",i)).to_raw();
-  #else
+#else
   filename = aud_get_str(configSectionString, key_i("file",i));
-  #endif
+#endif
   if(filename == NULL)
     {
       filename = blank;

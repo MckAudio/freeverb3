@@ -24,7 +24,7 @@ m4_define([_MAJOR],   1)
 m4_define([_MINOR],   2)
 m4_define([_VERSION],m4_defn([_RELEASE]).m4_defn([_MAJOR]).m4_defn([_MINOR])) 
 
-AC_COPYRIGHT([Copyright (C) 2005-2013 Teru Kamogashira])
+AC_COPYRIGHT([Copyright (C) 2005-2018 Teru Kamogashira])
 AC_INIT([_pkg_name],[_VERSION])
 AC_CONFIG_SRCDIR([freeverb/fv3_defs.h])
 AC_CONFIG_AUX_DIR(config)
@@ -375,8 +375,12 @@ fi
 if test "x$cv_need_audacious" = "xyes"; then
   PKG_CHECK_MODULES(audacious, [audacious >= 3.5],, [AC_MSG_ERROR([Cannot find audacious >= 3.5])])
   PKG_CHECK_MODULES(audacious, [audacious >= 3.6], [cv_audacious36="yes"], [cv_audacious36="no"])
+  PKG_CHECK_MODULES(audacious, [audacious >= 3.9], [cv_audacious39="yes"], [cv_audacious39="no"])
   if test "x$cv_audacious36" = "xyes"; then
     AC_MSG_RESULT([Audacious API >= 3.6])
+  fi
+  if test "x$cv_audacious39" = "xyes"; then
+    AC_MSG_RESULT([Audacious API >= 3.9])
   fi
   AC_SUBST(audacious_CFLAGS)
   AC_SUBST(audacious_LIBS)
@@ -385,6 +389,7 @@ if test "x$cv_need_audacious" = "xyes"; then
   AC_SUBST(audacious_effect_plugin_dir)
 fi
 AM_CONDITIONAL(BUILD_AUDACIOUS36, test "x$cv_audacious36" = "xyes")
+AM_CONDITIONAL(BUILD_AUDACIOUS39, test "x$cv_audacious39" = "xyes")
 
 dnl check standard headers and functions
 AC_HEADER_STDC

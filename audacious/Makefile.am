@@ -31,6 +31,10 @@ if BUILD_AUDACIOUS36
 AM_CPPFLAGS += -DAUDACIOUS36 -fvisibility=hidden
 endif
 
+if BUILD_AUDACIOUS39
+AM_CPPFLAGS += -DAUDACIOUS39 -fvisibility=hidden
+endif
+
 DSP_PLUGINS = librevmodel.la libmbcomp.la libstenh.la libstrev.la libprogenitor.la libgd_lroom.la libearlyr.la libearlyr2.la \
 	libnoise1.la libzrev1.la libzrev2.la libnrev.la libimpulser2.la
 
