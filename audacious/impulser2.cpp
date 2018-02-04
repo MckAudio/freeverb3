@@ -301,11 +301,11 @@ static void slot_load(SlotConfiguration * slot, int i)
   slot->limit =   aud_get_double (configSectionString, key_i("limit",i));
   slot->idelay =  aud_get_double (configSectionString, key_i("idelay",i));
   slot->i1o2_index = aud_get_int (configSectionString, key_i("i1o2_index",i));
-#ifdef AUDACIOUS39
+#if   defined(AUDACIOUS39) && !defined(JACK)
   filename = (gchar*)((const char*)aud_get_str(configSectionString, key_i("file",i)));
-#elif defined(AUDACIOUS36)
+#elif defined(AUDACIOUS36) && !defined(JACK)
   filename = aud_get_str(configSectionString, key_i("file",i)).to_raw();
-#else
+#else // audacious-3.5 or jack
   filename = aud_get_str(configSectionString, key_i("file",i));
 #endif
   if(filename == NULL)

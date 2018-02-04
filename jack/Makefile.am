@@ -35,7 +35,7 @@ endif
 libbmp_int_la_CPPFLAGS = -DJACK $(AM_CPPFLAGS)
 libbmp_int_la_SOURCES = configdb.h configdb_rcfile.c rcfile.c rcfile.h util.c util.h
 libjack_common_la_CPPFLAGS = -DJACK $(AM_CPPFLAGS)
-libjack_common_la_SOURCES = plugin.h jack_main.cpp ../samples/CArg.cpp ../samples/CArg.hpp ../audacious/so.c
+libjack_common_la_SOURCES = plugin.h jack_main.cpp ../samples/CArg.cpp ../samples/CArg.hpp
 libjack_common_la_LIBADD = $(jack_LIBS) $(gtk3_LIBS)
 
 I_LIBS += libbmp_int.la libjack_common.la
@@ -54,7 +54,7 @@ fv3_jack_revmodel_LDADD = $(I_LIBS)
 
 fv3_jack_impulser2_CPPFLAGS = -DJACK $(AM_CPPFLAGS)
 fv3_jack_impulser2_SOURCES = ../audacious/CFileLoader.hpp  ../audacious/CFileLoader_t.hpp ../audacious/impulser2.cpp \
- ../audacious/wave.xpm ../audacious/so.c
+ ../audacious/wave.xpm
 fv3_jack_impulser2_LDADD = $(I_LIBS) $(top_builddir)/libgdither/libgdither.la $(sndfile_LIBS)
 
 fv3_jack_mbcomp_CPPFLAGS = -DJACK $(AM_CPPFLAGS)

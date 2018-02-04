@@ -1,3 +1,11 @@
+Sun Feb 4 14:17:10 2018 +0900 Teru Kamogashira <tkamogashira@users.osdn.me> [e87a9cd] Audacious-3.9 updates
+Sun Jul 16 16:59:44 2017 +0900 teru <teru@debian57.cc.h.u-tokyo.ac.jp> [63bb2d0] oxsave fix
+Tue Nov 10 15:16:40 2015 +0900 Teru Kamogashira <tkamogashira@users.sourceforge.jp> [2f0aa92] Filename null
+Mon Nov 2 19:51:50 2015 +0900 Teru Kamogashira <tkamogashira@users.sourceforge.jp> [796b552] jack compilation fix
+Mon Nov 2 18:56:25 2015 +0900 Teru Kamogashira <tkamogashira@users.sourceforge.jp> [2cc6d2f] Added so36.cpp and fixed jack compilation errors.
+Sun Nov 1 19:26:35 2015 +0900 Teru Kamogashira <tkamogashira@users.sourceforge.jp> [eeb3538] Audacious 3.6 updates / 3.5 support fix
+Tue Oct 27 12:48:09 2015 +0900 Teru Kamogashira <tkamogashira@users.sourceforge.jp> [71d58b9] Audacious 3.6 API updates
+Tue Oct 27 11:41:04 2015 +0900 Teru Kamogashira <tkamogashira@users.sourceforge.jp> [78c5205] Audacious 3.6 API updates
 Sat Jun 7 22:53:00 2014 +0900 Teru Kamogashira <teru@sodan.ecc.u-tokyo.ac.jp> [609e959] audacious-3.5 updates.
 Sat Jun 7 22:37:09 2014 +0900 Teru Kamogashira <teru@sodan.ecc.u-tokyo.ac.jp> [09cd2c4] audacious-3.5 updates
 Sat Jun 7 22:21:41 2014 +0900 Teru Kamogashira <teru@sodan.ecc.u-tokyo.ac.jp> [9f60ae8] fixed cpuid segfault on x64.
