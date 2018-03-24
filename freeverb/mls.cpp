@@ -242,7 +242,7 @@ void FV3_(lfsr)::setDefaultTap()
 	    {
 	      tap2 |= (uint64_t)1 << (tbit-1-64);
 	    }
-	  else if(tbit <= 192)
+	  else if(tbit <= 168)
 	    {
 	      tap3 |= (uint64_t)1 << (tbit-1-128);
 	    }
