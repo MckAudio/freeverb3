@@ -18,27 +18,24 @@
  *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
  */
 
-class _FV3_(irmodel) : public _FV3_(irbase)
+class _FV3_(irmodel1) : public _FV3_(irbase)
 {
  public:
-  _FV3_(irmodel)();
-  virtual _FV3_(~irmodel)();  
+  _FV3_(irmodel1)();
+  virtual _FV3_(~irmodel1)();  
   virtual void loadImpulse(const _fv3_float_t * inputL, const _fv3_float_t * inputR, long size)
     throw(std::bad_alloc);
   virtual void unloadImpulse();  
-  virtual void processreplace(_fv3_float_t *inputL, _fv3_float_t *inputR,
-			      _fv3_float_t *outputL, _fv3_float_t *outputR,
-			      long numsamples, unsigned options);
+  virtual void processreplace(_fv3_float_t *inputL, _fv3_float_t *inputR, _fv3_float_t *outputL, _fv3_float_t *outputR, long numsamples, unsigned options);
   virtual void mute();
   virtual long getLatency();
   long getFragmentSize();
 
  private:
-  _FV3_(irmodel)(const _FV3_(irmodel)& x);
-  _FV3_(irmodel)& operator=(const _FV3_(irmodel)& x);
+  _FV3_(irmodel1)(const _FV3_(irmodel1)& x);
+  _FV3_(irmodel1)& operator=(const _FV3_(irmodel1)& x);
 
-  void processSquare(_fv3_float_t *inputL, _fv3_float_t *inputR,
-		     _fv3_float_t *outputL, _fv3_float_t *outputR);
+  void processSquare(_fv3_float_t *inputL, _fv3_float_t *inputR, _fv3_float_t *outputL, _fv3_float_t *outputR);
   void allocImpulse(long fsize, long isize) throw(std::bad_alloc);
   void freeImpulse();
   void allocFFT(long size, unsigned fftflags) throw(std::bad_alloc);

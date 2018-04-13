@@ -63,8 +63,7 @@ void FV3_(irmodel2)::setFragmentSize(long size)
 #ifdef DEBUG
   std::fprintf(stderr, "irmodel2::setFragmentSize(%ld)\n", size);
 #endif
-  if(size <= 0||size < FV3_IR_Min_FragmentSize||
-     size != FV3_(utils)::checkPow2(size))
+  if(size <= 0||size < FV3_IR_Min_FragmentSize||size != FV3_(utils)::checkPow2(size))
     {
       std::fprintf(stderr, "irmodel2::setFragmentSize(): invalid fragment size (%ld)\n", size);      
       return;
@@ -103,27 +102,29 @@ void FV3_(irmodel2)::loadImpulse(const fv3_float_t * inputL, const fv3_float_t *
   long fragment_rest = size % fragmentSize;
 
 #ifdef DEBUG
-  std::fprintf(stderr, "irmodel2::loadImpulse(): {%ldx%ld+%ld}\n",
-	       fragmentSize, fragment_num, fragment_rest);
+  std::fprintf(stderr, "irmodel2::loadImpulse(): {%ldx%ld+%ld}\n", fragmentSize, fragment_num, fragment_rest);
 #endif
   try
     {
       allocSwap(fragmentSize);
+      fragmentsFFT.setSIMD(simdFlag1, simdFlag2);
       fragmentsFFT.allocFFT(fragmentSize, fftflags);
+
+      setSIMD(fragmentsFFT.getSIMD(0),fragmentsFFT.getSIMD(1));
+      
       for(long i = 0;i < fragment_num;i ++)
 	{
 	  FV3_(frag) * f = new FV3_(frag);
 	  fragments.push_back(f);
-	  f->loadImpulse(inputL+fragmentSize*i, inputR+fragmentSize*i,
-			 fragmentSize, fragmentSize, fftflags);
+	  f->setSIMD(simdFlag1, simdFlag2);
+	  f->loadImpulse(inputL+fragmentSize*i, inputR+fragmentSize*i, fragmentSize, fragmentSize, fftflags);
 	}
       if(fragment_rest != 0)
 	{
 	  FV3_(frag) * f = new FV3_(frag);
 	  fragments.push_back(f);
-	  f->loadImpulse(inputL+fragmentSize*fragment_num,
-			 inputR+fragmentSize*fragment_num,
-			 fragmentSize, fragment_rest, fftflags);
+	  f->setSIMD(simdFlag1, simdFlag2);
+	  f->loadImpulse(inputL+fragmentSize*fragment_num, inputR+fragmentSize*fragment_num, fragmentSize, fragment_rest, fftflags);
 	}
       blkdelayL.setBlock(fragmentSize*2, (long)fragments.size());
       blkdelayR.setBlock(fragmentSize*2, (long)fragments.size());
@@ -150,8 +151,7 @@ void FV3_(irmodel2)::unloadImpulse()
 
 void FV3_(irmodel2)::freeFragments()
 {
-  for(std::vector<FV3_(frag)*>::iterator i = fragments.begin();
-      i != fragments.end();i ++) delete *i;
+  for(std::vector<FV3_(frag)*>::iterator i = fragments.begin();i != fragments.end();i ++) delete *i;
   fragments.clear();
 }
 
@@ -204,8 +204,7 @@ void FV3_(irmodel2)::setInitialDelay(long numsamples)
     }
   else
     {
-      std::fprintf(stderr, "irmodel2::setInitialDelay(%ld) unknown samples\n",
-		   numsamples);
+      std::fprintf(stderr, "irmodel2::setInitialDelay(%ld) unknown samples\n", numsamples);
       delayL.setsize(0);
       delayR.setsize(0);
       delayWL.setsize(0);
@@ -226,9 +225,7 @@ long FV3_(irmodel2)::getLatency()
 /*!
   output is valid even inputL/R == outputL/R.
  */
-void FV3_(irmodel2)::processreplace(fv3_float_t *inputL, fv3_float_t *inputR,
-				    fv3_float_t *outputL, fv3_float_t *outputR,
-				    long numsamples, unsigned options)
+void FV3_(irmodel2)::processreplace(fv3_float_t *inputL, fv3_float_t *inputR, fv3_float_t *outputL, fv3_float_t *outputR, long numsamples, unsigned options)
 {
   if(numsamples <= 0||impulseSize <= 0||(long)fragments.size() <= 0) return;
   
@@ -238,15 +235,11 @@ void FV3_(irmodel2)::processreplace(fv3_float_t *inputL, fv3_float_t *inputR,
       long div = numsamples/fragmentSize;
       for(long i = 0;i < div;i ++)
 	{
-	  processreplace(inputL+i*fragmentSize, inputR+i*fragmentSize,
-			 outputL+i*fragmentSize, outputR+i*fragmentSize,
-			 fragmentSize, options);
+	  processreplace(inputL+i*fragmentSize, inputR+i*fragmentSize, outputL+i*fragmentSize, outputR+i*fragmentSize, fragmentSize, options);
 	}
       if(numsamples%fragmentSize > 0)
 	{
-	  processreplace(inputL+div*fragmentSize, inputR+div*fragmentSize,
-			 outputL+div*fragmentSize, outputR+div*fragmentSize,
-			 numsamples%fragmentSize, options);
+	  processreplace(inputL+div*fragmentSize, inputR+div*fragmentSize, outputL+div*fragmentSize, outputR+div*fragmentSize, numsamples%fragmentSize, options);
 	}
       return;
     }
@@ -264,9 +257,7 @@ void FV3_(irmodel2)::processreplace(fv3_float_t *inputL, fv3_float_t *inputR,
   std::memcpy(fifoSlot.R+fifoSize+fragmentSize, inputR, sizeof(fv3_float_t)*numsamples);
   if(fifoSize+numsamples >= fragmentSize)
     {
-      processSquare(fifoSlot.L+fragmentSize, fifoSlot.R+fragmentSize,
-		    fifoSlot.L+fragmentSize, fifoSlot.R+fragmentSize,
-		    options);
+      processSquare(fifoSlot.L+fragmentSize, fifoSlot.R+fragmentSize, fifoSlot.L+fragmentSize, fifoSlot.R+fragmentSize, options);
     }
   fpLSp = fifoSlot.L+fifoSize;
   fpRSp = fifoSlot.R+fifoSize;
@@ -318,9 +309,7 @@ void FV3_(irmodel2)::processreplace(fv3_float_t *inputL, fv3_float_t *inputR,
   return;
 }
 
-void FV3_(irmodel2)::processSquare(fv3_float_t *inputL, fv3_float_t *inputR,
-				   fv3_float_t *outputL, fv3_float_t *outputR,
-				   unsigned options)
+void FV3_(irmodel2)::processSquare(fv3_float_t *inputL, fv3_float_t *inputR, fv3_float_t *outputL, fv3_float_t *outputR, unsigned options)
 {
   if((options & FV3_IR_MONO2STEREO) != 0)
     {

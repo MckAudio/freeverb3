@@ -20,8 +20,8 @@ dnl
 
 m4_define([_pkg_name],freeverb3)
 m4_define([_RELEASE], 3)
-m4_define([_MAJOR],   1)
-m4_define([_MINOR],   2)
+m4_define([_MAJOR],   2)
+m4_define([_MINOR],   0)
 m4_define([_VERSION],m4_defn([_RELEASE]).m4_defn([_MAJOR]).m4_defn([_MINOR])) 
 
 AC_COPYRIGHT([Copyright (C) 2005-2018 Teru Kamogashira])
@@ -140,142 +140,33 @@ if test "x$cv_pthread" = "xyes"; then
 fi
 AM_CONDITIONAL(BUILD_PTHREAD, test "x$cv_pthread" = "xyes")
 
-AC_ARG_ENABLE(forcefpu,AC_HELP_STRING([--enable-forcefpu], [Disable SIMD codes.(default=no)]),[cv_forcefpu="$enable_forcefpu"], [cv_forcefpu="no"])
-AC_ARG_ENABLE(force3dnow,AC_HELP_STRING([--enable-force3dnow], [Force use of 3DNow! codes instead of SSE with --enable-3dnow.(default=no)]),
-  [cv_force3dnow="$enable_force3dnow"], [cv_force3dnow="no"])
-AC_ARG_ENABLE(3dnow,AC_HELP_STRING([--enable-3dnow], [Use 3DNow!.(default=no)]), [cv_3dnow="$enable_3dnow"], [cv_3dnow="no"])
-AC_ARG_ENABLE(sse,  AC_HELP_STRING([--enable-sse], [Use SSE.(v1,v2,yes=v2,no,default=no,AMD64=yes)]),
-  [cv_sse="$enable_sse"], [cv_sse="no"])
-AC_ARG_ENABLE(sse2, AC_HELP_STRING([--enable-sse2], [Use SSE2.(default=no,AMD64=yes)]), [cv_sse2="$enable_sse2"], [cv_sse2="no"])
-AC_ARG_ENABLE(sse3, AC_HELP_STRING([--enable-sse3], [Use SSE3 instead of SSE.(default=no)]), [cv_sse3="$enable_sse3"], [cv_sse3="no"])
-AC_ARG_ENABLE(sse4, AC_HELP_STRING([--enable-sse4], [Use SSE4(SSE4.1).(default=no)]), [cv_sse4="$enable_sse4"], [cv_sse4="no"])
-AC_ARG_ENABLE(avx,  AC_HELP_STRING([--enable-avx], [Use AVX.(default=no)(EXPERIMENTAL)]), [cv_avx="$enable_avx"], [cv_avx="no"])
-AC_ARG_ENABLE(fma,  AC_HELP_STRING([--enable-fma], [Use Intel FMA (FMA3).(default=no)(EXPERIMENTAL)]), [cv_fma="$enable_fma"], [cv_fma="no"])
-AC_ARG_ENABLE(fma4, AC_HELP_STRING([--enable-fma4], [Use AMD FMA4.(default=no)(EXPERIMENTAL)]), [cv_fma4="$enable_fma4"], [cv_fma4="no"])
+AC_ARG_ENABLE(x86simd, AC_HELP_STRING([--enable-x86simd], [Use X86/X64 SIMD.(default=auto)]), [cv_x86simd="$enable_x86simd"], [cv_x86simd="auto"])
 
 case "${target_cpu}" in
-  amd64*|x86_64*)
-    if test "x$cv_sse" = "xno"; then
-      AC_MSG_NOTICE([Auto-enabling SSE codes])
-      cv_sse=yes
-    fi
-    if test "x$cv_sse2" = "xno"; then
-      AC_MSG_NOTICE([Auto-enabling SSE2 codes])
-      cv_sse2=yes
+  x86*|i386*|i486*|i586*|i686*|amd64*|x86_64*)
+    if test "x$cv_x86simd" = "xauto"; then
+      AC_MSG_NOTICE([Auto-enabling x86/x64 SIMD codes])
+      cv_x86simd=yes
     fi
     ;;
   *)
+    cv_x86simd=no
     ;;
 esac
 
-dnl option checks
+dnl 2.19.51.0.12
+dnl Changes from binutils 2.19.51.0.11:
+dnl 1. Update from binutils 2009 0716.
+dnl 5. Support x86 FMA4.
+dnl Changes from binutils 2.19.51.0.1:
+dnl 1. Update from binutils 2009 0204.
+dnl 2. Support AVX Programming Reference (January, 2009)
+dnl Changes from binutils 2.19.50.0.1:
+dnl 2. Support AVX Programming Reference (December, 2008)
 
-if test "x$cv_sse" = "xyes"; then
-  AC_MSG_RESULT([Use --enable-sse=v1 to select the old version of SSE codes.])
-  cv_sse="v2"
-fi
-
-if test "x$cv_sse" = "xyes" -a "x$cv_3dnow" = "xyes"; then
-  if test "x$cv_force3dnow" = "xyes"; then
-    AC_MSG_RESULT([SSE was overridden by 3DNow!, sse=no.])
-    cv_sse="no"
-  fi
-fi
-
-dnl definitions
-
-if test "x$cv_fma4" = "xyes"; then
-  if test "x$cv_forcefpu" = "xno"; then
-    AC_DEFINE(ENABLE_FMA4,1,Define to 1 if you use AMD FMA4 code)
-  else
-    cv_fma4="no"
-  fi
-  if test "x$cv_autocflags" = "xyes"; then
-    CFLAGS="$CFLAGS -mfpmath=sse -msse -msse2 -msse3 -msse4 -mavx"
-  fi
-fi
-
-if test "x$cv_fma" = "xyes"; then
-  if test "x$cv_forcefpu" = "xno"; then
-    AC_DEFINE(ENABLE_FMA3,1,Define to 1 if you use Intel FMA3 code)
-  else
-    cv_fma="no"
-  fi
-  if test "x$cv_autocflags" = "xyes"; then
-    CFLAGS="$CFLAGS -mfpmath=sse -msse -msse2 -msse3 -msse4 -mavx -mfma"
-  fi
-fi
-
-if test "x$cv_avx" = "xyes"; then
-  if test "x$cv_forcefpu" = "xno"; then
-    AC_DEFINE(ENABLE_AVX,1,Define to 1 if you use AVX code)
-  else
-    cv_avx="no"
-  fi
-  if test "x$cv_autocflags" = "xyes"; then
-    CFLAGS="$CFLAGS -mfpmath=sse -msse -msse2 -msse3 -msse4 -mavx"
-  fi
-fi
-
-if test "x$cv_sse4" = "xyes"; then
-  if test "x$cv_forcefpu" = "xno"; then
-    AC_DEFINE(ENABLE_SSE4,1,Define to 1 if you use SSE4 code)
-  else
-    cv_sse4="no"
-  fi
-  if test "x$cv_autocflags" = "xyes"; then
-    CFLAGS="$CFLAGS -mfpmath=sse -msse -msse2 -msse3 -msse4.1"
-  fi
-fi
-
-if test "x$cv_sse3" = "xyes"; then
-  if test "x$cv_forcefpu" = "xno"; then
-    AC_DEFINE(ENABLE_SSE3,1,Define to 1 if you use SSE3 code)
-  else
-    cv_sse3="no"
-  fi
-  if test "x$cv_autocflags" = "xyes"; then
-    CFLAGS="$CFLAGS -mfpmath=sse -msse -msse2 -msse3"
-  fi
-fi
-
-if test "x$cv_sse2" = "xyes"; then
-  if test "x$cv_forcefpu" = "xno"; then
-    AC_DEFINE(ENABLE_SSE2,1,Define to 1 if you use SSE2 code)
-  else
-    cv_sse2="no"
-  fi
-  if test "x$cv_autocflags" = "xyes"; then
-    CFLAGS="$CFLAGS -mfpmath=sse -msse -msse2"
-  fi
-fi
-
-if test "x$cv_forcefpu" = "xno"; then
-  if test "x$cv_sse" = "xv1"; then
-    AC_DEFINE(ENABLE_SSE,1,Define to 1 if you use SSE SIMD code)
-  fi
-  if test "x$cv_sse" = "xv2"; then
-    AC_DEFINE(ENABLE_SSE_V2,1,Define to 1 if you use SSE SIMD code v2)
-  fi
-else
-  cv_sse="no"
-fi
-
-if test "x$cv_autocflags" = "xyes"; then
-  if test "x$cv_sse" = "xv1" -o "x$cv_sse" = "xv2"; then
-    CFLAGS="$CFLAGS -mfpmath=sse -msse"
-  fi
-fi
-
-if test "x$cv_3dnow" = "xyes"; then
-  if test "x$cv_forcefpu" = "xno"; then
-    AC_DEFINE(ENABLE_3DNOW,1,Define to 1 if you use 3DNOW code)
-  else
-    cv_3dnow="no"
-  fi
-  if test "x$cv_autocflags" = "xyes"; then
-    CFLAGS="$CFLAGS -m3dnow -ffast-math"
-  fi
+if test "x$cv_x86simd" = "xyes"; then
+  AC_DEFINE(ENABLE_X86SIMD,1,Define to 1 if you use x86 SIMD)
+  AC_MSG_RESULT([Using x86/x64 SIMD codes])
 fi
 
 AC_ARG_ENABLE(omp, AC_HELP_STRING([--enable-omp], [Use OpenMP.(default=no)(EXPERIMENTAL)]), [cv_omp="$enable_omp"], [cv_omp="no"])
@@ -458,14 +349,7 @@ AC_MSG_RESULT([    Static build : .............. ${enable_static}])
 AC_MSG_RESULT([    Profiling build : ........... ${cv_profile}])
 AC_MSG_RESULT([    pthread support : ........... ${cv_pthread}])
 AC_MSG_RESULT([    OpenMP : .................... ${cv_omp}])
-AC_MSG_RESULT([    3DNow! : .................... ${cv_3dnow}])
-AC_MSG_RESULT([    SSE : ....................... ${cv_sse}])
-AC_MSG_RESULT([    SSE2 : ...................... ${cv_sse2}])
-AC_MSG_RESULT([    SSE3 : ...................... ${cv_sse3}])
-AC_MSG_RESULT([    SSE4 (SSE4.1) : ............. ${cv_sse4}])
-AC_MSG_RESULT([    AVX : ....................... ${cv_avx}])
-AC_MSG_RESULT([    Intel FMA (FMA3) : .......... ${cv_fma}])
-AC_MSG_RESULT([    AMD   FMA4 : ................ ${cv_fma4}])
+AC_MSG_RESULT([    x86/x64 SIMD : .............. ${cv_x86simd}])
 AC_MSG_RESULT([    CC : ........................ ${CC}])
 AC_MSG_RESULT([    CXX : ....................... ${CXX}])
 AC_MSG_RESULT([    CFLAGS : ....................

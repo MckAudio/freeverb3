@@ -47,9 +47,7 @@ void FV3_(irmodels)::loadImpulse(const fv3_float_t * inputL, const fv3_float_t *
   mute();
 }
 
-void FV3_(irmodels)::processreplace(fv3_float_t *inputL, fv3_float_t *inputR,
-				   fv3_float_t *outputL, fv3_float_t *outputR,
-				   long numsamples, unsigned options)
+void FV3_(irmodels)::processreplace(fv3_float_t *inputL, fv3_float_t *inputR, fv3_float_t *outputL, fv3_float_t *outputR, long numsamples, unsigned options)
 {
   if(numsamples <= 0||impulseSize <= 0) return;
   for(long i = 0;i < numsamples;i ++)

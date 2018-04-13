@@ -53,35 +53,48 @@
 #define LN_2_2 0.34657359027997265470861606072908828403775006718
 #endif
 
-#define FV3_FLAG_NULL       0x00000000
-#define FV3_FLAG_FPU        0x00000001 // edx/eax=1
-#define FV3_FLAG_MMX        0x00800000 // edx/eax=1
-#define FV3_FLAG_3DNOW      0x80000000 // edx/eax=0x80000001
-#define FV3_FLAG_3DNOWEXT   0x40000000 // edx/eax=0x80000001
-#define FV3_FLAG_3DNOW_PREF 0x00000100 // ecx/eax=0x80000001
-#define FV3_FLAG_XOP        0x00000800 // ecx/eax=0x80000001
-#define FV3_FLAG_FMA4       0x00010000 // ecx/eax=0x80000001
-#define FV3_FLAG_SSE        0x02000000 // edx/eax=1
-#define FV3_FLAG_SSE2       0x04000000 // edx/eax=1
-#define FV3_FLAG_SSE3       0x00000001 // ecx/eax=1
-#define FV3_FLAG_SSE4_1     0x00080000 // ecx/eax=1
-#define FV3_FLAG_SSE4_2     0x00100000 // ecx/eax=1
-#define FV3_FLAG_XSAVE      0x04000000 // ecx/eax=1
-#define FV3_FLAG_OSXSAVE    0x08000000 // ecx/eax=1
-#define FV3_FLAG_AVX        0x10000000 // ecx/eax=1
-#define FV3_FLAG_FMA3       0x00001000 // ecx/eax=1
+#define FV3_X86SIMD_NULL              0x00000000
+#define FV3_X86SIMD_CPUID_FPU         0x00000001 // edx/eax=1
+#define FV3_X86SIMD_CPUID_MMX         0x00800000 // edx/eax=1
+#define FV3_X86SIMD_CPUID_SSE         0x02000000 // edx/eax=1
+#define FV3_X86SIMD_CPUID_SSE2        0x04000000 // edx/eax=1
+#define FV3_X86SIMD_CPUID_SSE3        0x00000001 // ecx/eax=1
+#define FV3_X86SIMD_CPUID_SSE4_1      0x00080000 // ecx/eax=1
+#define FV3_X86SIMD_CPUID_SSE4_2      0x00100000 // ecx/eax=1
+#define FV3_X86SIMD_CPUID_XSAVE       0x04000000 // ecx/eax=1
+#define FV3_X86SIMD_CPUID_OSXSAVE     0x08000000 // ecx/eax=1
+#define FV3_X86SIMD_CPUID_AVX         0x10000000 // ecx/eax=1
+#define FV3_X86SIMD_CPUID_FMA3        0x00001000 // ecx/eax=1
 
-#define FV3_FLAG_MXCSR_FZ        0x00008000 // Flush To Zero
-#define FV3_FLAG_MXCSR_DAZ       0x00000040 // Denormals Are Zero
-#define FV3_FLAG_MXCSR_EMASK_ALL 0x00001F80 // All Exceptions Masks
+#define FV3_X86SIMD_CPUID_3DNOW       0x80000000 // edx/eax=0x80000001
+#define FV3_X86SIMD_CPUID_3DNOWEXT    0x40000000 // edx/eax=0x80000001
+#define FV3_X86SIMD_CPUID_3DNOW_PREF  0x00000100 // ecx/eax=0x80000001
+#define FV3_X86SIMD_CPUID_XOP         0x00000800 // ecx/eax=0x80000001
+#define FV3_X86SIMD_CPUID_FMA4        0x00010000 // ecx/eax=0x80000001
 
-#if   defined(ENABLE_AVX)||defined(ENABLE_FMA3)||defined(ENABLE_FMA4)
+// SIMD code select, F:float D:double L:long double X:depreciated
+#define FV3_X86SIMD_FLAG_FPU          0x00000001 // FDL
+#define FV3_X86SIMD_FLAG_SSE_V1       0x00000002 // F To use SSE version 1 code
+#define FV3_X86SIMD_FLAG_SSE          0x00000004 // F
+#define FV3_X86SIMD_FLAG_SSE2         0x00000008 // D
+#define FV3_X86SIMD_FLAG_SSE3         0x00000010 // F
+#define FV3_X86SIMD_FLAG_SSE4_1       0x00000020 // D
+#define FV3_X86SIMD_FLAG_AVX          0x00000040 // FD
+#define FV3_X86SIMD_FLAG_FMA3         0x00000080 // FD (Not AVX2)
+#define FV3_X86SIMD_FLAG_3DNOWP       0x00000100 // XF AMD 3DNow! with prefetch, depreciated: Bulldozer/Bobcat~ no-support
+#define FV3_X86SIMD_FLAG_FMA4         0x00000200 // XFD AMD, depreciated: Ryzen~ no-support
+
+#define FV3_X86SIMD_MXCSR_FZ          0x00008000 // Flush To Zero
+#define FV3_X86SIMD_MXCSR_DAZ         0x00000040 // Denormals Are Zero
+#define FV3_X86SIMD_MXCSR_EMASK_ALL   0x00001F80 // All Exceptions Masks
+
+// for maximum support
+// AVX FMA3 FMA4
 #define FV3_PTR_ALIGN_BYTE 32
-#elif defined(ENABLE_SSE)||defined(ENABLE_SSE_V2)||defined(ENABLE_SSE2)||defined(ENABLE_SSE3)||defined(ENABLE_SSE4)
-#define FV3_PTR_ALIGN_BYTE 16
-#else
-#define FV3_PTR_ALIGN_BYTE 8
-#endif
+// SSE SSE2 SSE3 SSE4
+// #define FV3_PTR_ALIGN_BYTE 16
+// FPU
+// #define FV3_PTR_ALIGN_BYTE 8
 
 #define FV3_IR_DEFAULT     (0U)
 #define FV3_IR_MUTE_DRY    (1U << 1)

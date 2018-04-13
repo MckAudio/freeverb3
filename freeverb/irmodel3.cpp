@@ -127,26 +127,25 @@ void FV3_(irmodel3)::loadImpulse(const fv3_float_t * inputL, const fv3_float_t *
     }
   
 #ifdef DEBUG  
-  std::fprintf(stderr, "irmodel3::loadImpulse(): {%ldx%ld+%ld+%ldx%ld+%ld}\n",
-	       sFragmentSize, sFragmentNum, sFragmentRest,
-	       lFragmentSize, lFragmentNum, lFragmentRest);
+  std::fprintf(stderr, "irmodel3::loadImpulse(): {%ldx%ld+%ld+%ldx%ld+%ld}\n", sFragmentSize, sFragmentNum, sFragmentRest, lFragmentSize, lFragmentNum, lFragmentRest);
 #endif
 
   try
     {
       allocSwap(sFragmentSize, lFragmentSize);
+      sFragmentsFFT.setSIMD(simdFlag1, simdFlag2);
       sFragmentsFFT.allocFFT(sFragmentSize, fftflags);
+      lFragmentsFFT.setSIMD(simdFlag1, simdFlag2);
       lFragmentsFFT.allocFFT(lFragmentSize, fftflags);
+
+      setSIMD(sFragmentsFFT.getSIMD(0),sFragmentsFFT.getSIMD(1));
+
       sImpulseFFTBlock.alloc(sFragmentSize*2*(sFragmentNum+1), 2);
       lImpulseFFTBlock.alloc(lFragmentSize*2*(lFragmentNum+1), 2);
-      allocFragments(&sFragments, inputL, inputR,
-		     sFragmentSize, sFragmentNum, sFragmentRest, fftflags,
-		     sImpulseFFTBlock.L, sImpulseFFTBlock.R);
+      allocFragments(&sFragments, inputL, inputR, sFragmentSize, sFragmentNum, sFragmentRest, fftflags, sImpulseFFTBlock.L, sImpulseFFTBlock.R);
       if(size > lFragmentSize)
 	{
-	  allocFragments(&lFragments, inputL+lFragmentSize, inputR+lFragmentSize,
-			 lFragmentSize, lFragmentNum, lFragmentRest, fftflags,
-			 lImpulseFFTBlock.L, lImpulseFFTBlock.R);
+	  allocFragments(&lFragments, inputL+lFragmentSize, inputR+lFragmentSize, lFragmentSize, lFragmentNum, lFragmentRest, fftflags, lImpulseFFTBlock.L, lImpulseFFTBlock.R);
 	}
       sBlockDelayL.setBlock(sFragmentSize*2, (long)sFragments.size());
       sBlockDelayR.setBlock(sFragmentSize*2, (long)sFragments.size());
@@ -187,8 +186,7 @@ void FV3_(irmodel3)::freeFragments(std::vector<FV3_(frag)*> *v)
 }
 
 void FV3_(irmodel3)::allocFragments(std::vector<FV3_(frag)*> *to, const fv3_float_t *inputL, const fv3_float_t *inputR,
-				    long fragSize, long num, long rest, unsigned flags,
-				    fv3_float_t * preAllocatedL, fv3_float_t * preAllocatedR)
+				    long fragSize, long num, long rest, unsigned flags, fv3_float_t * preAllocatedL, fv3_float_t * preAllocatedR)
 		    throw(std::bad_alloc)
 {
   try
@@ -197,6 +195,7 @@ void FV3_(irmodel3)::allocFragments(std::vector<FV3_(frag)*> *to, const fv3_floa
 	{
 	  FV3_(frag) * f = new FV3_(frag);
 	  to->push_back(f);
+	  f->setSIMD(simdFlag1, simdFlag2);
 	  f->loadImpulse(inputL+fragSize*i, inputR+fragSize*i, fragSize, fragSize, flags,
 			 preAllocatedL+fragSize*2*i, preAllocatedR+fragSize*2*i);
 	}
@@ -204,6 +203,7 @@ void FV3_(irmodel3)::allocFragments(std::vector<FV3_(frag)*> *to, const fv3_floa
 	{
 	  FV3_(frag) * f = new FV3_(frag);
 	  to->push_back(f);
+	  f->setSIMD(simdFlag1, simdFlag2);
 	  f->loadImpulse(inputL+fragSize*num, inputR+fragSize*num, fragSize, rest, flags,
 			 preAllocatedL+fragSize*2*num, preAllocatedR+fragSize*2*num);
 	}

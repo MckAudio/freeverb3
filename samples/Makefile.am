@@ -27,6 +27,14 @@ if BUILD_PLUGDOUBLE
 AM_CPPFLAGS += -DPLUGDOUBLE
 endif
 
+if BUILD_FLOAT
+AM_CPPFLAGS += -DBUILD_FLOAT
+endif
+
+if BUILD_DOUBLE
+AM_CPPFLAGS += -DBUILD_DOUBLE
+endif
+
 AM_LDFLAGS = -static
 
 I_LIBS = ../libgdither/libgdither.la ../freeverb/libfreeverb3.la \

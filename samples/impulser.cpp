@@ -29,7 +29,7 @@
 #include <sndfile.h>
 #include <sndfile.hh>
 #include <freeverb/irmodels.hpp>
-#include <freeverb/irmodel.hpp>
+#include <freeverb/irmodel1.hpp>
 #include <freeverb/irmodel2.hpp>
 #include <freeverb/irmodel3.hpp>
 #include <freeverb/utils.hpp>
@@ -49,7 +49,7 @@ using namespace fv3;
 
 #ifdef PLUGDOUBLE
 typedef fv3::irbase_ IRBASE;
-typedef fv3::irmodel_ IR;
+typedef fv3::irmodel1_ IR1;
 typedef fv3::irmodel2_ IR2;
 typedef fv3::irmodel3_ IR3;
 typedef fv3::irmodels_ IRS;
@@ -57,7 +57,7 @@ typedef fv3::utils_ UTILS;
 typedef double pfloat_t;
 #else
 typedef fv3::irbase_f IRBASE;
-typedef fv3::irmodel_f IR;
+typedef fv3::irmodel1_f IR1;
 typedef fv3::irmodel2_f IR2;
 typedef fv3::irmodel3_f IR3;
 typedef fv3::irmodels_f IRS;
@@ -197,8 +197,7 @@ int main(int argc, char* argv[])
   impulse = new SndfileHandle(args.getFileArg(1));
   if(impulse->frames() == 0)
     {
-      std::fprintf(stderr, "ERROR: open PCM file %s.\n",
-		   args.getFileArg(1));
+      std::fprintf(stderr, "ERROR: open PCM file %s.\n", args.getFileArg(1));
       exit(-1);
     }
 
@@ -206,8 +205,8 @@ int main(int argc, char* argv[])
   switch(model)
     {
     case 1:
-      std::fprintf(stderr, "MODEL = irmodel\n");
-      ir = new IR();
+      std::fprintf(stderr, "MODEL = irmodel1\n");
+      ir = new IR1();
       break;
     case 3:
       std::fprintf(stderr, "MODEL = irmodel3\n");
@@ -238,8 +237,7 @@ int main(int argc, char* argv[])
   pfloat_t * irR = new pfloat_t[(int)impulse->frames()];
   splitLR(irStream, irL, irR, impulse->frames(), impulse->channels());
   ir->loadImpulse(irL, irR, impulse->frames());
-  std::fprintf(stderr, "Size = %ld, Latency = %ld\n",
-	       ir->getSampleSize(), ir->getLatency());
+  std::fprintf(stderr, "Size = %ld, Latency = %ld\n", ir->getSampleSize(), ir->getLatency());
 
   idb += args.getDouble("-indb");
   odb += args.getDouble("-imdb");

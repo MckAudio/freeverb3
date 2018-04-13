@@ -27,7 +27,7 @@
 
 #include <sndfile.h>
 #include <freeverb/irmodels.hpp>
-#include <freeverb/irmodel.hpp>
+#include <freeverb/irmodel1.hpp>
 #include <freeverb/irmodel2.hpp>
 #include <freeverb/irmodel3.hpp>
 #include <fftw3.h>
@@ -36,18 +36,18 @@
 
 #ifdef PLUGDOUBLE
 typedef fv3::irbase_ IRBASE;
-typedef fv3::irmodel_ IR;
+typedef fv3::irmodels_ IRS;
+typedef fv3::irmodel1_ IR1;
 typedef fv3::irmodel2_ IR2;
 typedef fv3::irmodel3_ IR3;
-typedef fv3::irmodels_ IRS;
 typedef fv3::utils_ UTILS;
 typedef double pfloat_t;
 #else
 typedef fv3::irbase_f IRBASE;
-typedef fv3::irmodel_f IR;
+typedef fv3::irmodels_f IRS;
+typedef fv3::irmodel1_f IR1;
 typedef fv3::irmodel2_f IR2;
 typedef fv3::irmodel3_f IR3;
-typedef fv3::irmodels_f IRS;
 typedef fv3::utils_f UTILS;
 typedef float pfloat_t;
 #endif
@@ -154,8 +154,8 @@ int main(int argc, char * argv[])
   switch(model)
     {
     case 1:
-      std::fprintf(stderr, "MODEL = irmodel\n");
-      ir = new IR();
+      std::fprintf(stderr, "MODEL = irmodel1\n");
+      ir = new IR1();
       break;
     case 3:
       std::fprintf(stderr, "MODEL = irmodel3\n");

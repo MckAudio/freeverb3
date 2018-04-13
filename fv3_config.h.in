@@ -9,35 +9,11 @@
 /* Define to 1 to disable undenormal code */
 #undef DISABLE_UNDENORMAL
 
-/* Define to 1 if you use 3DNOW code */
-#undef ENABLE_3DNOW
-
-/* Define to 1 if you use AVX code */
-#undef ENABLE_AVX
-
-/* Define to 1 if you use Intel FMA3 code */
-#undef ENABLE_FMA3
-
-/* Define to 1 if you use AMD FMA4 code */
-#undef ENABLE_FMA4
-
 /* Define to 1 if you enable the pthread */
 #undef ENABLE_PTHREAD
 
-/* Define to 1 if you use SSE SIMD code */
-#undef ENABLE_SSE
-
-/* Define to 1 if you use SSE2 code */
-#undef ENABLE_SSE2
-
-/* Define to 1 if you use SSE3 code */
-#undef ENABLE_SSE3
-
-/* Define to 1 if you use SSE4 code */
-#undef ENABLE_SSE4
-
-/* Define to 1 if you use SSE SIMD code v2 */
-#undef ENABLE_SSE_V2
+/* Define to 1 if you use x86 SIMD */
+#undef ENABLE_X86SIMD
 
 /* Define to 1 if you have the `calloc' function. */
 #undef HAVE_CALLOC

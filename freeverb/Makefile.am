@@ -66,8 +66,8 @@ libfreeverbinclude_HEADERS = \
 	fv3_type_float.h \
 	irbase.hpp \
 	irbase_t.hpp \
-	irmodel.hpp \
-	irmodel_t.hpp \
+	irmodel1.hpp \
+	irmodel1_t.hpp \
 	irmodel2.hpp \
 	irmodel2_t.hpp \
 	irmodel2zl.hpp \

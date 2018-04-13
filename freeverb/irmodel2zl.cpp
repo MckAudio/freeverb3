@@ -101,9 +101,7 @@ long FV3_(irmodel2zl)::getLatency()
 /*!
   output is valid even inputL/R == outputL/R.
  */
-void FV3_(irmodel2zl)::processreplace(fv3_float_t *inputL, fv3_float_t *inputR,
-				      fv3_float_t *outputL, fv3_float_t *outputR,
-				      long numsamples, unsigned options)
+void FV3_(irmodel2zl)::processreplace(fv3_float_t *inputL, fv3_float_t *inputR, fv3_float_t *outputL, fv3_float_t *outputR, long numsamples, unsigned options)
 {
   if(numsamples <= 0||impulseSize <= 0||(long)fragments.size() <= 0) return;
   
@@ -113,15 +111,11 @@ void FV3_(irmodel2zl)::processreplace(fv3_float_t *inputL, fv3_float_t *inputR,
       long div = numsamples/fragmentSize;
       for(long i = 0;i < div;i ++)
 	{
-	  processreplace(inputL+i*fragmentSize, inputR+i*fragmentSize,
-			 outputL+i*fragmentSize, outputR+i*fragmentSize,
-			 fragmentSize, options);
+	  processreplace(inputL+i*fragmentSize, inputR+i*fragmentSize, outputL+i*fragmentSize, outputR+i*fragmentSize, fragmentSize, options);
 	}
       if(numsamples%fragmentSize > 0)
 	{
-	  processreplace(inputL+div*fragmentSize, inputR+div*fragmentSize,
-			 outputL+div*fragmentSize, outputR+div*fragmentSize,
-			 numsamples%fragmentSize, options);
+	  processreplace(inputL+div*fragmentSize, inputR+div*fragmentSize, outputL+div*fragmentSize, outputR+div*fragmentSize, numsamples%fragmentSize, options);
 	}
       return;
     }
@@ -145,8 +139,7 @@ void FV3_(irmodel2zl)::processreplace(fv3_float_t *inputL, fv3_float_t *inputR,
   else
     {
       processZL(inputL, inputR, fifoSlot.L, fifoSlot.R, cursor, options);
-      processZL(inputL+cursor, inputR+cursor, fifoSlot.L+cursor, fifoSlot.R+cursor,
-		numsamples-cursor, options);
+      processZL(inputL+cursor, inputR+cursor, fifoSlot.L+cursor, fifoSlot.R+cursor, numsamples-cursor, options);
     }
   fpLSp = fifoSlot.L;
   fpRSp = fifoSlot.R;
@@ -189,9 +182,7 @@ void FV3_(irmodel2zl)::processreplace(fv3_float_t *inputL, fv3_float_t *inputR,
   return;
 }
 
-void FV3_(irmodel2zl)::processZL(fv3_float_t *inputL, fv3_float_t *inputR,
-				 fv3_float_t *outputL, fv3_float_t *outputR,
-				 long numsamples, unsigned options)
+void FV3_(irmodel2zl)::processZL(fv3_float_t *inputL, fv3_float_t *inputR, fv3_float_t *outputL, fv3_float_t *outputR, long numsamples, unsigned options)
 {
   // numsamples <= fragmentSize - ZLstart
   if(ZLstart == 0)

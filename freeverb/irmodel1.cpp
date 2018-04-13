@@ -18,30 +18,30 @@
  *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
  */
 
-#include "freeverb/irmodel.hpp"
+#include "freeverb/irmodel1.hpp"
 #include "freeverb/fv3_type_float.h"
 #include "freeverb/fv3_ns_start.h"
 
-FV3_(irmodel)::FV3_(irmodel)()
+FV3_(irmodel1)::FV3_(irmodel1)()
 {
   current = fftSize = fragmentSize = 0;
 }
 
-FV3_(irmodel)::FV3_(~irmodel)()
+FV3_(irmodel1)::FV3_(~irmodel1)()
 {
-  FV3_(irmodel)::unloadImpulse();
+  FV3_(irmodel1)::unloadImpulse();
 }
 
-void FV3_(irmodel)::loadImpulse(const fv3_float_t * inputL, const fv3_float_t * inputR, long size)
+void FV3_(irmodel1)::loadImpulse(const fv3_float_t * inputL, const fv3_float_t * inputR, long size)
 		   throw(std::bad_alloc)
 {
   // if fragSize < impulseSize, the impulse should be 0 padded
   // to reduce latency.
-  FV3_(irmodel)::unloadImpulse();
+  FV3_(irmodel1)::unloadImpulse();
   impulseSize = size;
   long pulse = FV3_(utils)::checkPow2(size);
 #ifdef DEBUG
-  std::fprintf(stderr, "irmodel::loadImpulse(): %ld(impulseSize)->%ld(fragmentSize)\n", size, pulse);
+  std::fprintf(stderr, "irmodel1::loadImpulse(): %ld(impulseSize)->%ld(fragmentSize)\n", size, pulse);
 #endif
   // fragmentSize = pulse = 2^n >= size = impulseSize
   FV3_(slot) impulse;
@@ -64,17 +64,17 @@ void FV3_(irmodel)::loadImpulse(const fv3_float_t * inputL, const fv3_float_t * 
   allocFFT(pulse, fftflags);
   delayL.setsize(size);
   delayR.setsize(size);  
-  FV3_(irmodel)::mute();
+  FV3_(irmodel1)::mute();
 }
 
-void FV3_(irmodel)::unloadImpulse()
+void FV3_(irmodel1)::unloadImpulse()
 {
   impulseSize = 0;
   freeFFT();
   freeImpulse();
 }
 
-void FV3_(irmodel)::mute()
+void FV3_(irmodel1)::mute()
 {
   current = 0;
   delayline.mute();
@@ -84,19 +84,17 @@ void FV3_(irmodel)::mute()
   filter.mute();
 }
 
-long FV3_(irmodel)::getFragmentSize()
+long FV3_(irmodel1)::getFragmentSize()
 {
   return fragmentSize;
 }
 
-long FV3_(irmodel)::getLatency()
+long FV3_(irmodel1)::getLatency()
 {
   return impulseSize;
 }
 
-void FV3_(irmodel)::processreplace(fv3_float_t *inputL, fv3_float_t *inputR,
-				   fv3_float_t *outputL, fv3_float_t *outputR,
-				   long numsamples, unsigned options)
+void FV3_(irmodel1)::processreplace(fv3_float_t *inputL, fv3_float_t *inputR, fv3_float_t *outputL, fv3_float_t *outputR, long numsamples, unsigned options)
 {
   if(numsamples <= 0||fragmentSize <= 0) return;
   if(numsamples > impulseSize)
@@ -140,8 +138,7 @@ void FV3_(irmodel)::processreplace(fv3_float_t *inputL, fv3_float_t *inputR,
   return;
 }
 
-void FV3_(irmodel)::processSquare(fv3_float_t *inputL, fv3_float_t *inputR,
-				  fv3_float_t *outputL, fv3_float_t *outputR)
+void FV3_(irmodel1)::processSquare(fv3_float_t *inputL, fv3_float_t *inputR, fv3_float_t *outputL, fv3_float_t *outputR)
 {
   fftOrig.mute();
   std::memcpy(fftOrig.L, inputL, sizeof(fv3_float_t)*impulseSize);
@@ -218,7 +215,7 @@ void FV3_(irmodel)::processSquare(fv3_float_t *inputL, fv3_float_t *inputR,
     }
 }
 
-void FV3_(irmodel)::allocImpulse(long fsize, long isize)
+void FV3_(irmodel1)::allocImpulse(long fsize, long isize)
 		   throw(std::bad_alloc)
 {
   freeImpulse();
@@ -229,7 +226,7 @@ void FV3_(irmodel)::allocImpulse(long fsize, long isize)
   fftImpulse.alloc(2*fsize, 2);
 }
 
-void FV3_(irmodel)::freeImpulse()
+void FV3_(irmodel1)::freeImpulse()
 {
   if(fragmentSize == 0) return;
   fifo.free();
@@ -238,7 +235,7 @@ void FV3_(irmodel)::freeImpulse()
   fifoSize = fragmentSize = 0;
 }
 
-void FV3_(irmodel)::allocFFT(long size, unsigned fftflags)
+void FV3_(irmodel1)::allocFFT(long size, unsigned fftflags)
 		   throw(std::bad_alloc)
 {
   freeFFT();
@@ -251,7 +248,7 @@ void FV3_(irmodel)::allocFFT(long size, unsigned fftflags)
   fftSize = size;
 }
 
-void FV3_(irmodel)::freeFFT()
+void FV3_(irmodel1)::freeFFT()
 {
   if(fftSize == 0) return;
   fftRev.free();

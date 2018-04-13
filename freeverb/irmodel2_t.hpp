@@ -26,9 +26,7 @@ class _FV3_(irmodel2) : public _FV3_(irbase)
   virtual void loadImpulse(const _fv3_float_t * inputL, const _fv3_float_t * inputR, long size)
     throw(std::bad_alloc);
   virtual void unloadImpulse();
-  virtual void processreplace(_fv3_float_t *inputL, _fv3_float_t *inputR,
-			      _fv3_float_t *outputL, _fv3_float_t *outputR,
-			      long numsamples, unsigned options);
+  virtual void processreplace(_fv3_float_t *inputL, _fv3_float_t *inputR, _fv3_float_t *outputL, _fv3_float_t *outputR, long numsamples, unsigned options);
   virtual void mute();
   virtual long getLatency();
   virtual void setInitialDelay(long numsamples)
@@ -50,7 +48,5 @@ class _FV3_(irmodel2) : public _FV3_(irbase)
  private:
   _FV3_(irmodel2)(const _FV3_(irmodel2)& x);
   _FV3_(irmodel2)& operator=(const _FV3_(irmodel2)& x);
-  void processSquare(_fv3_float_t *inputL, _fv3_float_t *inputR,
-		     _fv3_float_t *outputL, _fv3_float_t *outputR,
-		     unsigned options);
+  void processSquare(_fv3_float_t *inputL, _fv3_float_t *inputR, _fv3_float_t *outputL, _fv3_float_t *outputR, unsigned options);
 };

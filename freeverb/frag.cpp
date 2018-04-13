@@ -28,7 +28,7 @@ FV3_(fragfft)::FV3_(fragfft)()
 {
   fragmentSize = 0;
   simdSize = 1;
-  setSIMD(0);
+  setSIMD(0,0);
 }
 
 FV3_(fragfft)::FV3_(~fragfft)()
@@ -36,64 +36,9 @@ FV3_(fragfft)::FV3_(~fragfft)()
   freeFFT();
 }
 
-void FV3_(fragfft)::setSIMD(uint32_t simdFlag)
+long FV3_(fragfft)::getSIMDSize()
 {
-  if(simdFlag == 0) simdFlag = FV3_(utils)::getSIMDFlag();
-  simdSize = 1;
-
-#ifdef LIBFV3_FLOAT
-#if defined(ENABLE_3DNOW)
-  if((simdFlag&FV3_FLAG_3DNOW))
-    simdSize = 2;
-#endif
-#if defined(ENABLE_SSE)
-  if((simdFlag&FV3_FLAG_SSE))
-    simdSize = 4;
-#endif
-#if defined(ENABLE_SSE_V2)||defined(ENABLE_SSE2)
-  if((simdFlag&FV3_FLAG_SSE))
-    simdSize = 1;
-#endif
-#if defined(ENABLE_SSE3)||defined(ENABLE_SSE4)
-  if((simdFlag&FV3_FLAG_SSE3))
-    simdSize = 1;
-#endif
-#if defined(ENABLE_AVX)
-  if((simdFlag&FV3_FLAG_AVX))
-    simdSize = 8;
-#endif
-#if defined(ENABLE_FMA3)
-  if((simdFlag&FV3_FLAG_FMA3))
-    simdSize = 8;
-#endif
-#if defined(ENABLE_FMA4)
-  if((simdFlag&FV3_FLAG_FMA4))
-    simdSize = 8;
-#endif
-#endif
-
-#ifdef LIBFV3_DOUBLE
-#if defined(ENABLE_SSE2)||defined(ENABLE_SSE3)
-  if((simdFlag&FV3_FLAG_SSE2))
-    simdSize = 2;
-#endif
-#if defined(ENABLE_SSE4)
-  if((simdFlag&FV3_FLAG_SSE4_1))
-    simdSize = 1;
-#endif
-#if defined(ENABLE_AVX)
-  if((simdFlag&FV3_FLAG_AVX))
-    simdSize = 4;
-#endif
-#if defined(ENABLE_FMA3)
-  if((simdFlag&FV3_FLAG_FMA3))
-    simdSize = 4;
-#endif
-#if defined(ENABLE_FMA4)
-  if((simdFlag&FV3_FLAG_FMA4))
-    simdSize = 4;
-#endif
-#endif
+  return simdSize;
 }
 
 long FV3_(fragfft)::getFragmentSize()
@@ -109,8 +54,7 @@ void FV3_(fragfft)::allocFFT(long size, unsigned fftflags)
 #endif
   if(FV3_IR_Min_FragmentSize > size)
     {
-      std::fprintf(stderr, "fragfft::allocFFT(size=%ld): fragmentSize(>%d) is too small! \n",
-		   size, FV3_IR_Min_FragmentSize);
+      std::fprintf(stderr, "fragfft::allocFFT(size=%ld): fragmentSize (>%d) is too small! \n", size, FV3_IR_Min_FragmentSize);
       throw std::bad_alloc();
     }
   if(size != FV3_(utils)::checkPow2(size))
@@ -167,8 +111,7 @@ void FV3_(fragfft)::R2SA(const fv3_float_t * in, fv3_float_t * out, long n)
     }
 }
 
-void FV3_(fragfft)::R2HC(const fv3_float_t * iL, const fv3_float_t * iR,
-			 fv3_float_t * oL, fv3_float_t * oR)
+void FV3_(fragfft)::R2HC(const fv3_float_t * iL, const fv3_float_t * iR, fv3_float_t * oL, fv3_float_t * oR)
 {
   if(fragmentSize == 0) return;
 #pragma omp parallel
@@ -224,8 +167,7 @@ void FV3_(fragfft)::SA2R(const fv3_float_t * in, fv3_float_t * out, long n)
     }
 }
 
-void FV3_(fragfft)::HC2R(const fv3_float_t * iL, const fv3_float_t * iR,
-			 fv3_float_t * oL, fv3_float_t * oR)
+void FV3_(fragfft)::HC2R(const fv3_float_t * iL, const fv3_float_t * iR, fv3_float_t * oL, fv3_float_t * oR)
 {
   if(fragmentSize == 0) return;
 #pragma omp parallel
@@ -253,7 +195,7 @@ FV3_(frag)::FV3_(frag)()
 {
   fragmentSize = 0;
   fftImpulse.L = fftImpulse.R = NULL;
-  setSIMD(0);
+  setSIMD(0,0);
 }
 
 FV3_(frag)::FV3_(~frag)()
@@ -267,8 +209,7 @@ void FV3_(frag)::loadImpulse(const fv3_float_t * L, const fv3_float_t * R, long 
   this->loadImpulse(L,R,size,limit,fftflags,NULL,NULL);
 }
 
-void FV3_(frag)::loadImpulse(const fv3_float_t * L, const fv3_float_t * R, long size, long limit, unsigned fftflags,
-			     fv3_float_t * preAllocatedL, fv3_float_t * preAllocatedR)
+void FV3_(frag)::loadImpulse(const fv3_float_t * L, const fv3_float_t * R, long size, long limit, unsigned fftflags, fv3_float_t * preAllocatedL, fv3_float_t * preAllocatedR)
 		throw(std::bad_alloc)
 {
 #ifdef DEBUG
@@ -276,8 +217,7 @@ void FV3_(frag)::loadImpulse(const fv3_float_t * L, const fv3_float_t * R, long 
 #endif
   if(FV3_IR_Min_FragmentSize > size)
     {
-      std::fprintf(stderr, "frag::loadImpulse(f=%ld,l=%ld): fragmentSize(>%d) is too small.\n",
-		   size, limit, FV3_IR_Min_FragmentSize);
+      std::fprintf(stderr, "frag::loadImpulse(f=%ld,l=%ld): fragmentSize(>%d) is too small.\n", size, limit, FV3_IR_Min_FragmentSize);
       throw std::bad_alloc();
     }
   if(size != FV3_(utils)::checkPow2(size))
@@ -289,6 +229,7 @@ void FV3_(frag)::loadImpulse(const fv3_float_t * L, const fv3_float_t * R, long 
   if(size < limit) limit = size;
   unloadImpulse();
   FV3_(fragfft) fragFFT;
+  fragFFT.setSIMD(simdFlag1, simdFlag2);
   // impulse = [_Re_ impulse...< limit 0...0 (size)][_Im_ 0...0 (size*2)]
   FV3_(slot) impulse;
   impulse.alloc(size, 2);
@@ -344,7 +285,7 @@ void FV3_(frag)::unloadImpulse()
 }
 
 #ifdef LIBFV3_FLOAT
-#if defined(ENABLE_FMA4)
+#if defined(ENABLE_X86SIMD)
 static void MULT_M_F_FMA4(const fv3_float_t * iL, const fv3_float_t * fL, fv3_float_t * oL, long n)
 #ifdef __GNUC__
   __attribute__((noinline))
@@ -397,9 +338,7 @@ static void MULT_M_F_FMA4(const fv3_float_t * iL, const fv3_float_t * fL, fv3_fl
      : "q"(oL), "q"(iL), "q"(fL), "r"(n/16), "r"(soL)
      : "memory");
 }
-#endif
 
-#if defined(ENABLE_FMA3)
 static void MULT_M_F_FMA3(const fv3_float_t * iL, const fv3_float_t * fL, fv3_float_t * oL, long n)
 #ifdef __GNUC__
   __attribute__((noinline))
@@ -452,9 +391,7 @@ static void MULT_M_F_FMA3(const fv3_float_t * iL, const fv3_float_t * fL, fv3_fl
      : "q"(oL), "q"(iL), "q"(fL), "r"(n/16), "r"(soL)
      : "memory");
 }
-#endif
 
-#if defined(ENABLE_AVX)
 static void MULT_M_F_AVX(const fv3_float_t * iL, const fv3_float_t * fL, fv3_float_t * oL, long n)
 #ifdef __GNUC__
   __attribute__((noinline))
@@ -513,9 +450,7 @@ static void MULT_M_F_AVX(const fv3_float_t * iL, const fv3_float_t * fL, fv3_flo
      : "q"(oL), "q"(iL), "q"(fL), "r"(n/16), "r"(soL)
      : "memory");
 }
-#endif
 
-#if defined(ENABLE_SSE3)||defined(ENABLE_SSE4)
 static void MULT_M_F_SSE3(const fv3_float_t * iL, const fv3_float_t * fL, fv3_float_t * oL, long n)
 #ifdef __GNUC__
   __attribute__((noinline))
@@ -565,9 +500,7 @@ static void MULT_M_F_SSE3(const fv3_float_t * iL, const fv3_float_t * fL, fv3_fl
      : "q"(oL), "q"(iL), "q"(fL), "r"(n/4), "r"(soL)
      : "memory");
 }
-#endif
- 
-#if defined(ENABLE_SSE_V2)||defined(ENABLE_SSE2)
+
 static void MULT_M_F_SSE_V2(const fv3_float_t * iL, const fv3_float_t * fL, fv3_float_t * oL, long n)
 #ifdef __GNUC__
   __attribute__((noinline))
@@ -628,9 +561,7 @@ static void MULT_M_F_SSE_V2(const fv3_float_t * iL, const fv3_float_t * fL, fv3_
      : "q"(oL), "q"(iL), "q"(fL), "r"(n/4), "r"(soL)
      : "memory");
 }
-#endif
 
-#if defined(ENABLE_SSE)
 static void MULT_M_F_SSE(const fv3_float_t * iL, const fv3_float_t * fL, fv3_float_t * oL, long n)
 #ifdef __GNUC__
   __attribute__((noinline))
@@ -679,9 +610,7 @@ static void MULT_M_F_SSE(const fv3_float_t * iL, const fv3_float_t * fL, fv3_flo
      : "q"(oL), "q"(iL), "q"(fL), "r"(n/4), "r"(soL)
      : "memory");
 }
-#endif
 
-#if defined(ENABLE_3DNOW)
 static void MULT_M_F_3DNOW(const fv3_float_t * iL, const fv3_float_t * fL, fv3_float_t * oL, long n)
 #ifdef __GNUC__
   __attribute__((noinline))
@@ -736,7 +665,7 @@ static void MULT_M_F_3DNOW(const fv3_float_t * iL, const fv3_float_t * fL, fv3_f
 #endif
 
 #ifdef LIBFV3_DOUBLE
-#if defined(ENABLE_FMA4)
+#if defined(ENABLE_X86SIMD)
 static void MULT_M_D_FMA4(const fv3_float_t * iL, const fv3_float_t * fL, fv3_float_t * oL, long n)
 #ifdef __GNUC__
   __attribute__((noinline))
@@ -789,9 +718,7 @@ static void MULT_M_D_FMA4(const fv3_float_t * iL, const fv3_float_t * fL, fv3_fl
      : "q"(oL), "q"(iL), "q"(fL), "r"(n/8), "r"(soL)
      : "memory");
 }
-#endif
 
-#if defined(ENABLE_FMA3)
 static void MULT_M_D_FMA3(const fv3_float_t * iL, const fv3_float_t * fL, fv3_float_t * oL, long n)
 #ifdef __GNUC__
   __attribute__((noinline))
@@ -844,9 +771,7 @@ static void MULT_M_D_FMA3(const fv3_float_t * iL, const fv3_float_t * fL, fv3_fl
      : "q"(oL), "q"(iL), "q"(fL), "r"(n/8), "r"(soL)
      : "memory");
 }
-#endif
 
-#if defined(ENABLE_AVX)
 static void MULT_M_D_AVX(const fv3_float_t * iL, const fv3_float_t * fL, fv3_float_t * oL, long n)
 #ifdef __GNUC__
   __attribute__((noinline))
@@ -905,9 +830,7 @@ static void MULT_M_D_AVX(const fv3_float_t * iL, const fv3_float_t * fL, fv3_flo
      : "q"(oL), "q"(iL), "q"(fL), "r"(n/8), "r"(soL)
      : "memory");
 }
-#endif
 
-#if defined(ENABLE_SSE4)
 static void MULT_M_D_SSE4(const fv3_float_t * iL, const fv3_float_t * fL, fv3_float_t * oL, long n)
 #ifdef __GNUC__
   __attribute__((noinline))
@@ -928,22 +851,22 @@ static void MULT_M_D_SSE4(const fv3_float_t * iL, const fv3_float_t * fL, fv3_fl
      // ex.
      // pcmpeqd xmm0, xmm0 XMM0 = 0FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFh
      // pslldq  xmm0, 3    XMM0 = 0FFFFFFFFFFFFFFFFFFFFFFFFFF000000h pslldq:sse2
-     "pslldq $0xf, %%xmm6  \n\t" // bitmask = xmm6 ([0]=0,[1]=-1)
+     "pslldq $0xf, %%xmm6  \n\t" // bitmask = xmm6 ([,0]=0,[,1]=-1)
      // XMM6 = 8000000000000000 0000000000000000h
      "mov    %0, %4           \n\t" // save %0(oL)
      "MULT_M_D_SSE4_LOOP:     \n\t" // bitmask:xmm6
      "prefetchnta 0x80(%1)    \n\t"
-     "movapd     (%1), %%xmm0 \n\t" // xmm0,1,2
-     "movapd 0x10(%1), %%xmm3 \n\t" // xmm3,4,5
+     "movapd     (%1), %%xmm0 \n\t" // [1]xmm0,1,2 i(a,b)->xmm0
+     "movapd 0x10(%1), %%xmm3 \n\t" // [2]xmm3,4,5
      "add    $0x20, %1        \n\t"
      "prefetchnta 0x80(%2)    \n\t"
-     "movapd     (%2), %%xmm1 \n\t"
-     "movapd 0x10(%2), %%xmm4 \n\t"
+     "movapd     (%2), %%xmm1 \n\t" // [1] f(c,d)->xmm1
+     "movapd 0x10(%2), %%xmm4 \n\t" // [2]
      "add    $0x20, %2        \n\t"
-     "movapd %%xmm1, %%xmm2   \n\t"
-     "movapd %%xmm4, %%xmm5   \n\t"
+     "movapd %%xmm1, %%xmm2   \n\t" // [1] xmm2<-xmm1
+     "movapd %%xmm4, %%xmm5   \n\t" // [2]
      "add    $0x20, %0        \n\t"
-     "xorpd  %%xmm6, %%xmm1   \n\t"
+     "xorpd  %%xmm6, %%xmm1   \n\t" // [1] xmm1(c,-1*d)
      "xorpd  %%xmm6, %%xmm4   \n\t"
      "dppd   $0x31, %%xmm0, %%xmm1 \n\t" // (a,b)#(c,-d)->(ac-bd,0)
      "dppd   $0x31, %%xmm3, %%xmm4 \n\t"
@@ -954,7 +877,7 @@ static void MULT_M_D_SSE4(const fv3_float_t * iL, const fv3_float_t * fL, fv3_fl
      "xorpd  %%xmm1, %%xmm2    \n\t" // (ac-bd,ad+bc)
      "xorpd  %%xmm4, %%xmm5    \n\t"
      "prefetcht2 0x80(%0)      \n\t"
-     "addpd  -0x20(%0), %%xmm2  \n\t"
+     "addpd  -0x20(%0), %%xmm2  \n\t" // o += xmm2
      "addpd  -0x10(%0), %%xmm5  \n\t"
      "dec    %3                 \n\t"
      "movapd %%xmm2, -0x20(%0)  \n\t"
@@ -966,9 +889,7 @@ static void MULT_M_D_SSE4(const fv3_float_t * iL, const fv3_float_t * fL, fv3_fl
      : "q"(oL), "q"(iL), "q"(fL), "r"(n/2), "r"(soL)
      : "memory");
 }
-#endif
 
-#if defined(ENABLE_SSE2)||defined(ENABLE_SSE3)
 static void MULT_M_D_SSE2(const fv3_float_t * iL, const fv3_float_t * fL, fv3_float_t * oL, long n)
 #ifdef __GNUC__
   __attribute__((noinline))
@@ -1043,68 +964,107 @@ static void MULT_M_FPU(const fv3_float_t * iL, const fv3_float_t * fL, fv3_float
   oL[1] = tL1;
 }
 
-void FV3_(frag)::setSIMD(uint32_t simdFlag)
+uint32_t FV3_(fragfft)::getSIMD(uint32_t select)
 {
-  if(simdFlag == 0) simdFlag = FV3_(utils)::getSIMDFlag();
-  MULT_M = MULT_M_FPU;
+  if(select == 0) return simdFlag1;
+  if(select == 1) return simdFlag2;
+  return 0;
+}
+
+uint32_t FV3_(frag)::getSIMD(uint32_t select)
+{
+  if(select == 0) return simdFlag1;
+  if(select == 1) return simdFlag2;
+  return 0;
+}
+
+void FV3_(fragfft)::setSIMD(uint32_t flag1, uint32_t flag2)
+{
+  // flag1 == NULL or unsupported Instruction -> Autodetect
+  if(flag1 == FV3_X86SIMD_NULL)
+    simdFlag1 = FV3_(utils)::getSIMDFlag();
+  else if(!(flag1 & FV3_(utils)::getSIMDFlag()))
+    {
+      std::fprintf(stderr, "fragfft::setSIMD(%08x): not supported, autodetected.\n", flag1);
+      simdFlag1 = FV3_(utils)::getSIMDFlag();
+    }
+  else
+    simdFlag1 = flag1;
+  simdFlag2 = flag2;
   
+  simdSize = 1, flag1 = FV3_X86SIMD_FLAG_FPU, flag2 = FV3_X86SIMD_NULL;
+    
 #ifdef LIBFV3_FLOAT
-#if defined(ENABLE_3DNOW)
-  if((simdFlag&FV3_FLAG_3DNOW))
-    MULT_M = MULT_M_F_3DNOW;
-#endif
-#if defined(ENABLE_SSE)
-  if((simdFlag&FV3_FLAG_SSE))
-    MULT_M = MULT_M_F_SSE;
-#endif
-#if defined(ENABLE_SSE_V2)||defined(ENABLE_SSE2)
-  if((simdFlag&FV3_FLAG_SSE))
-    MULT_M = MULT_M_F_SSE_V2;
-#endif
-#if defined(ENABLE_SSE3)||defined(ENABLE_SSE4)
-  if((simdFlag&FV3_FLAG_SSE3))
-    MULT_M = MULT_M_F_SSE3;
-#endif
-#if defined(ENABLE_AVX)
-  if((simdFlag&FV3_FLAG_AVX))
-    MULT_M = MULT_M_F_AVX;
-#endif
-#if defined(ENABLE_FMA3)
-  if((simdFlag&FV3_FLAG_FMA3))
-    MULT_M = MULT_M_F_FMA3;
-#endif
-#if defined(ENABLE_FMA4)
-  if((simdFlag&FV3_FLAG_FMA4))
-    MULT_M = MULT_M_F_FMA4;
+#ifdef ENABLE_X86SIMD
+  if(simdFlag1&FV3_X86SIMD_FLAG_3DNOWP)simdSize = 2, flag1 = FV3_X86SIMD_FLAG_3DNOWP;
+  if(simdFlag1&FV3_X86SIMD_FLAG_SSE)   simdSize = 1, flag1 = FV3_X86SIMD_FLAG_SSE;
+  if(simdFlag1&FV3_X86SIMD_FLAG_SSE3)  simdSize = 1, flag1 = FV3_X86SIMD_FLAG_SSE3;
+  if(simdFlag1&FV3_X86SIMD_FLAG_AVX)   simdSize = 8, flag1 = FV3_X86SIMD_FLAG_AVX;
+  if(simdFlag1&FV3_X86SIMD_FLAG_FMA3)  simdSize = 8, flag1 = FV3_X86SIMD_FLAG_FMA3;
+  if(simdFlag1&FV3_X86SIMD_FLAG_FMA4)  simdSize = 8, flag1 = FV3_X86SIMD_FLAG_FMA4;
+
+  // override SSE_V1 option
+  if((simdFlag1&FV3_X86SIMD_FLAG_SSE)&&(simdFlag2&FV3_X86SIMD_FLAG_SSE_V1))
+    simdSize = 4, flag1 = FV3_X86SIMD_FLAG_SSE, flag2 = FV3_X86SIMD_FLAG_SSE_V1;
 #endif
 #endif
 
 #ifdef LIBFV3_DOUBLE
-#if defined(ENABLE_SSE2)||defined(ENABLE_SSE3)
-  if((simdFlag&FV3_FLAG_SSE2))
-    MULT_M = MULT_M_D_SSE2;
-#endif
-#if defined(ENABLE_SSE4)
-  if((simdFlag&FV3_FLAG_SSE4_1))
-    MULT_M = MULT_M_D_SSE4;
-#endif
-#if defined(ENABLE_AVX)
-  if((simdFlag&FV3_FLAG_AVX))
-    MULT_M = MULT_M_D_AVX;
-#endif
-#if defined(ENABLE_FMA3)
-  if((simdFlag&FV3_FLAG_FMA3))
-    MULT_M = MULT_M_D_FMA3;
-#endif
-#if defined(ENABLE_FMA4)
-  if((simdFlag&FV3_FLAG_FMA4))
-    MULT_M = MULT_M_D_FMA4;
+#ifdef ENABLE_X86SIMD
+  if(simdFlag1&FV3_X86SIMD_FLAG_SSE2)  simdSize = 2, flag1 = FV3_X86SIMD_FLAG_SSE2;
+  if(simdFlag1&FV3_X86SIMD_FLAG_SSE4_1)simdSize = 1, flag1 = FV3_X86SIMD_FLAG_SSE4_1;
+  if(simdFlag1&FV3_X86SIMD_FLAG_AVX)   simdSize = 4, flag1 = FV3_X86SIMD_FLAG_AVX;
+  if(simdFlag1&FV3_X86SIMD_FLAG_FMA3)  simdSize = 4, flag1 = FV3_X86SIMD_FLAG_FMA3;
+  if(simdFlag1&FV3_X86SIMD_FLAG_FMA4)  simdSize = 4, flag1 = FV3_X86SIMD_FLAG_FMA4;
 #endif
 #endif
+  simdFlag1 = flag1, simdFlag2 = flag2;
 }
 
-void FV3_(frag)::MULT(const fv3_float_t * iL, const fv3_float_t * iR,
-		      fv3_float_t * oL, fv3_float_t * oR)
+void FV3_(frag)::setSIMD(uint32_t flag1, uint32_t flag2)
+{
+  // flag1 == NULL or unsupported Instruction -> Autodetect
+  if(flag1 == FV3_X86SIMD_NULL)
+    simdFlag1 = FV3_(utils)::getSIMDFlag();
+  else if(!(flag1 & FV3_(utils)::getSIMDFlag()))
+    {
+      std::fprintf(stderr, "frag::setSIMD(%08x): not supported, autodetected.\n", flag1);
+      simdFlag1 = FV3_(utils)::getSIMDFlag();
+    }
+  else
+    simdFlag1 = flag1;
+  simdFlag2 = flag2;
+
+  MULT_M = MULT_M_FPU, flag1 = FV3_X86SIMD_FLAG_FPU, flag2 = FV3_X86SIMD_NULL;
+    
+#ifdef LIBFV3_FLOAT
+#ifdef ENABLE_X86SIMD
+  if(simdFlag1&FV3_X86SIMD_FLAG_3DNOWP)MULT_M = MULT_M_F_3DNOW,  flag1 = FV3_X86SIMD_FLAG_3DNOWP;
+  if(simdFlag1&FV3_X86SIMD_FLAG_SSE)   MULT_M = MULT_M_F_SSE_V2, flag1 = FV3_X86SIMD_FLAG_SSE;
+  if(simdFlag1&FV3_X86SIMD_FLAG_SSE3)  MULT_M = MULT_M_F_SSE3,   flag1 = FV3_X86SIMD_FLAG_SSE3;
+  if(simdFlag1&FV3_X86SIMD_FLAG_AVX)   MULT_M = MULT_M_F_AVX,    flag1 = FV3_X86SIMD_FLAG_AVX;
+  if(simdFlag1&FV3_X86SIMD_FLAG_FMA3)  MULT_M = MULT_M_F_FMA3,   flag1 = FV3_X86SIMD_FLAG_FMA3;
+  if(simdFlag1&FV3_X86SIMD_FLAG_FMA4)  MULT_M = MULT_M_F_FMA4,   flag1 = FV3_X86SIMD_FLAG_FMA4;
+
+  // override SSE_V1 option
+  if((simdFlag1&FV3_X86SIMD_FLAG_SSE)&&(simdFlag2&FV3_X86SIMD_FLAG_SSE_V1))
+    MULT_M = MULT_M_F_SSE, flag1 = FV3_X86SIMD_FLAG_SSE, flag2 = FV3_X86SIMD_FLAG_SSE_V1;
+#endif
+#endif
+
+#ifdef LIBFV3_DOUBLE
+#ifdef ENABLE_X86SIMD
+  if(simdFlag1&FV3_X86SIMD_FLAG_SSE2)  MULT_M = MULT_M_D_SSE2, flag1 = FV3_X86SIMD_FLAG_SSE2;
+  if(simdFlag1&FV3_X86SIMD_FLAG_SSE4_1)MULT_M = MULT_M_D_SSE4, flag1 = FV3_X86SIMD_FLAG_SSE4_1;
+  if(simdFlag1&FV3_X86SIMD_FLAG_AVX)   MULT_M = MULT_M_D_AVX,  flag1 = FV3_X86SIMD_FLAG_AVX;
+  if(simdFlag1&FV3_X86SIMD_FLAG_FMA3)  MULT_M = MULT_M_D_FMA3, flag1 = FV3_X86SIMD_FLAG_FMA3;
+  if(simdFlag1&FV3_X86SIMD_FLAG_FMA4)  MULT_M = MULT_M_D_FMA4, flag1 = FV3_X86SIMD_FLAG_FMA4;
+#endif
+#endif
+  simdFlag1 = flag1, simdFlag2 = flag2;
+}
+
+void FV3_(frag)::MULT(const fv3_float_t * iL, const fv3_float_t * iR, fv3_float_t * oL, fv3_float_t * oR)
 {
   if(fragmentSize == 0) return;    
 #pragma omp parallel

@@ -32,6 +32,7 @@ FV3_(irbase)::FV3_(irbase)()
   setLPF(0); setHPF(0);
   impulseSize = 0;
   setFFTFlags(FFTW_ESTIMATE);
+  setSIMD(0,0);
   setInitialDelay(0);
   processoptions = FV3_IR_DEFAULT;
 }
@@ -72,6 +73,19 @@ unsigned FV3_(irbase)::setFFTFlags(unsigned flags)
 unsigned FV3_(irbase)::getFFTFlags()
 {
   return fftflags;
+}
+
+void FV3_(irbase)::setSIMD(uint32_t flag1, uint32_t flag2)
+{
+  simdFlag1 = flag1;
+  simdFlag2 = flag2;
+}
+
+uint32_t FV3_(irbase)::getSIMD(uint32_t select)
+{
+  if(select == 0) return simdFlag1;
+  if(select == 1) return simdFlag2;
+  return 0;
 }
 
 void FV3_(irbase)::update()
