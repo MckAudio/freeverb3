@@ -36,7 +36,7 @@
 #include <gtk/gtk.h>
 #include <libsamplerate2/samplerate2.h>
 #include <sndfile.h>
-#include <freeverb/irmodel.hpp>
+#include <freeverb/irmodel1.hpp>
 #include <freeverb/irmodel2.hpp>
 #include <freeverb/irmodel2zl.hpp>
 #include <freeverb/irmodel3.hpp>
@@ -80,7 +80,7 @@ extern "C" {
 
 #ifdef PLUGDOUBLE
 typedef fv3::irbase_ IRBASE;
-typedef fv3::irmodel_ IRMODEL;
+typedef fv3::irmodel1_ IRMODEL;
 typedef fv3::irmodel2_ IRMODEL2;
 typedef fv3::irmodel2zl_ IRMODEL2ZL;
 typedef fv3::irmodel3_ IRMODEL3;
@@ -93,7 +93,7 @@ typedef fv3::CFileLoader_ CFILELOADER;
 typedef fv3::slot_ SLOTP;
 #else
 typedef fv3::irbase_f IRBASE;
-typedef fv3::irmodel_f IRMODEL;
+typedef fv3::irmodel1_f IRMODEL;
 typedef fv3::irmodel2_f IRMODEL2;
 typedef fv3::irmodel2zl_f IRMODEL2ZL;
 typedef fv3::irmodel3_f IRMODEL3;
@@ -868,7 +868,7 @@ static gboolean init(void)
 #endif
   fprintf(stderr, "Impulser2: init()\n");
   fprintf(stderr, "SIMDFlag: 0x%08x\n", UTILS::getSIMDFlag());
-  if(UTILS::getSIMDFlag()&FV3_FLAG_SSE)
+  if(UTILS::getSIMDFlag()&FV3_X86SIMD_FLAG_SSE)
     {
       fprintf(stderr, "MXCSRMASK: 0x%08x\n", UTILS::getMXCSR_MASK());
       fprintf(stderr, "MXCSR: 0x%08x\n", UTILS::getMXCSR());
@@ -915,7 +915,7 @@ static gboolean init(void)
 static void cleanup(void)
 {
   fprintf(stderr, "Impulser2: cleanup()\n");
-  if(UTILS::getSIMDFlag()&FV3_FLAG_SSE) fprintf(stderr, "MXCSR: 0x%08x\n", UTILS::getMXCSR());
+  if(UTILS::getSIMDFlag()&FV3_X86SIMD_FLAG_SSE) fprintf(stderr, "MXCSR: 0x%08x\n", UTILS::getMXCSR());
 
   pthread_mutex_lock(&plugin_mutex);
   plugin_available = false;

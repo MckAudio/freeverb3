@@ -186,7 +186,7 @@ static void mod_samples(pfloat_t * iL, pfloat_t * iR, pfloat_t * oL, pfloat_t * 
     }
 
   uint32_t mxcsr = UTILS::getMXCSR();
-  UTILS::setMXCSR(FV3_FLAG_MXCSR_FZ|FV3_FLAG_MXCSR_DAZ|FV3_FLAG_MXCSR_EMASK_ALL);
+  UTILS::setMXCSR(FV3_X86SIMD_MXCSR_FZ|FV3_X86SIMD_MXCSR_DAZ|FV3_X86SIMD_MXCSR_EMASK_ALL);
 
   split.splitR(iL,iR,T1.L,T1.R,T2.L,T2.R,T3.L,T3.R,length);
   compL.processreplace(T1.L,T1.R,O1.L,O1.R,length);

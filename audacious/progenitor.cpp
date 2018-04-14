@@ -156,7 +156,7 @@ static void mod_samples(pfloat_t * iL, pfloat_t * iR, pfloat_t * oL, pfloat_t * 
     }
   XMMSPlugin->callNRTParameters();
   uint32_t mxcsr = UTILS::getMXCSR();
-  UTILS::setMXCSR(FV3_FLAG_MXCSR_FZ|FV3_FLAG_MXCSR_DAZ|FV3_FLAG_MXCSR_EMASK_ALL);
+  UTILS::setMXCSR(FV3_X86SIMD_MXCSR_FZ|FV3_X86SIMD_MXCSR_DAZ|FV3_X86SIMD_MXCSR_EMASK_ALL);
   DSP.processreplace(iL,iR,oL,oR,length);
   UTILS::setMXCSR(mxcsr);
   pthread_mutex_unlock(&plugin_mutex);

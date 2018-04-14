@@ -121,7 +121,7 @@ static void mod_samples(pfloat_t * iL, pfloat_t * iR, pfloat_t * oL, pfloat_t * 
     }
   XMMSPlugin->callNRTParameters();
   uint32_t mxcsr = UTILS::getMXCSR();
-  UTILS::setMXCSR(FV3_FLAG_MXCSR_FZ|FV3_FLAG_MXCSR_DAZ|FV3_FLAG_MXCSR_EMASK_ALL);
+  UTILS::setMXCSR(FV3_X86SIMD_MXCSR_FZ|FV3_X86SIMD_MXCSR_DAZ|FV3_X86SIMD_MXCSR_EMASK_ALL);
   for(long i = 0;i < length;i ++)
     {
       oL[i] = _dry_r * iL[i]; oR[i] = _dry_r * iR[i];
