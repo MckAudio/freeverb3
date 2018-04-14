@@ -112,7 +112,7 @@ uint32_t FV3_(utils)::getMXCSR()
 {
   uint32_t mxcsr = 0;
 #if defined(ENABLE_X86SIMD)
-  if(getSIMDFlag()&FV3_X86SIMD_CPUID_SSE)
+  if(getSIMDFlag()&FV3_X86SIMD_FLAG_SSE)
     {
       __asm__ __volatile__ ("stmxcsr %0" : "=m" (mxcsr));
     }
@@ -124,7 +124,7 @@ uint32_t FV3_(utils)::getMXCSR_MASK()
 {
   uint32_t mxcsr_mask = 0;
 #if defined(ENABLE_X86SIMD)
-  if(getSIMDFlag()&FV3_X86SIMD_CPUID_SSE)
+  if(getSIMDFlag()&FV3_X86SIMD_FLAG_SSE)
     {
       unsigned char * fxsave_s = NULL;
       fxsave_s = (unsigned char *)aligned_malloc(512, FV3_PTR_ALIGN_BYTE);
@@ -142,7 +142,7 @@ uint32_t FV3_(utils)::getMXCSR_MASK()
 void FV3_(utils)::setMXCSR(uint32_t mxcsr)
 {
 #if defined(ENABLE_X86SIMD)
-  if(getSIMDFlag()&FV3_X86SIMD_CPUID_SSE)
+  if(getSIMDFlag()&FV3_X86SIMD_FLAG_SSE)
     {
       mxcsr &= getMXCSR_MASK();
       __asm__  __volatile__ ("ldmxcsr %0" : : "m"(mxcsr));

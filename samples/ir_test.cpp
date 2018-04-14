@@ -125,4 +125,15 @@ int main()
   testd.test(FV3_X86SIMD_FLAG_FMA3,0);
   testd.test(FV3_X86SIMD_FLAG_FMA4,0);
 #endif
+
+#ifdef BUILD_FLOAT
+  UTILSF::setMXCSR(FV3_X86SIMD_MXCSR_FZ|FV3_X86SIMD_MXCSR_DAZ|FV3_X86SIMD_MXCSR_EMASK_ALL);
+  fprintf(stderr, "MXCSR:     0x%08x\n", UTILSF::getMXCSR());
+  testf.test(FV3_X86SIMD_FLAG_SSE,0);
+#endif
+#ifdef BUILD_DOUBLE
+  UTILSD::setMXCSR(FV3_X86SIMD_MXCSR_FZ|FV3_X86SIMD_MXCSR_DAZ|FV3_X86SIMD_MXCSR_EMASK_ALL);
+  fprintf(stderr, "MXCSR:     0x%08x\n", UTILSD::getMXCSR());
+  testd.test(FV3_X86SIMD_FLAG_SSE2,0);
+#endif  
 }

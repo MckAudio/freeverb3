@@ -74,6 +74,8 @@ See configure --help.
 SIMD optimization codes for the impulse convolution
 ===================================================
 
+binutils >= 2.19.51.0.12 is required to build SIMD codes including AMD FMA4.
+
 3DNow! uses primitive 3DNow! codes.
 This can be used on AMD CPUs which have 3DNow! instructions.
 (K6-2, Athlon, ...)
@@ -86,12 +88,11 @@ SSE2 can be used on Intel or AMD CPUs which have SSE2 instrunctions.
 (Pentium4, ..., Opteron, ...)
 SSE2 is enabled on x86_64/amd64.
 
---enable-forcefpu can be used to disable the use of
-hand optimized SSE/SSE2 codes on x86_64/amd64.
+Use --disable-x86simd to disable x86 SIMD codes on x86/x86_64/amd64.
 
 Supported instructions:
-single floating point | 3DNow!, SSE, SSE3, AVX
-double floating ponit | SSE2, SSE4, AVX
+single floating point | 3DNow!, SSE, SSE3, AVX, FMA3, FMA4
+double floating ponit | SSE2, SSE4, AVX, FMA3, FMA4
 
 CONTACTS
 ========
