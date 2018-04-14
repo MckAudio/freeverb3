@@ -72,17 +72,17 @@
 #define FV3_X86SIMD_CPUID_XOP         0x00000800 // ecx/eax=0x80000001
 #define FV3_X86SIMD_CPUID_FMA4        0x00010000 // ecx/eax=0x80000001
 
-// SIMD code select, F:float D:double L:long double X:depreciated
-#define FV3_X86SIMD_FLAG_FPU          0x00000001 // FDL
-#define FV3_X86SIMD_FLAG_SSE_V1       0x00000002 // F To use SSE version 1 code
-#define FV3_X86SIMD_FLAG_SSE          0x00000004 // F
-#define FV3_X86SIMD_FLAG_SSE2         0x00000008 // D
-#define FV3_X86SIMD_FLAG_SSE3         0x00000010 // F
-#define FV3_X86SIMD_FLAG_SSE4_1       0x00000020 // D
-#define FV3_X86SIMD_FLAG_AVX          0x00000040 // FD
-#define FV3_X86SIMD_FLAG_FMA3         0x00000080 // FD (Not AVX2)
-#define FV3_X86SIMD_FLAG_3DNOWP       0x00000100 // XF AMD 3DNow! with prefetch, depreciated: Bulldozer/Bobcat~ no-support
-#define FV3_X86SIMD_FLAG_FMA4         0x00000200 // XFD AMD, depreciated: Ryzen~ no-support
+// SIMD code select, size div (X:depreciated F:float D:double L:long double)
+#define FV3_X86SIMD_FLAG_FPU          0x00000001 //  -    FDL
+#define FV3_X86SIMD_FLAG_SSE_V1       0x00000002 //  4    F   To use SSE version 1 code
+#define FV3_X86SIMD_FLAG_SSE          0x00000004 //  4    F
+#define FV3_X86SIMD_FLAG_SSE2         0x00000008 //   /2   D
+#define FV3_X86SIMD_FLAG_SSE3         0x00000010 //  4    F
+#define FV3_X86SIMD_FLAG_SSE4_1       0x00000020 //   /2   D
+#define FV3_X86SIMD_FLAG_AVX          0x00000040 // 16/8  FD
+#define FV3_X86SIMD_FLAG_FMA3         0x00000080 // 16/8  FD  Not AVX2
+#define FV3_X86SIMD_FLAG_3DNOWP       0x00000100 //  2   XF   AMD 3DNow! with prefetch, depreciated: Bulldozer/Bobcat~ no-support
+#define FV3_X86SIMD_FLAG_FMA4         0x00000200 // 16/8 XFD  AMD, depreciated: Ryzen~ no-support
 
 #define FV3_X86SIMD_MXCSR_FZ          0x00008000 // Flush To Zero
 #define FV3_X86SIMD_MXCSR_DAZ         0x00000040 // Denormals Are Zero

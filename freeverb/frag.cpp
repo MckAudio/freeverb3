@@ -840,19 +840,18 @@ static void MULT_M_D_SSE4(const fv3_float_t * iL, const fv3_float_t * fL, fv3_fl
 {
   void * soL = NULL;
   __asm__ __volatile__
-    ("MULT_M_D_SSE4:          \n\t"
-     "movapd (%1), %%xmm7     \n\t" // double tL0 = oL[0] + iL[0] * fL[0]; double tL1 = oL[1] + iL[1] * fL[1];
+    ("movapd (%1), %%xmm7     \n\t" // double tL0 = oL[0] + iL[0] * fL[0]; double tL1 = oL[1] + iL[1] * fL[1];
      "mulpd  (%2), %%xmm7     \n\t"
      "addpd  (%0), %%xmm7     \n\t"
-     "mov    $0x80, %4        \n\t"
-     "pxor   %%xmm6, %%xmm6   \n\t"
-     "movd   %4, %%xmm6       \n\t"
      // The bitshift is not supported in SSE :-(
-     // ex.
+     // Usage example of the bitshift in SSE2:
      // pcmpeqd xmm0, xmm0 XMM0 = 0FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFh
      // pslldq  xmm0, 3    XMM0 = 0FFFFFFFFFFFFFFFFFFFFFFFFFF000000h pslldq:sse2
-     "pslldq $0xf, %%xmm6  \n\t" // bitmask = xmm6 ([,0]=0,[,1]=-1)
-     // XMM6 = 8000000000000000 0000000000000000h
+     "xor    %4, %4           \n\t"
+     "mov    $0x80, %4        \n\t"
+     "xorps  %%xmm6, %%xmm6   \n\t"
+     "movd   %4, %%xmm6       \n\t" // XMM6 = 0000000000000000 0000000000000080h
+     "pslldq $0xf, %%xmm6     \n\t" // XMM6 = 8000000000000000 0000000000000000h ([0]=0,[1]=-1)
      "mov    %0, %4           \n\t" // save %0(oL)
      "MULT_M_D_SSE4_LOOP:     \n\t" // bitmask:xmm6
      "prefetchnta 0x80(%1)    \n\t"
@@ -870,8 +869,8 @@ static void MULT_M_D_SSE4(const fv3_float_t * iL, const fv3_float_t * fL, fv3_fl
      "xorpd  %%xmm6, %%xmm4   \n\t"
      "dppd   $0x31, %%xmm0, %%xmm1 \n\t" // (a,b)#(c,-d)->(ac-bd,0)
      "dppd   $0x31, %%xmm3, %%xmm4 \n\t"
-     "shufpd $0x3,  %%xmm2, %%xmm2 \n\t" // (c,d)->(d,c)
-     "shufpd $0x3,  %%xmm5, %%xmm5 \n\t"
+     "shufpd $0x1,  %%xmm2, %%xmm2 \n\t" // (c,d)->(d,c)
+     "shufpd $0x1,  %%xmm5, %%xmm5 \n\t"
      "dppd   $0x32, %%xmm0, %%xmm2 \n\t" // (a,b)#(d,c)->(0,ad+bc)
      "dppd   $0x32, %%xmm3, %%xmm5 \n\t"
      "xorpd  %%xmm1, %%xmm2    \n\t" // (ac-bd,ad+bc)
@@ -899,8 +898,7 @@ static void MULT_M_D_SSE2(const fv3_float_t * iL, const fv3_float_t * fL, fv3_fl
 {
   void * soL = NULL;
   __asm__ __volatile__
-    ("MULT_M_D_SSE2:            \n\t"
-     "mov    %0, %4           \n\t"
+    ("mov    %0, %4           \n\t"
      "movsd  (%1), %%xmm6     \n\t" // double tL0 = oL[0] + iL[0] * fL[0];
      "mulsd  (%2), %%xmm6     \n\t"
      "addsd  (%0), %%xmm6     \n\t"
