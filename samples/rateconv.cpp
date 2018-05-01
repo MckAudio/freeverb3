@@ -605,7 +605,7 @@ void help(const char * cmd)
 int main(int argc, char* argv[])
 {
   std::fprintf(stderr, "1-pass Sampling Rate Converter\n");
-  std::fprintf(stderr, "<"PACKAGE DIST_STRING"-"VERSION">\n");
+  std::fprintf(stderr, "<" PACKAGE DIST_STRING "-" VERSION ">\n");
   std::fprintf(stderr, "Copyright (C) 2007-2014 Teru Kamogashira\n");
   std::fprintf(stderr, "sizeof(pfloat_t) = %d\n\n", (int)sizeof(pfloat_t));
   

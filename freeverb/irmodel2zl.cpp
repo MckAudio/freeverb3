@@ -2,7 +2,7 @@
  *  Impulse Response Processor model implementation
  *  Low Latency Version
  *
- *  Copyright (C) 2006-2014 Teru Kamogashira
+ *  Copyright (C) 2006-2018 Teru Kamogashira
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -221,7 +221,7 @@ void FV3_(irmodel2zl)::processZL(fv3_float_t *inputL, fv3_float_t *inputR, fv3_f
   for(long i = 0;i < numsamples;i ++)
     {
       outputL[i] = (reverseSlot.L+ZLstart)[i] + (restSlot.L+ZLstart)[i];
-      outputR[i] = (reverseSlot.R+ZLstart)[i] + (restSlot.L+ZLstart)[i];
+      outputR[i] = (reverseSlot.R+ZLstart)[i] + (restSlot.R+ZLstart)[i];
     }
   ZLstart += numsamples;
   if(ZLstart == fragmentSize)

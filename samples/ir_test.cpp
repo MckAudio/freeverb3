@@ -86,7 +86,7 @@ public:
       if(df > diff) diff = df;
       }
     fprintf(stderr, "Max. Error = %.15f\n", (double)diff);
-    fprintf(stderr, "\Out:");
+    fprintf(stderr, "Out:");
     for(int i = 0;i < 4;i ++)
       fprintf(stderr, " %1.1f/%1.1f", (double)O1[i], (double)O2[i]);
     fprintf(stderr, "\n");
@@ -96,13 +96,15 @@ public:
 int main()
 {
   fprintf(stderr, "Impulse Response Processor Test\n");
-  fprintf(stderr, "<"PACKAGE"-"VERSION">\n");
+  fprintf(stderr, "<" PACKAGE "-" VERSION ">\n");
   fprintf(stderr, "Copyright (C) 2006-2018 Teru Kamogashira\n");
 
   fprintf(stderr, "IR length: %d\n", N);
 
 #ifdef BUILD_FLOAT
   Test<float,IR2ZLF,UTILSF> testf;
+  fprintf(stderr, "========\n");
+  fprintf(stderr, "Single Precision\n");
   testf.show();
   testf.test(FV3_X86SIMD_FLAG_FPU,0);
   testf.test(FV3_X86SIMD_FLAG_3DNOWP,0);
@@ -117,6 +119,8 @@ int main()
   
 #ifdef BUILD_DOUBLE
   Test<double,IR2ZLD,UTILSD> testd;
+  fprintf(stderr, "========\n");
+  fprintf(stderr, "Double Precision\n");
   testd.show();
   testd.test(FV3_X86SIMD_FLAG_FPU,0);
   testd.test(FV3_X86SIMD_FLAG_SSE2,0);
@@ -127,11 +131,15 @@ int main()
 #endif
 
 #ifdef BUILD_FLOAT
+  fprintf(stderr, "========\n");
+  fprintf(stderr, "MXCSR Single Precision\n");
   UTILSF::setMXCSR(FV3_X86SIMD_MXCSR_FZ|FV3_X86SIMD_MXCSR_DAZ|FV3_X86SIMD_MXCSR_EMASK_ALL);
   fprintf(stderr, "MXCSR:     0x%08x\n", UTILSF::getMXCSR());
   testf.test(FV3_X86SIMD_FLAG_SSE,0);
 #endif
 #ifdef BUILD_DOUBLE
+  fprintf(stderr, "========\n");
+  fprintf(stderr, "MXCSR Double Precision\n");
   UTILSD::setMXCSR(FV3_X86SIMD_MXCSR_FZ|FV3_X86SIMD_MXCSR_DAZ|FV3_X86SIMD_MXCSR_EMASK_ALL);
   fprintf(stderr, "MXCSR:     0x%08x\n", UTILSD::getMXCSR());
   testd.test(FV3_X86SIMD_FLAG_SSE2,0);

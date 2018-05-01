@@ -2,7 +2,7 @@
  *  Impulse Response Processor XMMS plugin
  *  Low Latency Version
  *
- *  Copyright (C) 2006-2014 Teru Kamogashira
+ *  Copyright (C) 2006-2018 Teru Kamogashira
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -193,7 +193,7 @@ static const char *about_text =
   "FMA4 "
 #endif
   "\n"
-  "Copyright (C) 2006-2014 Teru Kamogashira\n"
+  "Copyright (C) 2006-2018 Teru Kamogashira\n"
   "http://www.nongnu.org/freeverb3/";
 
 static const char *productString = "Freeverb3 "VERSION" [Impulser V2]";
