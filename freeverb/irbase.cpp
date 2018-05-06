@@ -32,7 +32,7 @@ FV3_(irbase)::FV3_(irbase)()
   setLPF(0); setHPF(0);
   impulseSize = 0;
   setFFTFlags(FFTW_ESTIMATE);
-  setSIMD(0,0);
+  setSIMD(FV3_X86SIMD_FLAG_NULL,FV3_X86SIMD_FLAG_NULL);
   setInitialDelay(0);
   processoptions = FV3_IR_DEFAULT;
 }
@@ -220,5 +220,58 @@ unsigned FV3_(irbase)::getprocessoptions()
 
 void FV3_(irbase)::resume(){;}
 void FV3_(irbase)::suspend(){;}
+
+FV3_(irbasem)::FV3_(irbasem)()
+{
+#ifdef DEBUG
+  std::fprintf(stderr, "irbasem::irbasem()\n");
+#endif
+  impulseSize = 0;
+  setFFTFlags(FFTW_ESTIMATE);
+  setSIMD(FV3_X86SIMD_FLAG_NULL,FV3_X86SIMD_FLAG_NULL);
+}
+
+FV3_(irbasem)::FV3_(~irbasem)()
+{
+#ifdef DEBUG
+  std::fprintf(stderr, "irbasem::~irbasem()\n");
+#endif
+}
+
+unsigned FV3_(irbasem)::setFFTFlags(unsigned flags)
+{
+  return (fftflags = flags);
+}
+
+unsigned FV3_(irbasem)::getFFTFlags()
+{
+  return fftflags;
+}
+
+void FV3_(irbasem)::setSIMD(uint32_t flag1, uint32_t flag2)
+{
+  simdFlag1 = flag1;
+  simdFlag2 = flag2;
+}
+
+uint32_t FV3_(irbasem)::getSIMD(uint32_t select)
+{
+  if(select == 0) return simdFlag1;
+  if(select == 1) return simdFlag2;
+  return 0;
+}
+
+long FV3_(irbasem)::getSampleSize()
+{
+  return impulseSize;
+}
+
+long FV3_(irbasem)::getLatency()
+{
+  return 0;
+}
+
+void FV3_(irbasem)::resume(){;}
+void FV3_(irbasem)::suspend(){;}
 
 #include "freeverb/fv3_ns_end.h"

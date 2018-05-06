@@ -80,7 +80,7 @@ extern "C" {
 
 #ifdef PLUGDOUBLE
 typedef fv3::irbase_ IRBASE;
-typedef fv3::irmodel1_ IRMODEL;
+typedef fv3::irmodel1_ IRMODEL1;
 typedef fv3::irmodel2_ IRMODEL2;
 typedef fv3::irmodel2zl_ IRMODEL2ZL;
 typedef fv3::irmodel3_ IRMODEL3;
@@ -93,7 +93,7 @@ typedef fv3::CFileLoader_ CFILELOADER;
 typedef fv3::slot_ SLOTP;
 #else
 typedef fv3::irbase_f IRBASE;
-typedef fv3::irmodel1_f IRMODEL;
+typedef fv3::irmodel1_f IRMODEL1;
 typedef fv3::irmodel2_f IRMODEL2;
 typedef fv3::irmodel2zl_f IRMODEL2ZL;
 typedef fv3::irmodel3_f IRMODEL3;
@@ -141,7 +141,7 @@ private:
   IRBASE * new_model(const char * type)
   {
     IRBASE * model = NULL;
-    if(strcmp(type, "irmodel") == 0)    model = new IRMODEL;
+    if(strcmp(type, "irmodel1") == 0)    model = new IRMODEL1;
     if(strcmp(type, "irmodel2") == 0)   model = new IRMODEL2;
     if(strcmp(type, "irmodel2zl") == 0) model = new IRMODEL2ZL;
     if(strcmp(type, "irmodel3") == 0)   model = new IRMODEL3;
@@ -225,9 +225,9 @@ static gboolean gdither_on = FALSE;
 
 static const int presetIRModelMax = 5;
 static const char * presetIRModelString[] =
-  { "fv3::irmodel2", "fv3::irmodel3 (Zero Latency)", "fv3::irmodel2zl (Zero Latency)", "fv3::irmodel", "fv3::irmodel3p (Zero Latency|Pthread)",};
+  { "fv3::irmodel2", "fv3::irmodel3 (Zero Latency)", "fv3::irmodel2zl (Zero Latency)", "fv3::irmodel1", "fv3::irmodel3p (Zero Latency|Pthread)",};
 static const char * presetIRModelValue[] =
-  {"irmodel2", "irmodel3", "irmodel2zl", "irmodel", "irmodel3p"};
+  {"irmodel2", "irmodel3", "irmodel2zl", "irmodel1", "irmodel3p"};
 static int conf_rev_zl = 1;
 
 // SLOT1 DRY + WET
@@ -1089,6 +1089,8 @@ static void mod_samples_f(pfloat_t * iL, pfloat_t * iR, pfloat_t * oL, pfloat_t 
 	    {
 	      if((*reverbVector)[i]->getSampleSize() > 0)
 		{
+		  if(typeid(*(*reverbVector)[i]) == typeid(IRMODEL1))
+		    options = FV3_IR_DEFAULT;
 		  if(i == 0)
 		    (*reverbVector)[i]->processreplace(iL,iR,oL,oR,length,options);
 		  else

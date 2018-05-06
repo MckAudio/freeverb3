@@ -18,6 +18,36 @@
  *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
  */
 
+
+class _FV3_(irbasem)
+{
+ public:
+  _FV3_(irbasem)();
+  virtual _FV3_(~irbasem)();
+  virtual void loadImpulse(const _fv3_float_t * inputL, long size)
+    throw(std::bad_alloc) = 0;
+  virtual void unloadImpulse() = 0;  
+  virtual unsigned setFFTFlags(unsigned flags);
+  virtual unsigned getFFTFlags();
+  virtual void     setSIMD(uint32_t flag1, uint32_t flag2);
+  virtual uint32_t getSIMD(uint32_t select);
+  virtual long getSampleSize();
+  virtual long getLatency();
+  virtual void resume();
+  virtual void suspend();
+  virtual void mute() = 0;
+  virtual void processreplace(_fv3_float_t *inputL, long numsamples) = 0;
+  
+ protected:
+  long impulseSize;
+  unsigned fftflags;
+  uint32_t simdFlag1, simdFlag2;
+
+ private:
+  _FV3_(irbasem)(const _FV3_(irbasem)& x);
+  _FV3_(irbasem)& operator=(const _FV3_(irbasem)& x);
+};
+
 class _FV3_(irbase)
 {
  public:
@@ -26,29 +56,22 @@ class _FV3_(irbase)
   virtual void loadImpulse(const _fv3_float_t * inputL, const _fv3_float_t * inputR, long size)
     throw(std::bad_alloc) = 0;
   virtual void unloadImpulse() = 0;  
-  
   virtual void setprocessoptions(unsigned options);
   virtual unsigned getprocessoptions();
-
   virtual unsigned setFFTFlags(unsigned flags);
   virtual unsigned getFFTFlags();
-
-  virtual void setSIMD(uint32_t flag1, uint32_t flag2);
+  virtual void     setSIMD(uint32_t flag1, uint32_t flag2);
   virtual uint32_t getSIMD(uint32_t select);
-
   virtual long getSampleSize();
   virtual long getLatency();
   virtual void setInitialDelay(long numsamples)
     throw(std::bad_alloc);
   virtual long getInitialDelay();
-  
   virtual void resume();
   virtual void suspend();
   virtual void mute() = 0;
-  
   virtual void processreplace(_fv3_float_t *inputL, _fv3_float_t *inputR, _fv3_float_t *outputL, _fv3_float_t *outputR, long numsamples);
   virtual void processreplace(_fv3_float_t *inputL, _fv3_float_t *inputR, _fv3_float_t *outputL, _fv3_float_t *outputR, long numsamples, unsigned options) = 0;
-  
   virtual void setwet(_fv3_float_t db);
   virtual _fv3_float_t getwet();
   virtual void setwetr(_fv3_float_t value);
@@ -65,7 +88,7 @@ class _FV3_(irbase)
   virtual _fv3_float_t getHPF();
   virtual void setLRBalance(_fv3_float_t value);
   virtual _fv3_float_t getLRBalance();
-
+  
  protected:
   _fv3_float_t wet, wetdB, dry, drydB, width, lrbalance, wet1, wet2, wet1L, wet2L, wet1R, wet2R;
   _FV3_(efilter) filter;
@@ -77,40 +100,4 @@ class _FV3_(irbase)
   _FV3_(irbase)(const _FV3_(irbase)& x);
   _FV3_(irbase)& operator=(const _FV3_(irbase)& x);
   void update();
-};
-
-
-class _FV3_(irbasem)
-{
- public:
-  _FV3_(irbasem)();
-  virtual _FV3_(~irbasem)();
-  virtual void loadImpulse(const _fv3_float_t * inputL, long size)
-    throw(std::bad_alloc) = 0;
-  virtual void unloadImpulse() = 0;  
-  
-  virtual unsigned setFFTFlags(unsigned flags);
-  virtual unsigned getFFTFlags();
-
-  virtual void setSIMD(uint32_t flag1, uint32_t flag2);
-  virtual uint32_t getSIMD(uint32_t select);
-
-  virtual long getSampleSize();
-  virtual long getLatency();
-  
-  virtual void resume();
-  virtual void suspend();
-  virtual void mute() = 0;
-  
-  virtual void processreplace(_fv3_float_t *inputL, _fv3_float_t *outputL, long numsamples);
-  virtual void processreplace(_fv3_float_t *inputL, _fv3_float_t *outputL, long numsamples, unsigned options) = 0;
-
- protected:
-  long impulseSize;
-  unsigned fftflags, processoptions;
-  uint32_t simdFlag1, simdFlag2;
-  
- private:
-  _FV3_(irbasem)(const _FV3_(irbasem)& x);
-  _FV3_(irbasem)& operator=(const _FV3_(irbasem)& x);
 };

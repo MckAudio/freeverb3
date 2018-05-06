@@ -22,9 +22,153 @@
 #include "freeverb/fv3_type_float.h"
 #include "freeverb/fv3_ns_start.h"
 
+// irmodel1m
+
+FV3_(irmodel1m)::FV3_(irmodel1m)()
+{
+  impulseSize = fragmentSize = current = 0;
+}
+
+FV3_(irmodel1m)::FV3_(~irmodel1m)()
+{
+  FV3_(irmodel1m)::unloadImpulse();
+}
+
+void FV3_(irmodel1m)::loadImpulse(const fv3_float_t * inputL, long size)
+		   throw(std::bad_alloc)
+{
+  if(size <= 0) return;
+  FV3_(irmodel1m)::unloadImpulse();
+ 
+  // fragmentSize = pulse = 2^n >= size = impulseSize
+  // if fragSize < impulseSize, the impulse should be 0 padded to reduce latency.
+  long pulse = FV3_(utils)::checkPow2(size);
+#ifdef DEBUG
+  std::fprintf(stderr, "irmodel1m::loadImpulse(): Size=%ld(impulse)->%ld(fragment)\n", size, pulse);
+#endif
+  impulseSize  = fifopt = size;
+  fragmentSize = pulse;
+  fftImpl.alloc(2*fragmentSize, 1);
+  fifo.alloc(3*impulseSize, 1);
+  delayline.alloc(2*impulseSize, 1);
+
+  FV3_(slot) impulse; // normalize impulse with fragment length
+  impulse.alloc(2*fragmentSize, 1);
+  for(long i = 0;i < size;i ++){ impulse.L[i] = inputL[i]/(fv3_float_t)(fragmentSize*2); }
+  FFTW_(plan) planL; // DFT 2^n impulse
+  planL = FFTW_(plan_r2r_1d)(2*fragmentSize, impulse.L, fftImpl.L, FFTW_R2HC, FFTW_ESTIMATE);
+  FFTW_(execute)(planL);
+  FFTW_(destroy_plan)(planL);
+  
+  fftRevr.alloc(2*fragmentSize, 2); // input signal processing plans
+  planRevrL = FFTW_(plan_r2r_1d)(fragmentSize*2, fftRevr.L, fftRevr.L, FFTW_HC2R, fftflags);
+  planOrigL = FFTW_(plan_r2r_1d)(fragmentSize*2, fftRevr.L, fftRevr.L, FFTW_R2HC, fftflags);
+  
+  FV3_(irmodel1m)::mute();
+}
+
+void FV3_(irmodel1m)::unloadImpulse()
+{
+  if(fragmentSize == 0) return;
+  impulseSize = fragmentSize = current = fifopt = 0;
+  fifo.free();
+  delayline.free();
+  fftImpl.free();
+  fftRevr.free();
+  FFTW_(destroy_plan)(planRevrL);
+  FFTW_(destroy_plan)(planOrigL);
+}
+
+void FV3_(irmodel1m)::mute()
+{
+  current = 0;
+  delayline.mute();
+  fifo.mute();
+}
+
+long FV3_(irmodel1m)::getFragmentSize()
+{
+  return fragmentSize;
+}
+
+long FV3_(irmodel1m)::getLatency()
+{
+  return impulseSize;
+}
+
+void FV3_(irmodel1m)::processreplace(fv3_float_t *inputL, long numsamples)
+{
+  if(numsamples <= 0||fragmentSize <= 0) return;
+  if(numsamples > impulseSize) // divide into impulseSize pieces
+    {
+      long div = numsamples/impulseSize;
+      for(long i = 0;i < div;i ++){ processreplace(inputL+i*impulseSize, impulseSize); }
+      processreplace(inputL+div*impulseSize, numsamples%impulseSize);
+      return;
+    }
+  std::memcpy(fifo.L+fifopt+impulseSize, inputL, sizeof(fv3_float_t)*numsamples);
+  if(fifopt+numsamples >= impulseSize){ processSquareReplace(fifo.L+impulseSize); }
+  std::memcpy(inputL, fifo.L+fifopt, sizeof(fv3_float_t)*numsamples);
+  fifopt += numsamples;
+  if(fifopt >= impulseSize)
+    {
+      std::memmove(fifo.L, fifo.L+impulseSize, sizeof(fv3_float_t)*2*impulseSize);
+      fifopt -= impulseSize;
+    }
+  return;
+}
+
+void FV3_(irmodel1m)::processSquareReplace(fv3_float_t *inputL)
+{
+  fftRevr.mute();
+  std::memcpy(fftRevr.L, inputL, sizeof(fv3_float_t)*impulseSize);
+  FFTW_(execute)(planOrigL); // inputL -DFT(replace)-> fftRevr
+  fftRevr.L[0] *= fftImpl.L[0];
+  fftRevr.L[fragmentSize] *= fftImpl.L[fragmentSize];
+  for(long i = 1;i < fragmentSize;i ++)
+    {
+      {
+	fv3_float_t e = fftRevr.L[i];
+	fv3_float_t d = fftRevr.L[fragmentSize*2 - i];
+	fv3_float_t f = fftImpl.L[i];
+	fv3_float_t g = fftImpl.L[fragmentSize*2 - i];
+	fftRevr.L[i] = e*f - d*g;
+	fftRevr.L[2*fragmentSize-i] = e*g + f*d;
+      }
+    }
+  FFTW_(execute)(planRevrL);
+  
+  // XXXXOOOO // sigma
+  // OXXXXOOO
+  // OOXXXXOO
+  // OOOXXXXO
+  // 11112222
+  // -------
+  // --- ----
+  // ^
+  //     ^
+  if(current == 0)
+    {
+      for(long i = 0;i < impulseSize*2-1;i ++){ delayline.L[i] += fftRevr.L[i]; }
+      std::memcpy(inputL, delayline.L, sizeof(fv3_float_t)*impulseSize);
+      delayline.mute(impulseSize);
+      current = impulseSize;
+    }
+  else // current == impulseSize
+    {
+      for(long i = 0;i < impulseSize;i ++)  { delayline.L[impulseSize+i] += fftRevr.L[i]; }
+      for(long i = 0;i < impulseSize-1;i ++){ delayline.L[i] += fftRevr.L[impulseSize+i]; }
+      std::memcpy(inputL, delayline.L+impulseSize, sizeof(fv3_float_t)*impulseSize);
+      delayline.mute(impulseSize, impulseSize); // mute with offset
+      current = 0;
+    }
+}
+
+// irmodel1
+
 FV3_(irmodel1)::FV3_(irmodel1)()
 {
-  current = fftSize = fragmentSize = 0;
+  fragmentSize = 0;
 }
 
 FV3_(irmodel1)::FV3_(~irmodel1)()
@@ -35,53 +179,37 @@ FV3_(irmodel1)::FV3_(~irmodel1)()
 void FV3_(irmodel1)::loadImpulse(const fv3_float_t * inputL, const fv3_float_t * inputR, long size)
 		   throw(std::bad_alloc)
 {
-  // if fragSize < impulseSize, the impulse should be 0 padded
-  // to reduce latency.
-  FV3_(irmodel1)::unloadImpulse();
-  impulseSize = size;
-  long pulse = FV3_(utils)::checkPow2(size);
-#ifdef DEBUG
-  std::fprintf(stderr, "irmodel1::loadImpulse(): %ld(impulseSize)->%ld(fragmentSize)\n", size, pulse);
-#endif
-  // fragmentSize = pulse = 2^n >= size = impulseSize
-  FV3_(slot) impulse;
-  impulse.alloc(2*pulse, 2);
-  allocImpulse(pulse, size);
-
-  for(long i = 0;i < size;i ++)
+  try
     {
-      impulse.L[i] = inputL[i]/(fv3_float_t)(pulse*2);
-      impulse.R[i] = inputR[i]/(fv3_float_t)(pulse*2);
+      irL.loadImpulse(inputL, size), irR.loadImpulse(inputR, size);
+      impulseSize = size;
+      fragmentSize = irL.getFragmentSize();
+      delayL.setsize(irL.getLatency()), delayR.setsize(irR.getLatency());
+      inputW.alloc(impulseSize, 2);
     }
-  
-  FFTW_(plan) planL, planR;
-  planL = FFTW_(plan_r2r_1d)(2*pulse, impulse.L, fftImpulse.L, FFTW_R2HC, FFTW_ESTIMATE);
-  planR = FFTW_(plan_r2r_1d)(2*pulse, impulse.R, fftImpulse.R, FFTW_R2HC, FFTW_ESTIMATE);
-  FFTW_(execute)(planL);
-  FFTW_(execute)(planR);
-  FFTW_(destroy_plan)(planL);
-  FFTW_(destroy_plan)(planR);
-  allocFFT(pulse, fftflags);
-  delayL.setsize(size);
-  delayR.setsize(size);  
-  FV3_(irmodel1)::mute();
+  catch(std::bad_alloc)
+    {
+      FV3_(irmodel1)::unloadImpulse();
+      std::fprintf(stderr, "irmodel1::loadImpulse(%ld) bad_alloc\n", size);
+      throw;
+    }
+  mute();
 }
 
 void FV3_(irmodel1)::unloadImpulse()
 {
-  impulseSize = 0;
-  freeFFT();
-  freeImpulse();
+  impulseSize = fragmentSize = 0;
+  irL.unloadImpulse(), irR.unloadImpulse();
+  delayL.setsize(0), delayR.setsize(0);
+  inputW.free();
 }
 
 void FV3_(irmodel1)::mute()
 {
-  current = 0;
-  delayline.mute();
-  fifo.mute();
-  delayL.mute();
-  delayR.mute();
+  irL.mute(), irR.mute();
+  delayL.mute(), delayR.mute();
   filter.mute();
+  inputW.mute();
 }
 
 long FV3_(irmodel1)::getFragmentSize()
@@ -97,167 +225,42 @@ long FV3_(irmodel1)::getLatency()
 void FV3_(irmodel1)::processreplace(fv3_float_t *inputL, fv3_float_t *inputR, fv3_float_t *outputL, fv3_float_t *outputR, long numsamples, unsigned options)
 {
   if(numsamples <= 0||fragmentSize <= 0) return;
-  if(numsamples > impulseSize)
+  
+  if(numsamples > impulseSize) // divide into impulseSize pieces
     {
-      // divide
       long div = numsamples/impulseSize;
       for(long i = 0;i < div;i ++)
 	{
-	  processreplace(inputL+i*impulseSize, inputR+i*impulseSize,
-			 outputL+i*impulseSize, outputR+i*impulseSize,
-			 impulseSize, options);
+	  processreplace(inputL+i*impulseSize, inputR+i*impulseSize, outputL+i*impulseSize, outputR+i*impulseSize, impulseSize, options);
 	}
-      processreplace(inputL+div*impulseSize, inputR+div*impulseSize,
-		     outputL+div*impulseSize, outputR+div*impulseSize,
-		     numsamples%impulseSize, options);
+      processreplace(inputL+div*impulseSize, inputR+div*impulseSize, outputL+div*impulseSize, outputR+div*impulseSize, numsamples%impulseSize, options);
       return;
     }
-  
-  std::memcpy(fifo.L+fifoSize+impulseSize, inputL, sizeof(fv3_float_t)*numsamples);
-  std::memcpy(fifo.R+fifoSize+impulseSize, inputR, sizeof(fv3_float_t)*numsamples);
-  if(fifoSize+numsamples >= impulseSize)
+
+  if(options != FV3_IR_DEFAULT) std::fprintf(stderr, "irmodel1::processreplace() warning: FV_IR_* options are not implemented.\n");
+
+#pragma omp parallel
+#pragma omp sections
+  {
+#pragma omp section
     {
-      processSquare(fifo.L+impulseSize, fifo.R+impulseSize,
-		    fifo.L+impulseSize, fifo.R+impulseSize);
+      std::memcpy(inputW.L, inputL, sizeof(fv3_float_t)*numsamples);
+      irL.processreplace(inputW.L, numsamples);
     }
+#pragma omp section
+    {
+      std::memcpy(inputW.R, inputR, sizeof(fv3_float_t)*numsamples);
+      irR.processreplace(inputW.R, numsamples);
+    }
+  }
+#pragma omp barrier
+  
   for(long i = 0;i < numsamples;i ++)
     {
-      // replacing
-      outputL[i] = fifo.L[i+fifoSize]*wet1L + fifo.R[i+fifoSize]*wet2L +
-	delayL.process(inputL[i])*dry;
-      outputR[i] = fifo.R[i+fifoSize]*wet1R + fifo.L[i+fifoSize]*wet2R +
-	delayR.process(inputR[i])*dry;
-    }
-  fifoSize += numsamples;
-  if(fifoSize >= impulseSize)
-    {
-      std::memmove(fifo.L, fifo.L+impulseSize, sizeof(fv3_float_t)*2*impulseSize);
-      std::memmove(fifo.R, fifo.R+impulseSize, sizeof(fv3_float_t)*2*impulseSize);
-      fifoSize -= impulseSize;
+      outputL[i] = delayL.process(inputL[i])*dry + inputW.L[i]*wet1L + inputW.R[i]*wet2L;
+      outputR[i] = delayR.process(inputR[i])*dry + inputW.R[i]*wet1R + inputW.L[i]*wet2R;
     }
   return;
-}
-
-void FV3_(irmodel1)::processSquare(fv3_float_t *inputL, fv3_float_t *inputR, fv3_float_t *outputL, fv3_float_t *outputR)
-{
-  fftOrig.mute();
-  std::memcpy(fftOrig.L, inputL, sizeof(fv3_float_t)*impulseSize);
-  std::memcpy(fftOrig.R, inputR, sizeof(fv3_float_t)*impulseSize);
-  FFTW_(execute)(planOrigL);
-  FFTW_(execute)(planOrigR);
-  
-  // mul
-  fftRev.L[0] = fftOrig.L[0] * fftImpulse.L[0];
-  fftRev.R[0] = fftOrig.R[0] * fftImpulse.R[0];
-  fftRev.L[fragmentSize] = fftOrig.L[fragmentSize] * fftImpulse.L[fragmentSize];
-  fftRev.R[fragmentSize] = fftOrig.R[fragmentSize] * fftImpulse.R[fragmentSize];
-  for(long i = 1;i < fragmentSize;i ++)
-    {
-      {
-	fv3_float_t e = fftOrig.L[i];
-	fv3_float_t d = fftOrig.L[fragmentSize*2 - i];
-	fv3_float_t f = fftImpulse.L[i];
-	fv3_float_t g = fftImpulse.L[fragmentSize*2 - i];
-	fftRev.L[2*fragmentSize-i] = e*g + f*d;
-	fftRev.L[i] = e*f - d*g;
-      }
-      {
-	fv3_float_t e = fftOrig.R[i];
-	fv3_float_t d = fftOrig.R[fragmentSize*2 - i];
-	fv3_float_t f = fftImpulse.R[i];
-	fv3_float_t g = fftImpulse.R[fragmentSize*2 - i];
-	fftRev.R[2*fragmentSize-i] = e*g + f*d;
-	fftRev.R[i] = e*f - d*g;
-      }
-    }
-  
-  FFTW_(execute)(planRevL);
-  FFTW_(execute)(planRevR);
-  
-  // sigma
-  // XXXXOOOO
-  // OXXXXOOO
-  // OOXXXXOO
-  // OOOXXXXO
-  // 11112222
-  // -------
-  // --- ----
-  // ^
-  //     ^
-  if(current == 0)
-    {
-      for(long i = 0;i < impulseSize*2-1;i ++)
-	{
-	  delayline.L[i] += fftRev.L[i];
-	  delayline.R[i] += fftRev.R[i];
-	}
-      std::memcpy(outputL, delayline.L, sizeof(fv3_float_t)*impulseSize);
-      std::memcpy(outputR, delayline.R, sizeof(fv3_float_t)*impulseSize);
-      delayline.mute(impulseSize);
-      current = impulseSize;
-    }
-  else // current == impulseSize
-    {
-      for(long i = 0;i < impulseSize;i ++)
-	{
-	  delayline.L[impulseSize+i] += fftRev.L[i];
-	  delayline.R[impulseSize+i] += fftRev.R[i];
-	}
-      for(long i = 0;i < impulseSize-1;i ++)
-	{
-	  delayline.L[i] += fftRev.L[impulseSize+i];
-	  delayline.R[i] += fftRev.R[impulseSize+i];
-	}
-      std::memcpy(outputL, delayline.L+impulseSize, sizeof(fv3_float_t)*impulseSize);
-      std::memcpy(outputR, delayline.R+impulseSize, sizeof(fv3_float_t)*impulseSize);
-      delayline.mute(impulseSize, impulseSize);
-      current = 0;
-    }
-}
-
-void FV3_(irmodel1)::allocImpulse(long fsize, long isize)
-		   throw(std::bad_alloc)
-{
-  freeImpulse();
-  fragmentSize = fsize;
-  fifoSize = isize;
-  fifo.alloc(3*isize, 2);
-  delayline.alloc(2*isize, 2);
-  fftImpulse.alloc(2*fsize, 2);
-}
-
-void FV3_(irmodel1)::freeImpulse()
-{
-  if(fragmentSize == 0) return;
-  fifo.free();
-  delayline.free();
-  fftImpulse.free();
-  fifoSize = fragmentSize = 0;
-}
-
-void FV3_(irmodel1)::allocFFT(long size, unsigned fftflags)
-		   throw(std::bad_alloc)
-{
-  freeFFT();
-  fftRev.alloc(2*size, 2);
-  fftOrig.alloc(2*size, 2);
-  planOrigL = FFTW_(plan_r2r_1d)(size*2, fftOrig.L, fftOrig.L, FFTW_R2HC, fftflags);
-  planOrigR = FFTW_(plan_r2r_1d)(size*2, fftOrig.R, fftOrig.R, FFTW_R2HC, fftflags);
-  planRevL = FFTW_(plan_r2r_1d)(size*2, fftRev.L, fftRev.L, FFTW_HC2R, fftflags);
-  planRevR = FFTW_(plan_r2r_1d)(size*2, fftRev.R, fftRev.R, FFTW_HC2R, fftflags);
-  fftSize = size;
-}
-
-void FV3_(irmodel1)::freeFFT()
-{
-  if(fftSize == 0) return;
-  fftRev.free();
-  fftOrig.free();
-  FFTW_(destroy_plan)(planRevL);
-  FFTW_(destroy_plan)(planRevR);
-  FFTW_(destroy_plan)(planOrigL);
-  FFTW_(destroy_plan)(planOrigR);
-  fftSize = 0;
 }
 
 #include "freeverb/fv3_ns_end.h"

@@ -73,8 +73,9 @@
 #define FV3_X86SIMD_CPUID_FMA4        0x00010000 // ecx/eax=0x80000001
 
 // SIMD code select, size div (X:depreciated F:float D:double L:long double)
+#define FV3_X86SIMD_FLAG_NULL         0x00000000
 #define FV3_X86SIMD_FLAG_FPU          0x00000001 //  -    FDL
-#define FV3_X86SIMD_FLAG_SSE_V1       0x00000002 //  4    F   To use SSE version 1 code
+#define FV3_X86SIMD_FLAG_SSE_V1       0x00000002 //  4    F   To use SSE version 1 code, use with FV3_X86SIMD_FLAG_SSE (see sample)
 #define FV3_X86SIMD_FLAG_SSE          0x00000004 //  4    F
 #define FV3_X86SIMD_FLAG_SSE2         0x00000008 //   /2   D
 #define FV3_X86SIMD_FLAG_SSE3         0x00000010 //  4    F
