@@ -50,7 +50,7 @@ audacious            : libsndfile audacious glib2 GTK+3 gthread pango
   jackd version 0.101.1 was tested.
 
 * audacious [https://audacious-media-player.org/]
-  audacious >= 3.5 is required.
+  audacious >= 3.5 is required. Only GTK3 version is supported.
 
 * GTK+ [http://www.gtk.org/]
   gtk-3.x >= 3.0.0 is required.
