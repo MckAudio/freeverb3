@@ -64,20 +64,16 @@ void FV3_(fragfft)::allocFFT(long size, unsigned fftflags)
     }
   freeFFT();
   fftOrig.alloc(2*size, 2);
+  planRevrL = FFTW_(plan_r2r_1d)(2*size, fftOrig.L, fftOrig.L, FFTW_HC2R, fftflags);
   planOrigL = FFTW_(plan_r2r_1d)(2*size, fftOrig.L, fftOrig.L, FFTW_R2HC, fftflags);
-  planOrigR = FFTW_(plan_r2r_1d)(2*size, fftOrig.R, fftOrig.R, FFTW_R2HC, fftflags);
-  planRevL = FFTW_(plan_r2r_1d)(2*size, fftOrig.L, fftOrig.L, FFTW_HC2R, fftflags);
-  planRevR = FFTW_(plan_r2r_1d)(2*size, fftOrig.R, fftOrig.R, FFTW_HC2R, fftflags);
   fragmentSize = size;
 }
 
 void FV3_(fragfft)::freeFFT()
 {
   if(fragmentSize == 0) return;
-  FFTW_(destroy_plan)(planRevL);
-  FFTW_(destroy_plan)(planRevR);
+  FFTW_(destroy_plan)(planRevrL);
   FFTW_(destroy_plan)(planOrigL);
-  FFTW_(destroy_plan)(planOrigR);
   fftOrig.free();
   fragmentSize = 0;
 }
@@ -111,28 +107,13 @@ void FV3_(fragfft)::R2SA(const fv3_float_t * in, fv3_float_t * out, long n)
     }
 }
 
-void FV3_(fragfft)::R2HC(const fv3_float_t * iL, const fv3_float_t * iR, fv3_float_t * oL, fv3_float_t * oR)
+void FV3_(fragfft)::R2HC(const fv3_float_t * iL, fv3_float_t * oL)
 {
   if(fragmentSize == 0) return;
-#pragma omp parallel
-#pragma omp sections
-  {
-#pragma omp section
-    {
-      FV3_(utils)::mute(fftOrig.L+fragmentSize, fragmentSize);
-      std::memcpy(fftOrig.L, iL, sizeof(fv3_float_t)*fragmentSize);
-      FFTW_(execute)(planOrigL);
-      R2SA(fftOrig.L, oL, fragmentSize*2);
-    }
-#pragma omp section
-    {
-      FV3_(utils)::mute(fftOrig.R+fragmentSize, fragmentSize);
-      std::memcpy(fftOrig.R, iR, sizeof(fv3_float_t)*fragmentSize);
-      FFTW_(execute)(planOrigR);
-      R2SA(fftOrig.R, oR, fragmentSize*2);
-    }
-  }
-#pragma omp barrier
+  FV3_(utils)::mute(fftOrig.L+fragmentSize, fragmentSize);
+  std::memcpy(fftOrig.L, iL, sizeof(fv3_float_t)*fragmentSize);
+  FFTW_(execute)(planOrigL);
+  R2SA(fftOrig.L, oL, fragmentSize*2);
   return;
 }
 
@@ -167,25 +148,12 @@ void FV3_(fragfft)::SA2R(const fv3_float_t * in, fv3_float_t * out, long n)
     }
 }
 
-void FV3_(fragfft)::HC2R(const fv3_float_t * iL, const fv3_float_t * iR, fv3_float_t * oL, fv3_float_t * oR)
+void FV3_(fragfft)::HC2R(const fv3_float_t * iL, fv3_float_t * oL)
 {
   if(fragmentSize == 0) return;
-#pragma omp parallel
-#pragma omp sections
-  {
-#pragma omp section
-    {
-      SA2R(iL, fftOrig.L, fragmentSize*2);
-      FFTW_(execute)(planRevL);
-      for(long i = 0;i < fragmentSize*2;i ++) oL[i] += fftOrig.L[i];
-    }
-#pragma omp section
-    {
-      SA2R(iR, fftOrig.R, fragmentSize*2);
-      FFTW_(execute)(planRevR);
-      for(long i = 0;i < fragmentSize*2;i ++) oR[i] += fftOrig.R[i];
-    }
-  }
+  SA2R(iL, fftOrig.L, fragmentSize*2);
+  FFTW_(execute)(planRevrL);
+  for(long i = 0;i < fragmentSize*2;i ++) oL[i] += fftOrig.L[i];
   return;
 }
 
@@ -203,13 +171,13 @@ FV3_(frag)::FV3_(~frag)()
   unloadImpulse();
 }
 
-void FV3_(frag)::loadImpulse(const fv3_float_t * L, const fv3_float_t * R, long size, long limit, unsigned fftflags)
+void FV3_(frag)::loadImpulse(const fv3_float_t * L, long size, long limit, unsigned fftflags)
 		throw(std::bad_alloc)
 {
-  this->loadImpulse(L,R,size,limit,fftflags,NULL,NULL);
+  this->loadImpulse(L,size,limit,fftflags,NULL);
 }
 
-void FV3_(frag)::loadImpulse(const fv3_float_t * L, const fv3_float_t * R, long size, long limit, unsigned fftflags, fv3_float_t * preAllocatedL, fv3_float_t * preAllocatedR)
+void FV3_(frag)::loadImpulse(const fv3_float_t * L, long size, long limit, unsigned fftflags, fv3_float_t * preAllocatedL)
 		throw(std::bad_alloc)
 {
 #ifdef DEBUG
@@ -233,19 +201,14 @@ void FV3_(frag)::loadImpulse(const fv3_float_t * L, const fv3_float_t * R, long 
   // impulse = [_Re_ impulse...< limit 0...0 (size)][_Im_ 0...0 (size*2)]
   FV3_(slot) impulse;
   impulse.alloc(size, 2);
-  
-  for(long i = 0;i < limit;i ++)
-    {
-      impulse.L[i] = L[i] / (fv3_float_t)(size*2);
-      impulse.R[i] = R[i] / (fv3_float_t)(size*2);
-    }
+  for(long i = 0;i < limit;i ++){ impulse.L[i] = L[i] / (fv3_float_t)(size*2); }
 
   try
     {
-      if(preAllocatedL == NULL||preAllocatedR == NULL)
+      if(preAllocatedL == NULL)
 	allocImpulse(size);
       else
-	registerPreallocatedBlock(preAllocatedL, preAllocatedR, size);
+	registerPreallocatedBlock(preAllocatedL, size);
       fragFFT.allocFFT(size, fftflags);
     }
   catch(std::bad_alloc)
@@ -253,15 +216,14 @@ void FV3_(frag)::loadImpulse(const fv3_float_t * L, const fv3_float_t * R, long 
       unloadImpulse();
       throw;
     }
-  fragFFT.R2HC(impulse.L, impulse.R, fftImpulse.L, fftImpulse.R);
+  fragFFT.R2HC(impulse.L, fftImpulse.L);
 }
 
-void FV3_(frag)::registerPreallocatedBlock(fv3_float_t * _L, fv3_float_t * _R, long size)
+void FV3_(frag)::registerPreallocatedBlock(fv3_float_t * _L, long size)
 {
   freeImpulse();
   fragmentSize = size;
   fftImpulse.L = _L;
-  fftImpulse.R = _R;
 }
 
 void FV3_(frag)::allocImpulse(long size)
@@ -1062,25 +1024,17 @@ void FV3_(frag)::setSIMD(uint32_t flag1, uint32_t flag2)
   simdFlag1 = flag1, simdFlag2 = flag2;
 }
 
-void FV3_(frag)::MULT(const fv3_float_t * iL, const fv3_float_t * iR, fv3_float_t * oL, fv3_float_t * oR)
+void FV3_(frag)::MULT(const fv3_float_t * iL, fv3_float_t * oL)
 {
-  if(fragmentSize == 0) return;    
-#pragma omp parallel
-#pragma omp sections
-  {
-#pragma omp section
-    MULT_M(iL, fftImpulse.L, oL, fragmentSize);
-#pragma omp section
-    MULT_M(iR, fftImpulse.R, oR, fragmentSize);
-  }
+  if(fragmentSize == 0) return;
+  MULT_M(iL, fftImpulse.L, oL, fragmentSize);
   return;
 }
 
-void FV3_(frag)::getFFT(fv3_float_t * oL, fv3_float_t * oR)
+void FV3_(frag)::getFFT(fv3_float_t * oL)
 {
   if(fragmentSize == 0) return;    
   std::memcpy(oL, fftImpulse.L, sizeof(fv3_float_t)*fragmentSize*2);
-  std::memcpy(oR, fftImpulse.R, sizeof(fv3_float_t)*fragmentSize*2);
 }
 
 long FV3_(frag)::getFragmentSize()

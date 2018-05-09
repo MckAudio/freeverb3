@@ -29,8 +29,9 @@ class _FV3_(irmodel1m) : public _FV3_(irbasem)
   virtual void processreplace(_fv3_float_t *inputL, long numsamples);
   virtual void mute();
   virtual long getLatency();
+  
   long getFragmentSize();
-
+  
  private:
   _FV3_(irmodel1m)(const _FV3_(irmodel1m)& x);
   _FV3_(irmodel1m)& operator=(const _FV3_(irmodel1m)& x);
@@ -48,16 +49,16 @@ class _FV3_(irmodel1) : public _FV3_(irbase)
   virtual void loadImpulse(const _fv3_float_t * inputL, const _fv3_float_t * inputR, long size)
     throw(std::bad_alloc);
   virtual void unloadImpulse();  
-  virtual void processreplace(_fv3_float_t *inputL, _fv3_float_t *inputR, _fv3_float_t *outputL, _fv3_float_t *outputR, long numsamples, unsigned options);
+  virtual void processreplace(_fv3_float_t *inputL, _fv3_float_t *inputR, _fv3_float_t *outputL, _fv3_float_t *outputR, long numsamples);
+  virtual void processreplaceS(_fv3_float_t *inputL, _fv3_float_t *inputR, _fv3_float_t *outputL, _fv3_float_t *outputR, long numsamples);
   virtual void mute();
-  virtual long getLatency();
-  long getFragmentSize();
+  virtual long getFragmentSize();
+
+ protected:
+  long fragmentSize;
+  _FV3_(slot) inputW;
 
  private:
   _FV3_(irmodel1)(const _FV3_(irmodel1)& x);
   _FV3_(irmodel1)& operator=(const _FV3_(irmodel1)& x);
-  long fragmentSize;
-  _FV3_(delay) delayL, delayR;
-  _FV3_(slot) inputW;
-  _FV3_(irmodel1m) irL, irR;
 };

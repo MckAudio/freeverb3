@@ -53,8 +53,8 @@ long FV3_(irmodel3)::getLFragmentSize()
 void FV3_(irmodel3)::mute()
 {
   if(impulseSize == 0) return;
-  ZLdelayL.mute();
-  ZLdelayR.mute();
+  ZLdelayDL.mute();
+  ZLdelayDR.mute();
   ZLdelayWL.mute();
   ZLdelayWR.mute();
   sBlockDelayL.mute();
@@ -254,8 +254,8 @@ void FV3_(irmodel3)::setInitialDelay(long numsamples)
     {
       if(initialDelay >= 0)
 	{
-	  ZLdelayL.setsize(initialDelay);
-	  ZLdelayR.setsize(initialDelay);
+	  ZLdelayDL.setsize(initialDelay);
+	  ZLdelayDR.setsize(initialDelay);
 	  ZLdelayWL.setsize(0);
 	  ZLdelayWR.setsize(0);
 	}
@@ -263,8 +263,8 @@ void FV3_(irmodel3)::setInitialDelay(long numsamples)
 	{
 	  ZLdelayWL.setsize(-initialDelay);
 	  ZLdelayWR.setsize(-initialDelay);
-	  ZLdelayL.setsize(0);
-	  ZLdelayR.setsize(0);
+	  ZLdelayDL.setsize(0);
+	  ZLdelayDR.setsize(0);
 	}
     }
   catch(std::bad_alloc)
@@ -273,8 +273,8 @@ void FV3_(irmodel3)::setInitialDelay(long numsamples)
       throw;
     }
   initialDelay = numsamples;
-  ZLdelayL.mute();
-  ZLdelayR.mute();
+  ZLdelayDL.mute();
+  ZLdelayDR.mute();
   ZLdelayWL.mute();
   ZLdelayWR.mute();
 }
@@ -331,8 +331,8 @@ void FV3_(irmodel3)::processreplace(fv3_float_t *inputL, fv3_float_t *inputR,
     }
   for(long i = 0;i < numsamples;i ++)
     {
-      fifoSlot.L[i] = ZLdelayL.process(fifoSlot.L[i]);
-      fifoSlot.R[i] = ZLdelayR.process(fifoSlot.R[i]);
+      fifoSlot.L[i] = ZLdelayDL.process(fifoSlot.L[i]);
+      fifoSlot.R[i] = ZLdelayDR.process(fifoSlot.R[i]);
     }
   if((options & FV3_IR_SKIP_INIT) == 0)
     {

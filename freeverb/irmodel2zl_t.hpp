@@ -34,7 +34,7 @@ class _FV3_(irmodel2zl) : public _FV3_(irmodel2)
   virtual void freeSwap();
   long ZLstart;
   _FV3_(slot) zlFrameSlot, zlOnlySlot;
-  _FV3_(delay) ZLdelayL, ZLdelayR, ZLdelayWL, ZLdelayWR;
+  _FV3_(delay) ZLdelayDL, ZLdelayDR, ZLdelayWL, ZLdelayWR;
   
  private:
   _FV3_(irmodel2zl)(const _FV3_(irmodel2zl)& x);

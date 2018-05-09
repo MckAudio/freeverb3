@@ -57,5 +57,5 @@ protected:
   std::vector<_FV3_(frag)*> sFragments, lFragments;
   _FV3_(fragfft) sFragmentsFFT, lFragmentsFFT;
   _FV3_(blockDelay) sBlockDelayL, sBlockDelayR, lBlockDelayL, lBlockDelayR;
-  _FV3_(delay) ZLdelayL, ZLdelayR, ZLdelayWL, ZLdelayWR;
+  _FV3_(delay) ZLdelayDL, ZLdelayDR, ZLdelayWL, ZLdelayWR;
 };

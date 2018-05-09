@@ -31,7 +31,7 @@ class _FV3_(irbasem)
   virtual unsigned getFFTFlags();
   virtual void     setSIMD(uint32_t flag1, uint32_t flag2);
   virtual uint32_t getSIMD(uint32_t select);
-  virtual long getSampleSize();
+  virtual long getImpulseSize();
   virtual long getLatency();
   virtual void resume();
   virtual void suspend();
@@ -69,9 +69,10 @@ class _FV3_(irbase)
   virtual long getInitialDelay();
   virtual void resume();
   virtual void suspend();
-  virtual void mute() = 0;
-  virtual void processreplace(_fv3_float_t *inputL, _fv3_float_t *inputR, _fv3_float_t *outputL, _fv3_float_t *outputR, long numsamples);
-  virtual void processreplace(_fv3_float_t *inputL, _fv3_float_t *inputR, _fv3_float_t *outputL, _fv3_float_t *outputR, long numsamples, unsigned options) = 0;
+  virtual void mute();
+  virtual void processreplace(const _fv3_float_t *inputL, const _fv3_float_t *inputR, _fv3_float_t *outputL, _fv3_float_t *outputR, long numsamples) = 0;
+  virtual void processreplace(const _fv3_float_t *inputL, const _fv3_float_t *inputR, _fv3_float_t *outputL, _fv3_float_t *outputR, long numsamples, unsigned options);
+  virtual void processdrywetout(const _fv3_float_t *dL, const _fv3_float_t *dR, _fv3_float_t *wL, _fv3_float_t *wR, _fv3_float_t *oL, _fv3_float_t *oR, long numsamples);
   virtual void setwet(_fv3_float_t db);
   virtual _fv3_float_t getwet();
   virtual void setwetr(_fv3_float_t value);
@@ -90,14 +91,16 @@ class _FV3_(irbase)
   virtual _fv3_float_t getLRBalance();
   
  protected:
+  void update();
   _fv3_float_t wet, wetdB, dry, drydB, width, lrbalance, wet1, wet2, wet1L, wet2L, wet1R, wet2R;
+  _FV3_(delay) delayDL, delayDR, delayWL, delayWR;
   _FV3_(efilter) filter;
-  long impulseSize, initialDelay;
+  long impulseSize, initialDelay, latency;
   unsigned fftflags, processoptions;
   uint32_t simdFlag1, simdFlag2;
+  _FV3_(irbasem) *irmL, *irmR;
   
  private:
   _FV3_(irbase)(const _FV3_(irbase)& x);
   _FV3_(irbase)& operator=(const _FV3_(irbase)& x);
-  void update();
 };
