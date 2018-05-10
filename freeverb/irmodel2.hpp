@@ -35,6 +35,7 @@
 #include "freeverb/efilter.hpp"
 #include "freeverb/utils.hpp"
 #include "freeverb/irbase.hpp"
+#include "freeverb/irmodel1.hpp"
 #include "freeverb/fv3_defs.h"
 
 namespace fv3

@@ -29,19 +29,20 @@ class _FV3_(irmodel2m) : public _FV3_(irbasem)
   virtual void processreplace(_fv3_float_t *inputL, long numsamples);
   virtual void mute();
   virtual long getLatency();
-
   long getFragmentSize();
   void setFragmentSize(long size);
 
- private:
-  _FV3_(irmodel2m)(const _FV3_(irmodel2m)& x);
-  _FV3_(irmodel2m)& operator=(const _FV3_(irmodel2m)& x);
+ protected:
   long fragmentSize;
   std::vector<_FV3_(frag)*> fragments;
   _FV3_(fragfft) fragFFT;
   _FV3_(blockDelay) blkdelayDL, blkdelayDR;
-    long fifoSize;
+  long fifoSize;
   _FV3_(slot) fifoSlot, reverseSlot, ifftSlot, swapSlot, restSlot;
+
+ private:
+  _FV3_(irmodel2m)(const _FV3_(irmodel2m)& x);
+  _FV3_(irmodel2m)& operator=(const _FV3_(irmodel2m)& x);
 };
 
 class _FV3_(irmodel2) : public _FV3_(irmodel1)
@@ -53,9 +54,11 @@ class _FV3_(irmodel2) : public _FV3_(irmodel1)
     throw(std::bad_alloc);
   virtual void processreplace(_fv3_float_t *inputL, _fv3_float_t *inputR, _fv3_float_t *outputL, _fv3_float_t *outputR, long numsamples);
   virtual void setFragmentSize(long size);
-  
+
+ protected:
+    _FV3_(irmodel2m) *ir2mL, *ir2mR;
+
  private:
   _FV3_(irmodel2)(const _FV3_(irmodel2)& x);
   _FV3_(irmodel2)& operator=(const _FV3_(irmodel2)& x);
-  _FV3_(irmodel2m) *ir2mL, *ir2mR;
 };

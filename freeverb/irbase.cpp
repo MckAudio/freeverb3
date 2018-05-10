@@ -115,35 +115,19 @@ long FV3_(irbase)::getLatency()
 }
 
 void FV3_(irbase)::setInitialDelay(long numsamples)
-		  throw(std::bad_alloc)
+  throw(std::bad_alloc)
 {
   initialDelay = numsamples;
   if(initialDelay >= 0)
     {
-#ifdef DEBUG
-      std::fprintf(stderr, "irbase::setInitialDelay(%ld) delayW(%ld)\n", numsamples, initialDelay);
-#endif
-      delayDL.setsize(fragmentSize),  delayDR.setsize(fragmentSize);
-      delayWL.setsize(initialDelay), delayWR.setsize(initialDelay);
+      delayDL.setsize(latency), delayWL.setsize(latency+initialDelay);
+      delayDR.setsize(latency), delayWR.setsize(latency+initialDelay);
     }
-  else if(fragmentSize - initialDelay >= 0)
+  else // delay dry signal if initialDelay < 0
     {
-      long dryD = fragmentSize - initialDelay;
-#ifdef DEBUG
-      std::fprintf(stderr, "irbase::setInitialDelay(%ld) delayD(%ld)\n", numsamples, dryD);
-#endif
-      delayDL.setsize(dryD);
-      delayDR.setsize(dryD);
-      delayWL.setsize(0);
-      delayWR.setsize(0);
-    }
-  else
-    {
-      std::fprintf(stderr, "irbase::setInitialDelay(%ld) unknown samples\n", numsamples);
-      delayDL.setsize(0);
-      delayDR.setsize(0);
-      delayWL.setsize(0);
-      delayWR.setsize(0);
+      long dryD = latency - initialDelay;
+      delayDL.setsize(latency-initialDelay), delayWL.setsize(latency);
+      delayDR.setsize(latency-initialDelay), delayWR.setsize(latency);
     }
 }
 
@@ -315,7 +299,7 @@ void FV3_(irbase)::processdrywetout(const fv3_float_t *dL, const fv3_float_t *dR
     {
       wL[i] = delayWL.process(wL[i]), wR[i] = delayWR.process(wR[i]);
     }
-  if((options & FV3_IR_SWAP_LR) != 0)
+  if((processoptions & FV3_IR_SWAP_LR) != 0)
     {
       fv3_float_t * sT = oL; oL = oR; oR = sT;
     }

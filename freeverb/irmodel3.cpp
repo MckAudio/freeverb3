@@ -285,8 +285,9 @@ void FV3_(irmodel3)::setInitialDelay(long numsamples)
  */
 void FV3_(irmodel3)::processreplace(fv3_float_t *inputL, fv3_float_t *inputR,
 				    fv3_float_t *outputL, fv3_float_t *outputR,
-				    long numsamples, unsigned options)
+				    long numsamples)
 {
+  unsigned options = 0;
   if(numsamples <= 0||impulseSize <= 0) return;
 
   long cursor = sFragmentSize - Scursor;

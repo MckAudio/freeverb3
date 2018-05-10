@@ -18,26 +18,39 @@
  *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
  */
 
+class _FV3_(irmodel2zlm) : public _FV3_(irmodel2m)
+{
+ public:
+  _FV3_(irmodel2zlm)();
+  virtual _FV3_(~irmodel2zlm)();
+  virtual void loadImpulse(const _fv3_float_t * inputL, long size)
+    throw(std::bad_alloc);
+  virtual void unloadImpulse();
+  virtual void processreplace(_fv3_float_t *inputL, long numsamples);
+  virtual void mute();
+
+ protected:
+  void processZL(_fv3_float_t *inputL, _fv3_float_t *outputL, long numsamples);
+  virtual void allocSwap(long numsaples) throw(std::bad_alloc);
+  virtual void freeSwap();
+  long ZLstart;
+  _FV3_(slot) zlFrameSlot, zlOnlySlot;
+  
+ private:
+  _FV3_(irmodel2zlm)(const _FV3_(irmodel2zlm)& x);
+  _FV3_(irmodel2zlm)& operator=(const _FV3_(irmodel2zlm)& x);
+};
+
 class _FV3_(irmodel2zl) : public _FV3_(irmodel2)
 {
  public:
   _FV3_(irmodel2zl)();
   virtual _FV3_(~irmodel2zl)();
-  virtual void processreplace(_fv3_float_t *inputL, _fv3_float_t *inputR, _fv3_float_t *outputL, _fv3_float_t *outputR, long numsamples, unsigned options);
-  virtual void mute();
-  virtual void setInitialDelay(long numsamples)
+  virtual void loadImpulse(const _fv3_float_t * inputL, const _fv3_float_t * inputR, long size)
     throw(std::bad_alloc);
-  virtual long getLatency();
-  
- protected:
-  virtual void allocSwap(long numsaples) throw(std::bad_alloc);
-  virtual void freeSwap();
-  long ZLstart;
-  _FV3_(slot) zlFrameSlot, zlOnlySlot;
-  _FV3_(delay) ZLdelayDL, ZLdelayDR, ZLdelayWL, ZLdelayWR;
+  virtual void mute();
   
  private:
   _FV3_(irmodel2zl)(const _FV3_(irmodel2zl)& x);
   _FV3_(irmodel2zl)& operator=(const _FV3_(irmodel2zl)& x);
-  void processZL(_fv3_float_t *inputL, _fv3_float_t *inputR, _fv3_float_t *outputL, _fv3_float_t *outputR, long numsamples, unsigned options);
 };

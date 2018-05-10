@@ -35,7 +35,7 @@ FV3_(irmodel1m)::FV3_(~irmodel1m)()
 }
 
 void FV3_(irmodel1m)::loadImpulse(const fv3_float_t * inputL, long size)
-		   throw(std::bad_alloc)
+  throw(std::bad_alloc)
 {
   if(size <= 0) return;
   unloadImpulse();
@@ -48,22 +48,30 @@ void FV3_(irmodel1m)::loadImpulse(const fv3_float_t * inputL, long size)
 #endif
   impulseSize  = fifopt = size;
   fragmentSize = pulse;
-  fftImpl.alloc(2*fragmentSize, 1);
-  fifo.alloc(3*impulseSize, 1);
-  delayline.alloc(2*impulseSize, 1);
-
-  FV3_(slot) impulse; // normalize impulse with fragment length
-  impulse.alloc(2*fragmentSize, 1);
-  for(long i = 0;i < size;i ++){ impulse.L[i] = inputL[i]/(fv3_float_t)(fragmentSize*2); }
-  FFTW_(plan) planL; // DFT 2^n impulse
-  planL = FFTW_(plan_r2r_1d)(2*fragmentSize, impulse.L, fftImpl.L, FFTW_R2HC, FFTW_ESTIMATE);
-  FFTW_(execute)(planL);
-  FFTW_(destroy_plan)(planL);
-  
-  fftRevr.alloc(2*fragmentSize, 2); // input signal processing plans
-  planRevrL = FFTW_(plan_r2r_1d)(fragmentSize*2, fftRevr.L, fftRevr.L, FFTW_HC2R, fftflags);
-  planOrigL = FFTW_(plan_r2r_1d)(fragmentSize*2, fftRevr.L, fftRevr.L, FFTW_R2HC, fftflags);
-  
+  try
+	{
+	  fftImpl.alloc(2*fragmentSize, 1);
+	  fifo.alloc(3*impulseSize, 1);
+	  delayline.alloc(2*impulseSize, 1);
+	  
+	  FV3_(slot) impulse; // normalize impulse with fragment length
+	  impulse.alloc(2*fragmentSize, 1);
+	  for(long i = 0;i < size;i ++){ impulse.L[i] = inputL[i]/(fv3_float_t)(fragmentSize*2); }
+	  FFTW_(plan) planL; // DFT 2^n impulse
+	  planL = FFTW_(plan_r2r_1d)(2*fragmentSize, impulse.L, fftImpl.L, FFTW_R2HC, FFTW_ESTIMATE);
+	  FFTW_(execute)(planL);
+	  FFTW_(destroy_plan)(planL);
+	  
+	  fftRevr.alloc(2*fragmentSize, 2); // input signal processing plans
+	  planRevrL = FFTW_(plan_r2r_1d)(fragmentSize*2, fftRevr.L, fftRevr.L, FFTW_HC2R, fftflags);
+	  planOrigL = FFTW_(plan_r2r_1d)(fragmentSize*2, fftRevr.L, fftRevr.L, FFTW_R2HC, fftflags);
+	}
+  catch(std::bad_alloc)
+	{
+      std::fprintf(stderr, "irmodel1m::loadImpulse(%ld) bad_alloc\n", size);
+      unloadImpulse();
+      throw;
+    }
   mute();
 }
 
@@ -116,7 +124,6 @@ void FV3_(irmodel1m)::processreplace(fv3_float_t *inputL, long numsamples)
       std::memmove(fifo.L, fifo.L+impulseSize, sizeof(fv3_float_t)*2*impulseSize);
       fifopt -= impulseSize;
     }
-  return;
 }
 
 void FV3_(irmodel1m)::processSquareReplace(fv3_float_t *inputL)
@@ -129,12 +136,12 @@ void FV3_(irmodel1m)::processSquareReplace(fv3_float_t *inputL)
   for(long i = 1;i < fragmentSize;i ++)
     {
       {
-	fv3_float_t e = fftRevr.L[i];
-	fv3_float_t d = fftRevr.L[fragmentSize*2 - i];
-	fv3_float_t f = fftImpl.L[i];
-	fv3_float_t g = fftImpl.L[fragmentSize*2 - i];
-	fftRevr.L[i] = e*f - d*g;
-	fftRevr.L[2*fragmentSize-i] = e*g + f*d;
+		fv3_float_t e = fftRevr.L[i];
+		fv3_float_t d = fftRevr.L[fragmentSize*2 - i];
+		fv3_float_t f = fftImpl.L[i];
+		fv3_float_t g = fftImpl.L[fragmentSize*2 - i];
+		fftRevr.L[i] = e*f - d*g;
+		fftRevr.L[2*fragmentSize-i] = e*g + f*d;
       }
     }
   FFTW_(execute)(planRevrL);
@@ -189,7 +196,7 @@ FV3_(irmodel1)::FV3_(~irmodel1)()
 }
 
 void FV3_(irmodel1)::loadImpulse(const fv3_float_t * inputL, const fv3_float_t * inputR, long size)
-		   throw(std::bad_alloc)
+  throw(std::bad_alloc)
 {
   if(size <= 0) return;
   unloadImpulse();
@@ -198,7 +205,7 @@ void FV3_(irmodel1)::loadImpulse(const fv3_float_t * inputL, const fv3_float_t *
       irmL->loadImpulse(inputL, size), irmR->loadImpulse(inputR, size);
       impulseSize = latency = size;
       FV3_(irmodel1m) *ir = dynamic_cast<FV3_(irmodel1m)*>(irmL);
-      if(ir == NULL) throw(std::bad_alloc);
+      if(ir == NULL){ throw std::bad_alloc(); }
       fragmentSize = ir->getFragmentSize();
       inputW.alloc(impulseSize, 2);
       setInitialDelay(getInitialDelay());
@@ -234,18 +241,16 @@ long FV3_(irmodel1)::getFragmentSize()
 void FV3_(irmodel1)::processreplace(const fv3_float_t *inputL, const fv3_float_t *inputR, fv3_float_t *outputL, fv3_float_t *outputR, long numsamples)
 {
   if(numsamples <= 0||impulseSize <= 0) return;
-  
   long div = numsamples/impulseSize;
-  for(long i = 0;i < div;i ++) processreplaceS(inputL+i*impulseSize, inputR+i*impulseSize, outputL+i*impulseSize, outputR+i*impulseSize, impulseSize, options);
-  processreplaceS(inputL+div*impulseSize, inputR+div*impulseSize, outputL+div*impulseSize, outputR+div*impulseSize, numsamples%impulseSize, options);
-  return;
+  for(long i = 0;i < div;i ++) processreplaceS(inputL+i*impulseSize, inputR+i*impulseSize, outputL+i*impulseSize, outputR+i*impulseSize, impulseSize);
+  processreplaceS(inputL+div*impulseSize, inputR+div*impulseSize, outputL+div*impulseSize, outputR+div*impulseSize, numsamples%impulseSize);
 }
 
 void FV3_(irmodel1)::processreplaceS(const fv3_float_t *inputL, const fv3_float_t *inputR, fv3_float_t *outputL, fv3_float_t *outputR, long numsamples)
 {
   if(numsamples <= 0||impulseSize <= 0) return;
   
-  if((options & FV3_IR_MONO2STEREO) != 0)
+  if((processoptions & FV3_IR_MONO2STEREO) != 0)
     {
       for(long i = 0;i < numsamples;i ++) inputW.L[i] = inputW.R[i] = (inputL[i] + inputR[i])/2.0;
     }
@@ -269,8 +274,7 @@ void FV3_(irmodel1)::processreplaceS(const fv3_float_t *inputL, const fv3_float_
   }
 #pragma omp barrier
 
-  processdrywetout(inputL, inputR, inputW.L, inputW.R, outputL, outputR);
-  return;
+  processdrywetout(inputL, inputR, inputW.L, inputW.R, outputL, outputR, numsamples);
 }
 
 #include "freeverb/fv3_ns_end.h"
