@@ -45,14 +45,14 @@ void FV3_(irmodel2m)::loadImpulse(const fv3_float_t * inputL, long size)
   // For optimization, fragmentSize should be overriden if fragmentSize >>> impulsesize:
   // if(FV3_(utils)::checkPow2(impulsesize)/2 < size) fragmentSize = FV3_(utils)::checkPow2(size)/2;
   long fragment_num = size / fragmentSize;
-  long fragment_rest = size % fragmentSize;
+  long fragment_mod = size % fragmentSize;
   try
     {
-      fifoSlot.alloc(3*size, 1);
-      reverseSlot.alloc(2*size, 1);
-      restSlot.alloc(size, 1);
-      ifftSlot.alloc(2*size, 1);
-      swapSlot.alloc(2*size, 1);
+      fifoSlot.alloc(3*fragmentSize, 1);
+      reverseSlot.alloc(2*fragmentSize, 1);
+      restSlot.alloc(fragmentSize, 1);
+      ifftSlot.alloc(2*fragmentSize, 1);
+      swapSlot.alloc(2*fragmentSize, 1);
 	  
       fragFFT.setSIMD(simdFlag1, simdFlag2);
       fragFFT.allocFFT(fragmentSize, fftflags);
@@ -65,15 +65,20 @@ void FV3_(irmodel2m)::loadImpulse(const fv3_float_t * inputL, long size)
 		  f->setSIMD(simdFlag1, simdFlag2);
 		  f->loadImpulse(inputL+fragmentSize*i, fragmentSize, fragmentSize, fftflags);
 		}
-      if(fragment_rest != 0)
+      if(fragment_mod != 0)
 		{
 		  FV3_(frag) * f = new FV3_(frag);
 		  fragments.push_back(f);
 		  f->setSIMD(simdFlag1, simdFlag2);
-		  f->loadImpulse(inputL+fragmentSize*fragment_num, fragmentSize, fragment_rest, fftflags);
+		  f->loadImpulse(inputL+fragmentSize*fragment_num, fragmentSize, fragment_mod, fftflags);
 		}
       blkdelayDL.setBlock(fragmentSize*2, (long)fragments.size());
+      impulseSize = size;
       latency = fragmentSize;
+      mute();
+#ifdef DEBUG
+      std::fprintf(stderr, "irmodel2m::loadImpulse(): {%ldx%ld+%ld}\n", fragmentSize, fragment_num, fragment_mod);
+#endif
     }
   catch(std::bad_alloc)
     {
@@ -81,11 +86,6 @@ void FV3_(irmodel2m)::loadImpulse(const fv3_float_t * inputL, long size)
       unloadImpulse();
       throw;
     }
-  mute();
-#ifdef DEBUG
-  std::fprintf(stderr, "irmodel2m::loadImpulse(): {%ldx%ld+%ld}\n", fragmentSize, fragment_num, fragment_rest);
-#endif
-
 }
 
 void FV3_(irmodel2m)::unloadImpulse()
@@ -219,6 +219,7 @@ void FV3_(irmodel2)::loadImpulse(const fv3_float_t * inputL, const fv3_float_t *
       inputW.alloc(fragmentSize, 2);
       inputD.alloc(fragmentSize, 2);
       setInitialDelay(getInitialDelay());
+      mute();
     }
   catch(std::bad_alloc)
     {
@@ -226,10 +227,9 @@ void FV3_(irmodel2)::loadImpulse(const fv3_float_t * inputL, const fv3_float_t *
       unloadImpulse();
       throw;
     }
-  mute();
 }
 
-void FV3_(irmodel2)::processreplace(fv3_float_t *inputL, fv3_float_t *inputR, fv3_float_t *outputL, fv3_float_t *outputR, long numsamples)
+void FV3_(irmodel2)::processreplace(const fv3_float_t *inputL, const fv3_float_t *inputR, fv3_float_t *outputL, fv3_float_t *outputR, long numsamples)
 {
   if(numsamples <= 0||impulseSize <= 0) return;
   long div = numsamples/fragmentSize;

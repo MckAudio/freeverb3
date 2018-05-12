@@ -29,6 +29,7 @@
 #include <freeverb/irmodels.hpp>
 #include <freeverb/irmodel1.hpp>
 #include <freeverb/irmodel2.hpp>
+#include <freeverb/irmodel2zl.hpp>
 #include <freeverb/irmodel3.hpp>
 #include <fftw3.h>
 
@@ -39,6 +40,7 @@ typedef fv3::irbase_ IRBASE;
 typedef fv3::irmodels_ IRS;
 typedef fv3::irmodel1_ IR1;
 typedef fv3::irmodel2_ IR2;
+typedef fv3::irmodel2zl_ IR2ZL;
 typedef fv3::irmodel3_ IR3;
 typedef fv3::utils_ UTILS;
 typedef double pfloat_t;
@@ -47,6 +49,7 @@ typedef fv3::irbase_f IRBASE;
 typedef fv3::irmodels_f IRS;
 typedef fv3::irmodel1_f IR1;
 typedef fv3::irmodel2_f IR2;
+typedef fv3::irmodel2zl_f IR2ZL;
 typedef fv3::irmodel3_f IR3;
 typedef fv3::utils_f UTILS;
 typedef float pfloat_t;
@@ -73,6 +76,7 @@ static double loadIR(IRBASE *irm, long size, long fsize, long factor)
   IR3 *ir3 = dynamic_cast<IR3*>(irm);
   if(ir2 != NULL)
     {
+      std::fprintf(stderr, "IR2\n");
       time_start = clock();
       ir2->setFragmentSize(fsize*factor);
       ir2->loadImpulse(irL,irR,size);
@@ -80,6 +84,7 @@ static double loadIR(IRBASE *irm, long size, long fsize, long factor)
     }
   else if(ir3 != NULL)
     {
+      std::fprintf(stderr, "IR3\n");
       time_start = clock();
       ir3->setFragmentSize(fsize,factor);
       ir3->loadImpulse(irL,irR,size);
@@ -122,23 +127,23 @@ static double process(IRBASE *irm, long fsize, long count, unsigned options)
 static void help(const char * cmd)
 {
   std::fprintf(stderr,
-	       "Usage: %s [options]\n"
-	       "[[Options]]\n"
-	       "-m irmodel type\n"
-	       "\tn MODEL\n"
-	       "\tdefault\n"
-	       "\t2\n"
-	       "\t0 irmodel2 fastest\n"
-	       "\t1 irmodel  basic\n"
-	       "\t3 irmodel3 zero latency\n"
-	       "\t4 irmodels time base, too slow, only for testing\n"
-	       "-ir impulseLength (480000)\n"
-	       "-fr fragmentSize (1024)\n"
-	       "-fa factor (16)\n"
-	       "-pf processFrame (1024)\n"
-	       "-fc frameCount (1000)\n"
-	       "\n",
-	       cmd);
+               "Usage: %s [options]\n"
+               "[[Options]]\n"
+               "-m irmodel type\n"
+               "\tn MODEL\n"
+               "\t0=2 irmodel2 (default)\n"
+               "\t1 irmodel1   basic\n"
+               "\t2 irmodel2   fastest\n"
+               "\t5 irmodel2zl zero latency\n"
+               "\t3 irmodel3   zero latency\n"
+               "\t4 irmodels   time base, too slow, only for testing\n"
+               "-ir impulseLength (480000)\n"
+               "-fr fragmentSize (1024)\n"
+               "-fa factor (16)\n"
+               "-pf processFrame (1024)\n"
+               "-fc frameCount (1000)\n"
+               "\n",
+               cmd);
 }
 
 int main(int argc, char * argv[])
@@ -165,6 +170,10 @@ int main(int argc, char * argv[])
       std::fprintf(stderr, "MODEL = irmodels\n");
       ir = new IRS();
       break;
+    case 5:
+      std::fprintf(stderr, "MODEL = irmodel2zl\n");
+      ir = new IR2ZL();
+      break;
     case 0:
     case 2:
     default:
@@ -172,20 +181,14 @@ int main(int argc, char * argv[])
       ir = new IR2();
       break;
     }
-  if(args.getLong("-ir") > 0)
-    impulseLength = args.getLong("-ir");
-  if(args.getLong("-fr") > 0)
-    fragmentSize = args.getLong("-fr");
-  if(args.getLong("-fa") > 0)
-    factor = args.getLong("-fa");
+  if(args.getLong("-ir") > 0) impulseLength = args.getLong("-ir");
+  if(args.getLong("-fr") > 0) fragmentSize = args.getLong("-fr");
+  if(args.getLong("-fa") > 0) factor = args.getLong("-fa");
 
-  if(args.getLong("-pf") > 0)
-    processFrame = args.getLong("-pf");
-  if(args.getLong("-fc") > 0)
-    frameCount = args.getLong("-fc");
+  if(args.getLong("-pf") > 0) processFrame = args.getLong("-pf");
+  if(args.getLong("-fc") > 0) frameCount = args.getLong("-fc");
 
-  std::fprintf(stderr, "loadIR( %ld %ld %ld )\n",
-	  impulseLength, fragmentSize, factor);
+  std::fprintf(stderr, "loadIR( %ld %ld %ld )\n", impulseLength, fragmentSize, factor);
   double ltime = loadIR(ir, impulseLength, fragmentSize, factor);
   std::fprintf(stderr, "process( %ld x %ld )\n", processFrame, frameCount);
   double ptime = process(ir, processFrame, frameCount, FV3_IR_SKIP_FILTER);

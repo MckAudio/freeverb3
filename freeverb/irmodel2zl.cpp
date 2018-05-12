@@ -43,9 +43,10 @@ void FV3_(irmodel2zlm)::loadImpulse(const fv3_float_t * inputL, long size)
   try
     {
 	  FV3_(irmodel2m)::loadImpulse(inputL, size);
-	  zlFrameSlot.alloc(size, 1);
-	  zlOnlySlot.alloc(size, 1);
+	  zlFrameSlot.alloc(fragmentSize, 1);
+	  zlOnlySlot.alloc(fragmentSize, 1);
       latency = 0;
+      mute();
 	}
   catch(std::bad_alloc)
     {
@@ -53,7 +54,6 @@ void FV3_(irmodel2zlm)::loadImpulse(const fv3_float_t * inputL, long size)
       unloadImpulse();
       throw;
     }
-  mute();
 }
 
 void FV3_(irmodel2zlm)::unloadImpulse()
@@ -156,11 +156,14 @@ FV3_(irmodel2zl)::FV3_(~irmodel2zl)()
 void FV3_(irmodel2zl)::loadImpulse(const fv3_float_t * inputL, const fv3_float_t * inputR, long size)
   throw(std::bad_alloc)
 {
+  if(size <= 0||fragmentSize < FV3_IR_Min_FragmentSize) return;
+  unloadImpulse();
   try
     {
 	  FV3_(irmodel2)::loadImpulse(inputL, inputR, size);
 	  latency = 0;
       setInitialDelay(getInitialDelay());
+      mute();
     }
   catch(std::bad_alloc)
     {
@@ -168,7 +171,6 @@ void FV3_(irmodel2zl)::loadImpulse(const fv3_float_t * inputL, const fv3_float_t
       unloadImpulse();
       throw;
     }
-  mute();
 }
 
 #include "freeverb/fv3_ns_end.h"

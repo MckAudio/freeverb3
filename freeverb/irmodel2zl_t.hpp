@@ -46,7 +46,6 @@ class _FV3_(irmodel2zl) : public _FV3_(irmodel2)
   virtual _FV3_(~irmodel2zl)();
   virtual void loadImpulse(const _fv3_float_t * inputL, const _fv3_float_t * inputR, long size)
     throw(std::bad_alloc);
-  using _FV3_(irbase)::processreplace;
   
  private:
   _FV3_(irmodel2zl)(const _FV3_(irmodel2zl)& x);

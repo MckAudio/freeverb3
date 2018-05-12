@@ -343,7 +343,7 @@ static int store_inf(const char * file)
     }
   float second = (float)rsfinfo.frames/(float)rsfinfo.samplerate;
   sprintf(inf, "%lld[samples] %d[Hz] %d[Ch] %f[s]",
-	  (long long int)rsfinfo.frames, rsfinfo.samplerate, rsfinfo.channels, second);
+          (long long int)rsfinfo.frames, rsfinfo.samplerate, rsfinfo.channels, second);
   sf_close(sndFile);
   return 0;
 }
@@ -404,9 +404,9 @@ static void select_file(GtkWindow *parent)
 {
   std::string fc_filename;
   GtkWidget *file_dialog = gtk_file_chooser_dialog_new("Please select a Impulse Response wav file.", parent,
-						       GTK_FILE_CHOOSER_ACTION_OPEN,
-						       GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
-						       GTK_STOCK_OPEN, GTK_RESPONSE_ACCEPT, (char*)NULL);
+                                                       GTK_FILE_CHOOSER_ACTION_OPEN,
+                                                       GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
+                                                       GTK_STOCK_OPEN, GTK_RESPONSE_ACCEPT, (char*)NULL);
 
   gtk_widget_set_size_request(file_dialog, 900, 700);
   gtk_window_set_position(GTK_WINDOW(file_dialog), GTK_WIN_POS_CENTER);
@@ -643,9 +643,9 @@ static void * make_config_widget ()
 #define LABELS 14 // size of labels
 #define SHOWLABEL 6 // size of label which do not have gtk_adjustment
   const char * labels[64] = {"wet [dB]", "*dry [dB]", "1-pole LPF", "1-zero HPF",
-			     "width", "stretch [sqrt(2)^]", "ir limit [%]", "initial delay [ms]",
-			     "impulse file:", "pcm inf.", "mono/stereo slot",
-			     "*fragment size (<irmodel2|>irmodel3)", "*ir model type", "*dithering mode",};
+                             "width", "stretch [sqrt(2)^]", "ir limit [%]", "initial delay [ms]",
+                             "impulse file:", "pcm inf.", "mono/stereo slot",
+                             "*fragment size (<irmodel2|>irmodel3)", "*ir model type", "*dithering mode",};
   
   table = gtk_table_new(LABELS, 5, FALSE);
   gtk_table_set_col_spacings(GTK_TABLE(table), 1);
@@ -959,27 +959,27 @@ static void mod_samples_f(pfloat_t * iL, pfloat_t * iR, pfloat_t * oL, pfloat_t 
     {
       fprintf(stderr, "Impulser2: mod_samples: Slot %d -> %d\n", (int)reverbVector->size(), slotNumber);
       if((int)reverbVector->size() < slotNumber) // increase slot
-	{
-	  SlotConfiguration slotC;
-	  slot_init(&slotC);
-	  while(1)
-	    {
-	      if((int)reverbVector->size() == slotNumber) break;
-	      IRBASE * model = reverbVector->push_back(presetIRModelValue[conf_rev_zl]);
-	      if(reverbVector->size() <= slotVector->size())
-		set_rt_reverb(model, &(*slotVector)[reverbVector->size()-1]);
-	      currentSlotVector->push_back(slotC);
-	    }
-	}
+        {
+          SlotConfiguration slotC;
+          slot_init(&slotC);
+          while(1)
+            {
+              if((int)reverbVector->size() == slotNumber) break;
+              IRBASE * model = reverbVector->push_back(presetIRModelValue[conf_rev_zl]);
+              if(reverbVector->size() <= slotVector->size())
+                set_rt_reverb(model, &(*slotVector)[reverbVector->size()-1]);
+              currentSlotVector->push_back(slotC);
+            }
+        }
       else // decrease slot
-	{
-	  while(1)
-	    {
-	      if((int)reverbVector->size() == slotNumber) break;
-	      reverbVector->pop_back();
-	      currentSlotVector->pop_back();
-	    }
-	}
+        {
+          while(1)
+            {
+              if((int)reverbVector->size() == slotNumber) break;
+              reverbVector->pop_back();
+              currentSlotVector->pop_back();
+            }
+        }
     }
   
   // reset all if srate or latency have been changed
@@ -992,11 +992,11 @@ static void mod_samples_f(pfloat_t * iL, pfloat_t * iR, pfloat_t * oL, pfloat_t 
       slot_init(&slotC);
       currentSlotVector->clear();
       for(int i = 0;i < slotNumber;i ++)
-	{
-	  currentSlotVector->push_back(slotC);
-	  reverbVector->assign(i, presetIRModelValue[conf_rev_zl]);
-	  set_rt_reverb(reverbVector->at(i), &(*slotVector)[i]);
-	}
+        {
+          currentSlotVector->push_back(slotC);
+          reverbVector->assign(i, presetIRModelValue[conf_rev_zl]);
+          set_rt_reverb(reverbVector->at(i), &(*slotVector)[i]);
+        }
       fprintf(stderr, "Impulser2: mod_samples: vector %d, cvector %d\n", (int)slotVector->size(), (int)currentSlotVector->size());
     }
   
@@ -1005,100 +1005,95 @@ static void mod_samples_f(pfloat_t * iL, pfloat_t * iR, pfloat_t * oL, pfloat_t 
       if(reverbVector->size() > slotVector->size()) return;
       // changed stretch/limit reload
       if((*currentSlotVector)[i].stretch != (*slotVector)[i].stretch||
-	 (*currentSlotVector)[i].limit != (*slotVector)[i].limit||
-	 strcmp((*currentSlotVector)[i].filename.c_str(), (*slotVector)[i].filename.c_str()) != 0)
-	{
-	  fprintf(stderr, "Impulser2: mod_samples: typeid=%s\n", typeid(*(*reverbVector)[i]).name());
-	  (*currentSlotVector)[i].stretch = (*slotVector)[i].stretch;
-	  (*currentSlotVector)[i].limit = (*slotVector)[i].limit;
-	  if(latencyIndex >= presetLatencyMax) conf_latency_index = latencyIndex = 0;
-	  if(typeid(*(*reverbVector)[i]) == typeid(IRMODEL2))
-	    {
-	      fprintf(stderr, "Impulser2: mod_samples: irmodel2 %ld\n", presetLatencyValue[latencyIndex]);
-	      dynamic_cast<IRMODEL2*>((*reverbVector)[i])->setFragmentSize(presetLatencyValue[latencyIndex]);
-	    }
-	  if(typeid(*(*reverbVector)[i]) == typeid(IRMODEL2ZL))
-	    {
-	      fprintf(stderr, "Impulser2: mod_samples: irmodel2zl %ld\n", presetLatencyValue[latencyIndex]);
-	      dynamic_cast<IRMODEL2ZL*>((*reverbVector)[i])->setFragmentSize(presetLatencyValue[latencyIndex]);
-	    }
-	  if(typeid(*(*reverbVector)[i]) == typeid(IRMODEL3)
+         (*currentSlotVector)[i].limit != (*slotVector)[i].limit||
+         strcmp((*currentSlotVector)[i].filename.c_str(), (*slotVector)[i].filename.c_str()) != 0)
+        {
+          fprintf(stderr, "Impulser2: mod_samples: typeid=%s\n", typeid(*(*reverbVector)[i]).name());
+          (*currentSlotVector)[i].stretch = (*slotVector)[i].stretch;
+          (*currentSlotVector)[i].limit = (*slotVector)[i].limit;
+          if(latencyIndex >= presetLatencyMax) conf_latency_index = latencyIndex = 0;
+          if(typeid(*(*reverbVector)[i]) == typeid(IRMODEL2))
+            {
+              fprintf(stderr, "Impulser2: mod_samples: irmodel2 %ld\n", presetLatencyValue[latencyIndex]);
+              dynamic_cast<IRMODEL2*>((*reverbVector)[i])->setFragmentSize(presetLatencyValue[latencyIndex]);
+            }
+          if(typeid(*(*reverbVector)[i]) == typeid(IRMODEL2ZL))
+            {
+              fprintf(stderr, "Impulser2: mod_samples: irmodel2zl %ld\n", presetLatencyValue[latencyIndex]);
+              dynamic_cast<IRMODEL2ZL*>((*reverbVector)[i])->setFragmentSize(presetLatencyValue[latencyIndex]);
+            }
+          if(typeid(*(*reverbVector)[i]) == typeid(IRMODEL3)
 #ifdef ENABLE_PTHREAD
-	     ||typeid(*(*reverbVector)[i]) == typeid(IRMODEL3P)
+             ||typeid(*(*reverbVector)[i]) == typeid(IRMODEL3P)
 #endif
-	     )
-	    {
-	      fprintf(stderr, "Impulser2: mod_samples: irmodel3/p %ld %ld\n", presetLatencyValue1[latencyIndex], presetLatencyValue2[latencyIndex]);
-	      dynamic_cast<IRMODEL3*>((*reverbVector)[i])->setFragmentSize(presetLatencyValue1[latencyIndex], presetLatencyValue2[latencyIndex]);
-	    }
-	  CFILELOADER fileLoader;
-	  double l_stretch = std::pow(static_cast<double>(std::sqrt(2)), static_cast<double>((*slotVector)[i].stretch));
-	  int ret = fileLoader.load((*slotVector)[i].filename.c_str(), srate, l_stretch, (*slotVector)[i].limit, SRC_SINC_BEST_QUALITY);
+             )
+            {
+              fprintf(stderr, "Impulser2: mod_samples: irmodel3/p %ld %ld\n", presetLatencyValue1[latencyIndex], presetLatencyValue2[latencyIndex]);
+              dynamic_cast<IRMODEL3*>((*reverbVector)[i])->setFragmentSize(presetLatencyValue1[latencyIndex], presetLatencyValue2[latencyIndex]);
+            }
+          CFILELOADER fileLoader;
+          double l_stretch = std::pow(static_cast<double>(std::sqrt(2)), static_cast<double>((*slotVector)[i].stretch));
+          int ret = fileLoader.load((*slotVector)[i].filename.c_str(), srate, l_stretch, (*slotVector)[i].limit, SRC_SINC_BEST_QUALITY);
 	  
-	  if(ret == 0)
-	    {
-	      (*reverbVector)[i]->loadImpulse(fileLoader.out.L, fileLoader.out.R, fileLoader.out.getsize());
-	      (*currentSlotVector)[i].filename = (*slotVector)[i].filename;
-	      (*currentSlotVector)[i].valid = 1;
-	      fprintf(stderr, "Impulser2: mod_samples: Slot[%d] \"%s\"(%ld)\n", i, (*slotVector)[i].filename.c_str(), (*reverbVector)[i]->getImpulseSize());
-	    }
-	  else
-	    {
-	      fprintf(stderr, "Impulser2: mod_samples: Slot[%d] IR load fail! ret=%d ", i, ret);
-	      fprintf(stderr, "<%s>\n", fileLoader.errstr());
-	      (*currentSlotVector)[i].valid = 0;
-	    }
-	}
+          if(ret == 0)
+            {
+              (*reverbVector)[i]->loadImpulse(fileLoader.out.L, fileLoader.out.R, fileLoader.out.getsize());
+              (*currentSlotVector)[i].filename = (*slotVector)[i].filename;
+              (*currentSlotVector)[i].valid = 1;
+              fprintf(stderr, "Impulser2: mod_samples: Slot[%d] \"%s\"(%ld)\n", i, (*slotVector)[i].filename.c_str(), (*reverbVector)[i]->getImpulseSize());
+            }
+          else
+            {
+              fprintf(stderr, "Impulser2: mod_samples: Slot[%d] IR load fail! ret=%d ", i, ret);
+              fprintf(stderr, "<%s>\n", fileLoader.errstr());
+              (*currentSlotVector)[i].valid = 0;
+            }
+        }
 
       // delay
       long iDelay = (int)((float)StreamFs*(*slotVector)[i].idelay/1000.0f);
       if((*reverbVector)[i]->getInitialDelay() != iDelay)
-	{
-	  fprintf(stderr, "Impulser2: mod_samples: InitialDelay[%d] %ld -> %ld\n", i, (*reverbVector)[i]->getInitialDelay(), iDelay);
-	  (*reverbVector)[i]->setInitialDelay(iDelay);
-	}
+        {
+          fprintf(stderr, "Impulser2: mod_samples: InitialDelay[%d] %ld -> %ld\n", i, (*reverbVector)[i]->getInitialDelay(), iDelay);
+          (*reverbVector)[i]->setInitialDelay(iDelay);
+        }
       
       // slot
       if((*slotVector)[i].i1o2_index < presetSlotModeMax&&(*slotVector)[i].i1o2_index >= 0)
-	{
-	  if((*currentSlotVector)[i].i1o2_index != presetSlotModeValue[(*slotVector)[i].i1o2_index])
-	    {
-	      (*currentSlotVector)[i].i1o2_index = presetSlotModeValue[(*slotVector)[i].i1o2_index];
-	      fprintf(stderr, "Impulser2: mod_samples: conf_i1o2[%d] -> %d\n", i, (*currentSlotVector)[i].i1o2_index);
-	    }
-	}
+        {
+          if((*currentSlotVector)[i].i1o2_index != presetSlotModeValue[(*slotVector)[i].i1o2_index])
+            {
+              (*currentSlotVector)[i].i1o2_index = presetSlotModeValue[(*slotVector)[i].i1o2_index];
+              fprintf(stderr, "Impulser2: mod_samples: conf_i1o2[%d] -> %d\n", i, (*currentSlotVector)[i].i1o2_index);
+            }
+        }
     }
   
   validNumber = 0;
   for(int i = 0;i < (int)reverbVector->size();i ++)
     {
       if((*currentSlotVector)[i].valid == 1&&(int)slotVector->size() > i)
-	{
-	  unsigned options = FV3_IR_DEFAULT;
-	  if((*currentSlotVector)[i].i1o2_index == 1)
-	    options |= FV3_IR_MONO2STEREO;
-	  if((*currentSlotVector)[i].i1o2_index == 3)
-	    options |= FV3_IR_SWAP_LR;
-	  if((*slotVector)[i].wet <= MIN_DB)
-	    options |= FV3_IR_MUTE_WET;
-	  if((*slotVector)[0].dry <= MIN_DB||i > 0)
-	    options |= FV3_IR_MUTE_DRY;
-	  if((*slotVector)[i].lpf <= 0.0&&(*slotVector)[i].hpf <= 0.0)
-	    options |= FV3_IR_SKIP_FILTER;
-	  if((int)reverbVector->size() > i)
-	    {
-	      if((*reverbVector)[i]->getImpulseSize() > 0)
-		{
-		  if(typeid(*(*reverbVector)[i]) == typeid(IRMODEL1))
-		    options = FV3_IR_DEFAULT;
-		  if(i == 0)
-		    (*reverbVector)[i]->processreplace(iL,iR,oL,oR,length,options);
-		  else
-		    (*reverbVector)[i]->processreplace(iL,iR,oL,oR,length,options|FV3_IR_SKIP_INIT);
-		  validNumber ++;
-		}
-	    }
-	}
+        {
+          unsigned options = FV3_IR_DEFAULT;
+          if((*currentSlotVector)[i].i1o2_index == 1) options |= FV3_IR_MONO2STEREO;
+          if((*currentSlotVector)[i].i1o2_index == 3) options |= FV3_IR_SWAP_LR;
+          if((*slotVector)[i].wet <= MIN_DB)          options |= FV3_IR_MUTE_WET;
+          if((*slotVector)[0].dry <= MIN_DB||i > 0)   options |= FV3_IR_MUTE_DRY;
+          if((*slotVector)[i].lpf <= 0.0&&(*slotVector)[i].hpf <= 0.0) options |= FV3_IR_SKIP_FILTER;
+          if((int)reverbVector->size() > i)
+            {
+              if((*reverbVector)[i]->getImpulseSize() > 0)
+                {
+                  if(typeid(*(*reverbVector)[i]) == typeid(IRMODEL1))
+                    options = FV3_IR_DEFAULT;
+                  if(i == 0)
+                    (*reverbVector)[i]->processreplace(iL,iR,oL,oR,length,options);
+                  else
+                    (*reverbVector)[i]->processreplace(iL,iR,oL,oR,length,options|FV3_IR_SKIP_INIT);
+                  validNumber ++;
+                }
+            }
+        }
     }  
   pthread_mutex_unlock(&plugin_mutex);
 }

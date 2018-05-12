@@ -328,6 +328,7 @@ void FV3_(irmodel3)::loadImpulse(const fv3_float_t * inputL, const fv3_float_t *
 {
   if(size <= 0||getSFragmentSize() < FV3_IR_Min_FragmentSize||getLFragmentSize() < FV3_IR_Min_FragmentSize) return;
   unloadImpulse();
+  setSIMD(irmL->getSIMD(0),irmL->getSIMD(1));
   try
     {
       irmL->loadImpulse(inputL, size), irmR->loadImpulse(inputR, size);
@@ -344,7 +345,6 @@ void FV3_(irmodel3)::loadImpulse(const fv3_float_t * inputL, const fv3_float_t *
       throw;
     }
   mute();
-  setSIMD(irmL->getSIMD(0),irmL->getSIMD(1));
 }
 
 void FV3_(irmodel3)::setFragmentSize(long size, long factor)
@@ -362,7 +362,7 @@ void FV3_(irmodel3)::setFragmentSize(long size, long factor)
     }
 }
 
-void FV3_(irmodel3)::processreplace(fv3_float_t *inputL, fv3_float_t *inputR, fv3_float_t *outputL, fv3_float_t *outputR, long numsamples)
+void FV3_(irmodel3)::processreplace(const fv3_float_t *inputL, const fv3_float_t *inputR, fv3_float_t *outputL, fv3_float_t *outputR, long numsamples)
 {
   if(numsamples <= 0||impulseSize <= 0) return;
   long sFragmentSize = getSFragmentSize();

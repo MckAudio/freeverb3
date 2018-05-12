@@ -63,7 +63,7 @@ void FV3_(fragfft)::allocFFT(long size, unsigned fftflags)
       throw std::bad_alloc();
     }
   freeFFT();
-  fftOrig.alloc(2*size, 2);
+  fftOrig.alloc(2*size, 1);
   planRevrL = FFTW_(plan_r2r_1d)(2*size, fftOrig.L, fftOrig.L, FFTW_HC2R, fftflags);
   planOrigL = FFTW_(plan_r2r_1d)(2*size, fftOrig.L, fftOrig.L, FFTW_R2HC, fftflags);
   fragmentSize = size;
@@ -200,7 +200,7 @@ void FV3_(frag)::loadImpulse(const fv3_float_t * L, long size, long limit, unsig
   fragFFT.setSIMD(simdFlag1, simdFlag2);
   // impulse = [_Re_ impulse...< limit 0...0 (size)][_Im_ 0...0 (size*2)]
   FV3_(slot) impulse;
-  impulse.alloc(size, 2);
+  impulse.alloc(size, 1);
   for(long i = 0;i < limit;i ++){ impulse.L[i] = L[i] / (fv3_float_t)(size*2); }
 
   try
@@ -231,7 +231,7 @@ void FV3_(frag)::allocImpulse(long size)
 {
   freeImpulse();
   fragmentSize = size;
-  fftImpulse.alloc(2*size, 2);
+  fftImpulse.alloc(2*size, 1);
 }
 
 void FV3_(frag)::freeImpulse()

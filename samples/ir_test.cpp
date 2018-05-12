@@ -19,6 +19,7 @@
  */
 
 #include <cmath>
+#include <freeverb/irmodel1.hpp>
 #include <freeverb/irmodel2zl.hpp>
 #include <freeverb/irmodel3.hpp>
 #include <freeverb/utils.hpp>
@@ -27,12 +28,12 @@
 #define GCC_IACA_END   __asm__("movl $222, %ebx; .byte 0x64; .byte 0x67; .byte 0x90")
 
 #ifdef BUILD_DOUBLE
-typedef fv3::irmodel3_ IR2ZLD;
+typedef fv3::irmodel2zl_ IR2ZLD;
 typedef fv3::utils_ UTILSD;
 #endif
 
 #ifdef BUILD_FLOAT
-typedef fv3::irmodel3_f IR2ZLF;
+typedef fv3::irmodel2zl_f IR2ZLF;
 typedef fv3::utils_f UTILSF;
 #endif
 
@@ -62,8 +63,7 @@ public:
     for(long i = 0;i < N;i ++) S[i] = i+1;
     IR.setSIMD(flag1,flag2);
     IR.loadImpulse(S, S, N);
-    if(flag1 != IR.getSIMD(0))
-      fprintf(stderr, "Not implemented or supported.\n");
+    if(flag1 != IR.getSIMD(0)) fprintf(stderr, "Not implemented or supported.\n");
     fprintf(stderr, "SIMDFlag(%08x,%08x)->%08x,%08x ", flag1, flag2, IR.getSIMD(0), IR.getSIMD(1));
     
     UTILS::mute(I1, IN); UTILS::mute(I2, IN);
@@ -77,18 +77,17 @@ public:
     pfloat_t diff = 0;
     for(int i = 0;i < N;i ++)
       {
-	pfloat_t df = std::abs(O1[i] - (pfloat_t)(i+1L));
-	if(df > diff) diff = df;
+        pfloat_t df = std::abs(O1[i] - (pfloat_t)(i+1L));
+        if(df > diff) diff = df;
       }
     for(int i = 0;i < N;i ++)
       {
-      pfloat_t df = std::abs(O2[i] - (pfloat_t)i);
-      if(df > diff) diff = df;
+        pfloat_t df = std::abs(O2[i] - (pfloat_t)i);
+        if(df > diff) diff = df;
       }
     fprintf(stderr, "Max. Error = %.15f\n", (double)diff);
     fprintf(stderr, "Out:");
-    for(int i = 0;i < 4;i ++)
-      fprintf(stderr, " %1.1f/%1.1f", (double)O1[i], (double)O2[i]);
+    for(int i = 0;i < 4;i ++) fprintf(stderr, " %1.1f/%1.1f", (double)O1[i], (double)O2[i]);
     fprintf(stderr, "\n");
   }
 };

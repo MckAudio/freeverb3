@@ -108,6 +108,7 @@ long FV3_(irbase)::getImpulseSize()
 
 long FV3_(irbase)::getLatency()
 {
+  if(impulseSize == 0) return 0;
   return latency;
 }
 
@@ -115,16 +116,18 @@ void FV3_(irbase)::setInitialDelay(long numsamples)
   throw(std::bad_alloc)
 {
   initialDelay = numsamples;
+  delayDL.free(), delayWL.free(), delayDR.free(), delayWR.free(); // delay class does not accept size=0
   if(initialDelay >= 0)
     {
-      delayDL.setsize(latency), delayWL.setsize(latency+initialDelay);
-      delayDR.setsize(latency), delayWR.setsize(latency+initialDelay);
+      delayDL.setsize(latency), delayWL.setsize(initialDelay);
+      delayDR.setsize(latency), delayWR.setsize(initialDelay);
     }
   else // delay dry signal if initialDelay < 0
     {
-      delayDL.setsize(latency-initialDelay), delayWL.setsize(latency);
-      delayDR.setsize(latency-initialDelay), delayWR.setsize(latency);
+      delayDL.setsize(latency-initialDelay), delayWL.setsize(0);
+      delayDR.setsize(latency-initialDelay), delayWR.setsize(0);
     }
+  FV3_(irbase)::mute();
 }
 
 long FV3_(irbase)::getInitialDelay()
@@ -274,7 +277,7 @@ fv3_float_t FV3_(irbase)::getLRBalance()
   return lrbalance;
 }
 
-void FV3_(irbase)::processreplace(fv3_float_t *inputL, fv3_float_t *inputR, fv3_float_t *outputL, fv3_float_t *outputR, long numsamples, unsigned options)
+void FV3_(irbase)::processreplace(const fv3_float_t *inputL, const fv3_float_t *inputR, fv3_float_t *outputL, fv3_float_t *outputR, long numsamples, unsigned options)
 {
   setprocessoptions(options);
   processreplace(inputL, inputR, outputL, outputR, numsamples);

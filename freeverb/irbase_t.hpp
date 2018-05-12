@@ -70,8 +70,8 @@ class _FV3_(irbase)
   virtual void resume();
   virtual void suspend();
   virtual void mute();
-  virtual void processreplace(_fv3_float_t *inputL, _fv3_float_t *inputR, _fv3_float_t *outputL, _fv3_float_t *outputR, long numsamples) = 0;
-  virtual void processreplace(_fv3_float_t *inputL, _fv3_float_t *inputR, _fv3_float_t *outputL, _fv3_float_t *outputR, long numsamples, unsigned options);
+  virtual void processreplace(const _fv3_float_t *inputL, const _fv3_float_t *inputR, _fv3_float_t *outputL, _fv3_float_t *outputR, long numsamples) = 0;
+  virtual void processreplace(const _fv3_float_t *inputL, const _fv3_float_t *inputR, _fv3_float_t *outputL, _fv3_float_t *outputR, long numsamples, unsigned options);
   virtual void processdrywetout(const _fv3_float_t *dL, const _fv3_float_t *dR, _fv3_float_t *wL, _fv3_float_t *wR, _fv3_float_t *oL, _fv3_float_t *oR, long numsamples);
   virtual void setwet(_fv3_float_t db);
   virtual _fv3_float_t getwet();

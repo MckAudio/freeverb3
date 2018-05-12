@@ -62,11 +62,12 @@ void FV3_(irmodel1m)::loadImpulse(const fv3_float_t * inputL, long size)
 	  FFTW_(execute)(planL);
 	  FFTW_(destroy_plan)(planL);
 	  
-	  fftRevr.alloc(2*fragmentSize, 2); // input signal processing plans
+	  fftRevr.alloc(2*fragmentSize, 1); // input signal processing plans
 	  planRevrL = FFTW_(plan_r2r_1d)(fragmentSize*2, fftRevr.L, fftRevr.L, FFTW_HC2R, fftflags);
 	  planOrigL = FFTW_(plan_r2r_1d)(fragmentSize*2, fftRevr.L, fftRevr.L, FFTW_R2HC, fftflags);
 
       latency = impulseSize;
+      mute();
 	}
   catch(std::bad_alloc)
 	{
@@ -74,13 +75,12 @@ void FV3_(irmodel1m)::loadImpulse(const fv3_float_t * inputL, long size)
       unloadImpulse();
       throw;
     }
-  mute();
 }
 
 void FV3_(irmodel1m)::unloadImpulse()
 {
   if(impulseSize == 0) return;
-  impulseSize = fragmentSize = current = fifopt = 0;
+  impulseSize = current = fifopt = 0;
   fifo.free();
   delayline.free();
   fftImpl.free();
@@ -98,6 +98,7 @@ void FV3_(irmodel1m)::mute()
 
 long FV3_(irmodel1m)::getFragmentSize()
 {
+  if(impulseSize == 0) return 0;
   return fragmentSize;
 }
 
@@ -219,7 +220,7 @@ void FV3_(irmodel1)::loadImpulse(const fv3_float_t * inputL, const fv3_float_t *
 
 void FV3_(irmodel1)::unloadImpulse()
 {
-  impulseSize = latency = 0;
+  impulseSize = 0;
   irmL->unloadImpulse(), irmR->unloadImpulse();
   inputW.free();
   inputD.free();
@@ -235,10 +236,11 @@ void FV3_(irmodel1)::mute()
 
 long FV3_(irmodel1)::getFragmentSize()
 {
+  if(impulseSize == 0) return 0;
   return fragmentSize;
 }
 
-void FV3_(irmodel1)::processreplace(fv3_float_t *inputL, fv3_float_t *inputR, fv3_float_t *outputL, fv3_float_t *outputR, long numsamples)
+void FV3_(irmodel1)::processreplace(const fv3_float_t *inputL, const fv3_float_t *inputR, fv3_float_t *outputL, fv3_float_t *outputR, long numsamples)
 {
   if(numsamples <= 0||impulseSize <= 0) return;
   long div = numsamples/impulseSize;
@@ -246,7 +248,7 @@ void FV3_(irmodel1)::processreplace(fv3_float_t *inputL, fv3_float_t *inputR, fv
   processreplaceS(inputL+div*impulseSize, inputR+div*impulseSize, outputL+div*impulseSize, outputR+div*impulseSize, numsamples%impulseSize);
 }
 
-void FV3_(irmodel1)::processreplaceS(fv3_float_t *inputL, fv3_float_t *inputR, fv3_float_t *outputL, fv3_float_t *outputR, long numsamples)
+void FV3_(irmodel1)::processreplaceS(const fv3_float_t *inputL, const fv3_float_t *inputR, fv3_float_t *outputL, fv3_float_t *outputR, long numsamples)
 {
   if(numsamples <= 0||impulseSize <= 0) return;
   
