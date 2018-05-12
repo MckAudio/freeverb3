@@ -530,7 +530,7 @@ static void processAll(IRBASE * model, SndfileHandle * snd,
   writePick(oL, oR, downFactor, rest, factor);
 
   std::fprintf(stderr, "\nWait for IR...\n");
-  int wait = ((model->getSampleSize()-1)/2) + model->getLatency();
+  int wait = ((model->getImpulseSize()-1)/2) + model->getLatency();
   count = wait/VST_frame;
   rest  = wait%VST_frame;
   for(long i = 0;i < count;i ++)

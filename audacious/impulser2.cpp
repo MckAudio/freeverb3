@@ -1040,7 +1040,7 @@ static void mod_samples_f(pfloat_t * iL, pfloat_t * iR, pfloat_t * oL, pfloat_t 
 	      (*reverbVector)[i]->loadImpulse(fileLoader.out.L, fileLoader.out.R, fileLoader.out.getsize());
 	      (*currentSlotVector)[i].filename = (*slotVector)[i].filename;
 	      (*currentSlotVector)[i].valid = 1;
-	      fprintf(stderr, "Impulser2: mod_samples: Slot[%d] \"%s\"(%ld)\n", i, (*slotVector)[i].filename.c_str(), (*reverbVector)[i]->getSampleSize());
+	      fprintf(stderr, "Impulser2: mod_samples: Slot[%d] \"%s\"(%ld)\n", i, (*slotVector)[i].filename.c_str(), (*reverbVector)[i]->getImpulseSize());
 	    }
 	  else
 	    {
@@ -1087,7 +1087,7 @@ static void mod_samples_f(pfloat_t * iL, pfloat_t * iR, pfloat_t * oL, pfloat_t 
 	    options |= FV3_IR_SKIP_FILTER;
 	  if((int)reverbVector->size() > i)
 	    {
-	      if((*reverbVector)[i]->getSampleSize() > 0)
+	      if((*reverbVector)[i]->getImpulseSize() > 0)
 		{
 		  if(typeid(*(*reverbVector)[i]) == typeid(IRMODEL1))
 		    options = FV3_IR_DEFAULT;

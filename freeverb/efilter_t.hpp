@@ -173,7 +173,7 @@ class _FV3_(lfo)
 	UNDENORMAL(arc_r);
 	re /= arc_r; im /= arc_r;
       }
-    if(out < -1) out = -1; if(out > 1) out = 1;
+    LIMIT_PLUSMINUS_ONE(out);
     return out;
   }
   inline _fv3_float_t process(_fv3_float_t input){ return this->process()*input; }

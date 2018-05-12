@@ -43,6 +43,10 @@
 #define UNDENORMAL(v) if(fpclassify(v) != FP_NORMAL&&fpclassify(v) != FP_ZERO){v=0;}
 #endif
 
+#ifndef LIMIT_PLUSMINUS_ONE
+#define LIMIT_PLUSMINUS_ONE(v) if(v < -1.){ v = -1.; } if(v > 1.){ v = 1.; }
+#endif
+
 #ifndef M_PI
 #define M_PI   3.1415926535897932384626433832795028841971693993751
 #endif

@@ -31,7 +31,7 @@ FV3_(irmodel1m)::FV3_(irmodel1m)()
 
 FV3_(irmodel1m)::FV3_(~irmodel1m)()
 {
-  unloadImpulse();
+  ;
 }
 
 void FV3_(irmodel1m)::loadImpulse(const fv3_float_t * inputL, long size)
@@ -65,6 +65,8 @@ void FV3_(irmodel1m)::loadImpulse(const fv3_float_t * inputL, long size)
 	  fftRevr.alloc(2*fragmentSize, 2); // input signal processing plans
 	  planRevrL = FFTW_(plan_r2r_1d)(fragmentSize*2, fftRevr.L, fftRevr.L, FFTW_HC2R, fftflags);
 	  planOrigL = FFTW_(plan_r2r_1d)(fragmentSize*2, fftRevr.L, fftRevr.L, FFTW_R2HC, fftflags);
+
+      latency = impulseSize;
 	}
   catch(std::bad_alloc)
 	{
@@ -77,7 +79,7 @@ void FV3_(irmodel1m)::loadImpulse(const fv3_float_t * inputL, long size)
 
 void FV3_(irmodel1m)::unloadImpulse()
 {
-  if(fragmentSize == 0) return;
+  if(impulseSize == 0) return;
   impulseSize = fragmentSize = current = fifopt = 0;
   fifo.free();
   delayline.free();
@@ -97,11 +99,6 @@ void FV3_(irmodel1m)::mute()
 long FV3_(irmodel1m)::getFragmentSize()
 {
   return fragmentSize;
-}
-
-long FV3_(irmodel1m)::getLatency()
-{
-  return impulseSize;
 }
 
 void FV3_(irmodel1m)::processreplace(fv3_float_t *inputL, long numsamples)
@@ -208,6 +205,7 @@ void FV3_(irmodel1)::loadImpulse(const fv3_float_t * inputL, const fv3_float_t *
       if(ir == NULL){ throw std::bad_alloc(); }
       fragmentSize = ir->getFragmentSize();
       inputW.alloc(impulseSize, 2);
+      inputD.alloc(impulseSize, 2);
       setInitialDelay(getInitialDelay());
     }
   catch(std::bad_alloc)
@@ -221,9 +219,10 @@ void FV3_(irmodel1)::loadImpulse(const fv3_float_t * inputL, const fv3_float_t *
 
 void FV3_(irmodel1)::unloadImpulse()
 {
-  impulseSize = fragmentSize = latency = 0;
+  impulseSize = latency = 0;
   irmL->unloadImpulse(), irmR->unloadImpulse();
   inputW.free();
+  inputD.free();
 }
 
 void FV3_(irmodel1)::mute()
@@ -231,6 +230,7 @@ void FV3_(irmodel1)::mute()
   FV3_(irbase)::mute();
   irmL->mute(), irmR->mute();
   inputW.mute();
+  inputD.mute();
 }
 
 long FV3_(irmodel1)::getFragmentSize()
@@ -238,7 +238,7 @@ long FV3_(irmodel1)::getFragmentSize()
   return fragmentSize;
 }
 
-void FV3_(irmodel1)::processreplace(const fv3_float_t *inputL, const fv3_float_t *inputR, fv3_float_t *outputL, fv3_float_t *outputR, long numsamples)
+void FV3_(irmodel1)::processreplace(fv3_float_t *inputL, fv3_float_t *inputR, fv3_float_t *outputL, fv3_float_t *outputR, long numsamples)
 {
   if(numsamples <= 0||impulseSize <= 0) return;
   long div = numsamples/impulseSize;
@@ -246,7 +246,7 @@ void FV3_(irmodel1)::processreplace(const fv3_float_t *inputL, const fv3_float_t
   processreplaceS(inputL+div*impulseSize, inputR+div*impulseSize, outputL+div*impulseSize, outputR+div*impulseSize, numsamples%impulseSize);
 }
 
-void FV3_(irmodel1)::processreplaceS(const fv3_float_t *inputL, const fv3_float_t *inputR, fv3_float_t *outputL, fv3_float_t *outputR, long numsamples)
+void FV3_(irmodel1)::processreplaceS(fv3_float_t *inputL, fv3_float_t *inputR, fv3_float_t *outputL, fv3_float_t *outputR, long numsamples)
 {
   if(numsamples <= 0||impulseSize <= 0) return;
   
@@ -259,6 +259,8 @@ void FV3_(irmodel1)::processreplaceS(const fv3_float_t *inputL, const fv3_float_
       std::memcpy(inputW.L, inputL, sizeof(fv3_float_t)*numsamples);
       std::memcpy(inputW.R, inputR, sizeof(fv3_float_t)*numsamples);
     }
+  std::memcpy(inputD.L, inputL, sizeof(fv3_float_t)*numsamples);
+  std::memcpy(inputD.R, inputR, sizeof(fv3_float_t)*numsamples);
   
 #pragma omp parallel
 #pragma omp sections
@@ -274,7 +276,7 @@ void FV3_(irmodel1)::processreplaceS(const fv3_float_t *inputL, const fv3_float_
   }
 #pragma omp barrier
 
-  processdrywetout(inputL, inputR, inputW.L, inputW.R, outputL, outputR, numsamples);
+  processdrywetout(inputD.L, inputD.R, inputW.L, inputW.R, outputL, outputR, numsamples);
 }
 
 #include "freeverb/fv3_ns_end.h"

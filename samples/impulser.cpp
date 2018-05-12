@@ -237,7 +237,7 @@ int main(int argc, char* argv[])
   pfloat_t * irR = new pfloat_t[(int)impulse->frames()];
   splitLR(irStream, irL, irR, impulse->frames(), impulse->channels());
   ir->loadImpulse(irL, irR, impulse->frames());
-  std::fprintf(stderr, "Size = %ld, Latency = %ld\n", ir->getSampleSize(), ir->getLatency());
+  std::fprintf(stderr, "Size = %ld, Latency = %ld\n", ir->getImpulseSize(), ir->getLatency());
 
   idb += args.getDouble("-indb");
   odb += args.getDouble("-imdb");

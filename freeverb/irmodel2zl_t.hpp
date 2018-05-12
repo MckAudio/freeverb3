@@ -31,8 +31,6 @@ class _FV3_(irmodel2zlm) : public _FV3_(irmodel2m)
 
  protected:
   void processZL(_fv3_float_t *inputL, _fv3_float_t *outputL, long numsamples);
-  virtual void allocSwap(long numsaples) throw(std::bad_alloc);
-  virtual void freeSwap();
   long ZLstart;
   _FV3_(slot) zlFrameSlot, zlOnlySlot;
   
@@ -48,7 +46,7 @@ class _FV3_(irmodel2zl) : public _FV3_(irmodel2)
   virtual _FV3_(~irmodel2zl)();
   virtual void loadImpulse(const _fv3_float_t * inputL, const _fv3_float_t * inputR, long size)
     throw(std::bad_alloc);
-  virtual void mute();
+  using _FV3_(irbase)::processreplace;
   
  private:
   _FV3_(irmodel2zl)(const _FV3_(irmodel2zl)& x);

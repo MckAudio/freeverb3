@@ -150,7 +150,8 @@ void FV3_(combm)::setsize(long size, long modsize)
 #ifdef DEBUG
   std::fprintf(stderr, "comb::setsize(%ld,%ld)\n", size, modsize);
 #endif
- if(size <= 0) return; if(modsize < 0) modsize = 0;
+ if(size <= 0) return;
+ if(modsize < 0) modsize = 0;
   if(modsize > size) modsize = size;
   long newsize = size+modsize;
   fv3_float_t * new_buffer = NULL;

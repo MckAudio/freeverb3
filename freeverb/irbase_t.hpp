@@ -26,7 +26,7 @@ class _FV3_(irbasem)
   virtual _FV3_(~irbasem)();
   virtual void loadImpulse(const _fv3_float_t * inputL, long size)
     throw(std::bad_alloc) = 0;
-  virtual void unloadImpulse() = 0;  
+  virtual void unloadImpulse();
   virtual unsigned setFFTFlags(unsigned flags);
   virtual unsigned getFFTFlags();
   virtual void     setSIMD(uint32_t flag1, uint32_t flag2);
@@ -39,7 +39,7 @@ class _FV3_(irbasem)
   virtual void processreplace(_fv3_float_t *inputL, long numsamples) = 0;
   
  protected:
-  long impulseSize;
+  long impulseSize, latency;
   unsigned fftflags;
   uint32_t simdFlag1, simdFlag2;
 
@@ -55,14 +55,14 @@ class _FV3_(irbase)
   virtual _FV3_(~irbase)();
   virtual void loadImpulse(const _fv3_float_t * inputL, const _fv3_float_t * inputR, long size)
     throw(std::bad_alloc) = 0;
-  virtual void unloadImpulse() = 0;  
+  virtual void unloadImpulse();
   virtual void setprocessoptions(unsigned options);
   virtual unsigned getprocessoptions();
   virtual unsigned setFFTFlags(unsigned flags);
   virtual unsigned getFFTFlags();
   virtual void     setSIMD(uint32_t flag1, uint32_t flag2);
   virtual uint32_t getSIMD(uint32_t select);
-  virtual long getSampleSize();
+  virtual long getImpulseSize();
   virtual long getLatency();
   virtual void setInitialDelay(long numsamples)
     throw(std::bad_alloc);
@@ -70,8 +70,8 @@ class _FV3_(irbase)
   virtual void resume();
   virtual void suspend();
   virtual void mute();
-  virtual void processreplace(const _fv3_float_t *inputL, const _fv3_float_t *inputR, _fv3_float_t *outputL, _fv3_float_t *outputR, long numsamples) = 0;
-  virtual void processreplace(const _fv3_float_t *inputL, const _fv3_float_t *inputR, _fv3_float_t *outputL, _fv3_float_t *outputR, long numsamples, unsigned options);
+  virtual void processreplace(_fv3_float_t *inputL, _fv3_float_t *inputR, _fv3_float_t *outputL, _fv3_float_t *outputR, long numsamples) = 0;
+  virtual void processreplace(_fv3_float_t *inputL, _fv3_float_t *inputR, _fv3_float_t *outputL, _fv3_float_t *outputR, long numsamples, unsigned options);
   virtual void processdrywetout(const _fv3_float_t *dL, const _fv3_float_t *dR, _fv3_float_t *wL, _fv3_float_t *wR, _fv3_float_t *oL, _fv3_float_t *oR, long numsamples);
   virtual void setwet(_fv3_float_t db);
   virtual _fv3_float_t getwet();

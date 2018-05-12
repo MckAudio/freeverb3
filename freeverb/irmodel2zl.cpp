@@ -45,6 +45,7 @@ void FV3_(irmodel2zlm)::loadImpulse(const fv3_float_t * inputL, long size)
 	  FV3_(irmodel2m)::loadImpulse(inputL, size);
 	  zlFrameSlot.alloc(size, 1);
 	  zlOnlySlot.alloc(size, 1);
+      latency = 0;
 	}
   catch(std::bad_alloc)
     {
@@ -52,10 +53,12 @@ void FV3_(irmodel2zlm)::loadImpulse(const fv3_float_t * inputL, long size)
       unloadImpulse();
       throw;
     }
+  mute();
 }
 
 void FV3_(irmodel2zlm)::unloadImpulse()
 {
+  if(impulseSize == 0) return;
   FV3_(irmodel2m)::unloadImpulse();
   zlFrameSlot.free();
   zlOnlySlot.free();

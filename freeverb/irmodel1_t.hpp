@@ -28,7 +28,6 @@ class _FV3_(irmodel1m) : public _FV3_(irbasem)
   virtual void unloadImpulse();
   virtual void processreplace(_fv3_float_t *inputL, long numsamples);
   virtual void mute();
-  virtual long getLatency();
   
   long getFragmentSize();
   
@@ -48,15 +47,17 @@ class _FV3_(irmodel1) : public _FV3_(irbase)
   virtual _FV3_(~irmodel1)();  
   virtual void loadImpulse(const _fv3_float_t * inputL, const _fv3_float_t * inputR, long size)
     throw(std::bad_alloc);
-  virtual void unloadImpulse();  
-  virtual void processreplace(const _fv3_float_t *inputL, const _fv3_float_t *inputR, _fv3_float_t *outputL, _fv3_float_t *outputR, long numsamples);
-  virtual void processreplaceS(const _fv3_float_t *inputL, const _fv3_float_t *inputR, _fv3_float_t *outputL, _fv3_float_t *outputR, long numsamples);
+  virtual void unloadImpulse();
+  using _FV3_(irbase)::processreplace;
+  virtual void processreplace(_fv3_float_t *inputL, _fv3_float_t *inputR, _fv3_float_t *outputL, _fv3_float_t *outputR, long numsamples);
+  virtual void processreplaceS(_fv3_float_t *inputL, _fv3_float_t *inputR, _fv3_float_t *outputL, _fv3_float_t *outputR, long numsamples);
   virtual void mute();
+  
   virtual long getFragmentSize();
 
  protected:
   long fragmentSize;
-  _FV3_(slot) inputW;
+  _FV3_(slot) inputW, inputD;
 
  private:
   _FV3_(irmodel1)(const _FV3_(irmodel1)& x);

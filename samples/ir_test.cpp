@@ -27,12 +27,12 @@
 #define GCC_IACA_END   __asm__("movl $222, %ebx; .byte 0x64; .byte 0x67; .byte 0x90")
 
 #ifdef BUILD_DOUBLE
-typedef fv3::irmodel2zl_ IR2ZLD;
+typedef fv3::irmodel3_ IR2ZLD;
 typedef fv3::utils_ UTILSD;
 #endif
 
 #ifdef BUILD_FLOAT
-typedef fv3::irmodel2zl_f IR2ZLF;
+typedef fv3::irmodel3_f IR2ZLF;
 typedef fv3::utils_f UTILSF;
 #endif
 

@@ -26,19 +26,19 @@
 
 FV3_(irbasem)::FV3_(irbasem)()
 {
-#ifdef DEBUG
-  std::fprintf(stderr, "irbasem::irbasem()\n");
-#endif
-  impulseSize = 0;
+  impulseSize = latency = 0;
   setFFTFlags(FFTW_ESTIMATE);
   setSIMD(FV3_X86SIMD_FLAG_NULL,FV3_X86SIMD_FLAG_NULL);
 }
 
 FV3_(irbasem)::FV3_(~irbasem)()
 {
-#ifdef DEBUG
-  std::fprintf(stderr, "irbasem::~irbasem()\n");
-#endif
+  unloadImpulse();
+}
+
+void FV3_(irbasem)::unloadImpulse()
+{
+  impulseSize = 0;
 }
 
 unsigned FV3_(irbasem)::setFFTFlags(unsigned flags)
@@ -71,7 +71,7 @@ long FV3_(irbasem)::getImpulseSize()
 
 long FV3_(irbasem)::getLatency()
 {
-  return 0;
+  return latency;
 }
 
 void FV3_(irbasem)::resume(){;}
@@ -81,30 +81,27 @@ void FV3_(irbasem)::suspend(){;}
 
 FV3_(irbase)::FV3_(irbase)()
 {
-#ifdef DEBUG
-  std::fprintf(stderr, "irbase::irbase()\n");
-#endif
   setwet(0); setdry(0);
   setwidth(1); setLRBalance(0);
   setLPF(0); setHPF(0);
   impulseSize = 0;
-  setFFTFlags(FFTW_ESTIMATE);
-  setSIMD(FV3_X86SIMD_FLAG_NULL,FV3_X86SIMD_FLAG_NULL);
   latency = 0;
   setInitialDelay(0);
   processoptions = FV3_IR_DEFAULT;
-  delayDL.setsize(0), delayDR.setsize(0), delayWL.setsize(0), delayWR.setsize(0);
   irmL = irmR = NULL;
 }
 
 FV3_(irbase)::FV3_(~irbase)()
 {
-#ifdef DEBUG
-  std::fprintf(stderr, "irbase::~irbase()\n");
-#endif
+  unloadImpulse();
 }
 
-long FV3_(irbase)::getSampleSize()
+void FV3_(irbase)::unloadImpulse()
+{
+  impulseSize = 0;
+}
+
+long FV3_(irbase)::getImpulseSize()
 {
   return impulseSize;
 }
@@ -125,7 +122,6 @@ void FV3_(irbase)::setInitialDelay(long numsamples)
     }
   else // delay dry signal if initialDelay < 0
     {
-      long dryD = latency - initialDelay;
       delayDL.setsize(latency-initialDelay), delayWL.setsize(latency);
       delayDR.setsize(latency-initialDelay), delayWR.setsize(latency);
     }
@@ -278,7 +274,7 @@ fv3_float_t FV3_(irbase)::getLRBalance()
   return lrbalance;
 }
 
-void FV3_(irbase)::processreplace(const fv3_float_t *inputL, const fv3_float_t *inputR, fv3_float_t *outputL, fv3_float_t *outputR, long numsamples, unsigned options)
+void FV3_(irbase)::processreplace(fv3_float_t *inputL, fv3_float_t *inputR, fv3_float_t *outputL, fv3_float_t *outputR, long numsamples, unsigned options)
 {
   setprocessoptions(options);
   processreplace(inputL, inputR, outputL, outputR, numsamples);
