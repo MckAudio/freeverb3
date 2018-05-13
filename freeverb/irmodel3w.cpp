@@ -146,7 +146,7 @@ void FV3_(irmodel3wm)::suspend()
   LeaveCriticalSection(&mainSection);
 }
 
-void FV3_(irmodel3wm)::loadImpulse(fv3_float_t * inputL, fv3_float_t * inputR, long size)
+void FV3_(irmodel3wm)::loadImpulse(const fv3_float_t * inputL, long size)
   throw(std::bad_alloc)
 {
   suspend();
@@ -154,7 +154,7 @@ void FV3_(irmodel3wm)::loadImpulse(fv3_float_t * inputL, fv3_float_t * inputR, l
   EnterCriticalSection(&threadSection);
   try
     {
-      FV3_(irmodel3m)::loadImpulse(inputL, inputR, size);
+      FV3_(irmodel3m)::loadImpulse(inputL, size);
     }
   catch(std::bad_alloc)
     {
@@ -178,7 +178,7 @@ void FV3_(irmodel3wm)::unloadImpulse()
   resume();
 }
 
-void FV3_(irmodel3w)::setFragmentSize(long size, long factor)
+void FV3_(irmodel3wm)::setFragmentSize(long size, long factor)
 {
   EnterCriticalSection(&mainSection);
   EnterCriticalSection(&threadSection);
@@ -263,7 +263,7 @@ void FV3_(irmodel3wm)::processZL(fv3_float_t *inputL, long numsamples)
 
   if(Scursor == sFragmentSize&&sFragments.size() > 0)
     {
-      sFragmentsFFT.R2HC(sFramePointerL, sFramePointerR, sIFFTSlot.L, sIFFTSlot.R);
+      sFragmentsFFT.R2HC(sFramePointerL, sIFFTSlot.L);
       memcpy(restSlot.L, sReverseSlot.L+sFragmentSize, sizeof(fv3_float_t)*(sFragmentSize-1));
       Scursor = 0;
     }
@@ -272,7 +272,7 @@ void FV3_(irmodel3wm)::processZL(fv3_float_t *inputL, long numsamples)
     {
       if(lFragments.size() > 0)
         {
-          lFragmentsFFT.R2HC(lFrameSlot.L, lFrameSlot.R, lIFFTSlot.L, lIFFTSlot.R);
+          lFragmentsFFT.R2HC(lFrameSlot.L, lIFFTSlot.L);
           memcpy(lReverseSlot.L, lReverseSlot.L+lFragmentSize, sizeof(fv3_float_t)*(lFragmentSize-1));
         }
       // thread enter
@@ -285,6 +285,21 @@ void FV3_(irmodel3wm)::processZL(fv3_float_t *inputL, long numsamples)
 
 FV3_(irmodel3w)::FV3_(irmodel3w)()
 {
+  delete irmL, irmL = NULL;
+  delete irmR, irmR = NULL;
+  try
+    {
+      ir3wmL = new FV3_(irmodel3wm);
+      ir3wmR = new FV3_(irmodel3wm);
+      irmL = ir3mL = ir3wmL;
+      irmR = ir3mR = ir3wmR;
+    }
+  catch(std::bad_alloc)
+    {
+      delete irmL;
+      delete irmR;
+      throw;
+    }
   InitializeCriticalSection(&mainSection);
   // REAPER only calls resume() on on/off load.
   resume();
@@ -350,6 +365,16 @@ void FV3_(irmodel3w)::setFragmentSize(long size, long factor)
   EnterCriticalSection(&mainSection);
   FV3_(irmodel3)::setFragmentSize(size, factor);
   LeaveCriticalSection(&mainSection);
+}
+
+bool FV3_(irmodel3w)::setLFThreadPriority(int priority)
+{
+  bool ret = false;
+  EnterCriticalSection(&mainSection);
+  if(ir3wmL->setLFThreadPriority(priority)) ret = true;
+  if(ir3wmR->setLFThreadPriority(priority)) ret = true;
+  LeaveCriticalSection(&mainSection);
+  return ret;
 }
 
 #include "freeverb/fv3_ns_end.h"

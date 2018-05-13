@@ -40,9 +40,11 @@ class _FV3_(irmodel3wm) : public _FV3_(irmodel3m)
   virtual void suspend();
   virtual void mute();
   virtual void setFragmentSize(long size, long factor);
-  
+
+  bool setLFThreadPriority(int priority);
+
  protected:
-  virtual void processZL(_fv3_float_t *inputL, long numsamples, unsigned options);
+  virtual void processZL(_fv3_float_t *inputL, long numsamples);
   bool validThread;
   _FV3_(lfThreadInfoW) hostThreadData;
   HANDLE lFragmentThreadHandle;
@@ -63,7 +65,7 @@ class _FV3_(irmodel3w) : public _FV3_(irmodel3)
  public:
   _FV3_(irmodel3w)();
   virtual _FV3_(~irmodel3w)();
-  virtual void loadImpulse(_fv3_float_t * inputL, _fv3_float_t * inputR, long size)
+  virtual void loadImpulse(const _fv3_float_t * inputL, const _fv3_float_t * inputR, long size)
     throw(std::bad_alloc);
   virtual void unloadImpulse();
   virtual void resume();
@@ -74,6 +76,7 @@ class _FV3_(irmodel3w) : public _FV3_(irmodel3)
 
  protected:
   CRITICAL_SECTION mainSection;
+  _FV3_(irmodel3wm) *ir3wmL, *ir3wmR;
 
  private:
   _FV3_(irmodel3w)(const _FV3_(irmodel3)& x);

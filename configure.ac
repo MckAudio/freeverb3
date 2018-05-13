@@ -21,7 +21,7 @@ dnl
 m4_define([_pkg_name],freeverb3)
 m4_define([_RELEASE], 3)
 m4_define([_MAJOR],   2)
-m4_define([_MINOR],   0)
+m4_define([_MINOR],   1)
 m4_define([_VERSION],m4_defn([_RELEASE]).m4_defn([_MAJOR]).m4_defn([_MINOR])) 
 
 AC_COPYRIGHT([Copyright (C) 2005-2018 Teru Kamogashira])
