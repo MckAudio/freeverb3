@@ -330,7 +330,16 @@ void FV3_(irbase)::mute()
   filter.mute();
 }
 
-void FV3_(irbase)::resume(){;}
-void FV3_(irbase)::suspend(){;}
+void FV3_(irbase)::resume()
+{
+  irmL->resume();
+  irmR->resume();
+}
+
+void FV3_(irbase)::suspend()
+{
+  irmL->suspend();
+  irmR->suspend();
+}
 
 #include "freeverb/fv3_ns_end.h"

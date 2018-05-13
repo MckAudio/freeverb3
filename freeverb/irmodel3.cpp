@@ -40,7 +40,7 @@ void FV3_(irmodel3m)::loadImpulse(const fv3_float_t * inputL, long size)
   throw(std::bad_alloc)
 {
   if(size <= 0) return;
-  unloadImpulse();
+  FV3_(irmodel3m)::unloadImpulse();
   
   impulseSize = size;
   long sFragmentNum = 0, lFragmentNum = 0, sFragmentMod = 0, lFragmentMod = 0;
@@ -86,10 +86,10 @@ void FV3_(irmodel3m)::loadImpulse(const fv3_float_t * inputL, long size)
   catch(std::bad_alloc)
     {
       std::fprintf(stderr, "irmodel3m::loadImpulse(%ld) bad_alloc\n", size);
-      unloadImpulse();
+      FV3_(irmodel3m)::unloadImpulse();
       throw;
     }
-  mute();
+  FV3_(irmodel3m)::mute();
 }
 
 void FV3_(irmodel3m)::unloadImpulse()
@@ -283,7 +283,7 @@ void FV3_(irmodel3m)::setFragmentSize(long size, long factor)
     }
   if(sFragmentSize != size||lFragmentSize != size*factor)
     {
-      unloadImpulse();
+      FV3_(irmodel3m)::unloadImpulse();
       sFragmentSize = size;
       lFragmentSize = size*factor;
     }
@@ -320,14 +320,14 @@ FV3_(irmodel3)::FV3_(irmodel3)()
 
 FV3_(irmodel3)::FV3_(~irmodel3)()
 {
-  unloadImpulse();
+  FV3_(irmodel3)::unloadImpulse();
 }
 
 void FV3_(irmodel3)::loadImpulse(const fv3_float_t * inputL, const fv3_float_t * inputR, long size)
   throw(std::bad_alloc)
 {
   if(size <= 0||getSFragmentSize() < FV3_IR_Min_FragmentSize||getLFragmentSize() < FV3_IR_Min_FragmentSize) return;
-  unloadImpulse();
+  FV3_(irmodel3)::unloadImpulse();
   setSIMD(irmL->getSIMD(0),irmL->getSIMD(1));
   try
     {
@@ -341,10 +341,10 @@ void FV3_(irmodel3)::loadImpulse(const fv3_float_t * inputL, const fv3_float_t *
   catch(std::bad_alloc)
     {
       std::fprintf(stderr, "irmodel3::loadImpulse(%ld) bad_alloc\n", size);
-      unloadImpulse();
+      FV3_(irmodel3)::unloadImpulse();
       throw;
     }
-  mute();
+  FV3_(irmodel1)::mute();
 }
 
 void FV3_(irmodel3)::setFragmentSize(long size, long factor)
@@ -356,7 +356,7 @@ void FV3_(irmodel3)::setFragmentSize(long size, long factor)
     }
   if(getSFragmentSize() != size||getLFragmentSize() != size*factor)
     {
-      unloadImpulse();
+      FV3_(irmodel3)::unloadImpulse();
       ir3mL->setFragmentSize(size, factor);
       ir3mR->setFragmentSize(size, factor);
     }

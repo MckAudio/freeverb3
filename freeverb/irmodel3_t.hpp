@@ -38,6 +38,7 @@ class _FV3_(irmodel3m) : public _FV3_(irbasem)
   
  protected:
   virtual void processZL(_fv3_float_t *inputL, long numsamples);
+  
   void allocFrags(std::vector<_FV3_(frag)*> *to, const _fv3_float_t *inputL, long fragSize, long num, long mod, unsigned fftflags, _fv3_float_t * preAllocL)
     throw(std::bad_alloc);
   void freeFrags(std::vector<_FV3_(frag)*> *v);

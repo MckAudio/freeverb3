@@ -164,35 +164,6 @@ static const char *about_text =
 #else
   "Single Precision Version\n"
 #endif
-  "SIMD: "
-#ifdef ENABLE_3DNOW
-  "3DNow! "
-#endif
-#ifdef ENABLE_SSE
-  "SSE_V1 "
-#endif
-#ifdef ENABLE_SSE_V2
-  "SSE_V2 "
-#endif
-#ifdef ENABLE_SSE2
-  "SSE2 "
-#endif
-#ifdef ENABLE_SSE3
-  "SSE3 "
-#endif
-#ifdef ENABLE_SSE4
-  "SSE4 "
-#endif
-#ifdef ENABLE_AVX
-  "AVX "
-#endif
-#ifdef ENABLE_FMA3
-  "FMA3 "
-#endif
-#ifdef ENABLE_FMA4
-  "FMA4 "
-#endif
-  "\n"
   "Copyright (C) 2006-2018 Teru Kamogashira\n"
   "http://www.nongnu.org/freeverb3/";
 

@@ -31,6 +31,9 @@
 #include <freeverb/irmodel2.hpp>
 #include <freeverb/irmodel2zl.hpp>
 #include <freeverb/irmodel3.hpp>
+#ifdef ENABLE_PTHREAD
+#include <freeverb/irmodel3p.hpp>
+#endif
 #include <fftw3.h>
 
 #include "CArg.hpp"
@@ -42,6 +45,9 @@ typedef fv3::irmodel1_ IR1;
 typedef fv3::irmodel2_ IR2;
 typedef fv3::irmodel2zl_ IR2ZL;
 typedef fv3::irmodel3_ IR3;
+#ifdef ENABLE_PTHREAD
+typedef fv3::irmodel3p_ IR3P;
+#endif
 typedef fv3::utils_ UTILS;
 typedef double pfloat_t;
 #else
@@ -51,6 +57,9 @@ typedef fv3::irmodel1_f IR1;
 typedef fv3::irmodel2_f IR2;
 typedef fv3::irmodel2zl_f IR2ZL;
 typedef fv3::irmodel3_f IR3;
+#ifdef ENABLE_PTHREAD
+typedef fv3::irmodel3p_f IR3P;
+#endif
 typedef fv3::utils_f UTILS;
 typedef float pfloat_t;
 #endif
@@ -137,6 +146,9 @@ static void help(const char * cmd)
                "\t5 irmodel2zl zero latency\n"
                "\t3 irmodel3   zero latency\n"
                "\t4 irmodels   time base, too slow, only for testing\n"
+#ifdef ENABLE_PTHREAD
+               "\t6 irmodel3p  zero latency pthread\n"
+#endif
                "-ir impulseLength (480000)\n"
                "-fr fragmentSize (1024)\n"
                "-fa factor (16)\n"
@@ -166,6 +178,12 @@ int main(int argc, char * argv[])
       std::fprintf(stderr, "MODEL = irmodel3\n");
       ir = new IR3();
       break;
+#ifdef ENABLE_PTHREAD
+    case 6:
+      std::fprintf(stderr, "MODEL = irmodel3p\n");
+      ir = new IR3P();
+      break;
+#endif
     case 4:
       std::fprintf(stderr, "MODEL = irmodels\n");
       ir = new IRS();

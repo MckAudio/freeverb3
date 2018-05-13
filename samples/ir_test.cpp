@@ -85,8 +85,7 @@ public:
         pfloat_t df = std::abs(O2[i] - (pfloat_t)i);
         if(df > diff) diff = df;
       }
-    fprintf(stderr, "Max. Error = %.15f\n", (double)diff);
-    fprintf(stderr, "Out:");
+    fprintf(stderr, "Max. Error = %.15f ", (double)diff);
     for(int i = 0;i < 4;i ++) fprintf(stderr, " %1.1f/%1.1f", (double)O1[i], (double)O2[i]);
     fprintf(stderr, "\n");
   }

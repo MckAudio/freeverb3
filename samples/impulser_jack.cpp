@@ -56,16 +56,16 @@ SndfileHandle *impulse;
 float idb = -5, odb = -25;
 
 void splitLR(pfloat_t * data, pfloat_t * L, pfloat_t * R,
-	     int singleSize, int channels)
+             int singleSize, int channels)
 {
   for(int t = 0; t < singleSize; t++)
     {
       L[t] = data[t*channels+0];
       if(channels > 1)
-	R[t] = data[t*channels+1];
+        R[t] = data[t*channels+1];
       else
-	R[t] = L[t];
-   }
+        R[t] = L[t];
+    }
 }
 
 jack_port_t *input_left, *input_right;
@@ -85,8 +85,7 @@ void vprocess(float * inL, float * inR, float * outL, float * outR, int nframes)
     {
       dinL[i] = inL[i]; dinR[i] = inR[i];
     }
-  ir->processreplace(dinL, dinR, doutL, doutR, nframes,
-		     FV3_IR_SKIP_FILTER);
+  ir->processreplace(dinL, dinR, doutL, doutR, nframes, FV3_IR_SKIP_FILTER);
   for(int i = 0;i < nframes;i ++)
     {
       outL[i] = doutL[i]; outR[i] = doutR[i];
@@ -97,22 +96,17 @@ void vprocess(float * inL, float * inR, float * outL, float * outR, int nframes)
   delete[] doutL;
   delete[] doutR;
 #else
-  ir->processreplace(inL, inR, outL, outR, nframes,
-		     FV3_IR_SKIP_FILTER);
+  ir->processreplace(inL, inR, outL, outR, nframes, FV3_IR_SKIP_FILTER);
 #endif
 }
 
 int process(jack_nframes_t nframes, void *arg)
 {
   jack_default_audio_sample_t *inL, *inR, *outL, *outR;
-  inL =
-    (jack_default_audio_sample_t*)jack_port_get_buffer(input_left, nframes);
-  inR =
-    (jack_default_audio_sample_t*)jack_port_get_buffer(input_right, nframes);
-  outL =
-    (jack_default_audio_sample_t*)jack_port_get_buffer(output_left, nframes);
-  outR =
-    (jack_default_audio_sample_t*)jack_port_get_buffer(output_right, nframes);
+  inL = (jack_default_audio_sample_t*)jack_port_get_buffer(input_left, nframes);
+  inR =  (jack_default_audio_sample_t*)jack_port_get_buffer(input_right, nframes);
+  outL = (jack_default_audio_sample_t*)jack_port_get_buffer(output_left, nframes);
+  outR = (jack_default_audio_sample_t*)jack_port_get_buffer(output_right, nframes);
   vprocess(inL, inR, outL, outR, nframes);
   return 0;
 }
@@ -125,20 +119,20 @@ void jack_shutdown(void *arg)
 void help(const char * cmd)
 {
   std::fprintf(stderr,
-	       "Usage: %s [options] ImpulseResponse.wav\n"
-	       "ImpulseReponse: libsndfile supported file.\n"
-	       "[[Options]]\n"
-	       "-m irmodel type\n"
-	       "\tn MODEL\n"
-	       "\tdefault, 0 irmodel2 fastest\n"
-	       "\t3 irmodel3 zero latency\n"
-	       "-indb Input Fader (arg-5)[dB]\n"
-	       "-imdb Impulse Fader (arg-25)[dB]\n"
-	       "-id JACK Unique ID (default/0=pid)\n"
-	       "[[Example]]\n"
-	       "%s IR.wav -imdb -5\n"
-	       "\n",
-	       cmd, cmd);
+               "Usage: %s [options] ImpulseResponse.wav\n"
+               "ImpulseReponse: libsndfile supported file.\n"
+               "[[Options]]\n"
+               "-m irmodel type\n"
+               "\tn MODEL\n"
+               "\tdefault, 0 irmodel2 fastest\n"
+               "\t3 irmodel3 zero latency\n"
+               "-indb Input Fader (arg-5)[dB]\n"
+               "-imdb Impulse Fader (arg-25)[dB]\n"
+               "-id JACK Unique ID (default/0=pid)\n"
+               "[[Example]]\n"
+               "%s IR.wav -imdb -5\n"
+               "\n",
+               cmd, cmd);
 }
 
 int main(int argc, char **argv)
@@ -191,8 +185,7 @@ int main(int argc, char **argv)
   delete[] irR;
   delete[] irStream;
   std::fprintf(stderr, "done.\n");
-  std::fprintf(stderr, "Size = %ld, Latency = %ld\n",
-	       ir->getSampleSize(), ir->getLatency());
+  std::fprintf(stderr, "Size = %ld, Latency = %ld\n", ir->getImpulseSize(), ir->getLatency());
   
   idb += args.getDouble("-indb");
   odb += args.getDouble("-imdb");
@@ -213,12 +206,11 @@ int main(int argc, char **argv)
   client = jack_client_open(client_name, options, &status, server_name);
   if (client == NULL)
     {
-      std::fprintf(stderr, "jack_client_open() failed, status = 0x%2.0x\n",
-		   status);
+      std::fprintf(stderr, "jack_client_open() failed, status = 0x%2.0x\n", status);
       if (status & JackServerFailed)
-	{
-	  std::fprintf(stderr, "Unable to connect to JACK server\n");
-	}
+        {
+          std::fprintf(stderr, "Unable to connect to JACK server\n");
+        }
       exit (-1);
     }
   if (status & JackServerStarted)
@@ -231,18 +223,10 @@ int main(int argc, char **argv)
   
   jack_set_process_callback(client, process, 0);
   jack_on_shutdown(client, jack_shutdown, 0);
-  input_left = jack_port_register(client, "inputL",
-				  JACK_DEFAULT_AUDIO_TYPE,
-				  JackPortIsInput, 0);
-  input_right = jack_port_register(client, "inputR",
-				   JACK_DEFAULT_AUDIO_TYPE,
-				   JackPortIsInput, 0);
-  output_left = jack_port_register(client, "outputL",
-				   JACK_DEFAULT_AUDIO_TYPE,
-				   JackPortIsOutput, 0);
-  output_right = jack_port_register(client, "outputR",
-				    JACK_DEFAULT_AUDIO_TYPE,
-				    JackPortIsOutput, 0);
+  input_left = jack_port_register(client, "inputL", JACK_DEFAULT_AUDIO_TYPE, JackPortIsInput, 0);
+  input_right = jack_port_register(client, "inputR",JACK_DEFAULT_AUDIO_TYPE, JackPortIsInput, 0);
+  output_left = jack_port_register(client, "outputL", JACK_DEFAULT_AUDIO_TYPE, JackPortIsOutput, 0);
+  output_right = jack_port_register(client, "outputR", JACK_DEFAULT_AUDIO_TYPE,JackPortIsOutput, 0);
   if(input_left == NULL||input_right == NULL
      ||output_left == NULL||output_right == NULL)
     {

@@ -169,7 +169,7 @@ if test "x$cv_x86simd" = "xyes"; then
   AC_MSG_RESULT([Using x86/x64 SIMD codes])
 fi
 
-AC_ARG_ENABLE(omp, AC_HELP_STRING([--enable-omp], [Use OpenMP.(default=no)(EXPERIMENTAL)]), [cv_omp="$enable_omp"], [cv_omp="no"])
+AC_ARG_ENABLE(omp, AC_HELP_STRING([--enable-omp], [Use OpenMP.(default=no)(Only for research, not recommended because of the high overhead)]), [cv_omp="$enable_omp"], [cv_omp="no"])
 if test "x$cv_omp" = "xyes"; then
   AC_DEFINE(USEOMP,1,Define to 1 if you use OpenMP)
   AC_MSG_RESULT([Using GCC OpenMP])
