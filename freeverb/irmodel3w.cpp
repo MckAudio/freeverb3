@@ -367,6 +367,14 @@ void FV3_(irmodel3w)::setFragmentSize(long size, long factor)
   LeaveCriticalSection(&mainSection);
 }
 
+void FV3_(irmodel3w)::setInitialDelay(long numsamples)
+  throw(std::bad_alloc)
+{
+  EnterCriticalSection(&mainSection);
+  FV3_(irbase)::setInitialDelay(numsamples);
+  LeaveCriticalSection(&mainSection);
+}
+
 bool FV3_(irmodel3w)::setLFThreadPriority(int priority)
 {
   bool ret = false;
@@ -378,4 +386,3 @@ bool FV3_(irmodel3w)::setLFThreadPriority(int priority)
 }
 
 #include "freeverb/fv3_ns_end.h"
-

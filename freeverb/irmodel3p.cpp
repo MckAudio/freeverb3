@@ -322,4 +322,12 @@ void FV3_(irmodel3p)::setFragmentSize(long size, long factor)
   mainSection.unlock();
 }
 
+void FV3_(irmodel3p)::setInitialDelay(long numsamples)
+  throw(std::bad_alloc)
+{
+  mainSection.lock();
+  FV3_(irbase)::setInitialDelay(numsamples);
+  mainSection.unlock();
+}
+
 #include "freeverb/fv3_ns_end.h"

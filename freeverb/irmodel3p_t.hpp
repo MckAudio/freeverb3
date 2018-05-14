@@ -68,7 +68,9 @@ class _FV3_(irmodel3p) : public _FV3_(irmodel3)
   virtual void suspend();
   virtual void mute();
   virtual void setFragmentSize(long size, long factor);
-
+  virtual void setInitialDelay(long numsamples)
+    throw(std::bad_alloc);
+  
  protected:
   PthreadLocker mainSection;
 

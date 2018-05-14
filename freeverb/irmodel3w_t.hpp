@@ -72,6 +72,9 @@ class _FV3_(irmodel3w) : public _FV3_(irmodel3)
   virtual void suspend();
   virtual void mute();
   virtual void setFragmentSize(long size, long factor);
+  virtual void setInitialDelay(long numsamples)
+    throw(std::bad_alloc);
+
   bool setLFThreadPriority(int priority);
 
  protected:

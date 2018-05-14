@@ -315,7 +315,7 @@ FV3_(irmodel3)::FV3_(irmodel3)()
       delete irmR;
       throw;
     }
-  setFragmentSize(FV3_IR3_DFragmentSize, FV3_IR3_DefaultFactor);
+  FV3_(irmodel3)::setFragmentSize(FV3_IR3_DFragmentSize, FV3_IR3_DefaultFactor);
 }
 
 FV3_(irmodel3)::FV3_(~irmodel3)()
@@ -336,7 +336,7 @@ void FV3_(irmodel3)::loadImpulse(const fv3_float_t * inputL, const fv3_float_t *
       latency = 0;
       inputW.alloc(getSFragmentSize(), 2);
       inputD.alloc(getSFragmentSize(), 2);
-      setInitialDelay(getInitialDelay());
+      FV3_(irbase)::setInitialDelay(getInitialDelay());
     }
   catch(std::bad_alloc)
     {
