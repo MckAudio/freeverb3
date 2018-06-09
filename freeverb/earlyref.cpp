@@ -35,9 +35,9 @@ const fv3_float_t FV3_(earlyref)::preset1_gainL[] = { 1.020, 0.818, 0.635, 0.719
 const fv3_float_t FV3_(earlyref)::preset1_gainR[] = { 1.021, 0.820, 0.633, 0.722, 0.187, 0.243, };
 
 const long FV3_(earlyref)::preset2_size = 4;
-const fv3_float_t FV3_(earlyref)::preset2_delayL[] = { 0.0090, 0.0118, 0.0213, 0.0205, };
-const fv3_float_t FV3_(earlyref)::preset2_delayR[] = { 0.0145, 0.0098, 0.0203, 0.0230, };
-const fv3_float_t FV3_(earlyref)::preset2_gainL[] = { 1.35, -1.15, -1.14, 1.15, };
+const fv3_float_t FV3_(earlyref)::preset2_delayL[] = { 0.0090, 0.0118, 0.0205, 0.0213, };
+const fv3_float_t FV3_(earlyref)::preset2_delayR[] = { 0.0098, 0.0145, 0.0203, 0.0230, };
+const fv3_float_t FV3_(earlyref)::preset2_gainL[] = { 1.35, -1.15, 1.15, -1.14, };
 const fv3_float_t FV3_(earlyref)::preset2_gainR[] = { 1.36, -1.16, -1.00, 1.14, };
 
 const long FV3_(earlyref)::preset11_sizeL = 11;
@@ -266,11 +266,21 @@ void FV3_(earlyref)::loadReflection(const fv3_float_t * delayL, const fv3_float_
       gainTableR[i] = gainR[i];
       delayTableR[i] = getTotalFactorFs()*delayR[i];
     }
-  long maxLengthL = (long)(delayTableL[tapLengthL-1])+10;
-  long maxLengthR = (long)(delayTableR[tapLengthR-1])+10;
+  long maxLengthL = (long)(maxDelay(delayTableL, tapLengthL)+10);
+  long maxLengthR = (long)(maxDelay(delayTableR, tapLengthR)+10);
   delayLineL.setsize(maxLengthL);
   delayLineR.setsize(maxLengthR);
   mute();
+}
+
+fv3_float_t FV3_(earlyref)::maxDelay(const fv3_float_t * delaySet, long size)
+{
+  fv3_float_t max = 0;
+  for(long i = 0;i < size;i ++)
+    {
+      if(max < delaySet[i]) max = delaySet[i];
+    }
+  return max;
 }
 
 void FV3_(earlyref)::unloadReflection()

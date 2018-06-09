@@ -52,6 +52,8 @@ public:
   void loadReflection(const _fv3_float_t * delayL, const _fv3_float_t * gainL, const _fv3_float_t * delayR, const _fv3_float_t * gainR, long sizeL, long sizeR)
     throw(std::bad_alloc);
   virtual void setFsFactors();
+
+  _fv3_float_t maxDelay(const _fv3_float_t * delaySet, long size);
   
   _FV3_(delayline) delayLineL, delayLineR;
   _FV3_(delay) delayLtoR, delayRtoL;
