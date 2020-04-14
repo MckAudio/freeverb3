@@ -21,14 +21,14 @@
 class _FV3_(nrev) : public _FV3_(revbase)
 {
  public:
-  _FV3_(nrev)() throw(std::bad_alloc);
+  _FV3_(nrev)() ;
   virtual void mute();
-  virtual void setOSFactor(long factor, long converter_type)  throw(std::bad_alloc);
+  virtual void setOSFactor(long factor, long converter_type)  ;
   void processreplace(_fv3_float_t *inputL, _fv3_float_t *inputR, _fv3_float_t *outputL, _fv3_float_t *outputR,
 		      _fv3_float_t *outputRearL, _fv3_float_t *outputRearR, long numsamples)
-    throw(std::bad_alloc);
+    ;
   void processreplace(_fv3_float_t *inputL, _fv3_float_t *inputR, _fv3_float_t *outputL, _fv3_float_t *outputR, long numsamples)
-    throw(std::bad_alloc);
+    ;
 
   /**
    * set the delay length of the reverb rear sound.
@@ -92,7 +92,7 @@ class _FV3_(nrev) : public _FV3_(revbase)
   virtual void processloop2(long count, _fv3_float_t *inputL, _fv3_float_t *inputR, _fv3_float_t *outputL, _fv3_float_t *outputR);
   virtual void processloop4(long count, _fv3_float_t *inputL, _fv3_float_t *inputR, _fv3_float_t *outputL, _fv3_float_t *outputR,
 			    _fv3_float_t *outRearL, _fv3_float_t *outRearR);
-  virtual void growWave(long size) throw(std::bad_alloc);
+  virtual void growWave(long size) ;
   virtual void freeWave();
   virtual void setcombfeedback(_fv3_float_t back, long zero);
   virtual void setFsFactors();

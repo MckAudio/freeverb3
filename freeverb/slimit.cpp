@@ -67,7 +67,7 @@ long FV3_(slimit)::getLookahead()
 }
 
 void FV3_(slimit)::setLookahead(long value)
-		  throw(std::bad_alloc)
+		  
 {
   if(value < 0) return;
   lookahead = value;

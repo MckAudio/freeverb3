@@ -37,7 +37,7 @@ FV3_(irmodel3m)::FV3_(~irmodel3m)()
 }
 
 void FV3_(irmodel3m)::loadImpulse(const fv3_float_t * inputL, long size)
-  throw(std::bad_alloc)
+  
 {
   if(size <= 0) return;
   FV3_(irmodel3m)::unloadImpulse();
@@ -106,7 +106,7 @@ void FV3_(irmodel3m)::unloadImpulse()
 }
 
 void FV3_(irmodel3m)::allocFrags(std::vector<FV3_(frag)*> *to, const fv3_float_t *inputL, long fragSize, long num, long mod, unsigned fftflags, fv3_float_t * preAllocL)
-  throw(std::bad_alloc)
+  
 {
   try
     {
@@ -140,7 +140,7 @@ void FV3_(irmodel3m)::freeFrags(std::vector<FV3_(frag)*> *v)
 }
 
 void FV3_(irmodel3m)::allocSlots(long ssize, long lsize)
-  throw(std::bad_alloc)
+  
 {
   fifoSlot.alloc(ssize, 1);
   sReverseSlot.alloc(2*ssize, 1);
@@ -324,7 +324,7 @@ FV3_(irmodel3)::FV3_(~irmodel3)()
 }
 
 void FV3_(irmodel3)::loadImpulse(const fv3_float_t * inputL, const fv3_float_t * inputR, long size)
-  throw(std::bad_alloc)
+  
 {
   if(size <= 0||getSFragmentSize() < FV3_IR_Min_FragmentSize||getLFragmentSize() < FV3_IR_Min_FragmentSize) return;
   FV3_(irmodel3)::unloadImpulse();

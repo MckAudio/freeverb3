@@ -125,7 +125,7 @@ const fv3_float_t FV3_(earlyref)::preset22_delayR[] =  { 0.003276, 0.010714, 0.0
 const fv3_float_t FV3_(earlyref)::preset22_gainR[] = { 0.970000,0.803333,0.720000,0.646667,0.596667,0.543333,0.523333,0.503333,0.483333,0.470000,};
 
 FV3_(earlyref)::FV3_(earlyref)()
-  throw(std::bad_alloc)
+  
 {
   tapLengthL = tapLengthR = 0;
   gainTableL = gainTableR = delayTableL = delayTableR = NULL;
@@ -227,7 +227,7 @@ long FV3_(earlyref)::getCurrentPreset()
 }
 
 void FV3_(earlyref)::loadUserReflection(const fv3_float_t * delayL, const fv3_float_t * gainL, const fv3_float_t * delayR, const fv3_float_t * gainR, long sizeL, long sizeR)
-  throw(std::bad_alloc)
+  
 {
   if(delayL == NULL||gainL == NULL||delayR == NULL||gainR == NULL||sizeL <= 0||sizeR <= 0) return;
   currentPreset = -1;
@@ -235,7 +235,7 @@ void FV3_(earlyref)::loadUserReflection(const fv3_float_t * delayL, const fv3_fl
 }
 
 void FV3_(earlyref)::loadReflection(const fv3_float_t * delayL, const fv3_float_t * gainL, const fv3_float_t * delayR, const fv3_float_t * gainR, long sizeL, long sizeR)
-  throw(std::bad_alloc)
+  
 {
   unloadReflection();
   try
@@ -294,7 +294,7 @@ void FV3_(earlyref)::unloadReflection()
 }
 
 void FV3_(earlyref)::processreplace(fv3_float_t *inputL, fv3_float_t *inputR, fv3_float_t *outputL, fv3_float_t *outputR, long numsamples)
-  throw(std::bad_alloc)
+  
 {
   if(numsamples <= 0) return;
   if(tapLengthL == 0||tapLengthR == 0) return;

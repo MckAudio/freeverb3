@@ -23,7 +23,7 @@
 #include "freeverb/fv3_ns_start.h"
 
 FV3_(stenh)::FV3_(stenh)()
-	    throw(std::bad_alloc)
+	    
 {
   currentfs = FV3_REVBASE_DEFAULT_FS;
   RMS = Attack = Release = 0; Ratio = 3; SoftKnee = 10;

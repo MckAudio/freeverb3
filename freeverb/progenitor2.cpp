@@ -31,7 +31,7 @@ const long FV3_(progenitor2)::iAllpassCRCo[] = {447, 324, 247, 191,};
 const long FV3_(progenitor2)::idxOutCo2[] = {110, 790, 2, 189, 121, 10, 480, 359, 103, 30, 26, 10, 780, 109, 1200, 1310, 780, 10, 310, 800,};
 
 FV3_(progenitor2)::FV3_(progenitor2)()
-	       throw(std::bad_alloc)
+	       
 {
   setidiffusion1(0.78);
   setodiffusion1(0.78);
@@ -57,7 +57,7 @@ void FV3_(progenitor2)::mute()
 }
 
 void FV3_(progenitor2)::processreplace(fv3_float_t *inputL, fv3_float_t *inputR, fv3_float_t *outputL, fv3_float_t *outputR, long numsamples)
-		       throw(std::bad_alloc)
+		       
 {
   switch(reverbType)
     {

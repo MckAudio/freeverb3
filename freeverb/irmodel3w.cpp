@@ -147,7 +147,7 @@ void FV3_(irmodel3wm)::suspend()
 }
 
 void FV3_(irmodel3wm)::loadImpulse(const fv3_float_t * inputL, long size)
-  throw(std::bad_alloc)
+  
 {
   suspend();
   EnterCriticalSection(&mainSection);
@@ -313,7 +313,7 @@ FV3_(irmodel3w)::FV3_(~irmodel3w)()
 }
 
 void FV3_(irmodel3w)::loadImpulse(const fv3_float_t * inputL, const fv3_float_t * inputR, long size)
-  throw(std::bad_alloc)
+  
 {
   suspend();
   EnterCriticalSection(&mainSection);
@@ -368,7 +368,7 @@ void FV3_(irmodel3w)::setFragmentSize(long size, long factor)
 }
 
 void FV3_(irmodel3w)::setInitialDelay(long numsamples)
-  throw(std::bad_alloc)
+  
 {
   EnterCriticalSection(&mainSection);
   FV3_(irbase)::setInitialDelay(numsamples);

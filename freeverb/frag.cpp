@@ -47,7 +47,7 @@ long FV3_(fragfft)::getFragmentSize()
 }
 
 void FV3_(fragfft)::allocFFT(long size, unsigned fftflags)
-		   throw(std::bad_alloc)
+		   
 {
 #ifdef DEBUG
   std::fprintf(stderr, "fragfft::allocFFT(%ld)\n", size);
@@ -172,13 +172,13 @@ FV3_(frag)::FV3_(~frag)()
 }
 
 void FV3_(frag)::loadImpulse(const fv3_float_t * L, long size, long limit, unsigned fftflags)
-		throw(std::bad_alloc)
+		
 {
   this->loadImpulse(L,size,limit,fftflags,NULL);
 }
 
 void FV3_(frag)::loadImpulse(const fv3_float_t * L, long size, long limit, unsigned fftflags, fv3_float_t * preAllocatedL)
-		throw(std::bad_alloc)
+		
 {
 #ifdef DEBUG
   std::fprintf(stderr, "frag::loadImpulse(f=%ld,l=%ld)\n", size, limit);
@@ -227,7 +227,7 @@ void FV3_(frag)::registerPreallocatedBlock(fv3_float_t * _L, long size)
 }
 
 void FV3_(frag)::allocImpulse(long size)
-		throw(std::bad_alloc)
+		
 {
   freeImpulse();
   fragmentSize = size;

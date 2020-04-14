@@ -30,7 +30,7 @@ const long FV3_(nrevb)::combCo2[] =    {1257, 1333, 1499, 1501, 1535, 1637, 1738
 const long FV3_(nrevb)::allpassCo2[] = {57, 87, 103,};
 
 FV3_(nrevb)::FV3_(nrevb)()
-	    throw(std::bad_alloc)
+	    
 {
   lastL = lastR = 0;
   setdamp(0.1);

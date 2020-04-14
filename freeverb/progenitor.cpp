@@ -35,7 +35,7 @@ const long FV3_(progenitor)::idxOutCo[] = {276,   468, 625, 312,  8,   24, 36,  
 //                                         d31   {d49  d40  d31 d58}  d49 d37  {d31 d23  d49   d37}
 
 FV3_(progenitor)::FV3_(progenitor)()
-	       throw(std::bad_alloc)
+	       
 {
   setrt60(2.);
   setdccutfreq(5);
@@ -81,7 +81,7 @@ void FV3_(progenitor)::mute()
 }
 
 void FV3_(progenitor)::processreplace(fv3_float_t *inputL, fv3_float_t *inputR, fv3_float_t *outputL, fv3_float_t *outputR, long numsamples)
-		    throw(std::bad_alloc)
+		    
 {
   if(numsamples <= 0) return;
   long count = numsamples*getOSFactor();

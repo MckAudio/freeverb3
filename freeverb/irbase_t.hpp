@@ -25,7 +25,7 @@ class _FV3_(irbasem)
   _FV3_(irbasem)();
   virtual _FV3_(~irbasem)();
   virtual void loadImpulse(const _fv3_float_t * inputL, long size)
-    throw(std::bad_alloc) = 0;
+     = 0;
   virtual void unloadImpulse();
   virtual unsigned setFFTFlags(unsigned flags);
   virtual unsigned getFFTFlags();
@@ -54,7 +54,7 @@ class _FV3_(irbase)
   _FV3_(irbase)();
   virtual _FV3_(~irbase)();
   virtual void loadImpulse(const _fv3_float_t * inputL, const _fv3_float_t * inputR, long size)
-    throw(std::bad_alloc) = 0;
+     = 0;
   virtual void unloadImpulse();
   virtual void setprocessoptions(unsigned options);
   virtual unsigned getprocessoptions();
@@ -65,7 +65,7 @@ class _FV3_(irbase)
   virtual long getImpulseSize();
   virtual long getLatency();
   virtual void setInitialDelay(long numsamples)
-    throw(std::bad_alloc);
+    ;
   virtual long getInitialDelay();
   virtual void resume();
   virtual void suspend();

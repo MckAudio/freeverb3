@@ -24,7 +24,7 @@ class _FV3_(slot)
   _FV3_(slot)();
   virtual _FV3_(~slot)();
   void alloc(long nsize, long nch)
-    throw(std::bad_alloc);
+    ;
   _fv3_float_t * c(long nch);
   void free();
   void mute();

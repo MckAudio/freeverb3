@@ -36,7 +36,7 @@ FV3_(irmodel2zlm)::FV3_(~irmodel2zlm)()
 }
 
 void FV3_(irmodel2zlm)::loadImpulse(const fv3_float_t * inputL, long size)
-  throw(std::bad_alloc)
+  
 {
   if(size <= 0) return;
   unloadImpulse();
@@ -154,7 +154,7 @@ FV3_(irmodel2zl)::FV3_(~irmodel2zl)()
 }
 
 void FV3_(irmodel2zl)::loadImpulse(const fv3_float_t * inputL, const fv3_float_t * inputR, long size)
-  throw(std::bad_alloc)
+  
 {
   if(size <= 0||fragmentSize < FV3_IR_Min_FragmentSize) return;
   unloadImpulse();

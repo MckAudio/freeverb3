@@ -33,7 +33,7 @@ public:
    * Set delay size. This preserves previous data.
    * @param[in] size The delay size.
    */
-  void setsize(long size) throw(std::bad_alloc);
+  void setsize(long size) ;
   long getsize();
   void mute();
   void          setdamp(_fv3_float_t val);
@@ -121,8 +121,8 @@ public:
   _FV3_(~combm)();
   void free();
 
-  void setsize(long size) throw(std::bad_alloc);
-  void setsize(long size, long modsize) throw(std::bad_alloc);
+  void setsize(long size) ;
+  void setsize(long size, long modsize) ;
   long getsize();
   long getdelaysize();
   long getmodulationsize();

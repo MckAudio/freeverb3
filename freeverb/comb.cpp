@@ -42,7 +42,7 @@ long FV3_(comb)::getsize()
 }
 
 void FV3_(comb)::setsize(long size)
-                throw(std::bad_alloc)
+                
 {
 #ifdef DEBUG
   std::fprintf(stderr, "comb::setsize(%ld)\n", size);
@@ -139,13 +139,13 @@ long FV3_(combm)::getmodulationsize()
 }
 
 void FV3_(combm)::setsize(long size)
-		throw(std::bad_alloc)
+		
 {
   setsize(size, 0);
 }
 
 void FV3_(combm)::setsize(long size, long modsize)
-		throw(std::bad_alloc)
+		
 {
 #ifdef DEBUG
   std::fprintf(stderr, "comb::setsize(%ld,%ld)\n", size, modsize);

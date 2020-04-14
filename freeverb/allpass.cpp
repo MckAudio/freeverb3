@@ -41,7 +41,7 @@ long FV3_(allpass)::getsize()
 }
 
 void FV3_(allpass)::setsize(long size)
-                   throw(std::bad_alloc)
+                   
 {
 #ifdef DEBUG
   std::fprintf(stderr, "allpass::setsize(%ld)\n", size);
@@ -142,13 +142,13 @@ long FV3_(allpassm)::getmodulationsize()
 }
 
 void FV3_(allpassm)::setsize(long size)
-		   throw(std::bad_alloc)
+		   
 {
   setsize(size, 0);
 }
 
 void FV3_(allpassm)::setsize(long size, long modsize)
-		   throw(std::bad_alloc)
+		   
 {
 #ifdef DEBUG
   std::fprintf(stderr, "allpassm::setsize(%ld,%ld)\n", size, modsize);
@@ -235,7 +235,7 @@ FV3_(allpass2)::FV3_(~allpass2)()
 }
 
 void FV3_(allpass2)::setsize(long size1, long size2)
-                   throw(std::bad_alloc)
+                   
 {
 #ifdef DEBUG
   std::fprintf(stderr, "allpass2::setsize(%ld,%ld)\n", size1, size2);
@@ -309,13 +309,13 @@ FV3_(allpass3)::FV3_(~allpass3)()
 }
 
 void FV3_(allpass3)::setsize(long size1, long size2, long size3)
-                   throw(std::bad_alloc)
+                   
 {
   setsize(size1, 0, size2, size3);
 }
 
 void FV3_(allpass3)::setsize(long size1, long size1mod, long size2, long size3)
-                   throw(std::bad_alloc)
+                   
 {
 #ifdef DEBUG
   std::fprintf(stderr, "allpass3::setsize(%ld,%ld,%ld,%ld)\n", size1, size1mod, size2, size3);

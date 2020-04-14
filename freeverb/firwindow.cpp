@@ -89,7 +89,7 @@ fv3_float_t FV3_(firwindow)::i_zero(const fv3_float_t x)
     sum += a * a;
     n += 1.0;
     /* either 'sum' will reach +inf or 'a' zero... */
-  } while (a != 0.0 && isfinite(sum));
+  } while (a != 0.0 && std::isfinite(sum));
   return sum;
 }
 

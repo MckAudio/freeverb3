@@ -23,7 +23,7 @@
 #include "freeverb/fv3_ns_start.h"
 
 FV3_(delayline)::FV3_(delayline)()
-		throw(std::bad_alloc)
+		
 {
   currentfs = FV3_REVBASE_DEFAULT_FS;
   bufsize = baseidx = 0, buffer = NULL;
@@ -35,7 +35,7 @@ FV3_(delayline)::~FV3_(delayline)()
 }
 
 void FV3_(delayline)::setSampleRate(fv3_float_t fs)
-		     throw(std::bad_alloc)
+		     
 {
   currentfs = fs;
 }
@@ -51,7 +51,7 @@ long FV3_(delayline)::getsize()
 }
 
 void FV3_(delayline)::setsize(long size)
-		 throw(std::bad_alloc)
+		 
 {
   if(size <= 0) return;
   fv3_float_t * new_buffer = NULL;

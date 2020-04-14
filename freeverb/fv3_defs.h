@@ -24,7 +24,7 @@
 #include <cmath>
 
 #include "fv3_config.h"
-
+/*
 #ifndef isfinite
 #define isfinite(v) std::isfinite(v)
 #endif
@@ -34,13 +34,14 @@
 #ifndef fpclassify
 #define fpclassify(v) std::fpclassify(v)
 #endif
+*/
 #define STRINGIZEx(x) #x
 #define STRINGIZE(x) STRINGIZEx(x)
 
 #ifdef DISABLE_UNDENORMAL
 #define UNDENORMAL(v)
 #else
-#define UNDENORMAL(v) if(fpclassify(v) != FP_NORMAL&&fpclassify(v) != FP_ZERO){v=0;}
+#define UNDENORMAL(v) if(std::fpclassify(v) != FP_NORMAL&&std::fpclassify(v) != FP_ZERO){v=0;}
 #endif
 
 #ifndef LIMIT_PLUSMINUS_ONE

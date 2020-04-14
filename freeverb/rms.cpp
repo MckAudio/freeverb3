@@ -40,7 +40,7 @@ long FV3_(rms)::getsize()
 }
 
 void FV3_(rms)::setsize(long size)
-	       throw(std::bad_alloc)
+	       
 {
   if(size <= 0) return;
   this->free();

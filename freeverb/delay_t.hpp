@@ -32,7 +32,7 @@ class _FV3_(delay)
    * Set delay size. This preserves previous data.
    * @param[in] size The delay size.
    */
-  void setsize(long size) throw(std::bad_alloc);
+  void setsize(long size) ;
   long getsize();
 
   /**
@@ -116,8 +116,8 @@ class _FV3_(delaym)
   _FV3_(~delaym)();
   void free();
 
-  void setsize(long size) throw(std::bad_alloc);
-  void setsize(long size, long modsize) throw(std::bad_alloc);
+  void setsize(long size) ;
+  void setsize(long size, long modsize) ;
   long getsize();
   long getdelaysize();
   long getmodulationsize();

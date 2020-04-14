@@ -24,8 +24,8 @@
 class _FV3_(dl_gd_largeroom) : public _FV3_(delayline)
 {
  public:
-  _FV3_(dl_gd_largeroom)() throw(std::bad_alloc);
-  virtual void setSampleRate(_fv3_float_t fs) throw(std::bad_alloc);
+  _FV3_(dl_gd_largeroom)() ;
+  virtual void setSampleRate(_fv3_float_t fs) ;
   virtual void mute();
   virtual _fv3_float_t process(_fv3_float_t input);
 
@@ -44,11 +44,11 @@ class _FV3_(dl_gd_largeroom) : public _FV3_(delayline)
 class _FV3_(gd_largeroom) : public _FV3_(revbase)
 {
  public:
-  _FV3_(gd_largeroom)() throw(std::bad_alloc);
+  _FV3_(gd_largeroom)() ;
 
   virtual void mute(){ DL_Left.mute(); DL_Right.mute(); }
   virtual void processreplace(_fv3_float_t *inputL, _fv3_float_t *inputR, _fv3_float_t *outputL, _fv3_float_t *outputR, long numsamples)
-    throw(std::bad_alloc);
+    ;
   
   void setroomsize(_fv3_float_t value){ DL_Left.setDecay(value); DL_Right.setDecay(value); }
   void setdccutfreq(_fv3_float_t value){ DL_Left.setDCC(value); DL_Right.setDCC(value); }

@@ -26,7 +26,7 @@ const long FV3_(revmodel)::combCo[] = {1116, 1188, 1277, 1356, 1422, 1491, 1557,
 const long FV3_(revmodel)::allpCo[] = {556, 441, 341, 225,};
 
 FV3_(revmodel)::FV3_(revmodel)()
-	       throw(std::bad_alloc)
+	       
 {
   setroomsize(0.1);
   setdamp(0.1);
@@ -55,7 +55,7 @@ void FV3_(revmodel)::mute()
 }
 
 void FV3_(revmodel)::processreplace(fv3_float_t *inputL, fv3_float_t *inputR, fv3_float_t *outputL, fv3_float_t *outputR, long numsamples)
-		    throw(std::bad_alloc)
+		    
 {
   if(numsamples <= 0) return;
   long count = numsamples*SRC.getSRCFactor();

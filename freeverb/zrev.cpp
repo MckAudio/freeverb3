@@ -29,7 +29,7 @@ const fv3_float_t FV3_(zrev)::delayLengthDiff[] = { .020346, .024421, .031604, .
 const fv3_float_t FV3_(zrev)::delay_EXCURSION = 0.001;
 
 FV3_(zrev)::FV3_(zrev)()
-	    throw(std::bad_alloc)
+	    
 {
   setrt60(2.0);
   setapfeedback(0.6);
@@ -50,7 +50,7 @@ void FV3_(zrev)::mute()
 }
 
 void FV3_(zrev)::processreplace(fv3_float_t *inputL, fv3_float_t *inputR, fv3_float_t *outputL, fv3_float_t *outputR, long numsamples)
-		    throw(std::bad_alloc)
+		    
 {
   if(numsamples <= 0) return;
   long count = numsamples*getOSFactor();

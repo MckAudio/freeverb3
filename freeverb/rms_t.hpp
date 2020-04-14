@@ -25,7 +25,7 @@ class _FV3_(rms)
   _FV3_(~rms)();
   void free();
 
-  void setsize(long size) throw(std::bad_alloc);
+  void setsize(long size) ;
   long getsize();
   void mute();
   inline _fv3_float_t process(_fv3_float_t input)

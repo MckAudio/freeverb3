@@ -23,7 +23,7 @@
 #include "freeverb/fv3_ns_start.h"
 
 FV3_(revbase)::FV3_(revbase)()
-	      throw(std::bad_alloc)
+	      
 {
   setwetr(1); setdryr(1); setwidth(1);
   primeMode = true; muteOnChange = false; rsfactor = 1.; currentfs = FV3_REVBASE_DEFAULT_FS;
@@ -108,7 +108,7 @@ void FV3_(revbase)::mute()
 }
 
 void FV3_(revbase)::growWave(long size)
-		throw(std::bad_alloc)
+		
 {
   if(size > over.getsize())
     {
@@ -217,7 +217,7 @@ fv3_float_t FV3_(revbase)::getSampleRate()
 }
 
 void FV3_(revbase)::setSampleRate(fv3_float_t fs)
-		    throw(std::bad_alloc)
+		    
 {
   if(fs <= 0) return;
   currentfs = fs;
@@ -236,14 +236,14 @@ fv3_float_t FV3_(revbase)::getOSFactorf()
 }
 
 void FV3_(revbase)::setOSFactor(long factor)
-		    throw(std::bad_alloc)
+		    
 {
   if(factor <= 0) return;
   setOSFactor(factor, FV3_SRC_LPF_IIR_2);
 }
 
 void FV3_(revbase)::setOSFactor(long factor, long converter_type)
-		    throw(std::bad_alloc)
+		    
 {
   if(factor <= 0) return;
   SRC.setSRCFactor(factor, converter_type);

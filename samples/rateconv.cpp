@@ -160,11 +160,11 @@ static void Blackman(pfloat_t w[], const long N)
     }
   return;
 }
-
+/*
 #ifndef isfinite
 #define isfinite(v) std::isfinite(v)
 #endif
-
+*/
 static pfloat_t i_zero(pfloat_t x)
 {
   /*
@@ -192,7 +192,7 @@ static pfloat_t i_zero(pfloat_t x)
     sum += a * a;
     n += 1.0;
     /* either 'sum' will reach +inf or 'a' zero... */
-  } while (a != 0.0 && isfinite(sum));
+  } while (a != 0.0 && std::isfinite(sum));
   return sum;
 }
 

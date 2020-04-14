@@ -21,11 +21,11 @@
 class _FV3_(strev) : public _FV3_(revbase)
 {
 public:
-  _FV3_(strev)() throw(std::bad_alloc);
+  _FV3_(strev)() ;
 
   virtual void mute();
   virtual void processreplace(_fv3_float_t *inputL, _fv3_float_t *inputR, _fv3_float_t *outputL, _fv3_float_t *outputR, long numsamples)
-    throw(std::bad_alloc);
+    ;
   
   /**
    * set the RT60 of reverb.

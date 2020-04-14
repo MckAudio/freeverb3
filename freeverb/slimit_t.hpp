@@ -26,7 +26,7 @@ class _FV3_(slimit)
   void setRMS(long value);
   long getRMS();
   void setLookahead(long value)
-    throw(std::bad_alloc);
+    ;
   long getLookahead();
   void setLookaheadRatio(_fv3_float_t value);
   _fv3_float_t getLookaheadRatio();  

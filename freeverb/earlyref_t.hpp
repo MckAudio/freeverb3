@@ -21,17 +21,17 @@
 class _FV3_(earlyref) : public _FV3_(revbase)
 {
 public:
-  _FV3_(earlyref)() throw(std::bad_alloc);
+  _FV3_(earlyref)() ;
   virtual _FV3_(~earlyref)();
 
   virtual void mute();
   virtual void processreplace(_fv3_float_t *inputL, _fv3_float_t *inputR, _fv3_float_t *outputL, _fv3_float_t *outputR, long numsamples)
-    throw(std::bad_alloc);
+    ;
   
   void loadPresetReflection(long program);
   long getCurrentPreset();
   void loadUserReflection(const _fv3_float_t * delayL, const _fv3_float_t * gainL, const _fv3_float_t * delayR, const _fv3_float_t * gainR, long sizeL, long sizeR)
-    throw(std::bad_alloc);
+    ;
   void unloadReflection();
   
   void         setLRDelay(_fv3_float_t value_ms);
@@ -50,7 +50,7 @@ public:
   _FV3_(earlyref)(const _FV3_(earlyref)& x);
   _FV3_(earlyref)& operator=(const _FV3_(earlyref)& x);
   void loadReflection(const _fv3_float_t * delayL, const _fv3_float_t * gainL, const _fv3_float_t * delayR, const _fv3_float_t * gainR, long sizeL, long sizeR)
-    throw(std::bad_alloc);
+    ;
   virtual void setFsFactors();
 
   _fv3_float_t maxDelay(const _fv3_float_t * delaySet, long size);

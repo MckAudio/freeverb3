@@ -21,12 +21,12 @@
 class _FV3_(revbase)
 {
 public:
-  _FV3_(revbase)() throw(std::bad_alloc);
+  _FV3_(revbase)() ;
   virtual _FV3_(~revbase)();
-  virtual void         setSampleRate(_fv3_float_t fs) throw(std::bad_alloc);
+  virtual void         setSampleRate(_fv3_float_t fs) ;
   virtual _fv3_float_t getSampleRate();
-  virtual void setOSFactor(long factor, long converter_type) throw(std::bad_alloc);
-  virtual void setOSFactor(long factor) throw(std::bad_alloc);
+  virtual void setOSFactor(long factor, long converter_type) ;
+  virtual void setOSFactor(long factor) ;
   virtual long getOSFactor();
   virtual _fv3_float_t getOSFactorf();
   virtual _fv3_float_t getTotalSampleRate(){ return getSampleRate()*getOSFactorf(); }
@@ -60,7 +60,7 @@ public:
   virtual long getLatency();
   virtual void mute();
   virtual void processreplace(_fv3_float_t *inputL, _fv3_float_t *inputR, _fv3_float_t *outputL, _fv3_float_t *outputR, long numsamples)
-    throw(std::bad_alloc) = 0;
+     = 0;
 
   /**
    * set the reverb front sound level.
@@ -121,7 +121,7 @@ public:
   _fv3_float_t currentfs, rsfactor, preDelay, wetDB, wet, wet1, wet2, dryDB, dry, width;
   _FV3_(src) SRC;
   _FV3_(slot) over, overO;
-  virtual void growWave(long size) throw(std::bad_alloc);
+  virtual void growWave(long size) ;
   virtual void freeWave();
   virtual void update_wet();
   virtual _fv3_float_t limFs2(_fv3_float_t fq);

@@ -35,7 +35,7 @@ FV3_(irmodel1m)::FV3_(~irmodel1m)()
 }
 
 void FV3_(irmodel1m)::loadImpulse(const fv3_float_t * inputL, long size)
-  throw(std::bad_alloc)
+  
 {
   if(size <= 0) return;
   unloadImpulse();
@@ -194,7 +194,7 @@ FV3_(irmodel1)::FV3_(~irmodel1)()
 }
 
 void FV3_(irmodel1)::loadImpulse(const fv3_float_t * inputL, const fv3_float_t * inputR, long size)
-  throw(std::bad_alloc)
+  
 {
   if(size <= 0) return;
   unloadImpulse();

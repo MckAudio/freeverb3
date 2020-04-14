@@ -24,12 +24,12 @@
 class _FV3_(delayline)
 {
  public:
-  _FV3_(delayline)() throw(std::bad_alloc);
+  _FV3_(delayline)() ;
   virtual _FV3_(~delayline)();
   void free();
-  virtual void         setSampleRate(_fv3_float_t fs) throw(std::bad_alloc);
+  virtual void         setSampleRate(_fv3_float_t fs) ;
   virtual _fv3_float_t getSampleRate();
-  void setsize(long size) throw(std::bad_alloc);
+  void setsize(long size) ;
   long getsize();
   virtual void mute();
   virtual _fv3_float_t process(_fv3_float_t input);

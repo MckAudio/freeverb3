@@ -29,7 +29,7 @@ const long FV3_(zrev2)::iAllpassRCo[] = {603, 547, 416, 364, 236, 162, 140, 131,
 const long FV3_(zrev2)::allpM_EXCURSION = 32;
 
 FV3_(zrev2)::FV3_(zrev2)()
-            throw(std::bad_alloc)
+            
 {
   setrt60(2.0);
   setrt60_factor_low (1.3);
@@ -51,7 +51,7 @@ void FV3_(zrev2)::mute()
 }
 
 void FV3_(zrev2)::processreplace(fv3_float_t *inputL, fv3_float_t *inputR, fv3_float_t *outputL, fv3_float_t *outputR, long numsamples)
-		 throw(std::bad_alloc)
+		 
 {
   switch(reverbType)
     {

@@ -21,7 +21,7 @@
 class _FV3_(stenh)
 {
  public:
-  _FV3_(stenh)() throw(std::bad_alloc);
+  _FV3_(stenh)() ;
   void         setSampleRate(_fv3_float_t fs);
   _fv3_float_t getSampleRate();
   void mute();

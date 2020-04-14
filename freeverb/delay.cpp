@@ -40,7 +40,7 @@ long FV3_(delay)::getsize()
 }
 
 void FV3_(delay)::setsize(long size)
-                 throw(std::bad_alloc)
+                 
 {
   if(size <= 0) return;
   fv3_float_t * new_buffer = NULL;
@@ -129,13 +129,13 @@ long FV3_(delaym)::getmodulationsize()
 }
 
 void FV3_(delaym)::setsize(long size)
-		 throw(std::bad_alloc)
+		 
 {
   setsize(size, 0);
 }
 
 void FV3_(delaym)::setsize(long size, long modsize)
-		 throw(std::bad_alloc)
+		 
 {
 #ifdef DEBUG
   std::fprintf(stderr, "delaym::setsize(%ld,%ld)\n", size, modsize);

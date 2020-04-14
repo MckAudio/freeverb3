@@ -21,27 +21,27 @@
 class _FV3_(fir3bandsplit)
 {
  public:
-  _FV3_(fir3bandsplit)() throw(std::bad_alloc);
+  _FV3_(fir3bandsplit)() ;
   virtual _FV3_(~fir3bandsplit)();
   
-  void setSampleRate(long fs) throw(std::bad_alloc);
+  void setSampleRate(long fs) ;
   long getSampleRate();
-  void setWindow(long w) throw(std::bad_alloc);
+  void setWindow(long w) ;
   long getWindow();
-  void         setLowFreqDivider(_fv3_float_t fc) throw(std::bad_alloc);
+  void         setLowFreqDivider(_fv3_float_t fc) ;
   _fv3_float_t getLowFreqDivider();
-  void         setHighFreqDivider(_fv3_float_t fc) throw(std::bad_alloc);
+  void         setHighFreqDivider(_fv3_float_t fc) ;
   _fv3_float_t getHighFreqDivider();
-  void         setTransitionBand(_fv3_float_t fc) throw(std::bad_alloc);
+  void         setTransitionBand(_fv3_float_t fc) ;
   _fv3_float_t getTransitionBand();
-  void         setParameter(_fv3_float_t p) throw(std::bad_alloc);
+  void         setParameter(_fv3_float_t p) ;
   _fv3_float_t getParameter();
-  void setFragmentSize(long size) throw(std::bad_alloc);
+  void setFragmentSize(long size) ;
   long getFragmentSize();
-  void setFactor(long factor) throw(std::bad_alloc);
+  void setFactor(long factor) ;
   long getFactor();
   
-  void setIR(unsigned o) throw(std::bad_alloc);
+  void setIR(unsigned o) ;
 
   void splitR(_fv3_float_t *inputL, _fv3_float_t *inputR, _fv3_float_t *outputL1, _fv3_float_t *outputR1,
 	      _fv3_float_t *outputL2, _fv3_float_t *outputR2, _fv3_float_t *outputL3, _fv3_float_t *outputR3,
@@ -57,10 +57,10 @@ class _FV3_(fir3bandsplit)
  private:
   _FV3_(fir3bandsplit)(const _FV3_(fir3bandsplit)& x);
   _FV3_(fir3bandsplit)& operator=(const _FV3_(fir3bandsplit)& x);
-  void update() throw(std::bad_alloc);
-  void allocFilter(long length) throw(std::bad_alloc);
+  void update() ;
+  void allocFilter(long length) ;
   void freeFilter();
-  void allocIR(unsigned o) throw(std::bad_alloc);
+  void allocIR(unsigned o) ;
   void freeIR();
   long currentfs;
   long fragmentSize, factor;

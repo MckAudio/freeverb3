@@ -44,7 +44,7 @@ void FV3_(blockDelay)::mute()
 }
 
 void FV3_(blockDelay)::setBlock(long size, long n)
-		      throw(std::bad_alloc)
+		      
 {
   freeF();
   if(size < 0||n < 0) size = n = 0;

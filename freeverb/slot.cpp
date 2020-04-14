@@ -34,7 +34,7 @@ FV3_(slot)::~FV3_(slot)()
 }
 
 void FV3_(slot)::alloc(long nsize, long nch)
-		throw(std::bad_alloc)
+		
 {
   if(nsize <= 0||nch <= 0) return;
   free();

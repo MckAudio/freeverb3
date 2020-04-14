@@ -23,7 +23,7 @@
 #include "freeverb/fv3_ns_start.h"
 
 FV3_(dl_gd_largeroom)::FV3_(dl_gd_largeroom)()
-		      throw(std::bad_alloc)
+		      
 {
   setDCC(4);
   setLPF(2600);
@@ -38,7 +38,7 @@ void FV3_(dl_gd_largeroom)::mute()
 }
 
 void FV3_(dl_gd_largeroom)::setSampleRate(fv3_float_t fs)
-			   throw(std::bad_alloc)
+			   
 {
   FV3_(delayline)::setSampleRate(fs);
   pbidx[0][1] = p_(8);   pbidx[0][0] = p_(1);
@@ -85,7 +85,7 @@ fv3_float_t FV3_(dl_gd_largeroom)::process(fv3_float_t input)
 
 //
 
-FV3_(gd_largeroom)::FV3_(gd_largeroom)() throw(std::bad_alloc)
+FV3_(gd_largeroom)::FV3_(gd_largeroom)() 
 {
   setroomsize(0.2);
   setdccutfreq(4);
@@ -94,7 +94,7 @@ FV3_(gd_largeroom)::FV3_(gd_largeroom)() throw(std::bad_alloc)
 }
 
 void FV3_(gd_largeroom)::processreplace(fv3_float_t *inputL, fv3_float_t *inputR, fv3_float_t *outputL, fv3_float_t *outputR, long numsamples)
-			throw(std::bad_alloc)
+			
 {
   if(numsamples <= 0) return;
   long count = numsamples*SRC.getSRCFactor();

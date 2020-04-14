@@ -33,7 +33,7 @@ class _FV3_(allpass)
    * Set delay size. This preserves previous data.
    * @param[in] size The delay size.
    */
-  void setsize(long size) throw(std::bad_alloc);
+  void setsize(long size) ;
   long getsize();
   void mute();
   void         setfeedback(_fv3_float_t val);
@@ -147,8 +147,8 @@ class _FV3_(allpassm)
    * Set delay size. This does not preserve previous data.
    * @param[in] size The delay size.
    */
-  void setsize(long size) throw(std::bad_alloc);
-  void setsize(long size, long modsize) throw(std::bad_alloc);
+  void setsize(long size) ;
+  void setsize(long size, long modsize) ;
   long getsize();
   long getdelaysize();
   long getmodulationsize();
@@ -329,7 +329,7 @@ class _FV3_(allpass2)
    * @param[in] size1 The inner allpass delay size.
    * @param[in] size2 The outer allpass delay size.
    */
-  void setsize(long size1, long size2) throw(std::bad_alloc);
+  void setsize(long size1, long size2) ;
 
   /**
    * set the innter allpass feedback.
@@ -444,8 +444,8 @@ class _FV3_(allpass3)
   _FV3_(~allpass3)();
   void free();
 
-  void setsize(long size1, long size2, long size3) throw(std::bad_alloc);
-  void setsize(long size1, long size1mod, long size2, long size3) throw(std::bad_alloc);
+  void setsize(long size1, long size2, long size3) ;
+  void setsize(long size1, long size1mod, long size2, long size3) ;
   
   inline _fv3_float_t _getlast1(){ return buffer1[readidx1]; }
   inline _fv3_float_t _getlast2(){ return buffer2[bufidx2]; }

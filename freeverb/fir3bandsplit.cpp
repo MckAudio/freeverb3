@@ -23,7 +23,7 @@
 #include "freeverb/fv3_ns_start.h"
 
 FV3_(fir3bandsplit)::FV3_(fir3bandsplit)()
-		    throw(std::bad_alloc)
+		    
 {
   currentfs = 48000;
   fragmentSize = FV3_3BS_IR3_DFragmentSize;
@@ -84,7 +84,7 @@ void FV3_(fir3bandsplit)::mute()
 }
 
 void FV3_(fir3bandsplit)::allocFilter(long length)
-			 throw(std::bad_alloc)
+			 
 {
   freeFilter();
   filterLength = length;
@@ -116,7 +116,7 @@ void FV3_(fir3bandsplit)::freeFilter()
 }
 
 void FV3_(fir3bandsplit)::setSampleRate(long fs)
-			 throw(std::bad_alloc)
+			 
 {
   currentfs = fs;
   update();
@@ -128,7 +128,7 @@ long FV3_(fir3bandsplit)::getSampleRate()
 }
 
 void FV3_(fir3bandsplit)::setWindow(long w)
-			 throw(std::bad_alloc)
+			 
 {
   WINDOW = w;
   update();
@@ -140,7 +140,7 @@ long FV3_(fir3bandsplit)::getWindow()
 }
 
 void FV3_(fir3bandsplit)::setLowFreqDivider(fv3_float_t fc)
-			 throw(std::bad_alloc)
+			 
 {
   fcLow = fc;
   update();
@@ -152,7 +152,7 @@ fv3_float_t FV3_(fir3bandsplit)::getLowFreqDivider()
 }
 
 void FV3_(fir3bandsplit)::setHighFreqDivider(fv3_float_t fc)
-			 throw(std::bad_alloc)
+			 
 {
   fcHigh = fc;
   update();
@@ -164,7 +164,7 @@ fv3_float_t FV3_(fir3bandsplit)::getHighFreqDivider()
 }
 
 void FV3_(fir3bandsplit)::setTransitionBand(fv3_float_t fc)
-			 throw(std::bad_alloc)
+			 
 {
   trBand = fc;
   update();
@@ -176,7 +176,7 @@ fv3_float_t FV3_(fir3bandsplit)::getTransitionBand()
 }
 
 void FV3_(fir3bandsplit)::setParameter(fv3_float_t p)
-			 throw(std::bad_alloc)
+			 
 {
   param = p;
   update();
@@ -188,7 +188,7 @@ fv3_float_t FV3_(fir3bandsplit)::getParameter()
 }
 
 void FV3_(fir3bandsplit)::setFragmentSize(long size)
-			 throw(std::bad_alloc)
+			 
 {
   if(size > 0)
     {
@@ -203,7 +203,7 @@ long FV3_(fir3bandsplit)::getFragmentSize()
 }
 
 void FV3_(fir3bandsplit)::setFactor(long val)
-			 throw(std::bad_alloc)
+			 
 {
   if(val > 0)
     {
@@ -219,7 +219,7 @@ long FV3_(fir3bandsplit)::getFactor()
 
 
 void FV3_(fir3bandsplit)::update()
-			 throw(std::bad_alloc)
+			 
 {
   fv3_float_t fc1, fc2, fcband;
   long N;
@@ -248,14 +248,14 @@ void FV3_(fir3bandsplit)::update()
 }
 
 void FV3_(fir3bandsplit)::setIR(unsigned o)
-			 throw(std::bad_alloc)
+			 
 {
   allocIR(o);
   update();
 }
 
 void FV3_(fir3bandsplit)::allocIR(unsigned o)
-			 throw(std::bad_alloc)
+			 
 {
   freeIR();
   try

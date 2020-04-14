@@ -113,7 +113,7 @@ long FV3_(irbase)::getLatency()
 }
 
 void FV3_(irbase)::setInitialDelay(long numsamples)
-  throw(std::bad_alloc)
+  
 {
   initialDelay = numsamples;
   delayDL.free(), delayWL.free(), delayDR.free(), delayWR.free(); // delay class does not accept size=0

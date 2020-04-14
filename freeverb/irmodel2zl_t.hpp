@@ -24,7 +24,7 @@ class _FV3_(irmodel2zlm) : public _FV3_(irmodel2m)
   _FV3_(irmodel2zlm)();
   virtual _FV3_(~irmodel2zlm)();
   virtual void loadImpulse(const _fv3_float_t * inputL, long size)
-    throw(std::bad_alloc);
+    ;
   virtual void unloadImpulse();
   virtual void processreplace(_fv3_float_t *inputL, long numsamples);
   virtual void mute();
@@ -45,7 +45,7 @@ class _FV3_(irmodel2zl) : public _FV3_(irmodel2)
   _FV3_(irmodel2zl)();
   virtual _FV3_(~irmodel2zl)();
   virtual void loadImpulse(const _fv3_float_t * inputL, const _fv3_float_t * inputR, long size)
-    throw(std::bad_alloc);
+    ;
   
  private:
   _FV3_(irmodel2zl)(const _FV3_(irmodel2zl)& x);

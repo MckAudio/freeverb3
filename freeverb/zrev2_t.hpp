@@ -22,11 +22,11 @@
 class _FV3_(zrev2) : public _FV3_(zrev)
 {
 public:
-  _FV3_(zrev2)() throw(std::bad_alloc);
+  _FV3_(zrev2)() ;
 
   virtual void mute();
   virtual void processreplace(_fv3_float_t *inputL, _fv3_float_t *inputR, _fv3_float_t *outputL, _fv3_float_t *outputR, long numsamples)
-    throw(std::bad_alloc);  
+    ;  
 
   virtual void setrt60(_fv3_float_t value);
   virtual void setloopdamp(_fv3_float_t value);

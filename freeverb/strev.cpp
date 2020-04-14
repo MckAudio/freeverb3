@@ -30,7 +30,7 @@ const long FV3_(strev)::idxRCo[] = {353, 3627, 1228, 2673, 2111, 335, 121,};
 const long FV3_(strev)::allpM_EXCURSION = 32;
 
 FV3_(strev)::FV3_(strev)()
-	    throw(std::bad_alloc)
+	    
 {
   setrt60(1);
   setdccutfreq(10);
@@ -79,7 +79,7 @@ void FV3_(strev)::mute()
 */
 
 void FV3_(strev)::processreplace(fv3_float_t *inputL, fv3_float_t *inputR, fv3_float_t *outputL, fv3_float_t *outputR, long numsamples)
-		    throw(std::bad_alloc)
+		    
 {
   if(numsamples <= 0) return;
   long count = numsamples*getOSFactor();

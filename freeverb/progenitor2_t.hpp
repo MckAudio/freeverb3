@@ -22,10 +22,10 @@
 class _FV3_(progenitor2) : public _FV3_(progenitor)
 {
 public:
-  _FV3_(progenitor2)() throw(std::bad_alloc);
+  _FV3_(progenitor2)() ;
   virtual void mute();
   virtual void processreplace(_fv3_float_t *inputL, _fv3_float_t *inputR, _fv3_float_t *outputL, _fv3_float_t *outputR, long numsamples)
-    throw(std::bad_alloc);
+    ;
   void setidiffusion1(_fv3_float_t value);
   _fv3_float_t getidiffusion1();
   void setodiffusion1(_fv3_float_t value);

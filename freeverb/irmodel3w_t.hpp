@@ -34,7 +34,7 @@ class _FV3_(irmodel3wm) : public _FV3_(irmodel3m)
   _FV3_(irmodel3wm)();
   virtual _FV3_(~irmodel3wm)();
   virtual void loadImpulse(const _fv3_float_t * inputL, long size)
-    throw(std::bad_alloc);
+    ;
   virtual void unloadImpulse();
   virtual void resume();
   virtual void suspend();
@@ -66,14 +66,14 @@ class _FV3_(irmodel3w) : public _FV3_(irmodel3)
   _FV3_(irmodel3w)();
   virtual _FV3_(~irmodel3w)();
   virtual void loadImpulse(const _fv3_float_t * inputL, const _fv3_float_t * inputR, long size)
-    throw(std::bad_alloc);
+    ;
   virtual void unloadImpulse();
   virtual void resume();
   virtual void suspend();
   virtual void mute();
   virtual void setFragmentSize(long size, long factor);
   virtual void setInitialDelay(long numsamples)
-    throw(std::bad_alloc);
+    ;
 
   bool setLFThreadPriority(int priority);
 

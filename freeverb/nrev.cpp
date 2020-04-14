@@ -28,7 +28,7 @@ const long FV3_(nrev)::allpassCo[] = {347, 113, 37, 59, 53, 43, 37, 29, 19,};
 //                                   (  0    1   2) F3  R4  L5  R6 RL7 RR8
 
 FV3_(nrev)::FV3_(nrev)()
-	   throw(std::bad_alloc)
+	   
 {
   hpf = lpfL = lpfR = 0;
   setRearDelay(0);
@@ -81,7 +81,7 @@ void FV3_(nrev)::mute()
 }
 
 void FV3_(nrev)::growWave(long size)
-		throw(std::bad_alloc)
+		
 {
   if(size > over.getsize())
     {
@@ -107,14 +107,14 @@ void FV3_(nrev)::freeWave()
 }
 
 void FV3_(nrev)::processreplace(fv3_float_t *inputL, fv3_float_t *inputR, fv3_float_t *outputL, fv3_float_t *outputR, long numsamples)
-		throw(std::bad_alloc)
+		
 {
   processreplace(inputL,inputR,outputL,outputR,NULL,NULL,numsamples);
 }
 
 void FV3_(nrev)::processreplace(fv3_float_t *inputL, fv3_float_t *inputR, fv3_float_t *outputL, fv3_float_t *outputR,
 				fv3_float_t *outputRearL, fv3_float_t *outputRearR, long numsamples)
-		throw(std::bad_alloc)
+		
 {
   if(numsamples <= 0) return;
   long count = numsamples*SRC.getSRCFactor();
@@ -292,7 +292,7 @@ fv3_float_t FV3_(nrev)::getwetrear()
 }
 
 void FV3_(nrev)::setOSFactor(long factor, long converter_type)
-		    throw(std::bad_alloc)
+		    
 {
   FV3_(revbase)::setOSFactor(factor, converter_type);
   SRCRear.setSRCFactor(factor, converter_type);

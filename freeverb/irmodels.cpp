@@ -38,7 +38,7 @@ void FV3_(irmodels)::unloadImpulse()
 }
 
 void FV3_(irmodels)::loadImpulse(const fv3_float_t * inputL, const fv3_float_t * inputR, long size)
-		    throw(std::bad_alloc)
+		    
 {
   impulseSize = size;
   allocImpulse(size);
@@ -97,7 +97,7 @@ void FV3_(irmodels)::mute()
 }
 
 void FV3_(irmodels)::allocImpulse(long size)
-		    throw(std::bad_alloc)
+		    
 {
   freeImpulse();
   impulseSize = size;

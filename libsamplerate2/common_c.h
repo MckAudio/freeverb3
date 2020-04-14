@@ -96,11 +96,11 @@ const char* zoh_get_description (long src_enum) ;
 
 #ifdef DEBUG
 #define SR2_UNDENORMAL(v)						\
-  if((fpclassify(v)!=FP_NORMAL)&&(fpclassify(v)!=FP_ZERO))              \
-    {fprintf(stderr, "^[" STRINGIZE(v) "=%d]",fpclassify(v));v=0;}
+  if((std::fpclassify(v)!=FP_NORMAL)&&(std::fpclassify(v)!=FP_ZERO))              \
+    {fprintf(stderr, "^[" STRINGIZE(v) "=%d]",std::fpclassify(v));v=0;}
 #else
 #define SR2_UNDENORMAL(v)						\
-  if(fpclassify(v) != FP_NORMAL&&fpclassify(v) != FP_ZERO){v=0;}
+  if(std::fpclassify(v) != FP_NORMAL&&std::fpclassify(v) != FP_ZERO){v=0;}
 #endif
 
 #endif	/* COMMON_H_INCLUDED */

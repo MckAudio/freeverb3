@@ -24,7 +24,7 @@ class _FV3_(irmodel3m) : public _FV3_(irbasem)
   _FV3_(irmodel3m)();
   virtual _FV3_(~irmodel3m)();
   virtual void loadImpulse(const _fv3_float_t * inputL, long size)
-    throw(std::bad_alloc);
+    ;
   virtual void unloadImpulse();
   virtual void processreplace(_fv3_float_t *inputL, long numsamples);
   virtual void mute();
@@ -40,10 +40,10 @@ class _FV3_(irmodel3m) : public _FV3_(irbasem)
   virtual void processZL(_fv3_float_t *inputL, long numsamples);
   
   void allocFrags(std::vector<_FV3_(frag)*> *to, const _fv3_float_t *inputL, long fragSize, long num, long mod, unsigned fftflags, _fv3_float_t * preAllocL)
-    throw(std::bad_alloc);
+    ;
   void freeFrags(std::vector<_FV3_(frag)*> *v);
   void allocSlots(long ssize, long lsize)
-    throw(std::bad_alloc);
+    ;
   void freeSlots();
 
   long Lcursor, Scursor, Lstep, sFragmentSize, lFragmentSize;
@@ -64,7 +64,7 @@ class _FV3_(irmodel3) : public _FV3_(irmodel1)
   _FV3_(irmodel3)();
   virtual _FV3_(~irmodel3)();
   virtual void loadImpulse(const _fv3_float_t * inputL, const _fv3_float_t * inputR, long size)
-    throw(std::bad_alloc);
+    ;
   using _FV3_(irbase)::processreplace;
   virtual void processreplace(const _fv3_float_t *inputL, const _fv3_float_t *inputR, _fv3_float_t *outputL, _fv3_float_t *outputR, long numsamples);
   

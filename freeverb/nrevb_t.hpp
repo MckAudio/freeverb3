@@ -21,7 +21,7 @@
 class _FV3_(nrevb) : public _FV3_(nrev)
 {
  public:
-  _FV3_(nrevb)() throw(std::bad_alloc);
+  _FV3_(nrevb)() ;
   virtual void mute();
   virtual void setdamp(_fv3_float_t value);
   virtual void setfeedback(_fv3_float_t value);
